@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.example.learnjava.lessons.Lesson1;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        FrameLayout lessonLayout = findViewById(R.id.lessonFragment);
         //findLinearLayouts
         LinearLayout lesson1 = findViewById(R.id.Lesson1);
         LinearLayout lesson2 = findViewById(R.id.lesson2);

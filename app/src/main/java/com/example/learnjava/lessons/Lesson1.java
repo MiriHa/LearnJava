@@ -9,7 +9,7 @@ import android.os.Bundle;
 import com.example.learnjava.LessonFragment;
 import com.example.learnjava.R;
 
-public class Lesson1 extends AppCompatActivity {
+public class Lesson1 extends AppCompatActivity implements LessonFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,4 +28,10 @@ public class Lesson1 extends AppCompatActivity {
                 .addToBackStack(null)
                 .commit();
     }
+
+    public void onNextButtonClicked(){
+        //TODO opem exercise or lesson fragment
+    }
+
+
 }

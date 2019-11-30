@@ -11,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class LessonFragment extends Fragment {
+
+    OnFragmentInteractionListener mCallback;
+
     public LessonFragment() {
         // Required empty public constructor
     }
@@ -29,7 +32,25 @@ public class LessonFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+
+        void onNextButtonClicked();
+
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        try {
+            mCallback = (OnFragmentInteractionListener) getActivity();
+        } catch (ClassCastException e) {
+            throw new ClassCastException(getActivity().toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
     }
 }

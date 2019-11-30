@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#74aa7a</color>
+    <color name="colorPrimaryDark">#54997a</color>
+    <color name="colorAccent">#cedf83</color>
+
+    <color name="lightGreen1">#cedf83</color>
+    <color name="lightGreen3">#96bc76</color>
+    <color name="lightGreen2">#bfdd83</color>
+    <color name="lightGreen4">#84bc76</color>
+    <color name="Green1">#74aa7a</color>
+    <color name="Green2">#66af69</color>
+    <color name="Green3">#54997a</color>
+    <color name="cadetBlue">#62a8ac</color>
+    <color name="QueenBlue">#408296</color>
+</resources>

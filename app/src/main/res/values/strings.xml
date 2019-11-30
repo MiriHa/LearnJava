@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">LearnJava</string>
+    <string name="welcome">Choose your lesson</string>
+
+    //Lessons
+    <string name="Lesson1">Tutorial and Introduction</string>
+    <string name="Lesson2">Hello World and Comments</string>
+    <string name="Lesson3">Functions</string>
+    <string name="Lesson4">Conditionals and Loops</string>
+    <string name="Lesson5">Arrays</string>
+    <string name="Lesson6">Classes and Objects</string>
+    //Maybe
+    <string name="Lesson7">Exceptions and Lists</string>
+
+    <dimen name="PaddingScroll">30dp</dimen>
+    <dimen name="PaddingSideScroll">13dp</dimen>
+    <dimen name="TextSize10">10sp</dimen>
+    <dimen name="TextSize50">50sp</dimen>
+    <dimen name="TextSize3">40sp</dimen>
+
+</resources>

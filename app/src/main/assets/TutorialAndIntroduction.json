@@ -1,0 +1,27 @@
+{
+  "lessons": [
+    {
+      "lessonName" : "Tutorial",
+      "lessonNumber" : 1,
+      "lessonKeyWords" : ["word1", "word2", "word3", "word4"],
+      "lessonText" : "How to Use this app. Hello! This learning App will present you different Lessons to help you learn java. Here will be presented a lesson with theory that you need to read and understand and follwing this there will be an exercise to check our nearly learned knowledge"
+    },
+    {
+      "lessonName" : "Introduction",
+      "lessonNumber" : 2,
+      "lessonKeyWords" : ["word1", "word2", "word3", "word4"],
+      "lessonText" : " THis is an indrocution TExt blabla"
+    }
+  ],
+
+  "exercises" : [
+    {
+      "exerciseName" : "Main Method",
+      "exerciseNumber" : 2,
+      "exerciseText" : "Fill in the Blanks to complete this hello World program,",
+      "exerciseSolution" : ["static", "main", "args"]
+    }
+  ]
+
+
+}

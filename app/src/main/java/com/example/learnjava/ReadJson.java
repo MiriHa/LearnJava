@@ -9,9 +9,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+
+//This reads the Json files of the lessons
 public class ReadJson {
 
-    @SuppressWarnings("unchecked")
+   // @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();

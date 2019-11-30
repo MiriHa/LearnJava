@@ -1,5 +1,7 @@
 package com.example.learnjava.Models;
 
+
+//This model defines a Theory Block of a lesson
 public class LessonModel {
 
     private String lessonName;

@@ -1,5 +1,7 @@
 package com.example.learnjava.Models;
 
+
+//this model defines an Exercise of an Lesson
 public class ExerciseModel {
 
     private String exerciseName;

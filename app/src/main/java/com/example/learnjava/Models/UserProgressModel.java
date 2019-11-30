@@ -2,12 +2,13 @@ package com.example.learnjava.Models;
 
 import java.util.ArrayList;
 
+//This model tracks the progress of a user
 public class UserProgressModel {
 
     //alls int oder array? array of lessons/arraylist?
-    private int userProgressLessons = 0;
-    private int userProgressExercises = 0;
-    private  ArrayList<ExerciseModel> solvedExercises = new ArrayList<ExerciseModel>();
+    private int userProgressLessons;
+    private int userProgressExercises;
+    private  ArrayList<ExerciseModel> solvedExercises = new ArrayList<>();
 
     public UserProgressModel(int userProgressLessons, int userProgressExercises){
         this.userProgressExercises = userProgressExercises;

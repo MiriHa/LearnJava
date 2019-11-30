@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //findLinearLayouts
         LinearLayout lesson1 = findViewById(R.id.Lesson1);
         LinearLayout lesson2 = findViewById(R.id.lesson2);
         LinearLayout lesson3 = findViewById(R.id.lesson3);
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         LinearLayout lesson6 = findViewById(R.id.lesson6);
         LinearLayout lesson7 = findViewById(R.id.lesson7);
 
+        //SetOnClickListener for Layouts defined in onClick
         lesson1.setOnClickListener(this);
         lesson2.setOnClickListener(this);
         lesson3.setOnClickListener(this);
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     @Override
     public void onClick(View v) {
 
+        //start the activity according to the clicked lesson
         switch (v.getId()) {
 
             case R.id.Lesson1:

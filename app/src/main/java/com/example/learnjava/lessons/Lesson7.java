@@ -1,14 +1,16 @@
-package com.example.learnjava;
+package com.example.learnjava.lessons;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Lesson4 extends AppCompatActivity {
+import com.example.learnjava.R;
+
+public class Lesson7 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lesson4);
+        setContentView(R.layout.activity_lesson7);
     }
 }

@@ -7,6 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.example.learnjava.lessons.Lesson1;
+import com.example.learnjava.lessons.Lesson2;
+import com.example.learnjava.lessons.Lesson3;
+import com.example.learnjava.lessons.Lesson4;
+import com.example.learnjava.lessons.Lesson5;
+import com.example.learnjava.lessons.Lesson6;
+import com.example.learnjava.lessons.Lesson7;
+
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener{
 
     @Override
@@ -43,30 +51,37 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         switch (v.getId()) {
 
             case R.id.Lesson1:
+                //TODO check if user has acess, if its looked
                 startActivity(Lesson1.class);
                 break;
 
             case R.id.lesson2:
+                //TODO check if user has acess, if its looked
                 startActivity(Lesson2.class);
                 break;
 
             case R.id.lesson3:
+                //TODO check if user has acess, if its looked
                 startActivity(Lesson3.class);
                 break;
 
             case R.id.lesson4:
+                //TODO check if user has acess, if its looked
                 startActivity(Lesson4.class);
                 break;
 
             case R.id.lesson5:
+                //TODO check if user has acess, if its looked
                 startActivity(Lesson5.class);
                 break;
 
             case R.id.lesson6:
+                //TODO check if user has acess, if its looked
                 startActivity(Lesson6.class);
                 break;
 
             case R.id.lesson7:
+                //TODO check if user has acess, if its looked
                 startActivity(Lesson7.class);
                 break;
         }

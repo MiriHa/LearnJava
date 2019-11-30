@@ -1,8 +1,10 @@
-package com.example.learnjava;
+package com.example.learnjava.lessons;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.learnjava.R;
 
 public class Lesson6 extends AppCompatActivity {
 

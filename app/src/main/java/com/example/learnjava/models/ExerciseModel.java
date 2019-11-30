@@ -1,4 +1,4 @@
-package com.example.learnjava.Models;
+package com.example.learnjava.models;
 
 
 //this model defines an Exercise of an Lesson

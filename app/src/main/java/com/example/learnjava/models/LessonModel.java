@@ -1,4 +1,4 @@
-package com.example.learnjava.Models;
+package com.example.learnjava.models;
 
 
 //This model defines a Theory Block of a lesson

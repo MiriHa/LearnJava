@@ -39,13 +39,11 @@ dependencies {
     implementation('com.googlecode.json-simple:json-simple:1.1.1')
 
 
- //   def nav_version = "2.1.0"
- //   implementation 'androidx.navigation:navigation-fragment:2.1.0'
- //   implementation 'androidx.navigation:navigation-ui:2.2.0-rc02'
+    //   def nav_version = "2.1.0"
+    //   implementation 'androidx.navigation:navigation-fragment:2.1.0'
+    //   implementation 'androidx.navigation:navigation-ui:2.2.0-rc02'
 }
 
 configurations {
     compile.exclude group: "junit", module: "junit"
 }
-
-

@@ -4,74 +4,96 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".lessons.LessonFragment">
+    tools:context=".lessons.ExerciseFragment">
 
-
-   <androidx.constraintlayout.widget.ConstraintLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:background= "@color/lightGreen1" >
-
-       <TextView
-           android:id="@+id/lessonType"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_marginLeft="16dp"
-           android:layout_marginTop="8dp"
-           android:autoSizeTextType="uniform"
-           android:gravity="start"
-           android:text="@string/lesson"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/lightGreen1">
 
         <TextView
-            android:id="@+id/lessonName"
+            android:id="@+id/exerciseType"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:autoSizeTextType="uniform"
+            android:gravity="start"
+            android:text="@string/exercise"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/exerciseName"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:autoSizeTextType="uniform"
             android:paddingHorizontal="@dimen/PaddingSide"
             android:paddingVertical="10dp"
             android:text="LessonName"
-            app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+            app:layout_constraintBottom_toTopOf="@+id/scrollViewEx"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lessonType"
+            app:layout_constraintTop_toBottomOf="@+id/exerciseType"
             app:layout_constraintVertical_bias="0.0" />
 
-       <ScrollView
-           android:id="@+id/scrollView3"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_marginTop="3dp"
-           android:paddingHorizontal="16dp"
-           app:layout_constraintBottom_toTopOf="@+id/nextButtonLessonFrag"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="1.0"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toBottomOf="@+id/lessonName">
+        <ScrollView
+            android:id="@+id/scrollViewEx"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="3dp"
+            android:paddingHorizontal="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/nextButtonExerciseFrag"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exerciseName">
 
-           <TextView
-               android:id="@+id/lessonText"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text="@string/longstring"
-               android:textSize="25sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-       </ScrollView>
+            <TextView
+                android:id="@+id/exerciseText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                android:textSize="25sp" />
 
-       <Button
-           android:id="@+id/nextButtonLessonFrag"
-           android:layout_width="70dp"
-           android:layout_height="70dp"
-           android:layout_marginBottom="6dp"
-           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintEnd_toEndOf="@+id/scrollView3"
-           app:layout_constraintHorizontal_bias="0.97"
-           app:layout_constraintStart_toStartOf="@+id/scrollView3" />
+            <TextView
+                android:id="@+id/exerciseExample"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ohooooooooooooooooooooooooooooooooo"
+                android:textSize="25sp"/>
 
-   </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
+        <!--        <Button-->
+        <!--            android:id="@+id/checkButtonExerciseFrag"-->
+        <!--            android:layout_width="70dp"-->
+        <!--            android:layout_height="70dp"-->
+        <!--            android:layout_marginBottom="6dp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="@+id/scrollViewEx"-->
+        <!--            app:layout_constraintHorizontal_bias="1.0"-->
+        <!--            app:layout_constraintStart_toStartOf="@+id/scrollViewEx" />-->
+
+        <Button
+            android:id="@+id/nextButtonExerciseFrag"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="6dp"
+            android:layout_marginBottom="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/scrollViewEx" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </FrameLayout>
-
-

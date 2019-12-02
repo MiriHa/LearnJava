@@ -4,6 +4,7 @@ package com.example.learnjava.models;
 //This model defines a Theory Block of a lesson
 public class ModelLesson {
 
+
     private String lessonName;
     private String lessonText;
     private int lessonNumber;
@@ -26,5 +27,9 @@ public class ModelLesson {
 
     public int getLessonNumber() {
         return lessonNumber;
+    }
+
+    public String[] getKeywords(){
+        return keywords;
     }
 }

@@ -59,7 +59,6 @@ public class ExerciseFragment extends Fragment {
                             ((Lesson1) getActivity()).onNextButtonClickedLesson();
                             Log.d("Buttonclicked", " inLessonFragment");
                         }
-                        exerciseName.setText("ExercisebuttonclickedBUtnothinghappend");
                 }
                 catch (Exception e){
                     Log.e("Not clickable", "error");

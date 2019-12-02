@@ -46,6 +46,7 @@ public class LessonFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lesson, container, false);
+
         lessonName = view.findViewById(R.id.lessonName);
         lessonText = view.findViewById(R.id.lessonText);
         nextButton = view.findViewById(R.id.nextButtonLessonFrag);
@@ -54,11 +55,10 @@ public class LessonFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //TODO check the progress and make switch statement if exercise or lesson is needed
-                if((getActivity() != null)){
+                if ((getActivity() != null)) {
                     ((Lesson1) getActivity()).onNextButtonClickedExercise();
                     Log.d("Buttonclicked", " inLessonFragment");
                 }
-                lessonName.setText("LessonbuttonclickedBUtnothinghappend");
             }
         });
 

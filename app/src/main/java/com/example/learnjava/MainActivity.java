@@ -95,10 +95,11 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     }
 
     public void startActivity(Class<?> otherActivityClass, int lessonNumber) {
+
         Intent intent = new Intent(MainActivity.this, otherActivityClass);
         intent.putExtra("LESSON_NUMBER", lessonNumber);
         startActivity(intent);
-        Log.d("New LessonActivity", " activity: " + otherActivityClass);
+        Log.d("ChangeActivity", " to activity: " + otherActivityClass);
     }
 
 }

@@ -19,7 +19,15 @@
       "exerciseName" : "Main Method",
       "exerciseNumber" : 2,
       "exerciseText" : "Fill in the Blanks to complete this hello World program,",
-      "exerciseSolution" : ["static", "main", "args"]
+      "exerciseSolutionString" : ["static", "main", "args"],
+      "exerciseSolutionInt" : []
+    },
+    {
+      "exerciseName" : "Main Method2",
+      "exerciseNumber" : 3,
+      "exerciseText" : "Do a thing",
+      "exerciseSolutionString" : [],
+      "exerciseSolutionInt" : [1,2,3]
     }
   ]
 

@@ -20,8 +20,10 @@ public class ExerciseFragment extends Fragment {
 
     private String exerciseNameString;
     private String exerciseTextString;
+    private String exerciseExampleString;
     private TextView exerciseName;
     private TextView exerciseText;
+    private TextView exerciseExample;
 
    // private Button checkButton;
 
@@ -40,10 +42,12 @@ public class ExerciseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_lesson, container, false);
-        exerciseName = view.findViewById(R.id.lessonName);
-        exerciseText = view.findViewById(R.id.lessonText);
-         Button checkButton = view.findViewById(R.id.nextButtonExerciseFrag);
+        View view = inflater.inflate(R.layout.fragment_exercise, container, false);
+        Log.d("InflateLayout", "in exerciseFragment");
+        exerciseName = view.findViewById(R.id.exerciseName);
+        exerciseText = view.findViewById(R.id.exerciseText);
+        exerciseExample = view.findViewById(R.id.exerciseExample);
+        Button checkButton = view.findViewById(R.id.nextButtonExerciseFrag);
 
 
         checkButton.setOnClickListener(new View.OnClickListener() {
@@ -81,9 +85,11 @@ public class ExerciseFragment extends Fragment {
 
     }
 
-    public void setFragmentContent(String name, String text){
+    public void setFragmentContent(String name, String text, String example){
         exerciseNameString = name;
         exerciseTextString = text;
+        exerciseExampleString = example;
+        Log.d("SetFragmentContent", " is set");
     }
 
 }

@@ -53,11 +53,12 @@ public class Lesson1 extends AppCompatActivity{
     public void onNextButtonClickedExercise(){
         ExerciseFragment exerciseFragment = new ExerciseFragment();
         //TOdo automate the content setting
-        exerciseFragment.setFragmentContent("DataTypes exercise", "1+1=42");
+        exerciseFragment.setFragmentContent("DataTypes exercise", "1+1=42", "2+2 = 69");
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.FragmentHolder, exerciseFragment)
-                //TODO verbessere abckstack/Überlappen von fragments
+                //.add(R.id.FragmentExerciseHolder, exerciseFragment)
+                .replace(R.id.FragmentHolder, exerciseFragment)
+        //TODO verbessere abckstack/Überlappen von fragments
                 .addToBackStack(null)
                 .commit();
         Log.d("Nextbuttenclicked", " exercise");
@@ -70,7 +71,8 @@ public class Lesson1 extends AppCompatActivity{
         lessonFragment.setFragmentContent("DataTypes 2", "blaaablablbalblabluuuuuuuuuuuub");
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.FragmentHolder, lessonFragment)
+                //.add(R.id.FragmentHolder, lessonFragment)
+                .replace(R.id.FragmentHolder, lessonFragment)
                 .addToBackStack(null)
                 .commit();
         Log.d("Nextbuttenclicked", " lesson");

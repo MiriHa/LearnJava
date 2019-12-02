@@ -45,19 +45,23 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/PaddingSide"
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
                 android:paddingTop="@dimen/PaddingScroll"
                 android:paddingBottom="@dimen/PaddingScroll">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1/7"
+                    android:autoSizeTextType="uniform" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeMaxTextSize="@dimen/TextSize50"
-                    android:autoSizeMinTextSize="@dimen/TextSize10"
                     android:autoSizeTextType="uniform"
                     android:clickable="false"
-                    android:gravity="center"
                     android:text="@string/Lesson1" />
 
             </LinearLayout>
@@ -70,16 +74,21 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/PaddingSide"
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
                 android:paddingTop="@dimen/PaddingScroll"
                 android:paddingBottom="@dimen/PaddingScroll">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2/7"
+                    android:autoSizeTextType="uniform" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeMaxTextSize="@dimen/TextSize50"
-                    android:autoSizeMinTextSize="@dimen/TextSize10"
                     android:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
@@ -94,16 +103,21 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/PaddingSide"
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
                 android:paddingTop="@dimen/PaddingScroll"
                 android:paddingBottom="@dimen/PaddingScroll">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3/7"
+                    android:autoSizeTextType="uniform" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeMaxTextSize="@dimen/TextSize50"
-                    android:autoSizeMinTextSize="@dimen/TextSize10"
                     android:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
@@ -118,16 +132,21 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/PaddingSide"
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
                 android:paddingTop="@dimen/PaddingScroll"
                 android:paddingBottom="@dimen/PaddingScroll">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4/7"
+                    android:autoSizeTextType="uniform" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeMaxTextSize="@dimen/TextSize50"
-                    android:autoSizeMinTextSize="@dimen/TextSize10"
                     android:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
@@ -142,16 +161,21 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/PaddingSide"
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
                 android:paddingTop="@dimen/PaddingScroll"
                 android:paddingBottom="@dimen/PaddingScroll">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5/7"
+                    android:autoSizeTextType="uniform" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeMaxTextSize="@dimen/TextSize50"
-                    android:autoSizeMinTextSize="@dimen/TextSize10"
                     android:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
@@ -166,16 +190,21 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/PaddingSide"
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
                 android:paddingTop="@dimen/PaddingScroll"
                 android:paddingBottom="@dimen/PaddingScroll">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6/7"
+                    android:autoSizeTextType="uniform" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeMaxTextSize="@dimen/TextSize50"
-                    android:autoSizeMinTextSize="@dimen/TextSize10"
                     android:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
@@ -189,17 +218,22 @@
                 android:background="@color/QueenBlue"
                 android:clickable="true"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:paddingHorizontal="@dimen/PaddingSide"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
                 android:paddingTop="@dimen/PaddingScroll"
                 android:paddingBottom="@dimen/PaddingScroll">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7/7"
+                    android:autoSizeTextType="uniform" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeMaxTextSize="@dimen/TextSize50"
-                    android:autoSizeMinTextSize="@dimen/TextSize10"
                     android:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"

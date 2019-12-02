@@ -8,7 +8,7 @@ import com.example.learnjava.models.ModelUserProgress;
 
 public class Controller extends Application {
 
-    ModelUserProgress modelUserProgress;
+    ModelUserProgress modelUserProgress = new ModelUserProgress(0,0);
 
     //TODO may this instead of user model?
     // ArrayList<ModelExercise> exerciseList = new ArrayList<>();
@@ -29,6 +29,8 @@ public class Controller extends Application {
     }
 
     public void updateFinishedSection(int number){
-        modelUserProgress.updateUserProgressSections(number);
+       // modelUserProgress.updateUserProgressSections(number);
+
+
     }
 }

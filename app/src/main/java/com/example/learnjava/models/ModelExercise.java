@@ -2,7 +2,7 @@ package com.example.learnjava.models;
 
 
 //this model defines an Exercise of an Lesson
-public class ExerciseModel {
+public class ModelExercise {
 
     private String exerciseName;
     private String exerciseTask;
@@ -14,7 +14,7 @@ public class ExerciseModel {
     private String[] solution;
     private int[] solutionInt;
 
-    public ExerciseModel(String exerciseTask, int exercisenumber){
+    public ModelExercise(String exerciseTask, int exercisenumber){
         this.exerciseTask = exerciseTask;
         this.exercisenumber = exercisenumber;
     }

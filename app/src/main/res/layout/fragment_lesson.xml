@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".LessonFragment">
+    tools:context=".lessons.LessonFragment">
 
 
    <androidx.constraintlayout.widget.ConstraintLayout
        android:layout_width="match_parent"
-       android:layout_height="match_parent">
+       android:layout_height="match_parent"
+       android:background= "@color/lightGreen1" >
 
        <TextView
            android:id="@+id/lessonType"
@@ -44,7 +45,7 @@
            android:layout_height="0dp"
            android:layout_marginTop="3dp"
            android:paddingHorizontal="16dp"
-           app:layout_constraintBottom_toTopOf="@+id/nextButtonLessonFragment"
+           app:layout_constraintBottom_toTopOf="@+id/nextButtonLessonFrag"
            app:layout_constraintEnd_toEndOf="parent"
            app:layout_constraintHorizontal_bias="1.0"
            app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +61,7 @@
        </ScrollView>
 
        <Button
-           android:id="@+id/nextButtonLessonFragment"
+           android:id="@+id/nextButtonLessonFrag"
            android:layout_width="70dp"
            android:layout_height="70dp"
            android:layout_marginBottom="6dp"

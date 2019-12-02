@@ -4,6 +4,7 @@
 
     //Lessons
     <string name="lesson">Lesson</string>
+    <string name="exercise">Exercise</string>
     <string name="Lesson1">Tutorial and Introduction</string>
     <string name="Lesson2">Hello World and Comments</string>
     <string name="Lesson3">Functions</string>

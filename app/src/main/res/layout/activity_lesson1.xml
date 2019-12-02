@@ -8,7 +8,7 @@
 
 
     <FrameLayout
-        android:id="@+id/lessonFragment"
+        android:id="@+id/FragmentHolder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

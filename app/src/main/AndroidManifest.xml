@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".lessons.Lesson7"></activity>
+        <activity android:name=".lessons.Lesson7"/>
         <activity android:name=".lessons.Lesson6" />
         <activity android:name=".lessons.Lesson5" />
         <activity android:name=".lessons.Lesson4" />

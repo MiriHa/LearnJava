@@ -2,14 +2,10 @@ package com.example.learnjava.lessons;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toolbar;
 
 import com.example.learnjava.Controller;
 import com.example.learnjava.MainActivity;
@@ -20,7 +16,7 @@ import com.example.learnjava.models.ModelLesson;
 
 import java.util.ArrayList;
 
-public class Lesson1 extends AppCompatActivity{
+public class LessonActivity extends AppCompatActivity{
 
     Controller progressController;
     private int sectionNumber;
@@ -30,45 +26,43 @@ public class Lesson1 extends AppCompatActivity{
 
     ReadJson readJson = new ReadJson();
 
+    int progressLessons = 0;
+    int progressExercises = 0;
+    int progressCurrentScreen = 0;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lesson1);
+        setContentView(R.layout.activity_lesson);
 
+        //get the progresscontroller
         progressController = (Controller) getApplicationContext();
 
+        //get the recent sectionnumber to identifiy the section
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
-
         if(b!=null)
-        {
             sectionNumber = (int) b.get("LESSON_NUMBER");
-            Log.d("Section opened", " "+ sectionNumber);
-            progressController.updateFinishedSection(sectionNumber);
-        }
+            Log.i("Section opened", " "+ sectionNumber);
+            progressController.updateCurrentSection(sectionNumber);
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Section" + sectionNumber);
 
+        //get the Lesson content
+        loadContent();
 
-       openLessonFragment();
+        //open the first lesson Fragment
+        loadFirstLesson();
     }
 
 
-    public void openLessonFragment(){
-        LessonFragment lessonFragment = new LessonFragment();
-        lessonFragment.setFragmentContent("DataTypes and so " + sectionNumber, "blaaablablbalbla");
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.FragmentHolder, lessonFragment)
-                .addToBackStack(null)
-                .commit();
-        Log.d("FirstLessonfragOpened", " lesson");
-    }
-
-    public void onNextButtonClickedExercise(){
+    public void openNewExercise(){
+        progressExercises += 1;
+        progressCurrentScreen += 1;
         ExerciseFragment exerciseFragment = new ExerciseFragment();
         //TOdo automate the content setting
         exerciseFragment.setFragmentContent("DataTypes exercise", "1+1=42", "2+2 = 69");
@@ -79,11 +73,14 @@ public class Lesson1 extends AppCompatActivity{
         //TODO verbessere abckstack/Überlappen von fragments
                 .addToBackStack(null)
                 .commit();
-        Log.d("Nextbuttenclicked", " exercise");
 
+        Log.d("Nextbuttenclicked", " exercise");
+        updateProgress();
     }
 
-    public void onNextButtonClickedLesson(){
+    public void openNewLesson(){
+        progressLessons += 1;
+        progressCurrentScreen +=1;
         LessonFragment lessonFragment = new LessonFragment();
         //TOdo automate the content setting
         lessonFragment.setFragmentContent("DataTypes 2", "blaaablablbalblabluuuuuuuuuuuub");
@@ -94,18 +91,52 @@ public class Lesson1 extends AppCompatActivity{
                 .addToBackStack(null)
                 .commit();
         Log.d("Nextbuttenclicked", " lesson");
+        updateProgress();
+    }
+
+    public void loadFirstLesson(){
+        LessonFragment lessonFragment = new LessonFragment();
+        //TOdo automate the content setting
+        lessonFragment.setFragmentContent("DataTypes 2", "THis is the first lessonfragment");
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.FragmentHolder, lessonFragment)
+                .addToBackStack(null)
+                .commit();
+        Log.d("FirstLesson", " loaded");
     }
 
 
-    //TODO some method that checks if its the last fragment of a section
+    public boolean checkIfSectionFinished(){
 
-    //TODO some method that reprots the progrss from the fragments -> need json reader
+        int lastLesson = lessonContent.size();
+        int lastExercise = exerciseContent.size();
+
+        if(progressExercises == lastExercise && progressLessons == lastLesson)
+            return true;
+        else
+            return false;
+
+    }
+
+    //TODO some method that reprots the progrss from the fragments -> need to add the current/finished lessons?
+    //Maybe just report current screen and rightfully solved exercises
+
+    public void updateProgress(){
+        progressController.updateCurrentScreen(progressCurrentScreen);
+
+        if(checkIfSectionFinished())
+            progressController.updateFinishedSection(sectionNumber);
+    }
+
+    //TODO some method that gets the next lessonnumber and it`s content
 
 
     public void loadContent(){
-        String sectionfile = "section"+sectionNumber;
-       lessonContent =  readJson.readLessons(sectionfile, this);
-       exerciseContent = readJson.readExercises(sectionfile, this);
+        String sectionFile = "section"+sectionNumber;
+       lessonContent =  readJson.readLessons(sectionFile, this);
+       exerciseContent = readJson.readExercises(sectionFile, this);
+       Log.i("loadContent", " in Lessonactivity"+sectionNumber);
 
     }
 
@@ -127,7 +158,7 @@ public class Lesson1 extends AppCompatActivity{
         switch (item.getItemId()) {
             case android.R.id.home:
                 //TODO display an dialog an notify the progressmodel to discard all progress?
-                Intent intent = new Intent(Lesson1.this, MainActivity.class);
+                Intent intent = new Intent(LessonActivity.this, MainActivity.class);
                 startActivity(intent);
                 Log.d("ChangeActivity", " to Mainactivity");
                 return true;

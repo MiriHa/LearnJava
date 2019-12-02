@@ -1,8 +1,6 @@
 package com.example.learnjava.lessons;
 
-import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,7 +14,6 @@ import android.widget.TextView;
 
 import com.example.learnjava.FragmentCommunication;
 import com.example.learnjava.R;
-import com.example.learnjava.lessons.Lesson1;
 
 public class LessonFragment extends Fragment {
 
@@ -56,7 +53,7 @@ public class LessonFragment extends Fragment {
             public void onClick(View v) {
                 //TODO check the progress and make switch statement if exercise or lesson is needed
                 if ((getActivity() != null)) {
-                    ((Lesson1) getActivity()).onNextButtonClickedExercise();
+                    ((LessonActivity) getActivity()).openNewExercise();
                     Log.d("Buttonclicked", " inLessonFragment");
                 }
             }
@@ -78,7 +75,7 @@ public class LessonFragment extends Fragment {
     }
 
     public void buttonClicked(){
-        ((Lesson1)getActivity()).onNextButtonClickedExercise();
+        ((LessonActivity)getActivity()).openNewExercise();
     }
 
 

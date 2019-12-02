@@ -12,13 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".lessons.Lesson7"/>
-        <activity android:name=".lessons.Lesson6" />
-        <activity android:name=".lessons.Lesson5" />
-        <activity android:name=".lessons.Lesson4" />
-        <activity android:name=".lessons.Lesson3" />
-        <activity android:name=".lessons.Lesson2" />
-        <activity android:name=".lessons.Lesson1" />
+        <activity android:name=".lessons.LessonActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

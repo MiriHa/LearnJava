@@ -1,7 +1,6 @@
 package com.example.learnjava.lessons;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -55,8 +54,9 @@ public class ExerciseFragment extends Fragment {
             public void onClick(View v) {
                 try {
                         //TODO check the progress and make switch statement if exercise or lesson is needed
+                    //TODO check the answers an report the progress when right, when wrong load dialog feedback
                         if((getActivity() != null)){
-                            ((Lesson1) getActivity()).onNextButtonClickedLesson();
+                            ((LessonActivity) getActivity()).openNewLesson();
                             Log.d("Buttonclicked", " inLessonFragment");
                         }
                 }

@@ -1,9 +1,13 @@
 package com.example.learnjava.models;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 /**
  * This model tracks the progress of a user and contains all user informations
+ * The App has seven sections.
+ * Each Sections has Theory lessons and Exercises.
  */
 
 public class ModelUserProgress {
@@ -13,6 +17,12 @@ public class ModelUserProgress {
     private int userProgressLessons;
     private int userProgressExercises;
     private ArrayList<Integer> userProgressSections;
+    private int userProgressCurrentSection;
+
+//    private int userProgressCurrentLesson;
+//    private int userProgressCurrentExercise;
+    private int userProgressCurrentSreen;
+
     private  ArrayList<ModelExercise> solvedExercises = new ArrayList<>();
     private ArrayList<ModelLesson> readLessons = new ArrayList<>();
 
@@ -59,6 +69,15 @@ public class ModelUserProgress {
         return solvedExercises.size();
     }
 
+    public void setUserProgressCurrentSection(int number){
+
+        this.userProgressCurrentSection = number;
+    }
+
+    public int getUserProgressCurrentSection(){
+        return userProgressCurrentSection;
+    }
+
 
     public void addReadLesson(ModelLesson lesson){
         if(!checkLessons(lesson)){
@@ -75,5 +94,13 @@ public class ModelUserProgress {
             updateUserProgressExercise();
         }
 
+    }
+
+    public int getUserProgressCurrentScreen() {
+        return userProgressCurrentSreen;
+    }
+
+    public void setUserProgressCurrentSreen(int userProgressCurrentScreen) {
+        this.userProgressCurrentSreen = userProgressCurrentScreen;
     }
 }

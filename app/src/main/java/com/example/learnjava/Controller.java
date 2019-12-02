@@ -1,6 +1,7 @@
 package com.example.learnjava;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.example.learnjava.models.ModelExercise;
 import com.example.learnjava.models.ModelLesson;
@@ -22,15 +23,27 @@ public class Controller extends Application {
     //do I need these?
     public void addFinishedExercise(ModelExercise exercise){
         modelUserProgress.addFinishedExercise(exercise);
+        Log.i("updateUserProgress", " addFinishedExercise");
     }
 
     public void addReadLesson(ModelLesson lesson){
         modelUserProgress.addReadLesson(lesson);
+        Log.i("updateUserProgress", " addReadLesson");
     }
 
-    public void updateFinishedSection(int number){
-       // modelUserProgress.updateUserProgressSections(number);
-
-
+    public void updateFinishedSection(Integer number){
+       modelUserProgress.updateUserProgressSections(number);
+        Log.i("updateUserProgress", " finishedSectionNumber "+number);
     }
+
+    public void updateCurrentSection(int number){
+        modelUserProgress.setUserProgressCurrentSection(number);
+        Log.i("updateUserProgress", " CurrentSectionNumber "+number);
+    }
+
+    public void updateCurrentScreen(int number){
+        Log.i("updateUserProgress", " CurrentSreenNumber "+number);
+        modelUserProgress.setUserProgressCurrentSreen(number);
+    }
+
 }

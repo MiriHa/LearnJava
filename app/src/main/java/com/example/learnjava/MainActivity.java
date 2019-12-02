@@ -9,13 +9,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.example.learnjava.lessons.Lesson1;
-import com.example.learnjava.lessons.Lesson2;
-import com.example.learnjava.lessons.Lesson3;
-import com.example.learnjava.lessons.Lesson4;
-import com.example.learnjava.lessons.Lesson5;
-import com.example.learnjava.lessons.Lesson6;
-import com.example.learnjava.lessons.Lesson7;
+import com.example.learnjava.lessons.LessonActivity;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener{
 
@@ -59,37 +53,37 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
             case R.id.Lesson1:
                 //TODO check if user has acess, if its looked
-                startActivity(Lesson1.class, 1);
+                startActivity(LessonActivity.class, 1);
                 break;
 
             case R.id.lesson2:
                 //TODO check if user has acess, if its looked
-                startActivity(Lesson1.class, 2);
+                startActivity(LessonActivity.class, 2);
                 break;
 
             case R.id.lesson3:
                 //TODO check if user has acess, if its looked
-                startActivity(Lesson1.class, 3);
+                startActivity(LessonActivity.class, 3);
                 break;
 
             case R.id.lesson4:
                 //TODO check if user has acess, if its looked
-                startActivity(Lesson1.class,4);
+                startActivity(LessonActivity.class,4);
                 break;
 
             case R.id.lesson5:
                 //TODO check if user has acess, if its looked
-                startActivity(Lesson1.class,5);
+                startActivity(LessonActivity.class,5);
                 break;
 
             case R.id.lesson6:
                 //TODO check if user has acess, if its looked
-                startActivity(Lesson1.class, 6);
+                startActivity(LessonActivity.class, 6);
                 break;
 
             case R.id.lesson7:
                 //TODO check if user has acess, if its looked
-                startActivity(Lesson1.class,7);
+                startActivity(LessonActivity.class,7);
                 break;
         }
     }

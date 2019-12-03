@@ -57,6 +57,7 @@ public class ReadJson {
                 //Read Jsonvalues
                 String name_value = lessonObject.getString("lessonName");
                 String text_value = lessonObject.getString("lessonText");
+                String next_value = lessonObject.getString("lessonWhatsNext");
                 int number_value = lessonObject.getInt("lessonNumber");
                 JSONArray keyWordsArray = lessonObject.getJSONArray("lessonKeyWords");
                 String[] keyWords_value = toStringArray(keyWordsArray);
@@ -64,7 +65,7 @@ public class ReadJson {
                 Log.i("READJSON", " " +name_value+text_value+number_value+keyWords_value);
 
                 //Add values in ArrayList
-                ModelLesson newLesson = new ModelLesson(name_value, text_value, number_value, keyWords_value);
+                ModelLesson newLesson = new ModelLesson(name_value, text_value, number_value, keyWords_value, next_value);
                 lessonList.add(newLesson);
 
             }
@@ -93,6 +94,7 @@ public class ReadJson {
                 //Read Jsonvalues
                 String name_value = lessonObject.getString("exerciseName");
                 String text_value = lessonObject.getString("exerciseText");
+                String next_value = lessonObject.getString("exerciseWhatsNext");
                 int number_value = lessonObject.getInt("exerciseNumber");
                 JSONArray solutionArrayString = lessonObject.getJSONArray("exerciseSolutionString");
                 String[] solutionString_value = toStringArray(solutionArrayString);
@@ -103,7 +105,7 @@ public class ReadJson {
                 Log.i("READJSON", " " +name_value+text_value+number_value+solutionArrayInt+solutionArrayString);
 
                 //Add values in ArrayList
-                ModelExercise newExercise = new ModelExercise(name_value, text_value, number_value, solutionString_value, solutionInt_value);
+                ModelExercise newExercise = new ModelExercise(name_value, text_value, number_value, solutionString_value, solutionInt_value, next_value);
                 exercisesList.add(newExercise);
 
             }

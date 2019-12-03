@@ -6,7 +6,8 @@ public class ModelExercise {
 
     private String exerciseName;
     private String exerciseText;
-    private int exercisenumber;
+    private int exerciseNumber;
+    private String whatsNext;
 
     private String[] solutionString;
     private int[] solutionInt;
@@ -15,24 +16,25 @@ public class ModelExercise {
     private String[] userinputString;
     private int[] userinputInt;
 
-//    public ModelExercise(String exerciseText, int exercisenumber, String[] solution){
+//    public ModelExercise(String exerciseText, int exerciseNumber, String[] solution){
 //        this.exerciseText = exerciseText;
-//        this.exercisenumber = exercisenumber;
+//        this.exerciseNumber = exerciseNumber;
 //        this.solutionString = solution;
 //    }
 //
-//    public ModelExercise(String exerciseText, int exercisenumber, int[] solution){
+//    public ModelExercise(String exerciseText, int exerciseNumber, int[] solution){
 //        this.exerciseText = exerciseText;
-//        this.exercisenumber = exercisenumber;
+//        this.exerciseNumber = exerciseNumber;
 //        this.solutionInt = solution;
 //    }
 
-    public ModelExercise(String exerciseName, String exerciseText, int exercisenumber, String[] solution, int[] solutionInt){
+    public ModelExercise(String exerciseName, String exerciseText, int exercisenumber, String[] solution, int[] solutionInt, String whatsNext){
         this.exerciseName = exerciseName;
         this.exerciseText = exerciseText;
-        this.exercisenumber = exercisenumber;
+        this.exerciseNumber = exercisenumber;
         this.solutionString = solution;
         this.solutionInt = solutionInt;
+        this.whatsNext = whatsNext;
     }
 
     public void setUserinputString(String[] userinputString) {
@@ -47,8 +49,8 @@ public class ModelExercise {
         return exerciseText;
     }
 
-    public int getExercisenumber() {
-        return exercisenumber;
+    public int getExerciseNumber() {
+        return exerciseNumber;
     }
 
     public String[] getUserinputString() {
@@ -57,5 +59,9 @@ public class ModelExercise {
 
     public int[] getUserinputInt() {
         return userinputInt;
+    }
+
+    public String getWhatsNext(){
+        return whatsNext;
     }
 }

@@ -9,12 +9,14 @@ public class ModelLesson {
     private String lessonText;
     private int lessonNumber;
     private String[] keywords;
+    private String whatsNext;
 
-    public ModelLesson(String lessonName, String lessonText, int lessonNumber, String[] keywords){
+    public ModelLesson(String lessonName, String lessonText, int lessonNumber, String[] keywords, String whatsNext){
         this.lessonName = lessonName;
         this.lessonText = lessonText;
         this.lessonNumber = lessonNumber;
         this.keywords = keywords;
+        this.whatsNext = whatsNext;
     }
 
     public String getLessonName() {
@@ -31,5 +33,9 @@ public class ModelLesson {
 
     public String[] getKeywords(){
         return keywords;
+    }
+
+    public String getWhatsNext(){
+        return whatsNext;
     }
 }

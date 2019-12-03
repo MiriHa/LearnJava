@@ -21,8 +21,12 @@ public class LessonActivity extends AppCompatActivity{
     Controller progressController;
     private int sectionNumber;
     private boolean shouldAllowBack = false;
+
     ArrayList<ModelLesson> lessonContent;
     ArrayList<ModelExercise> exerciseContent;
+
+    ModelLesson currentLesson;
+    ModelExercise currentExercise;
 
     ReadJson readJson = new ReadJson();
 
@@ -63,13 +67,14 @@ public class LessonActivity extends AppCompatActivity{
     public void openNewExercise(){
         progressExercises += 1;
         progressCurrentScreen += 1;
-        ExerciseFragment exerciseFragment = new ExerciseFragment();
+        ExerciseFragmentChoice exerciseFragmentChoice = new ExerciseFragmentChoice();
         //TOdo automate the content setting
-        exerciseFragment.setFragmentContent("DataTypes exercise", "1+1=42", "2+2 = 69");
+        exerciseFragmentChoice.setFragmentContent("DataTypes exercise", "1+1=42", "2+2 = 69");
+        exerciseFragmentChoice.setExerciseLayout();
         getSupportFragmentManager()
                 .beginTransaction()
-                //.add(R.id.FragmentExerciseHolder, exerciseFragment)
-                .replace(R.id.FragmentHolder, exerciseFragment)
+                //.add(R.id.FragmentExerciseHolder, exerciseFragmentChoice)
+                .replace(R.id.FragmentHolder, exerciseFragmentChoice)
         //TODO verbessere abckstack/Überlappen von fragments
                 .addToBackStack(null)
                 .commit();
@@ -104,6 +109,18 @@ public class LessonActivity extends AppCompatActivity{
                 .addToBackStack(null)
                 .commit();
         Log.d("FirstLesson", " loaded");
+    }
+
+    public void findCurrentContent(){
+        if(progressCurrentScreen == 0)
+             currentLesson = lessonContent.get(0);
+
+
+    }
+
+    public String getNext(){
+
+        return currentLesson.getWhatsNext();
     }
 
 

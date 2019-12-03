@@ -66,6 +66,13 @@
                    app:layout_constraintStart_toStartOf="parent"
                    app:layout_constraintTop_toBottomOf="@+id/lessonName" />
 
+               <LinearLayout
+                   android:id="@+id/ExerciseContainerLayout"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical">
+
+               </LinearLayout>
 
                <Button
                    android:id="@+id/nextButtonLessonFrag"

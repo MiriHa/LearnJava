@@ -96,4 +96,15 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         Log.d("ChangeActivity", " to activity: " + otherActivityClass);
     }
 
+
+    @Override
+    public void onBackPressed() {
+        Log.i("BackButtonPressed", " in Mainacitivity");
+        //TODO when backbutten pressed close the application or do nothing
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(startMain);
+    }
+
 }

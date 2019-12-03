@@ -27,6 +27,7 @@ public class LessonActivity extends AppCompatActivity{
 
     ReadJson readJson = new ReadJson();
 
+    //TODO use the one from the progressMOdel instead of here?
     int progressCurrentScreen = 0;
 
 
@@ -143,10 +144,9 @@ public class LessonActivity extends AppCompatActivity{
     //Maybe just report current screen and rightfully solved exercises
 
     public void updateProgress(){
-        progressController.updateCurrentScreen(progressCurrentScreen);
 
-//        if(checkIfSectionFinished())
-//            progressController.updateFinishedSection(sectionNumber);
+        progressCurrentScreen += 1;
+        progressController.updateCurrentScreen(progressCurrentScreen);
     }
 
     public void setCurrentTask(){
@@ -159,6 +159,10 @@ public class LessonActivity extends AppCompatActivity{
        taskContent =  readJson.readTask(sectionFile, this);
        Log.i("loadContent", " in Lessonactivity"+sectionNumber);
 
+    }
+
+    public void exerciseSolved(){
+        currentTask.isSolved();
     }
 
     public String getSectionTitle(){

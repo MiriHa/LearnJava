@@ -35,6 +35,7 @@ public class ModelExercise extends ModelTask{
         this.userinputString = userinputString;
     }
 
+
     public void setUserinputInt(int[] userinputInt) {
         this.userinputInt = userinputInt;
     }

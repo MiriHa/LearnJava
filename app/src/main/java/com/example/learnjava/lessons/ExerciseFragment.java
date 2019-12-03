@@ -59,6 +59,7 @@ public class ExerciseFragment extends Fragment {
             public void onClick(View v) {
                 try {
                     //TODO check the answers an report the progress when right, when wrong load dialog feedback
+                    // set get activity isSolved when corret
                     if ((getActivity() != null)) {
                         if( whatsNext == 2) {
                             ((LessonActivity) getActivity()).openNewExercise();

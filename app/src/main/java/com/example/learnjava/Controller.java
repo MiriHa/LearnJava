@@ -9,18 +9,9 @@ import com.example.learnjava.models.ModelUserProgress;
 
 public class Controller extends Application {
 
-    ModelUserProgress modelUserProgress = new ModelUserProgress(0,0);
-
-    //TODO may this instead of user model?
-    // ArrayList<ModelExercise> exerciseList = new ArrayList<>();
+    ModelUserProgress modelUserProgress = new ModelUserProgress();
 
 
-    public ModelUserProgress getUserProgresModel() {
-        return modelUserProgress;
-    }
-
-
-    //do I need these?
     public void addFinishedExercise(ModelExercise exercise){
         modelUserProgress.addFinishedExercise(exercise);
         Log.i("updateUserProgress", " addFinishedExercise");
@@ -31,19 +22,21 @@ public class Controller extends Application {
         Log.i("updateUserProgress", " addReadLesson");
     }
 
+
     public void updateFinishedSection(Integer number){
-       modelUserProgress.updateUserProgressSections(number);
+       modelUserProgress.updateUserProgressFinishedSections(number);
         Log.i("updateUserProgress", " finishedSectionNumber "+number);
     }
 
     public void updateCurrentSection(int number){
-        modelUserProgress.setUserProgressCurrentSection(number);
+        modelUserProgress.updateUserProgressCurrentSection(number);
         Log.i("updateUserProgress", " CurrentSectionNumber "+number);
     }
 
     public void updateCurrentScreen(int number){
         Log.i("updateUserProgress", " CurrentSreenNumber "+number);
-        modelUserProgress.setUserProgressCurrentSreen(number);
+        modelUserProgress.updateUserProgressCurrentScreen(number);
     }
+
 
 }

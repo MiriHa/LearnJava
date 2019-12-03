@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.example.learnjava.models.ModelExercise;
 import com.example.learnjava.models.ModelLesson;
+import com.example.learnjava.models.ModelTask;
 import com.example.learnjava.models.ModelUserProgress;
 
 public class Controller extends Application {
@@ -20,6 +21,11 @@ public class Controller extends Application {
     public void addReadLesson(ModelLesson lesson){
         modelUserProgress.addReadLesson(lesson);
         Log.i("updateUserProgress", " addReadLesson");
+    }
+
+    public void addfinishedTask(ModelTask task){
+        modelUserProgress.addFinisehdTask(task);
+        Log.i("updateUserProgress", " addfnishedTask");
     }
 
 

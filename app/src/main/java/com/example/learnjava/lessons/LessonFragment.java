@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.learnjava.FragmentCommunication;
 import com.example.learnjava.R;
 
 public class LessonFragment extends Fragment {
@@ -57,11 +56,11 @@ public class LessonFragment extends Fragment {
                 Log.i("Buttonclicked", " inLessonFragment. Next: "+whatsNext );
                 if ((getActivity() != null)) {
                     if( whatsNext == 2) {
-                        ((LessonActivity) getActivity()).openNewExercise();
+                        ((LessonActivity) getActivity()).openNewTask(2);
                         Log.i("Buttonclicked", " openExercise");
                     }
                     else if (whatsNext == 1) {
-                        ((LessonActivity) getActivity()).openNewLesson();
+                        ((LessonActivity) getActivity()).openNewTask(1);
                         Log.i("Buttonclicked", " openLesson");
                     }
                     else if (whatsNext == 3){

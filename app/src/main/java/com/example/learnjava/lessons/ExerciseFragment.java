@@ -59,14 +59,14 @@ public class ExerciseFragment extends Fragment {
             public void onClick(View v) {
                 try {
                     //TODO check the answers an report the progress when right, when wrong load dialog feedback
-                    // set get activity isSolved when corret
+                    // set get activity isSolved when correct or check is solved so you can skip the exercise to the next
                     if ((getActivity() != null)) {
                         if( whatsNext == 2) {
-                            ((LessonActivity) getActivity()).openNewExercise();
+                            ((LessonActivity) getActivity()).openNewTask(2);
                             Log.i("Buttonclicked", " openExerciseFragment");
                         }
                         else if (whatsNext == 1) {
-                            ((LessonActivity) getActivity()).openNewLesson();
+                            ((LessonActivity) getActivity()).openNewTask(1);
                             Log.i("Buttonclicked", " opnenLesson");
                         }
                         else if (whatsNext == 3){

@@ -53,53 +53,74 @@ public class LessonActivity extends AppCompatActivity{
         getSupportActionBar().setTitle(getSectionTitle());
 
         //get the Lesson content
+        //TODO read this only once in the controller
         loadContent();
 
         //get the current task content
-        setCurrentTask();
+       // setCurrentTask();
 
         //open the first lesson Fragment
-        loadFirstLesson();
+        openNewTask(0);
     }
 
 
-    public void openNewExercise(){
-        //update the CurrentScreen and currentTask
-        progressCurrentScreen += 1;
-        setCurrentTask();
-        //Open a new Fragment and set its content
-        ExerciseFragment exerciseFragment = new ExerciseFragment();
-        giveExerciseFragmentContent(exerciseFragment);
-       // exerciseFragment.setExerciseLayout();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.FragmentHolder, exerciseFragment)
-        //TODO verbessere abckstack/Überlappen von fragments
-                .addToBackStack(null)
-                .commit();
+    public void openNewTask(int taskType){
 
-        Log.d("Nextbuttenclicked", " exercise progress: " + progressCurrentScreen);
-        updateProgress();
-    }
+        switch (taskType) {
 
-    public void openNewLesson(){
-        //update the currentScreen and the current task
-        progressCurrentScreen +=1;
-        setCurrentTask();
-        //open new lessonFragment and set its content
-        LessonFragment lessonFragment = new LessonFragment();
-        giveLessonFragmentContent(lessonFragment);
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.FragmentHolder, lessonFragment)
-                .addToBackStack(null)
-                .commit();
-        Log.d("Nextbuttenclicked", " lesson progress: " + progressCurrentScreen);
-        updateProgress();
+            case 0:
+                //get the currentTask content
+                setCurrentTask();
+                //load a fragment
+                LessonFragment firstlessonFragment = new LessonFragment();
+                giveLessonFragmentContent(firstlessonFragment);
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.FragmentHolder, firstlessonFragment)
+                        .addToBackStack(null)
+                        .commit();
+                Log.d("FirstLesson", " loaded progress: " + progressCurrentScreen);
+                break;
+
+            case 1:
+                //update the currentScreen and the current task
+                updateProgress();
+                setCurrentTask();
+                //open new lessonFragment and set its content
+                LessonFragment lessonFragment = new LessonFragment();
+                giveLessonFragmentContent(lessonFragment);
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.FragmentHolder, lessonFragment)
+                        .addToBackStack(null)
+                        .commit();
+                Log.d("Nextbuttenclicked", " lesson progress: " + progressCurrentScreen);
+                break;
+
+            case 2:
+                //update the CurrentScreen and currentTask
+                updateProgress();
+                setCurrentTask();
+                //Open a new Fragment and set its content
+                ExerciseFragment exerciseFragment = new ExerciseFragment();
+                giveExerciseFragmentContent(exerciseFragment);
+                // exerciseFragment.setExerciseLayout();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.FragmentHolder, exerciseFragment)
+                        //TODO verbessere abckstack/Überlappen von fragments
+                        .addToBackStack(null)
+                        .commit();
+
+                Log.d("Nextbuttenclicked", " exercise progress: " + progressCurrentScreen);
+                break;
+        }
     }
 
     public void updateProgressLastTask(){
-        progressController.updateFinishedSection(sectionNumber);
+
+        //add the finished section to the PorgressCOntrolller
+        progressController.updateFinishedSection(sectionNumber);;
         Log.i("last task", " of section is reached");
         //TODO give feedback that section is finished?
 
@@ -108,16 +129,6 @@ public class LessonActivity extends AppCompatActivity{
         Log.d("ChangeActivity", " to activity: MainActivity");
     }
 
-    public void loadFirstLesson(){
-        LessonFragment lessonFragment = new LessonFragment();
-        giveLessonFragmentContent(lessonFragment);
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.FragmentHolder, lessonFragment)
-                .addToBackStack(null)
-                .commit();
-        Log.d("FirstLesson", " loaded progress: " + progressCurrentScreen);
-    }
 
     public void giveLessonFragmentContent(LessonFragment fragment){
         Log.i("GIVE_CONTENT", "to lessonFragment");
@@ -144,13 +155,19 @@ public class LessonActivity extends AppCompatActivity{
     //Maybe just report current screen and rightfully solved exercises
 
     public void updateProgress(){
-
+        //add the lask task to finished taks list
+        progressController.addfinishedTask(currentTask);
+//        int oldTasktype = currentTask.getType();
+//        if(oldTasktype == 1){
+//            progressController.addReadLesson(currentTask);
+//        }
+        Log.i("oldcurrentTask", " " + currentTask.getTaskName());
         progressCurrentScreen += 1;
         progressController.updateCurrentScreen(progressCurrentScreen);
     }
 
     public void setCurrentTask(){
-        Log.i("UPDATE_CURRENTTASK", "in LessonActivity");
+        Log.i("UPDATE_CURRENTTASK", "in LessonActivity" + currentTask.getTaskName());
         currentTask = taskContent.get(progressCurrentScreen);
     }
 

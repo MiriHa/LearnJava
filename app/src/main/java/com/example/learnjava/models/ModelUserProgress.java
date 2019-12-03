@@ -1,5 +1,7 @@
 package com.example.learnjava.models;
 
+import android.view.Display;
+
 import java.util.ArrayList;
 
 /**
@@ -19,10 +21,12 @@ public class ModelUserProgress {
 
     //stores the solved exercises maybe that the user needed solve it twice and can skip over solved exercises
     // not needed only to track the progress and open lesson an entsprechender stelle
+    //nicht möglich da modeltask list und currenttask modelTask ist
     private  ArrayList<ModelExercise> solvedExercises = new ArrayList<>();
     private ArrayList<ModelLesson> readLessons = new ArrayList<>();
 
-    //IS this better?
+    //IS this better? acess over task number
+    //TODO tasknumber muss platz in arraylist übereinstimmen?
     private ArrayList<ModelTask> finishedTasks = new ArrayList<>();
 
     //TODO open the laste Screen so that the user can skip sscreens
@@ -57,6 +61,10 @@ public class ModelUserProgress {
         return readLessons.contains(aLesson);
     }
 
+    public boolean checkTasks(ModelTask aTask){
+        return finishedTasks.contains(aTask);
+    }
+
 
 
     //TODO add the lessons!!!
@@ -71,6 +79,12 @@ public class ModelUserProgress {
         //TODO only add when exercise was right
         if(!checkExercises(exercise)) {
             solvedExercises.add(exercise);
+        }
+    }
+
+    public void addFinisehdTask(ModelTask task){
+        if(!checkTasks(task)){
+            finishedTasks.add(task);
         }
     }
 

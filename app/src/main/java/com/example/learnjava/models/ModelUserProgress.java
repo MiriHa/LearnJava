@@ -16,7 +16,7 @@ public class ModelUserProgress {
     //are lessons really needed?
     private int userProgressLessons;
     private int userProgressExercises;
-    private ArrayList<Integer> userProgressSections;
+    private ArrayList<Integer> userProgressSections = new ArrayList<>();
     private int userProgressCurrentSection;
 
 //    private int userProgressCurrentLesson;
@@ -45,7 +45,7 @@ public class ModelUserProgress {
         return  userProgressSections;
     }
 
-    public void updateUserProgressSections(int number){
+    public void updateUserProgressSections(Integer number){
         userProgressSections.add(number);
     }
 
@@ -78,6 +78,7 @@ public class ModelUserProgress {
         return userProgressCurrentSection;
     }
 
+    //TODO add the lessons!!!
 
     public void addReadLesson(ModelLesson lesson){
         if(!checkLessons(lesson)){

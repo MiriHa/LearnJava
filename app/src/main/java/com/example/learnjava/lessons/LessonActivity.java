@@ -11,8 +11,7 @@ import com.example.learnjava.Controller;
 import com.example.learnjava.MainActivity;
 import com.example.learnjava.R;
 import com.example.learnjava.ReadJson;
-import com.example.learnjava.models.ModelExercise;
-import com.example.learnjava.models.ModelLesson;
+import com.example.learnjava.models.ModelTask;
 
 import java.util.ArrayList;
 
@@ -22,16 +21,12 @@ public class LessonActivity extends AppCompatActivity{
     private int sectionNumber;
     private boolean shouldAllowBack = false;
 
-    ArrayList<ModelLesson> lessonContent;
-    ArrayList<ModelExercise> exerciseContent;
+    ArrayList<ModelTask> taskContent;
 
-    ModelLesson currentLesson;
-    ModelExercise currentExercise;
+    ModelTask currentTask;
 
     ReadJson readJson = new ReadJson();
 
-    int progressLessons = 0;
-    int progressExercises = 0;
     int progressCurrentScreen = 0;
 
 
@@ -54,10 +49,13 @@ public class LessonActivity extends AppCompatActivity{
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Section" + sectionNumber);
+        getSupportActionBar().setTitle(getSectionTitle());
 
         //get the Lesson content
         loadContent();
+
+        //get the current task content
+        setCurrentTask();
 
         //open the first lesson Fragment
         loadFirstLesson();
@@ -65,76 +63,81 @@ public class LessonActivity extends AppCompatActivity{
 
 
     public void openNewExercise(){
-        progressExercises += 1;
+        //update the CurrentScreen and currentTask
         progressCurrentScreen += 1;
-        ExerciseFragmentChoice exerciseFragmentChoice = new ExerciseFragmentChoice();
-        //TOdo automate the content setting
-        exerciseFragmentChoice.setFragmentContent("DataTypes exercise", "1+1=42", "2+2 = 69");
-        exerciseFragmentChoice.setExerciseLayout();
+        setCurrentTask();
+        //Open a new Fragment and set its content
+        ExerciseFragment exerciseFragment = new ExerciseFragment();
+        giveExerciseFragmentContent(exerciseFragment);
+       // exerciseFragment.setExerciseLayout();
         getSupportFragmentManager()
                 .beginTransaction()
-                //.add(R.id.FragmentExerciseHolder, exerciseFragmentChoice)
-                .replace(R.id.FragmentHolder, exerciseFragmentChoice)
+                .replace(R.id.FragmentHolder, exerciseFragment)
         //TODO verbessere abckstack/Überlappen von fragments
                 .addToBackStack(null)
                 .commit();
 
-        Log.d("Nextbuttenclicked", " exercise");
+        Log.d("Nextbuttenclicked", " exercise progress: " + progressCurrentScreen);
         updateProgress();
     }
 
     public void openNewLesson(){
-        progressLessons += 1;
+        //update the currentScreen and the current task
         progressCurrentScreen +=1;
+        setCurrentTask();
+        //open new lessonFragment and set its content
         LessonFragment lessonFragment = new LessonFragment();
-        //TOdo automate the content setting
-        lessonFragment.setFragmentContent("DataTypes 2", "blaaablablbalblabluuuuuuuuuuuub");
+        giveLessonFragmentContent(lessonFragment);
         getSupportFragmentManager()
                 .beginTransaction()
-                //.add(R.id.FragmentHolder, lessonFragment)
                 .replace(R.id.FragmentHolder, lessonFragment)
                 .addToBackStack(null)
                 .commit();
-        Log.d("Nextbuttenclicked", " lesson");
+        Log.d("Nextbuttenclicked", " lesson progress: " + progressCurrentScreen);
         updateProgress();
+    }
+
+    public void updateProgressLastTask(){
+        progressController.updateFinishedSection(sectionNumber);
+        Log.i("last task", " of section is reached");
+        //TODO give feedback that section is finished?
+
+        Intent intent = new Intent(LessonActivity.this, MainActivity.class);
+        startActivity(intent);
+        Log.d("ChangeActivity", " to activity: MainActivity");
     }
 
     public void loadFirstLesson(){
         LessonFragment lessonFragment = new LessonFragment();
-        //TOdo automate the content setting
-        lessonFragment.setFragmentContent("DataTypes 2", "THis is the first lessonfragment");
+        giveLessonFragmentContent(lessonFragment);
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.FragmentHolder, lessonFragment)
                 .addToBackStack(null)
                 .commit();
-        Log.d("FirstLesson", " loaded");
+        Log.d("FirstLesson", " loaded progress: " + progressCurrentScreen);
     }
 
-    public void findCurrentContent(){
-        if(progressCurrentScreen == 0)
-             currentLesson = lessonContent.get(0);
+    public void giveLessonFragmentContent(LessonFragment fragment){
+        Log.i("GIVE_CONTENT", "to lessonFragment");
+        String name = currentTask.getTaskName();
+        String  text = currentTask.getTaskText();
+        int whatsNext = currentTask.getWhatsNext();
 
+        fragment.setFragmentContent(name, text, whatsNext);
+
+    }
+
+    public void giveExerciseFragmentContent(ExerciseFragment fragment){
+        Log.i("GIVE_CONTENT", "to exerciseFragment");
+        String name = currentTask.getTaskName();
+        String  text = currentTask.getTaskText();
+        int whatsNext = currentTask.getWhatsNext();
+
+        fragment.setFragmentContent(name, text, whatsNext);
 
     }
 
-    public String getNext(){
-
-        return currentLesson.getWhatsNext();
-    }
-
-
-    public boolean checkIfSectionFinished(){
-
-        int lastLesson = lessonContent.size();
-        int lastExercise = exerciseContent.size();
-
-        if(progressExercises == lastExercise && progressLessons == lastLesson)
-            return true;
-        else
-            return false;
-
-    }
 
     //TODO some method that reprots the progrss from the fragments -> need to add the current/finished lessons?
     //Maybe just report current screen and rightfully solved exercises
@@ -142,19 +145,50 @@ public class LessonActivity extends AppCompatActivity{
     public void updateProgress(){
         progressController.updateCurrentScreen(progressCurrentScreen);
 
-        if(checkIfSectionFinished())
-            progressController.updateFinishedSection(sectionNumber);
+//        if(checkIfSectionFinished())
+//            progressController.updateFinishedSection(sectionNumber);
     }
 
-    //TODO some method that gets the next lessonnumber and it`s content
-
+    public void setCurrentTask(){
+        Log.i("UPDATE_CURRENTTASK", "in LessonActivity");
+        currentTask = taskContent.get(progressCurrentScreen);
+    }
 
     public void loadContent(){
         String sectionFile = "section"+sectionNumber;
-       lessonContent =  readJson.readLessons(sectionFile, this);
-       exerciseContent = readJson.readExercises(sectionFile, this);
+       taskContent =  readJson.readTask(sectionFile, this);
        Log.i("loadContent", " in Lessonactivity"+sectionNumber);
 
+    }
+
+    public String getSectionTitle(){
+
+        String title = "Section";
+
+        switch (sectionNumber){
+            case 1:
+                title = getResources().getString(R.string.Lesson1);
+                break;
+            case 2:
+                title = getResources().getString(R.string.Lesson2);
+                break;
+            case 3:
+                title = getResources().getString(R.string.Lesson3);
+                break;
+            case 4:
+                title = getResources().getString(R.string.Lesson4);
+                break;
+            case 5:
+                title = getResources().getString(R.string.Lesson5);
+                break;
+            case 6:
+                title = getResources().getString(R.string.Lesson6);
+                break;
+            case 7:
+                title = getResources().getString(R.string.Lesson7);
+                break;
+        }
+        return title;
     }
 
     @Override

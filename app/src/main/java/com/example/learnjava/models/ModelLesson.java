@@ -6,7 +6,7 @@ public class ModelLesson extends ModelTask {
 
     private String[] keywords;
 
-    public ModelLesson(String lessonName, String lessonText, int lessonNumber, String[] keywords, String whatsNext){
+    public ModelLesson(String lessonName, String lessonText, int lessonNumber, String[] keywords, int whatsNext){
 
         super(lessonName, lessonText,whatsNext,lessonNumber,1);
         this.keywords = keywords;

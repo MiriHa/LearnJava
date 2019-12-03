@@ -17,17 +17,20 @@ import android.widget.TextView;
 import com.example.learnjava.R;
 
 
-public class ExerciseFragmentChoice extends Fragment {
+public class ExerciseFragment extends Fragment {
 
     private String exerciseNameString;
     private String exerciseTextString;
-    private String exerciseExampleString;
+    private String exerciseExampleString = "aha this is a testString";
+    private int whatsNext;
+
+    //TODO maye nee a atring array für zusätzliche aufgaben oder teilaufgaben
 
     private LinearLayout exerciseContainer;
 
    // private Button checkButton;
 
-    public ExerciseFragmentChoice() {
+    public ExerciseFragment() {
         // Required empty public constructor
     }
 
@@ -43,10 +46,9 @@ public class ExerciseFragmentChoice extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_exercise, container, false);
-        Log.d("InflateLayout", "in exerciseFragment");
         TextView exerciseName = view.findViewById(R.id.exerciseName);
         TextView exerciseText = view.findViewById(R.id.exerciseText);
-        TextView exerciseExample = view.findViewById(R.id.exerciseExample);
+        //TextView exerciseExample = view.findViewById(R.id.exerciseExample);
         exerciseContainer = view.findViewById(R.id.ExerciseContainerLayout);
 
         Button checkButton = view.findViewById(R.id.nextButtonExerciseFrag);
@@ -56,12 +58,24 @@ public class ExerciseFragmentChoice extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    //TODO check the progress and make switch statement if exercise or lesson is needed
                     //TODO check the answers an report the progress when right, when wrong load dialog feedback
-                        if((getActivity() != null)){
-                            ((LessonActivity) getActivity()).openNewLesson();
-                            Log.d("Buttonclicked", " inLessonFragment");
+                    if ((getActivity() != null)) {
+                        if( whatsNext == 2) {
+                            ((LessonActivity) getActivity()).openNewExercise();
+                            Log.i("Buttonclicked", " openExerciseFragment");
                         }
+                        else if (whatsNext == 1) {
+                            ((LessonActivity) getActivity()).openNewLesson();
+                            Log.i("Buttonclicked", " opnenLesson");
+                        }
+                        else if (whatsNext == 3){
+                            ((LessonActivity) getActivity()).updateProgressLastTask();
+                            Log.i("Buttonclicked", " lastExercise");
+                        }
+                        else {
+                            Log.e("Buttonclicked", " FalseWhatsNextType");
+                        }
+                    }
                 }
                 catch (Exception e){
                     Log.e("Not clickable", "error");
@@ -87,11 +101,12 @@ public class ExerciseFragmentChoice extends Fragment {
 
     }
 
-    public void setFragmentContent(String name, String text, String example){
+    public void setFragmentContent(String name, String text, int next){
         exerciseNameString = name;
         exerciseTextString = text;
-        exerciseExampleString = example;
-        Log.d("SetFragmentContent", " is set");
+        //exerciseExampleString = example;
+        whatsNext = next;
+        Log.i("GIVE_CONTENT", "in exerciseFragment");
     }
 
     public void setExerciseLayout(){

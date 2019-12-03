@@ -17,14 +17,15 @@ import com.example.learnjava.R;
 
 public class LessonFragment extends Fragment {
 
-    FragmentCommunication fragmentInterface;
-
    private TextView lessonName;
    private TextView lessonText;
+   private TextView lessonExample;
    private Button nextButton;
 
    private String lessonNameString;
    private String lessonTextString;
+   private String lessonExampleString;
+   private int whatsNext;
 
     public LessonFragment() {
         // Required empty public constructor
@@ -46,25 +47,42 @@ public class LessonFragment extends Fragment {
 
         lessonName = view.findViewById(R.id.lessonName);
         lessonText = view.findViewById(R.id.lessonText);
+        lessonExample = view.findViewById(R.id.lessonExample);
         nextButton = view.findViewById(R.id.nextButtonLessonFrag);
 
+        Log.i("WHats Next", " " + whatsNext);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO check the progress and make switch statement if exercise or lesson is needed
+                Log.i("Buttonclicked", " inLessonFragment. Next: "+whatsNext );
                 if ((getActivity() != null)) {
-                    ((LessonActivity) getActivity()).openNewExercise();
-                    Log.d("Buttonclicked", " inLessonFragment");
+                    if( whatsNext == 2) {
+                        ((LessonActivity) getActivity()).openNewExercise();
+                        Log.i("Buttonclicked", " openExercise");
+                    }
+                    else if (whatsNext == 1) {
+                        ((LessonActivity) getActivity()).openNewLesson();
+                        Log.i("Buttonclicked", " openLesson");
+                    }
+                    else if (whatsNext == 3){
+                        ((LessonActivity) getActivity()).updateProgressLastTask();
+                        Log.i("Buttonclicked", " lastLesson");
+                    }
+                    else {
+                        Log.e("Buttonclicked", " FalseWhatsNextType");
+                    }
                 }
             }
         });
 
         lessonName.setText(lessonNameString);
         lessonText.setText(lessonTextString);
+        lessonExample.setText("Maybe we need in json more text section for examples to better format them");
 
         return view;
 
     }
+
 
 
     @Override
@@ -72,10 +90,6 @@ public class LessonFragment extends Fragment {
         super.onAttach(context);
 
 
-    }
-
-    public void buttonClicked(){
-        ((LessonActivity)getActivity()).openNewExercise();
     }
 
 
@@ -90,8 +104,10 @@ public class LessonFragment extends Fragment {
 */
     }
 
-    public void setFragmentContent(String name, String text){
+    public void setFragmentContent(String name, String text, int next){
+        Log.i("GIVE_CONTENT", "in LessonFragment");
         lessonNameString = name;
         lessonTextString = text;
+        whatsNext = next;
     }
 }

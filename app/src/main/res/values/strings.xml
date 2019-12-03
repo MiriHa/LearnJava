@@ -11,7 +11,6 @@
     <string name="Lesson4">Conditionals and Loops</string>
     <string name="Lesson5">Arrays</string>
     <string name="Lesson6">Classes and Objects</string>
-    //Maybe
     <string name="Lesson7">Exceptions and Lists</string>
 
     <dimen name="PaddingScroll">30dp</dimen>

@@ -23,7 +23,7 @@ public class ModelExercise extends ModelTask{
 //        this.solutionInt = solution;
 //    }
 
-    public ModelExercise(String exerciseName, String exerciseText, int exercisenumber, String[] solution, int[] solutionInt, String whatsNext){
+    public ModelExercise(String exerciseName, String exerciseText, int exercisenumber, String[] solution, int[] solutionInt, int whatsNext){
 
         super(exerciseName, exerciseText, whatsNext, exercisenumber, 2);
         this.solutionString = solution;

@@ -17,11 +17,12 @@
       "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
     },
     {
-      "taskName": "introdduction",
+      "taskName": "introdduction2",
       "taskNumber": 3,
       "taskText": "Fill in the Blanks to complete this hello World program,",
       "taskWhatsNext": 1,
       "taskType" : 2,
+      "exerciseViewType" : 1,
       "exerciseSolutionString" : ["static", "main", "args"],
       "exerciseSolutionInt" : []
     },
@@ -37,8 +38,27 @@
       "taskName": "Main Method2",
       "taskNumber": 5,
       "taskText": "Do a thing",
+      "taskWhatsNext": 1,
+      "taskType" : 2,
+      "exerciseViewType" : 2,
+      "exerciseSolutionString" : [],
+      "exerciseSolutionInt" : [1,2,3]
+    },
+    {
+      "taskName": "Main Method3",
+      "taskNumber": 6,
+      "taskText" : " THis is an indrocution to the main method ahahaaaablub",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
+    },
+    {
+      "taskName": "Main Method4",
+      "taskNumber": 7,
+      "taskText": "Do a thing yes",
       "taskWhatsNext": 3,
       "taskType" : 2,
+      "exerciseViewType" : 3,
       "exerciseSolutionString" : [],
       "exerciseSolutionInt" : [1,2,3]
     }

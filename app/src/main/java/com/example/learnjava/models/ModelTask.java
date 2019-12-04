@@ -1,12 +1,16 @@
 package com.example.learnjava.models;
 
-public class ModelTask {
 
-    private String taskName;
-    private String taskText;
-    private int whatsNext;
-    private int taskNumber;
-    private boolean isSolved = false;
+/**
+ * This is the parentclass for ModelExercise and ModelLesson
+ */
+
+public abstract class ModelTask {
+
+    private final String taskName;
+    private final String taskText;
+    private final int whatsNext;
+    private final int taskNumber;
 
     //1 for lessone 2 for exercise
     private int type;
@@ -20,9 +24,6 @@ public class ModelTask {
         this.type = type;
     }
 
-    public void isSolved(){
-        isSolved = true;
-    }
 
     public String getTaskName() {
         return taskName;
@@ -44,7 +45,13 @@ public class ModelTask {
         return type;
     }
 
-    public boolean getIsSolved(){
-        return isSolved;
-    }
+    public abstract boolean getIsSolved();
+
+    public abstract int getExerciseViewType();
+
+    public abstract void isSolved();
+
+    public abstract String[]  getKeywords();
+
+
 }

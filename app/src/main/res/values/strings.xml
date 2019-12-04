@@ -18,6 +18,9 @@
     <dimen name="TextSize10">10sp</dimen>
     <dimen name="TextSize50">50sp</dimen>
     <dimen name="TextSize3">40sp</dimen>
+    <dimen name="TextSize20">20sp</dimen>
+    <dimen name="TextSize30">30sp</dimen>
+    <dimen name="TextSize25">25sp</dimen>
 
 
     //For testing
@@ -27,6 +30,7 @@
                               askjndakjsndkajsndkjas\n ajsdas,ndmas,dnam,sdnasmdnasdasdadsda
                             \n akjsdanmsndas,mdans,mndasm,ndasmndas,dna,sndasm,ndasdnas,dnasm,dnams,dnam,sd\n
                            awiuejdks,ndejkdsmnoiwejadksnoiwaljkdsmoiwajldskmuriosjkfnveioarjfdkn</string>
+    <string name="shortString">aha bkasdoiuernjsfkdfnuirfnsikdjsnejkfsoiefnkse,fe</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

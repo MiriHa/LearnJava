@@ -22,6 +22,7 @@
       "taskText": "Fill in the Blanks to complete this hello World program,",
       "taskWhatsNext": 1,
       "taskType" : 2,
+      "exerciseViewType" : 1,
       "exerciseSolutionString" : ["static", "main", "args"],
       "exerciseSolutionInt" : []
     },
@@ -39,6 +40,7 @@
       "taskText": "Do a thing",
       "taskWhatsNext": 1,
       "taskType" : 2,
+      "exerciseViewType" : 2,
       "exerciseSolutionString" : [],
       "exerciseSolutionInt" : [1,2,3]
     },
@@ -56,6 +58,7 @@
       "taskText": "Do a thing yes",
       "taskWhatsNext": 3,
       "taskType" : 2,
+      "exerciseViewType" : 3,
       "exerciseSolutionString" : [],
       "exerciseSolutionInt" : [1,2,3]
     }

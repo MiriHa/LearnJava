@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/exerciseTextChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/PaddingSide"
+        android:text="@string/shortString"
+        android:textSize="@dimen/TextSize30" />
+
+    <RadioGroup
+        android:id="@+id/answerGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/PaddingSide"
+        android:layout_marginRight="@dimen/PaddingSide"
+        android:textSize="@dimen/TextSize10">
+
+        <RadioButton
+            android:id="@+id/answer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="aPlaceholder text for an answer"
+            android:textSize="@dimen/TextSize20" />
+
+        <RadioButton
+            android:id="@+id/answer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="another answer"
+            android:textSize="@dimen/TextSize20" />
+
+        <RadioButton
+            android:id="@+id/answer3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="answer 3"
+            android:textSize="@dimen/TextSize20" />
+
+        <RadioButton
+            android:id="@+id/answer4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="answer 4"
+            android:textSize="@dimen/TextSize20" />
+    </RadioGroup>
+
+
+</LinearLayout>

@@ -1,6 +1,9 @@
 package com.example.learnjava.lessons;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.learnjava.Controller;
+import com.example.learnjava.ExerciseView.ViewArrayAdapter;
 import com.example.learnjava.MainActivity;
 import com.example.learnjava.R;
 import com.example.learnjava.ReadJson;
@@ -61,6 +65,7 @@ public class LessonActivity extends AppCompatActivity{
 
         //open the first lesson Fragment
         openNewTask(0);
+
     }
 
 
@@ -135,7 +140,6 @@ public class LessonActivity extends AppCompatActivity{
         String name = currentTask.getTaskName();
         String  text = currentTask.getTaskText();
         int whatsNext = currentTask.getWhatsNext();
-
         fragment.setFragmentContent(name, text, whatsNext);
 
     }
@@ -146,7 +150,7 @@ public class LessonActivity extends AppCompatActivity{
         String  text = currentTask.getTaskText();
         int whatsNext = currentTask.getWhatsNext();
 
-        fragment.setFragmentContent(name, text, whatsNext);
+        fragment.setFragmentContent(currentTask);
 
     }
 
@@ -167,8 +171,8 @@ public class LessonActivity extends AppCompatActivity{
     }
 
     public void setCurrentTask(){
-        Log.i("UPDATE_CURRENTTASK", "in LessonActivity" + currentTask.getTaskName());
         currentTask = taskContent.get(progressCurrentScreen);
+        Log.i("UPDATE_CURRENTTASK", "in LessonActivity" + currentTask.getTaskName());
     }
 
     public void loadContent(){

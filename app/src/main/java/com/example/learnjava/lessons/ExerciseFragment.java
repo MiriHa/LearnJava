@@ -4,6 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,19 +17,20 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.learnjava.ExerciseView.ViewArrayAdapter;
 import com.example.learnjava.R;
+import com.example.learnjava.models.ModelTask;
 
 
 public class ExerciseFragment extends Fragment {
 
-    private String exerciseNameString;
-    private String exerciseTextString;
-    private String exerciseExampleString = "aha this is a testString";
+    TextView exerciseName;
     private int whatsNext;
+    private ModelTask currentTask;
+
+    private RecyclerView recyclerView;
 
     //TODO maye nee a atring array für zusätzliche aufgaben oder teilaufgaben
-
-    private LinearLayout exerciseContainer;
 
    // private Button checkButton;
 
@@ -46,11 +50,13 @@ public class ExerciseFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_exercise, container, false);
-        TextView exerciseName = view.findViewById(R.id.exerciseName);
-        TextView exerciseText = view.findViewById(R.id.exerciseText);
-        //TextView exerciseExample = view.findViewById(R.id.exerciseExample);
-        exerciseContainer = view.findViewById(R.id.ExerciseContainerLayout);
+        exerciseName = view.findViewById(R.id.exerciseName);
 
+        ViewArrayAdapter viewArrayAdapter = new ViewArrayAdapter(currentTask);
+        recyclerView = view.findViewById(R.id.exerciseView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(viewArrayAdapter);
         Button checkButton = view.findViewById(R.id.nextButtonExerciseFrag);
 
 
@@ -84,8 +90,7 @@ public class ExerciseFragment extends Fragment {
             }
         });
 
-        exerciseName.setText(exerciseNameString);
-        exerciseText.setText(exerciseTextString);
+        exerciseName.setText(currentTask.getTaskName());
 
         return view;
     }
@@ -102,13 +107,13 @@ public class ExerciseFragment extends Fragment {
 
     }
 
-    public void setFragmentContent(String name, String text, int next){
-        exerciseNameString = name;
-        exerciseTextString = text;
-        //exerciseExampleString = example;
-        whatsNext = next;
+    public void setFragmentContent(ModelTask currentTask){
+        this.currentTask = currentTask;
+        whatsNext = currentTask.getWhatsNext();
         Log.i("GIVE_CONTENT", "in exerciseFragment");
     }
+
+
 
     public void setExerciseLayout(){
 
@@ -117,7 +122,6 @@ public class ExerciseFragment extends Fragment {
         LinearLayout.LayoutParams mRparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         EditText myEditText = new EditText(getContext());
         myEditText.setLayoutParams(mRparams);
-        exerciseContainer.addView(myEditText);
 
 
 //        for(String title: listOfTitles){

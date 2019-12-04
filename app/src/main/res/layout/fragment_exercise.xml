@@ -38,52 +38,43 @@
             app:layout_constraintTop_toBottomOf="@+id/exerciseType"
             app:layout_constraintVertical_bias="0.0" />
 
-
        <ScrollView
+           android:id="@+id/scrollView2"
            android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_margin="8dp"
-           app:layout_constraintBottom_toBottomOf="parent"
+           android:layout_height="0dp"
+           app:layout_constraintBottom_toTopOf="@+id/nextButtonExerciseFrag"
            app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.0"
            app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toBottomOf="@+id/exerciseName"
-           app:layout_constraintVertical_bias="0.0">
+           app:layout_constraintTop_toBottomOf="@+id/exerciseName">
 
+           <!--           <TextView-->
+           <!--               android:id="@+id/exerciseText"-->
+           <!--               android:layout_width="match_parent"-->
+           <!--               android:layout_height="wrap_content"-->
+           <!--               android:text="a task for this exercise is descriebed here"-->
+           <!--               android:textSize="25sp" />-->
 
-           <LinearLayout
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/exerciseView"
                android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:orientation="vertical"
-               android:layout_margin="3dp">
-
-               <TextView
-                   android:id="@+id/exerciseText"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:text="a task for this exercise is descriebed here"
-                   android:textSize="25sp"
-                   app:layout_constraintEnd_toEndOf="parent"
-                   app:layout_constraintStart_toStartOf="parent"
-                   app:layout_constraintTop_toBottomOf="@+id/lessonName" />
-
-               <LinearLayout
-                   android:id="@+id/ExerciseContainerLayout"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="vertical">
-
-               </LinearLayout>
-
-               <Button
-                   android:id="@+id/nextButtonExerciseFrag"
-                   android:layout_width="70dp"
-                   android:layout_height="70dp"
-                   android:layout_marginBottom="6dp"
-                   android:layout_gravity="right"/>
-
-           </LinearLayout>
+               android:layout_height="match_parent"
+               android:scrollbars="vertical" />
+           
 
        </ScrollView>
+
+       <Button
+           android:id="@+id/nextButtonExerciseFrag"
+           android:layout_width="70dp"
+           android:layout_height="70dp"
+           android:layout_gravity="right"
+           android:layout_margin="6dp"
+           android:layout_marginBottom="6dp"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="1.0"
+           app:layout_constraintStart_toStartOf="parent" />
 
    </androidx.constraintlayout.widget.ConstraintLayout>
 

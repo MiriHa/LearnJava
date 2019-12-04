@@ -59,6 +59,12 @@ public class ReadJson {
 
                 //read according to the tasktype. 1 for Lesson, 2  for exercise
                 if (type_value == 2) {
+
+                    int viewType_value = taskObject.getInt("exerciseViewType");
+                    if(viewType_value == 1){
+                        //TODO ad values
+                    }
+
                     JSONArray solutionArrayString = taskObject.getJSONArray("exerciseSolutionString");
                     String[] solutionString_value = toStringArray(solutionArrayString);
                     JSONArray solutionArrayInt = taskObject.getJSONArray("exerciseSolutionInt");
@@ -67,7 +73,7 @@ public class ReadJson {
                     Log.i("READJSON", " " + name_value + text_value + number_value + solutionArrayInt + solutionArrayString);
 
                     //Add values in ArrayList
-                    ModelTask newExercise = new ModelExercise(name_value, text_value, number_value, solutionString_value, solutionInt_value, next_value);
+                    ModelTask newExercise = new ModelExercise(name_value, text_value, number_value, solutionString_value, solutionInt_value, next_value, viewType_value);
                     taskList.add(newExercise);
                 }
                 else if( type_value == 1){

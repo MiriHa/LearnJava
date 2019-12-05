@@ -96,7 +96,7 @@ public class LessonFragment extends Fragment {
     public void onStart() {
         super.onStart();
       /*  try {
-            fragmentInterface = (FragmentCommunication) getActivity();
+            fragmentInterface = (ExerciseCommunication) getActivity();
         } catch (ClassCastException e) {
             throw new ClassCastException(getActivity().toString() + "Error in retreiving data. must implement FragmentInterface");
         }

@@ -58,7 +58,7 @@
       "taskText": "Do a thing yes",
       "taskWhatsNext": 3,
       "taskType" : 2,
-      "exerciseViewType" : 3,
+      "exerciseViewType" : 1,
       "exerciseSolutionString" : [],
       "exerciseSolutionInt" : [1,2,3]
     }

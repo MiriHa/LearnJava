@@ -1,16 +1,18 @@
 package com.example.learnjava.ExerciseView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.learnjava.R;
-import com.example.learnjava.models.ModelExercise;
 import com.example.learnjava.models.ModelTask;
 
 public class ViewArrayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -46,12 +48,13 @@ public class ViewArrayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        Log.d("In onBINDVIWHOLDER", "init layouts");
         switch (holder.getItemViewType()){
             case VIEW_ANSWER:
-                initLayoutAnswer((ViewHolderAnswer)holder);
+                initLayoutAnswer((ViewHolderAnswer)holder, position);
                 break;
             case VIEW_CHOICE:
-                initLayoutChoice((ViewHolderChoice)holder);
+                initLayoutChoice((ViewHolderChoice)holder, position);
                 break;
                 //TODO do the other layouts
             default:
@@ -59,13 +62,14 @@ public class ViewArrayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
     }
 
-    public void initLayoutAnswer(ViewHolderAnswer holder){
-        holder.exerciseText.setText(currentTask.getTaskText());
-    }
-
-    public void initLayoutChoice(ViewHolderChoice holder){
+    private void initLayoutAnswer(ViewHolderAnswer holder, int pos){
         holder.exerciseText.setText(currentTask.getTaskText());
         holder.editText.setHint("Write a answer");
+    }
+
+    private void initLayoutChoice(ViewHolderChoice holder, int pos){
+        holder.exerciseText.setText(currentTask.getTaskText());
+
 
     }
 
@@ -90,15 +94,19 @@ public class ViewArrayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemCount() {
-        return 0;
+        return 1;
     }
 
+
+    //Static inner classes to initialze the view
     static class ViewHolderAnswer extends RecyclerView.ViewHolder{
 
         public TextView exerciseText;
+        public EditText editText;
         public ViewHolderAnswer(View view){
             super(view);
             exerciseText = view.findViewById(R.id.exerciseTextAnswer);
+            editText = view.findViewById(R.id.editTextAnswer);
 
         }
     }
@@ -106,12 +114,18 @@ public class ViewArrayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     static class ViewHolderChoice extends RecyclerView.ViewHolder{
 
         public TextView exerciseText;
-        public EditText editText;
+        public RadioGroup radioGroup;
+        public RadioButton buttonAnswer;
         public ViewHolderChoice(View view){
             super(view);
             exerciseText = view.findViewById(R.id.exerciseTextChoice);
-            editText = view.findViewById(R.id.editTextAnswer);
+            radioGroup = view.findViewById(R.id.answerGroup);
         }
+
+    }
+
+    public void buttonClicked(){
+
     }
 
     //TODO make method to dynamiclly add rows and edittexts

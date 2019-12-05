@@ -17,12 +17,13 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.learnjava.ExerciseCommunication;
 import com.example.learnjava.ExerciseView.ViewArrayAdapter;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
 
 
-public class ExerciseFragment extends Fragment {
+public class ExerciseFragment extends Fragment implements ExerciseCommunication {
 
     TextView exerciseName;
     private int whatsNext;
@@ -54,9 +55,10 @@ public class ExerciseFragment extends Fragment {
 
         ViewArrayAdapter viewArrayAdapter = new ViewArrayAdapter(currentTask);
         recyclerView = view.findViewById(R.id.exerciseView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(viewArrayAdapter);
+
         Button checkButton = view.findViewById(R.id.nextButtonExerciseFrag);
 
 
@@ -66,6 +68,7 @@ public class ExerciseFragment extends Fragment {
                 try {
                     //TODO check the answers an report the progress when right, when wrong load dialog feedback
                     // set get activity isSolved when correct or check is solved so you can skip the exercise to the next
+                    //TODO send notifyfication to receryleradapter to fetch the entered data
                     if ((getActivity() != null)) {
                         if( whatsNext == 2) {
                             ((LessonActivity) getActivity()).openNewTask(2);

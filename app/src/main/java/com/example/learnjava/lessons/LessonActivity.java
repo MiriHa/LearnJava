@@ -16,10 +16,14 @@ import com.example.learnjava.MainActivity;
 import com.example.learnjava.R;
 import com.example.learnjava.ReadJson;
 import com.example.learnjava.models.ModelTask;
+import com.example.learnjava.models.ModelUserProgress;
 
 import java.util.ArrayList;
 
 public class LessonActivity extends AppCompatActivity{
+
+    //Use a songelton?
+    //ModelUserProgress userProgress;
 
     Controller progressController;
     private int sectionNumber;
@@ -43,6 +47,8 @@ public class LessonActivity extends AppCompatActivity{
 
         //get the progresscontroller
         progressController = (Controller) getApplicationContext();
+        //use a singelton
+        //userProgress = ModelUserProgress.getInstance();
 
         //get the recent sectionnumber to identifiy the section
         Intent intent = getIntent();
@@ -125,7 +131,9 @@ public class LessonActivity extends AppCompatActivity{
     public void updateProgressLastTask(){
 
         //add the finished section to the PorgressCOntrolller
-        progressController.updateFinishedSection(sectionNumber);;
+        progressController.updateFinishedSection(sectionNumber);
+        //use a singelton?
+        //userProgress.updateUserProgressFinishedSections(sectionNumber);
         Log.i("last task", " of section is reached");
         //TODO give feedback that section is finished?
 
@@ -160,6 +168,8 @@ public class LessonActivity extends AppCompatActivity{
 
     public void updateProgress(){
         //add the lask task to finished taks list
+        //Use a aingelton?
+       // userProgress.addFinisehdTask(currentTask);
         progressController.addfinishedTask(currentTask);
 //        int oldTasktype = currentTask.getType();
 //        if(oldTasktype == 1){

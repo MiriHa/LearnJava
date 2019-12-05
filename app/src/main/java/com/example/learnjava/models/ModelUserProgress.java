@@ -12,6 +12,9 @@ import java.util.ArrayList;
 
 public class ModelUserProgress {
 
+    //USe a singelton?
+    //private static final ModelUserProgress userProgress = new ModelUserProgress();
+
     //Keeps track over the finished sections to unlock new ones
     private ArrayList<Integer> userProgressSections = new ArrayList<>();
 
@@ -37,6 +40,11 @@ public class ModelUserProgress {
     public ModelUserProgress(){
 
     }
+
+    //use a singelton?
+//    public static ModelUserProgress getInstance() {
+//        return userProgress;
+//    }
 
 
     public void updateUserProgressFinishedSections(Integer number){

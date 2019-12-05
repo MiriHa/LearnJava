@@ -16,8 +16,14 @@ public class ModelExercise extends ModelTask{
 
     private final int exerciseViewType;
     private boolean isSolved = false;
-    private final String[] solutionString;
-    private final int[] solutionInt;
+
+    //Solutions
+    //TODO maybe use a MOdel to store solutions?
+    private final String[] solutionStringArray;
+    private final int[] solutionIntArray;
+    private final String solutionString;
+    private final int solutionInt;
+
 
     //  private boolean done;
     private String[] userinputString;
@@ -26,21 +32,23 @@ public class ModelExercise extends ModelTask{
 //    public ModelExercise(String exerciseText, int exerciseNumber, String[] solution){
 //        this.exerciseText = exerciseText;
 //        this.exerciseNumber = exerciseNumber;
-//        this.solutionString = solution;
+//        this.solutionStringArray = solution;
 //    }
 //
 //    public ModelExercise(String exerciseText, int exerciseNumber, int[] solution){
 //        this.exerciseText = exerciseText;
 //        this.exerciseNumber = exerciseNumber;
-//        this.solutionInt = solution;
+//        this.solutionIntArray = solution;
 //    }
 
-    public ModelExercise(String exerciseName, String exerciseText, int exercisenumber, String[] solution, int[] solutionInt, int whatsNext, int viewType){
+    public ModelExercise(String exerciseName, String exerciseText, int exercisenumber, String[] solutionStringArray, int[] solutionIntArray, int whatsNext, int viewType, int solutionInt, String solutionString){
 
         super(exerciseName, exerciseText, whatsNext, exercisenumber, 2);
-        this.solutionString = solution;
-        this.solutionInt = solutionInt;
+        this.solutionStringArray = solutionStringArray;
+        this.solutionIntArray = solutionIntArray;
         this.exerciseViewType = viewType;
+        this.solutionInt = solutionInt;
+        this.solutionString = solutionString;
 
     }
 
@@ -77,8 +85,28 @@ public class ModelExercise extends ModelTask{
         return userinputInt;
     }
 
+    public String[] getSolutionStringArray() {
+        return solutionStringArray;
+    }
+
+    public int[] getSolutionIntArray() {
+        return solutionIntArray;
+    }
+
+    @Override
+    public String getSolutionString() {
+        return solutionString;
+    }
+
+    @Override
+    public int getSolutionInt() {
+        return solutionInt;
+    }
+
     public String[] getKeywords(){
         return null;
     }
+
+
 
 }

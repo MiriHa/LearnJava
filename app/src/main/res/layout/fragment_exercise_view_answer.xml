@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExerciseView.ExerciseViewAnswer">
+
+   <LinearLayout
+       android:id="@+id/contentHolderAnswer"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:layout_margin="10dp">
+
+       <TextView
+           android:id="@+id/exerciseTextAnswer"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_margin="@dimen/PaddingSide"
+           android:text="@string/shortString"
+           android:textSize="@dimen/TextSize30" />
+
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+
+           <TextView
+               android:id="@+id/exerciseTextAnswerBeforeEditText"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="@dimen/TextSize25" />
+
+           <EditText
+               android:id="@+id/editTextAnswer"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="@dimen/PaddingSide"
+               android:layout_marginRight="@dimen/PaddingSide"
+               android:lines="2"
+               android:textSize="@dimen/TextSize25" />
+
+       </LinearLayout>
+
+   </LinearLayout>
+
+
+</FrameLayout>

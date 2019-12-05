@@ -53,5 +53,13 @@ public abstract class ModelTask {
 
     public abstract String[]  getKeywords();
 
+    public abstract String[] getSolutionStringArray();
+
+    public abstract int[] getSolutionIntArray();
+
+    public abstract String getSolutionString();
+
+    public abstract int getSolutionInt();
+
 
 }

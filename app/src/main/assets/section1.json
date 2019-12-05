@@ -23,8 +23,7 @@
       "taskWhatsNext": 1,
       "taskType" : 2,
       "exerciseViewType" : 1,
-      "exerciseSolutionString" : ["static", "main", "args"],
-      "exerciseSolutionInt" : []
+      "exerciseSolutionString" : "StaticAnswer"
     },
     {
       "taskName": "Main Method",
@@ -41,8 +40,7 @@
       "taskWhatsNext": 1,
       "taskType" : 2,
       "exerciseViewType" : 2,
-      "exerciseSolutionString" : [],
-      "exerciseSolutionInt" : [1,2,3]
+      "exerciseSolutionIntArray" : [1,2,3]
     },
     {
       "taskName": "Main Method3",
@@ -59,8 +57,7 @@
       "taskWhatsNext": 3,
       "taskType" : 2,
       "exerciseViewType" : 1,
-      "exerciseSolutionString" : [],
-      "exerciseSolutionInt" : [1,2,3]
+      "exerciseSolutionString" : "Answer"
     }
   ]
 

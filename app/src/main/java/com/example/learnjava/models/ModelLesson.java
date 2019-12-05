@@ -18,6 +18,29 @@ public class ModelLesson extends ModelTask {
         return keywords;
     }
 
+
+
+    //needed implemented but not used here
+    @Override
+    public String[] getSolutionStringArray() {
+        return new String[0];
+    }
+
+    @Override
+    public int[] getSolutionIntArray() {
+        return new int[0];
+    }
+
+    @Override
+    public String getSolutionString() {
+        return null;
+    }
+
+    @Override
+    public int getSolutionInt() {
+        return 0;
+    }
+
     public boolean getIsSolved(){
         return false;
     }

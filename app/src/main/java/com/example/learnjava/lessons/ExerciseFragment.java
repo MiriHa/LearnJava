@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.learnjava.ExerciseCommunication;
-import com.example.learnjava.ExerciseView.ViewArrayAdapter;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
 
@@ -53,11 +52,6 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         View view = inflater.inflate(R.layout.fragment_exercise, container, false);
         exerciseName = view.findViewById(R.id.exerciseName);
 
-        ViewArrayAdapter viewArrayAdapter = new ViewArrayAdapter(currentTask);
-        recyclerView = view.findViewById(R.id.exerciseView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(viewArrayAdapter);
 
         Button checkButton = view.findViewById(R.id.nextButtonExerciseFrag);
 
@@ -69,6 +63,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
                     //TODO check the answers an report the progress when right, when wrong load dialog feedback
                     // set get activity isSolved when correct or check is solved so you can skip the exercise to the next
                     //TODO send notifyfication to receryleradapter to fetch the entered data
+
                     if ((getActivity() != null)) {
                         if( whatsNext == 2) {
                             ((LessonActivity) getActivity()).openNewTask(2);
@@ -134,4 +129,25 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
 //        }
     }
 
+    @Override
+    public void sendAnswerFromAnswerView(String answer) {
+        //answer is reviews answer from neseted fragment
+        //TODO check answer
+       // String correct = currentTask.getSol
+    }
+
+    @Override
+    public void sendAnswerFromChoiceView(int answer) {
+
+    }
+
+    @Override
+    public void sendAnswerFromFillBlanksView(String[] answewrs) {
+
+    }
+
+    @Override
+    public void sendAnswerFormOrderLinesVIew(int[] ansers) {
+
+    }
 }

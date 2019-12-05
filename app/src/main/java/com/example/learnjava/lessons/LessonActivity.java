@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.learnjava.Controller;
-import com.example.learnjava.ExerciseView.ViewArrayAdapter;
 import com.example.learnjava.MainActivity;
 import com.example.learnjava.R;
 import com.example.learnjava.ReadJson;
@@ -79,12 +78,14 @@ public class LessonActivity extends AppCompatActivity{
 
         switch (taskType) {
 
+
+            //TODO listener attach in exerciseView Fragment--- how to do that? other method than six interfaces?
             case 0:
                 //get the currentTask content
                 setCurrentTask();
                 //load a fragment
                 LessonFragment firstlessonFragment = new LessonFragment();
-                giveLessonFragmentContent(firstlessonFragment);
+                firstlessonFragment.setFragmentContent(currentTask);
                 getSupportFragmentManager()
                         .beginTransaction()
                         .add(R.id.FragmentHolder, firstlessonFragment)
@@ -99,7 +100,7 @@ public class LessonActivity extends AppCompatActivity{
                 setCurrentTask();
                 //open new lessonFragment and set its content
                 LessonFragment lessonFragment = new LessonFragment();
-                giveLessonFragmentContent(lessonFragment);
+                lessonFragment.setFragmentContent(currentTask);
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.FragmentHolder, lessonFragment)
@@ -114,7 +115,7 @@ public class LessonActivity extends AppCompatActivity{
                 setCurrentTask();
                 //Open a new Fragment and set its content
                 ExerciseFragment exerciseFragment = new ExerciseFragment();
-                giveExerciseFragmentContent(exerciseFragment);
+                exerciseFragment.setFragmentContent(currentTask);
                 // exerciseFragment.setExerciseLayout();
                 getSupportFragmentManager()
                         .beginTransaction()
@@ -142,25 +143,6 @@ public class LessonActivity extends AppCompatActivity{
         Log.d("ChangeActivity", " to activity: MainActivity");
     }
 
-
-    public void giveLessonFragmentContent(LessonFragment fragment){
-        Log.i("GIVE_CONTENT", "to lessonFragment");
-        String name = currentTask.getTaskName();
-        String  text = currentTask.getTaskText();
-        int whatsNext = currentTask.getWhatsNext();
-        fragment.setFragmentContent(name, text, whatsNext);
-
-    }
-
-    public void giveExerciseFragmentContent(ExerciseFragment fragment){
-        Log.i("GIVE_CONTENT", "to exerciseFragment");
-        String name = currentTask.getTaskName();
-        String  text = currentTask.getTaskText();
-        int whatsNext = currentTask.getWhatsNext();
-
-        fragment.setFragmentContent(currentTask);
-
-    }
 
 
     //TODO some method that reprots the progrss from the fragments -> need to add the current/finished lessons?

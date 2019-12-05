@@ -132,6 +132,7 @@ public class ReadJson {
                     ModelTask newLesson = new ModelLesson(name_value, text_value, number_value, keyWords_value, next_value);
                     taskList.add(newLesson);
                 }
+
                 else{
                     Log.e("MISSING TASK TYPE", " in readJson");
                 }

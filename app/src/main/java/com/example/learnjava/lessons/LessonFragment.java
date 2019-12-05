@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.learnjava.R;
+import com.example.learnjava.models.ModelTask;
 
 public class LessonFragment extends Fragment {
 
@@ -21,10 +22,9 @@ public class LessonFragment extends Fragment {
    private TextView lessonExample;
    private Button nextButton;
 
-   private String lessonNameString;
-   private String lessonTextString;
-   private String lessonExampleString;
    private int whatsNext;
+
+   private ModelTask currentTask;
 
     public LessonFragment() {
         // Required empty public constructor
@@ -74,9 +74,9 @@ public class LessonFragment extends Fragment {
             }
         });
 
-        lessonName.setText(lessonNameString);
-        lessonText.setText(lessonTextString);
-        lessonExample.setText("Maybe we need in json more text section for examples to better format them");
+        lessonName.setText(currentTask.getTaskName());
+        lessonText.setText(currentTask.getTaskText());
+       // lessonExample.setText("Maybe we need in json more text section for examples to better format them");
 
         return view;
 
@@ -96,17 +96,16 @@ public class LessonFragment extends Fragment {
     public void onStart() {
         super.onStart();
       /*  try {
-            fragmentInterface = (ExerciseCommunication) getActivity();
+            fragmentInterface = (ExerciseVIewCommunication) getActivity();
         } catch (ClassCastException e) {
             throw new ClassCastException(getActivity().toString() + "Error in retreiving data. must implement FragmentInterface");
         }
 */
     }
 
-    public void setFragmentContent(String name, String text, int next){
+    public void setFragmentContent(ModelTask currentTask){
         Log.i("GIVE_CONTENT", "in LessonFragment");
-        lessonNameString = name;
-        lessonTextString = text;
-        whatsNext = next;
+        this.currentTask = currentTask;
+        whatsNext = currentTask.getWhatsNext();
     }
 }

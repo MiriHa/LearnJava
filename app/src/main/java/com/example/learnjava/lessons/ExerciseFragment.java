@@ -4,31 +4,31 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.learnjava.ExerciseCommunication;
+import com.example.learnjava.ExerciseView.ExerciseViewAnswerFragment;
+import com.example.learnjava.ExerciseView.ExerciseViewChoiceFragment;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
 
 
-public class ExerciseFragment extends Fragment implements ExerciseCommunication {
+public class ExerciseFragment extends Fragment {
 
-    TextView exerciseName;
+    private ExerciseCommunication mListener;
+
+    private TextView exerciseName;
     private int whatsNext;
+    private int viewType;
     private ModelTask currentTask;
 
-    private RecyclerView recyclerView;
 
     //TODO maye nee a atring array für zusätzliche aufgaben oder teilaufgaben
 
@@ -51,44 +51,9 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_exercise, container, false);
         exerciseName = view.findViewById(R.id.exerciseName);
-
-
-        Button checkButton = view.findViewById(R.id.nextButtonExerciseFrag);
-
-
-        checkButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    //TODO check the answers an report the progress when right, when wrong load dialog feedback
-                    // set get activity isSolved when correct or check is solved so you can skip the exercise to the next
-                    //TODO send notifyfication to receryleradapter to fetch the entered data
-
-                    if ((getActivity() != null)) {
-                        if( whatsNext == 2) {
-                            ((LessonActivity) getActivity()).openNewTask(2);
-                            Log.i("Buttonclicked", " openExerciseFragment");
-                        }
-                        else if (whatsNext == 1) {
-                            ((LessonActivity) getActivity()).openNewTask(1);
-                            Log.i("Buttonclicked", " opnenLesson");
-                        }
-                        else if (whatsNext == 3){
-                            ((LessonActivity) getActivity()).updateProgressLastTask();
-                            Log.i("Buttonclicked", " lastExercise");
-                        }
-                        else {
-                            Log.e("Buttonclicked", " FalseWhatsNextType");
-                        }
-                    }
-                }
-                catch (Exception e){
-                    Log.e("Not clickable", "error");
-                }
-            }
-        });
-
         exerciseName.setText(currentTask.getTaskName());
+        setViewContent();
+
 
         return view;
     }
@@ -108,7 +73,34 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
     public void setFragmentContent(ModelTask currentTask){
         this.currentTask = currentTask;
         whatsNext = currentTask.getWhatsNext();
+        viewType = currentTask.getExerciseViewType();
         Log.i("GIVE_CONTENT", "in exerciseFragment");
+    }
+
+    public void setViewContent(){
+        switch (viewType){
+            case 1:
+                ExerciseViewAnswerFragment answerFragment = new ExerciseViewAnswerFragment();
+                getChildFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.ExerciseViewHolder, answerFragment)
+                        .addToBackStack(null)
+                        .commit();
+                Log.i("LOADVIEW", " 1 Answer");
+                break;
+            case 2:
+                ExerciseViewChoiceFragment choiceFragment = new ExerciseViewChoiceFragment();
+                getChildFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.ExerciseViewHolder, choiceFragment)
+                        .addToBackStack(null)
+                        .commit();
+                Log.i("LOADVIEW", " 2 Choice");
+                break;
+
+                //TODO the other views
+
+        }
     }
 
 
@@ -129,25 +121,59 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
 //        }
     }
 
-    @Override
-    public void sendAnswerFromAnswerView(String answer) {
-        //answer is reviews answer from neseted fragment
-        //TODO check answer
-       // String correct = currentTask.getSol
+    public void openNextTask(){
+        try {
+            //TODO check the answers an report the progress when right, when wrong load dialog feedback
+            // set get activity isSolved when correct or check is solved so you can skip the exercise to the next
+
+            if ((getActivity() != null)) {
+                //notify the exerciseViewFragment that nextButton is clicked
+                if( whatsNext == 2) {
+                    ((LessonActivity) getActivity()).openNewTask(2);
+                    Log.i("Buttonclicked", " openExerciseFragment");
+                }
+                else if (whatsNext == 1) {
+                    ((LessonActivity) getActivity()).openNewTask(1);
+                    Log.i("Buttonclicked", " opnenLesson");
+                }
+                else if (whatsNext == 3){
+                    ((LessonActivity) getActivity()).updateProgressLastTask();
+                    Log.i("Buttonclicked", " lastExercise");
+                }
+                else {
+                    Log.e("Buttonclicked", " FalseWhatsNextType");
+                }
+            }
+        }
+        catch (Exception e){
+            Log.e("Not clickable", "error");
+        }
     }
 
-    @Override
-    public void sendAnswerFromChoiceView(int answer) {
+    public interface ExerciseCommunication{
+        ModelTask sendCurrentTask();
 
+        void sendAnswerFromExerciseViev(boolean answerChecked);
     }
 
-    @Override
-    public void sendAnswerFromFillBlanksView(String[] answewrs) {
 
-    }
 
-    @Override
-    public void sendAnswerFormOrderLinesVIew(int[] ansers) {
 
-    }
+
+
+//    @Override
+//    public ModelTask sendCurrentTask() {
+//        return currentTask;
+//    }
+//
+//    @Override
+//    public void sendAnswerFromExerciseView(boolean answerChecked) {
+//        if (answerChecked){
+//            openNextTask();
+//        }
+//        else {
+//            Log.i("ANSWER", " was wrong");
+//            //TODO give Feedback that answer is false??
+//        }
+//    }
 }

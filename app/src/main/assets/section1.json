@@ -1,0 +1,64 @@
+{
+  "tasks": [
+    {
+      "taskName" : "Tutorial",
+      "taskNumber" : 1,
+      "taskText" : "How to Use this app. Hello! This learning App will present you different Lessons to help you learn java. Here will be presented a lesson with theory that you need to read and understand and follwing this there will be an exercise to check our nearly learned knowledge",
+      "taskWhatsNext" : 1,
+      "taskType" : 1,
+      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
+    },
+    {
+      "taskName": "Introduction",
+      "taskNumber": 2,
+      "taskText" : " THis is an indrocution TExt blabla",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
+    },
+    {
+      "taskName": "introduction2",
+      "taskNumber": 3,
+      "taskText": "Fill in the Blanks to complete this hello World program,",
+      "taskWhatsNext": 1,
+      "taskType" : 2,
+      "exerciseViewType" : 1,
+      "exerciseSolutionString" : "answer"
+    },
+    {
+      "taskName": "Main Method",
+      "taskNumber": 4,
+      "taskText" : " THis is an indrocution to the main method ahahaaaa",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
+    },
+    {
+      "taskName": "Main Method2",
+      "taskNumber": 5,
+      "taskText": "Do a thing",
+      "taskWhatsNext": 1,
+      "taskType" : 2,
+      "exerciseViewType" : 2,
+      "exerciseSolutionInt" : 2
+    },
+    {
+      "taskName": "Main Method3",
+      "taskNumber": 6,
+      "taskText" : " THis is an indrocution to the main method ahahaaaablub",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
+    },
+    {
+      "taskName": "Main Method4",
+      "taskNumber": 7,
+      "taskText": "Do a thing yes",
+      "taskWhatsNext": 3,
+      "taskType" : 2,
+      "exerciseViewType" : 1,
+      "exerciseSolutionString" : "2"
+    }
+  ]
+
+}

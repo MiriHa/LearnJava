@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="fillBlanksAnswer1" type="id"/>
+    <item name="fillBlanksAnswer2" type="id"/>
+    <item name="fillBlanksAnswer3" type="id"/>
+    <item name="fillBlanksAnswer4" type="id"/>
+    <item name="fillBlanksAnswer5" type="id"/>
+    <item name="fillBlanksAnswer6" type="id"/>
+    <item name="fillBlanksAnswer7" type="id"/>
+    <item name="fillBlanksAnswer8" type="id"/>
+    <item name="fillBlanksAnswer9" type="id"/>
+    <item name="fillBlanksAnswer10" type="id"/>
+
+</resources>

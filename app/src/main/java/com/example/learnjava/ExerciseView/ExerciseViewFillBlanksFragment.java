@@ -30,10 +30,9 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
 
     private ExerciseCommunication mListener;
 
+    private ModelTask currentTask;
 
-    ModelTask currentTask;
-
-    String[] userSolutionArray;
+    private String[] userSolutionArray;
 
     private Button nextButton;
     private LinearLayout blankHolder;

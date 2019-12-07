@@ -1,63 +1,180 @@
 package com.example.learnjava;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import android.content.Context;
+import android.util.Log;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import com.example.learnjava.models.ModelExercise;
+import com.example.learnjava.models.ModelLesson;
+import com.example.learnjava.models.ModelTask;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
+
+//This reads the Json files of the lessons
+//TODO read the file only once in controller?
 
 public class ReadJson {
 
-    @SuppressWarnings("unchecked")
-    public static void main(String[] args) {
-        //JSON parser object to parse read file
-        JSONParser jsonParser = new JSONParser();
 
-        /*
-        try (FileReader reader = new FileReader("TutorialAndIntroduction.json"))
-        {
-            //Read JSON file
-            Object obj = jsonParser.parse(reader);
+    private String loadJSONFromAsset(Context activity, String sectionName) {
+        String json = null;
+        try {
+            InputStream is = activity.getAssets().open(sectionName + ".json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
 
-            JSONArray employeeList = (JSONArray) obj;
-            System.out.println(employeeList);
 
-            //Iterate over employee array
-            employeeList.forEach( emp -> parseEmployeeObject( (JSONObject) emp ) );
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
+    public ArrayList<ModelTask> readTask(String sectionName, Context activity) {
+
+        ArrayList<ModelTask> taskList = new ArrayList<>();
+
+        try {
+            JSONObject obj = new JSONObject(loadJSONFromAsset(activity, sectionName));
+            JSONArray taskArray = obj.getJSONArray("tasks");
+
+            for (int i = 0; i < taskArray.length(); i++) {
+
+                JSONObject taskObject = taskArray.getJSONObject(i);
+
+                //Read Json-values
+                String name_value = taskObject.getString("taskName");
+                int number_value = taskObject.getInt("taskNumber");
+                String text_value = taskObject.getString("taskText");
+                int next_value = taskObject.getInt("taskWhatsNext");
+                int type_value = taskObject.getInt("taskType");
+
+                //read according to the tasktype. 1 for Lesson, 2  for exercise
+                if (type_value == 2) {
+
+                    int viewType_value = taskObject.getInt("exerciseViewType");
+
+                        //Type: Answer String
+                        if(viewType_value == 1){
+                            String solutionString_value = taskObject.getString("exerciseSolutionString");
+
+                            //Add values in ArrayList
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,null, null, next_value, viewType_value,0,solutionString_value);
+                            taskList.add(newExercise);
+                        }
+                        //Type: Answer Choice -> int
+                        else if(viewType_value == 2){
+//                            JSONArray solutionIntArray = taskObject.getJSONArray("exerciseSolutionIntArray");
+//                            int[] solutionIntArray_value = toIntArray(solutionIntArray);
+
+                            int solutionInt_value = taskObject.getInt("exerciseSolutionInt");
+
+                            //Add values in ArrayList
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,null, null, next_value, viewType_value, solutionInt_value,"");
+                            taskList.add(newExercise);
+                        }
+                        //Type: Answer FillBlanks -> String[]
+                        else if(viewType_value == 3){
+                            JSONArray solutionStringArray = taskObject.getJSONArray("exerciseSolutionStringArray");
+                            String[] solutionStringArray_value = toStringArray(solutionStringArray);
+
+                            //Add values in ArrayList
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,solutionStringArray_value, null, next_value, viewType_value,0,"");
+                            taskList.add(newExercise);
+                        }
+                        //Type: Drag and Drop -> int[]
+                        else if(viewType_value == 4){
+                            JSONArray solutionIntArray = taskObject.getJSONArray("exerciseSolutionIntArray");
+                            int[] solutionIntArray_value = toIntArray(solutionIntArray);
+
+                            //Add values in ArrayList
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,null, solutionIntArray_value, next_value, viewType_value,0,"");
+                            taskList.add(newExercise);
+
+                        }
+                        //Type: Order -> int[]
+                        else if(viewType_value == 5){
+                            JSONArray solutionIntArray = taskObject.getJSONArray("exerciseSolutionIntArray");
+                            int[] solutionIntArray_value = toIntArray(solutionIntArray);
+
+                            //Add values in ArrayList
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,null, solutionIntArray_value, next_value, viewType_value,0,"");
+                            taskList.add(newExercise);
+                        }
+                        //Type: Code -> String[]
+                        else if(viewType_value == 6){
+                            JSONArray solutionStringArray = taskObject.getJSONArray("exerciseSolutionStringArray");
+                            String[] solutionStringArray_value = toStringArray(solutionStringArray);
+
+                            //Add values in ArrayList
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,solutionStringArray_value, null, next_value, viewType_value,0,"");
+                            taskList.add(newExercise);
+
+                        }
+                        else {
+                            Log.i("WrongVIewTypeValue", " must be 1 - 6");
+                        }
+                }
+
+                else if( type_value == 1){
+                    JSONArray keyWordsArray = taskObject.getJSONArray("lessonKeyWords");
+                    String[] keyWords_value = toStringArray(keyWordsArray);
+
+                    Log.i("READJSON", " " +name_value+text_value+number_value+keyWords_value);
+
+                    //Add values in ArrayList
+                    ModelTask newLesson = new ModelLesson(name_value, text_value, number_value, keyWords_value, next_value);
+                    taskList.add(newLesson);
+                }
+
+                else{
+                    Log.e("MISSING TASK TYPE", " in readJson");
+                }
+
+            }
+
+        } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        return taskList;
+
     }
 
-         */
+    private static String[] toStringArray(JSONArray array) {
+        if (array == null)
+            return null;
 
-        /*
-
-    private static void parseEmployeeObject(JSONObject employee)
-    {
-        //Get employee object within list
-        JSONObject employeeObject = (JSONObject) employee.get("employee");
-
-        //Get employee first name
-        String firstName = (String) employeeObject.get("firstName");
-        System.out.println(firstName);
-
-        //Get employee last name
-        String lastName = (String) employeeObject.get("lastName");
-        System.out.println(lastName);
-
-        //Get employee website name
-        String website = (String) employeeObject.get("website");
-        System.out.println(website);
+        String[] arr = new String[array.length()];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = array.optString(i);
+        }
+        return arr;
     }
-    */
+
+    private static  int[] toIntArray(JSONArray array){
+        if(array == null)
+            return null;
+
+        int[] arr = new int[array.length()];
+        for (int i = 0; i < arr.length; i++){
+            arr[i] = array.optInt(i);
+        }
+        return arr;
     }
+
+
 }
+
+
+

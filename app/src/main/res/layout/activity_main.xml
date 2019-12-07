@@ -9,20 +9,24 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="3dp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
+        android:padding="13dp"
         android:text="@string/welcome"
-        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/MainScrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.24000001" />
 
     <ScrollView
         android:id="@+id/MainScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,22 +41,26 @@
                 android:id="@+id/Lesson1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/lightGreen1"
+                android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:clickable="true"
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
                 android:paddingTop="@dimen/PaddingScroll"
-                android:paddingBottom="@dimen/PaddingScroll"
-                android:paddingHorizontal="@dimen/PaddingSideScroll"
-                android:background="@color/lightGreen1">
+                android:paddingBottom="@dimen/PaddingScroll">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1/7"
+                    android:autoSizeTextType="uniform" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeMaxTextSize="@dimen/TextSize50"
-                    android:autoSizeMinTextSize="@dimen/TextSize10"
                     android:autoSizeTextType="uniform"
-                    android:gravity="center"
                     android:clickable="false"
                     android:text="@string/Lesson1" />
 
@@ -62,145 +70,175 @@
                 android:id="@+id/lesson2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/lightGreen2"
+                android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:clickable="true"
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
                 android:paddingTop="@dimen/PaddingScroll"
-                android:paddingBottom="@dimen/PaddingScroll"
-                android:paddingHorizontal="@dimen/PaddingSideScroll"
-                android:background="@color/lightGreen2">
+                android:paddingBottom="@dimen/PaddingScroll">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2/7"
+                    android:autoSizeTextType="uniform" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeMaxTextSize="@dimen/TextSize50"
-                    android:autoSizeMinTextSize="@dimen/TextSize10"
                     android:autoSizeTextType="uniform"
-                    android:gravity="center"
                     android:clickable="false"
+                    android:gravity="center"
                     android:text="@string/Lesson2" />
             </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/lesson3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:clickable="true"
-            android:paddingTop="@dimen/PaddingScroll"
-            android:paddingBottom="@dimen/PaddingScroll"
-            android:paddingHorizontal="@dimen/PaddingSideScroll"
-            android:background="@color/lightGreen3">
-
-            <TextView
+            <LinearLayout
+                android:id="@+id/lesson3"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:autoSizeMaxTextSize="@dimen/TextSize50"
-                android:autoSizeMinTextSize="@dimen/TextSize10"
-                android:autoSizeTextType="uniform"
+                android:layout_height="wrap_content"
+                android:background="@color/lightGreen3"
+                android:clickable="true"
                 android:gravity="center"
-                android:clickable="false"
-                android:layout_gravity="center"
-                android:text="@string/Lesson3" />
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
+                android:paddingTop="@dimen/PaddingScroll"
+                android:paddingBottom="@dimen/PaddingScroll">
 
-        <LinearLayout
-            android:id="@+id/lesson4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:clickable="true"
-            android:paddingTop="@dimen/PaddingScroll"
-            android:paddingBottom="@dimen/PaddingScroll"
-            android:paddingHorizontal="@dimen/PaddingSideScroll"
-            android:background="@color/Green1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3/7"
+                    android:autoSizeTextType="uniform" />
 
-            <TextView
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:autoSizeTextType="uniform"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="@string/Lesson3" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lesson4"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:autoSizeMaxTextSize="@dimen/TextSize50"
-                android:autoSizeMinTextSize="@dimen/TextSize10"
-                android:autoSizeTextType="uniform"
+                android:layout_height="wrap_content"
+                android:background="@color/Green1"
+                android:clickable="true"
                 android:gravity="center"
-                android:clickable="false"
-                android:layout_gravity="center"
-                android:text="@string/Lesson4" />
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
+                android:paddingTop="@dimen/PaddingScroll"
+                android:paddingBottom="@dimen/PaddingScroll">
 
-        <LinearLayout
-            android:id="@+id/lesson5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:clickable="true"
-            android:paddingTop="@dimen/PaddingScroll"
-            android:paddingBottom="@dimen/PaddingScroll"
-            android:paddingHorizontal="@dimen/PaddingSideScroll"
-            android:background="@color/Green3">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4/7"
+                    android:autoSizeTextType="uniform" />
 
-            <TextView
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:autoSizeTextType="uniform"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="@string/Lesson4" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lesson5"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:autoSizeMaxTextSize="@dimen/TextSize50"
-                android:autoSizeMinTextSize="@dimen/TextSize10"
-                android:autoSizeTextType="uniform"
+                android:layout_height="wrap_content"
+                android:background="@color/Green3"
+                android:clickable="true"
                 android:gravity="center"
-                android:clickable="false"
-                android:layout_gravity="center"
-                android:text="@string/Lesson5" />
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
+                android:paddingTop="@dimen/PaddingScroll"
+                android:paddingBottom="@dimen/PaddingScroll">
 
-        <LinearLayout
-            android:id="@+id/lesson6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:clickable="true"
-            android:paddingTop="@dimen/PaddingScroll"
-            android:paddingBottom="@dimen/PaddingScroll"
-            android:paddingHorizontal="@dimen/PaddingSideScroll"
-            android:background="@color/cadetBlue">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5/7"
+                    android:autoSizeTextType="uniform" />
 
-            <TextView
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:autoSizeTextType="uniform"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="@string/Lesson5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lesson6"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:autoSizeMaxTextSize="@dimen/TextSize50"
-                android:autoSizeMinTextSize="@dimen/TextSize10"
-                android:autoSizeTextType="uniform"
+                android:layout_height="wrap_content"
+                android:background="@color/cadetBlue"
+                android:clickable="true"
                 android:gravity="center"
-                android:clickable="false"
-                android:layout_gravity="center"
-                android:text="@string/Lesson6" />
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
+                android:paddingTop="@dimen/PaddingScroll"
+                android:paddingBottom="@dimen/PaddingScroll">
 
-        <LinearLayout
-            android:id="@+id/lesson7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:paddingTop="@dimen/PaddingScroll"
-            android:paddingBottom="@dimen/PaddingScroll"
-            android:paddingHorizontal="@dimen/PaddingSideScroll"
-            android:background="@color/QueenBlue">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6/7"
+                    android:autoSizeTextType="uniform" />
 
-            <TextView
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:autoSizeTextType="uniform"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="@string/Lesson6" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lesson7"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:autoSizeMaxTextSize="@dimen/TextSize50"
-                android:autoSizeMinTextSize="@dimen/TextSize10"
-                android:autoSizeTextType="uniform"
+                android:layout_height="wrap_content"
+                android:background="@color/QueenBlue"
+                android:clickable="true"
                 android:gravity="center"
-                android:clickable="false"
-                android:layout_gravity="center"
-                android:text="@string/Lesson7" />
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
+                android:paddingTop="@dimen/PaddingScroll"
+                android:paddingBottom="@dimen/PaddingScroll">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7/7"
+                    android:autoSizeTextType="uniform" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:autoSizeTextType="uniform"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="@string/Lesson7" />
+            </LinearLayout>
 
         </LinearLayout>
 

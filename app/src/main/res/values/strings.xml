@@ -3,19 +3,37 @@
     <string name="welcome">Choose your lesson</string>
 
     //Lessons
+    <string name="lesson">Lesson</string>
+    <string name="exercise">Exercise</string>
     <string name="Lesson1">Tutorial and Introduction</string>
     <string name="Lesson2">Hello World and Comments</string>
     <string name="Lesson3">Functions</string>
     <string name="Lesson4">Conditionals and Loops</string>
     <string name="Lesson5">Arrays</string>
     <string name="Lesson6">Classes and Objects</string>
-    //Maybe
     <string name="Lesson7">Exceptions and Lists</string>
 
     <dimen name="PaddingScroll">30dp</dimen>
-    <dimen name="PaddingSideScroll">13dp</dimen>
+    <dimen name="PaddingSide">13dp</dimen>
     <dimen name="TextSize10">10sp</dimen>
     <dimen name="TextSize50">50sp</dimen>
     <dimen name="TextSize3">40sp</dimen>
+    <dimen name="TextSize20">20sp</dimen>
+    <dimen name="TextSize30">30sp</dimen>
+    <dimen name="TextSize25">25sp</dimen>
+    <dimen name="TextSize40">40sp</dimen>
+
+    <string name="FeedbackRight">Good job, that was right!</string>
+    <string name="FeedbackWrong">That was not right.</string>
+
+
+    //For testing
+    <string name="longstring">hasdkajshdkasdansbdasjkdanmsdkasjhdaksjmdnmas,dbiuabsj,dbasmbdasdbajsnmd \nasnbdnamsndbamsbdamsdmabsnmdabmsd
+                            namsndbamnsbnmadbavmnsdansmdbasmndbas \n askjdansmdblasjdjkasmn dnebrjhebnsdmmbfnemjbfmnesbrqwmnads
+                            dnasjndamsmdnasmdn</string>
+    <string name="shortString">aha bkasdoiuernjsfkdfnuirfnsikdjsnejkfsoiefnkse,fe</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

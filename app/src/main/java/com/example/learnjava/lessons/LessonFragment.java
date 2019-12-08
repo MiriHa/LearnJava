@@ -32,8 +32,6 @@ public class LessonFragment extends Fragment {
         // Required empty public constructor
     }
 
-    //TODO check the progress of a user an read the right json data und set this data
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

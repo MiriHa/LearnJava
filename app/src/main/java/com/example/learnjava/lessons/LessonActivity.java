@@ -112,7 +112,6 @@ public class LessonActivity extends AppCompatActivity {
                 //Open a new Fragment and set its content
                 ExerciseFragment exerciseFragment = new ExerciseFragment();
                 exerciseFragment.setFragmentContentExercise(currentTask);
-                // exerciseFragment.setExerciseLayout();
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.FragmentHolder, exerciseFragment)
@@ -163,7 +162,6 @@ public class LessonActivity extends AppCompatActivity {
         //use a singelton?
         //userProgress.updateUserProgressFinishedSections(sectionNumber);
         Log.i("M last task", " of section is reached");
-        //TODO give feedback that section is finished, unlock the next section
 
         Intent intent = new Intent(LessonActivity.this, MainActivity.class);
         startActivity(intent);
@@ -172,19 +170,8 @@ public class LessonActivity extends AppCompatActivity {
 
 
 
-    //TODO some method that reprots the progrss from the fragments -> need to add the current/finished lessons?
-    //Maybe just report current screen and rightfully solved exercises
-
     public void updateProgress(){
-        //add the lask task to finished taks list
-       // userProgress.addFinishedTask(currentTask);
-       // progressController.addFinishedTask(currentTask);
-//        int oldTasktype = currentTask.getType();
-//        if(oldTasktype == 1){
-//            progressController.addReadLesson(currentTask);
-//        }
         Log.i("M oldcurrentTask", " " + currentTask.getTaskName());
-        //TODO check if user was an this screen before?? when going back
         progressCurrentScreen += 1;
         progressController.updateCurrentScreen(progressCurrentScreen);
     }
@@ -192,7 +179,6 @@ public class LessonActivity extends AppCompatActivity {
     private void checkProgress(){
         Log.i("M CheckProgress", " currentProgreessScreen: " + progressCurrentScreen +" currentNmber: " +currentTask.getTaskNumber());
         if(progressCurrentScreen == currentTask.getTaskNumber()) {
-            //TODO only ad when task was right? check if task already there
             //progressController.addFinishedTask(currentTask);
             progressCurrentScreen = currentTask.getTaskNumber() + 1;
             progressController.updateCurrentScreen(progressCurrentScreen);
@@ -209,17 +195,6 @@ public class LessonActivity extends AppCompatActivity {
         currentTask = taskContent.get(progressCurrentScreen);
         currentTaskNumber = currentTask.getTaskNumber();
         Log.i("M UPDATE_CURRENTTASK", "in LessonActivity" + currentTask.getTaskName() + "currentTaskNumber: " + currentTask.getTaskNumber());
-    }
-
-//    public void loadContent(int sectionNumber){
-//        String sectionFile = "section"+sectionNumber;
-//       taskContent =  readJson.readTask(sectionFile, this);
-//       Log.i("loadContent", " in Lessonactivity"+sectionNumber);
-//
-//    }
-
-    public void exerciseSolved(){
-        currentTask.isSolved();
     }
 
     public String getSectionTitle(){
@@ -256,7 +231,6 @@ public class LessonActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         Log.i("M BackButtonPressed", " in navigation");
-        //TODO shouldallwback method?
 //        if (!shouldAllowBack) {
 //            //super.onBackPressed();
 //            //don't allow it when first lesson is reached -> us then back button or ask if you want to exit the lesson

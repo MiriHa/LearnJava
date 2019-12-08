@@ -10,10 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.learnjava.Controller;
 import com.example.learnjava.ExerciseCommunication;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
@@ -29,10 +31,14 @@ public class ExerciseViewChoiceFragment extends Fragment {
 
 
     private ModelTask currentTask;
-    private int userAnswer;
+    private Controller progressController;
+
+    private String[] answerChoices;
+    private int userAnswer = 0;
 
     private Button nextButton;
     private RadioGroup answerGroup;
+    private RadioButton answer1, answer2, answer3, answer4;
 
 
     public ExerciseViewChoiceFragment() {
@@ -49,13 +55,27 @@ public class ExerciseViewChoiceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_exercise_view_choice, container, false);
+        progressController = (Controller) getActivity().getApplicationContext();
+
 
         //get the currentTask
         receiveCurrentTask();
 
         TextView exerciseText = view.findViewById(R.id.exerciseTextChoice);
-        answerGroup = view.findViewById(R.id.answerGroup);
+        exerciseText.setText(currentTask.getTaskText());
 
+        answerChoices = currentTask.getSolutionStringArray();
+
+        answer1 = view.findViewById(R.id.answer1);
+        answer1.setText(answerChoices[0]);
+        answer2 = view.findViewById(R.id.answer2);
+        answer2.setText(answerChoices[1]);
+        answer3 = view.findViewById(R.id.answer3);
+        answer3.setText(answerChoices[2]);
+        answer4 = view.findViewById(R.id.answer4);
+        answer4.setText(answerChoices[3]);
+
+        answerGroup = view.findViewById(R.id.answerGroup);
         answerGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
@@ -107,17 +127,24 @@ public class ExerciseViewChoiceFragment extends Fragment {
 
 
     private void checkAnswers() {
-        Log.i("M CheckAnswers", " anser: " + " solution: " + currentTask.getSolutionInt());
-        if (currentTask.getSolutionInt() == userAnswer) {
-            mListener.sendAnswerFromExerciseView(true);
-            Toast.makeText(getContext(), "Answer was right", Toast.LENGTH_SHORT).show();
-            Log.i("MSENDANSWERFROMEXERCISE", " answer: true");
+        if (progressController.checkExercise(currentTask) && userAnswer == 0) {
+            Log.i("MExerciseVIEW", "checkExericse and skip");
+            mListener.justOpenNext();
+            //TODO listnefor textinput, when input change skip to check
         } else {
-            Log.i("M ANSWER", " was wrong");
-            mListener.sendAnswerFromExerciseView(false);
-            Log.i("MSENDANSWERFROMEXERCISE", " answer: false");
-            Toast.makeText(getContext(), "Answer was false", Toast.LENGTH_SHORT).show();
-            //TODO give feedback that false answer??
+            if (userAnswer == 0) {
+                Toast.makeText(getContext(), "Please choose an answer", Toast.LENGTH_SHORT).show();
+            } else {
+                Log.i("M CheckAnswers", " anser: " + " solution: " + currentTask.getSolutionInt());
+                if (currentTask.getSolutionInt() == userAnswer) {
+                    mListener.sendAnswerFromExerciseView(true);
+                    Log.i("MSENDANSWERFROMEXERCISE", " answer: true");
+                } else {
+                    Log.i("M ANSWER", " was wrong");
+                    mListener.sendAnswerFromExerciseView(false);
+                    Log.i("MSENDANSWERFROMEXERCISE", " answer: false");
+                }
+            }
         }
     }
 

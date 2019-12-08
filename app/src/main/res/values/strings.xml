@@ -28,12 +28,8 @@
 
 
     //For testing
-    <string name="longstring">hasdkajshdkasdansbdasjkdanmsdkasjhdaksjmdnmas,dbiuabsj,dbasmbdasdbajsnmd \nasnbdnamsndbamsbdamsdmabsnmdabmsd
-                            namsndbamnsbnmadbavmnsdansmdbasmndbas \n askjdansmdblasjdjkasmn dnebrjhebnsdmmbfnemjbfmnesbrqwmnads
-                            dnasjndamsmdnasmdn</string>
-    <string name="shortString">aha bkasdoiuernjsfkdfnuirfnsikdjsnejkfsoiefnkse,fe</string>
+    <string name="longstring">nothing here yet nothin ghere yet nothing nothing nothing</string>
+    <string name="shortString">nothing here yet</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

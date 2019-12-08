@@ -15,10 +15,8 @@ package com.example.learnjava.models;
 public class ModelExercise extends ModelTask{
 
     private final int exerciseViewType;
-    private boolean isSolved = false;
 
     //Solutions
-    //TODO maybe use a MOdel to store solutions?
     private final String[] solutionStringArray;
     private final int[] solutionIntArray;
     private final String solutionString;
@@ -59,19 +57,12 @@ public class ModelExercise extends ModelTask{
         this.userinputString = userinputString;
     }
 
-    public void isSolved(){
-        isSolved = true;
-    }
 
     public void setUserinputInt(int[] userinputInt) {
         this.userinputInt = userinputInt;
     }
 
     //GETTER
-
-    public boolean getIsSolved(){
-        return isSolved;
-    }
 
     public int getExerciseViewType(){
         return exerciseViewType;

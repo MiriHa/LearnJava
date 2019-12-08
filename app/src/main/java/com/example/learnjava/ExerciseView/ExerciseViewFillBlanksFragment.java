@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.learnjava.Controller;
 import com.example.learnjava.ExerciseCommunication;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
@@ -31,8 +32,10 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
     private ExerciseCommunication mListener;
 
     private ModelTask currentTask;
+    private Controller progressController;
 
     private String[] userSolutionArray;
+    private String[] solutionArray;
 
     private Button nextButton;
     private LinearLayout blankHolder;
@@ -52,13 +55,19 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_exercise_view_fill_blanks, container, false);
+        progressController = (Controller) getActivity().getApplicationContext();
 
         //get the currentTask
         receiveCurrentTask();
-        setLayout();
+
         userSolutionArray = new String[currentTask.getSolutionStringArray().length];
+        solutionArray = currentTask.getSolutionStringArray();
 
         TextView exerciseText = view.findViewById(R.id.exerciseTextAnswer);
+        TextView exerciseBlankText = view.findViewById(R.id.exerciseBlanksText);
+        exerciseBlankText.setText(currentTask.getTaskText());
+
+
         blankHolder = view.findViewById(R.id.exerciseBlanksAnswerHolder);
         nextButton = view.findViewById(R.id.nextButtonExerciseAnswer);
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +77,9 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
                 checkAnswers();
             }
         });
+
+        //set the Layout with the Blanks needed
+        setLayout();
 
 
         return view;
@@ -94,27 +106,37 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
 
     private void checkAnswers() {
         Log.i("CheckAnswers", "solution");
-        String[] solutionArray = currentTask.getSolutionStringArray();
 
-        //get answers from edittexts and add them to the userSolutionArray
-        for(int i = 0; i <= solutionArray.length; i++){
-            EditText myEditText = (EditText) blankHolder.findViewWithTag("fillBlanksAnswer" + i);
-            String solution = myEditText.getText().toString();
-            userSolutionArray[i] = solution;
-        }
+        boolean wasEmpty = false;
 
-        //check if the answers are right
-        if(Arrays.equals(solutionArray, userSolutionArray)){
-            mListener.sendAnswerFromExerciseView(true);
-            Log.i("SENDANSWERFROMEXERCISE", " answer: true");
-            Toast.makeText(getContext(), "Answer was right.", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Log.i("ANSWER", " was wrong");
-            mListener.sendAnswerFromExerciseView(false);
-            Log.i("SENDANSWERFROMEXERCISE", " answer: false");
-            Toast.makeText(getContext(), "Answer was false", Toast.LENGTH_SHORT).show();
-            //TODO give feedback that false answer??
+        if (progressController.checkExercise(currentTask)) {
+            Log.i("MExerciseVIEW", "checkExericse and skip");
+            mListener.justOpenNext();
+        } else {
+            //get answers from edittexts and add them to the userSolutionArray
+            for (int i = 0; i < solutionArray.length; i++) {
+                EditText myEditText = blankHolder.findViewWithTag("fillBlanksAnswer" + i);
+                String solution = myEditText.getText().toString();
+                if (solution.isEmpty()) {
+                    wasEmpty = true;
+                    break;
+                } else {
+                    userSolutionArray[i] = solution;
+                }
+            }
+            //check if the answers are right
+            if (wasEmpty) {
+                Toast.makeText(getContext(), "Pleas enter all answers", Toast.LENGTH_SHORT).show();
+            } else {
+                if (Arrays.equals(solutionArray, userSolutionArray)) {
+                    mListener.sendAnswerFromExerciseView(true);
+                    Log.i("SENDANSWERFROMEXERCISE", " answer: true");
+                } else {
+                    Log.i("ANSWER", " was wrong");
+                    mListener.sendAnswerFromExerciseView(false);
+                    Log.i("SENDANSWERFROMEXERCISE", " answer: false");
+                }
+            }
         }
     }
 
@@ -130,18 +152,28 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
 
     private void setLayout() {
         int blanksNeeded = currentTask.getSolutionStringArray().length;
-        LinearLayout.LayoutParams mRparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams mParamsWeightLeight = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, (float) 0.5);
+        LinearLayout.LayoutParams mParamsWeightHeavy = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, (float) 4.5);
 
-        for (int i = 0; i <= blanksNeeded; i++) {
+        for (int i = 0; i < blanksNeeded; i++) {
+            LinearLayout holder = new LinearLayout(getContext());
+            holder.setLayoutParams(mParams);
+            holder.setWeightSum(5);
+            holder.setOrientation(LinearLayout.HORIZONTAL);
+
             TextView myTextView = new TextView(getContext());
-            myTextView.setLayoutParams(mRparams);
-            myTextView.setText("1:");
-            EditText myEditText = new EditText(getContext());
-            myEditText.setLayoutParams(mRparams);
-            myEditText.setTag("fillBlanksAnswer" + i);
+            myTextView.setLayoutParams(mParamsWeightHeavy);
+            myTextView.setText((i + 1) + ":");
+            holder.addView(myTextView);
 
-            blankHolder.addView(myTextView);
-            blankHolder.addView(myEditText);
+            EditText myEditText = new EditText(getContext());
+            myEditText.setLayoutParams(mParamsWeightLeight);
+            myEditText.setTag("fillBlanksAnswer" + i);
+            myEditText.setHint("Write Answer " + (i + 1) + " here");
+            holder.addView(myEditText);
+
+            blankHolder.addView(holder);
         }
 
 

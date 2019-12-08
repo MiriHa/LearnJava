@@ -39,10 +39,6 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
     private ModelTask currentTask;
 
 
-    //TODO maye nee a atring array für zusätzliche aufgaben oder teilaufgaben
-
-   // private Button checkButton;
-
     public ExerciseFragment() {
         // Required empty public constructor
     }
@@ -64,6 +60,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         Log.i("CheckCOntroller", " progressController Sections " + progressController.getSections().toString());
         exerciseName = view.findViewById(R.id.exerciseName);
         exerciseName.setText(currentTask.getTaskName());
+
         viewGroup = view.findViewById(android.R.id.content);
         setViewContent();
 
@@ -164,7 +161,6 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
     //open the next task according to the getNext value from the currentTask
     private void openNextTask(){
         try {
-            //TODO set get activity isSolved when correct or check is solved so you can skip the exercise to the next
             if ((getActivity() != null)) {
                 //notify the exerciseViewFragment that nextButton is clicked
                 if( whatsNext == 2) {

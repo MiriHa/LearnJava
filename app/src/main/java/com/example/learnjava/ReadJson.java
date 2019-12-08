@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 
 //This reads the Json files of the lessons
-//TODO read the file only once in controller?
 
 public class ReadJson {
 
@@ -74,13 +73,14 @@ public class ReadJson {
                         }
                         //Type: Answer Choice -> int
                         else if(viewType_value == 2){
-//                            JSONArray solutionIntArray = taskObject.getJSONArray("exerciseSolutionIntArray");
-//                            int[] solutionIntArray_value = toIntArray(solutionIntArray);
+                            JSONArray answerChoicesStringArray = taskObject.getJSONArray("exerciseAnswerChoices");
+                            String[] answerChoicesArray_value = toStringArray(answerChoicesStringArray);
 
                             int solutionInt_value = taskObject.getInt("exerciseSolutionInt");
 
-                            //Add values in ArrayList
-                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,null, null, next_value, viewType_value, solutionInt_value,"");
+                            //Add values in ArrayList,
+                            //TODO USE SOLUTIONSTRINGARRAY AS ANSWERCHOICES, changethis
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value, answerChoicesArray_value, null, next_value, viewType_value, solutionInt_value,"");
                             taskList.add(newExercise);
                         }
                         //Type: Answer FillBlanks -> String[]

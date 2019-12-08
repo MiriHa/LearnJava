@@ -59,7 +59,9 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_exercise, container, false);
-        progressController = (Controller) getContext().getApplicationContext();
+        if(getActivity() != null)
+            progressController = (Controller) getActivity().getApplicationContext();
+        Log.i("CheckCOntroller", " progressController Sections " + progressController.getSections().toString());
         exerciseName = view.findViewById(R.id.exerciseName);
         exerciseName.setText(currentTask.getTaskName());
         viewGroup = view.findViewById(android.R.id.content);
@@ -80,6 +82,8 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         super.onDetach();
 
     }
+
+
 
     //Set the right ExerciseView
     private void setViewContent(){
@@ -160,9 +164,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
     //open the next task according to the getNext value from the currentTask
     private void openNextTask(){
         try {
-            //TODO check the answers an report the progress when right, when wrong load dialog feedback
-            // set get activity isSolved when correct or check is solved so you can skip the exercise to the next
-
+            //TODO set get activity isSolved when correct or check is solved so you can skip the exercise to the next
             if ((getActivity() != null)) {
                 //notify the exerciseViewFragment that nextButton is clicked
                 if( whatsNext == 2) {
@@ -196,7 +198,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
     @Override
     public void sendAnswerFromExerciseView(boolean answerChecked) {
         if (answerChecked){
-            progressController.addFinishedExercise(currentTask);
+            progressController.addFinishedTask(currentTask);
             showFeedbackDialogRight();
             Log.i("M ANSWER", " was right");
         }
@@ -204,6 +206,11 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
             showFeedbackDialogWrong();
             Log.i("M ANSWER", " was wrong");
         }
+    }
+
+    @Override
+    public void justOpenNext() {
+        openNextTask();
     }
 
     private void showFeedbackDialogRight(){

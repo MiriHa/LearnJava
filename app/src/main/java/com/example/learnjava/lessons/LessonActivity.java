@@ -1,9 +1,6 @@
 package com.example.learnjava.lessons;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,12 +8,10 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.learnjava.Controller;
-import com.example.learnjava.ExerciseCommunication;
 import com.example.learnjava.MainActivity;
 import com.example.learnjava.R;
 import com.example.learnjava.ReadJson;
 import com.example.learnjava.models.ModelTask;
-import com.example.learnjava.models.ModelUserProgress;
 
 import java.util.ArrayList;
 
@@ -34,7 +29,6 @@ public class LessonActivity extends AppCompatActivity {
     ModelTask currentTask;
     int currentTaskNumber;
 
-    ReadJson readJson = new ReadJson();
 
     //TODO use the one from the progressMOdel instead of here?
     int progressCurrentScreen = 0;
@@ -48,6 +42,7 @@ public class LessonActivity extends AppCompatActivity {
 
         //get the progresscontroller
         progressController = (Controller) getApplicationContext();
+
         //use a singelton
         //userProgress = ModelUserProgress.getInstance();
 
@@ -59,13 +54,12 @@ public class LessonActivity extends AppCompatActivity {
             Log.i("M Section opened", " "+ sectionNumber);
             progressController.updateCurrentSection(sectionNumber);
 
+        progressController.loadContent(sectionNumber, this);
+        taskContent = progressController.getTaskContent();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getSectionTitle());
 
-        //get the Lesson content
-        //TODO read this only once in the controller
-        loadContent();
 
         //get the current task content
        // setCurrentTask();
@@ -79,8 +73,6 @@ public class LessonActivity extends AppCompatActivity {
     public void openNewTask(int taskType){
 
         switch (taskType) {
-            //TODO listener attach in exerciseView Fragment--- how to do that? other method than six interfaces?
-
             //open the first Lesson
             case 0:
                 //get the currentTask content
@@ -166,11 +158,12 @@ public class LessonActivity extends AppCompatActivity {
     public void updateProgressLastTask(){
 
         //add the finished section to the PorgressCOntrolller
-        progressController.updateFinishedSection(sectionNumber);
+        progressController.updateUnlockedSections((Integer) sectionNumber + 1);
+        Log.i("MUPDATEUNLOCKSECTIONS", " section added " + progressController.getSections().toString());
         //use a singelton?
         //userProgress.updateUserProgressFinishedSections(sectionNumber);
         Log.i("M last task", " of section is reached");
-        //TODO give feedback that section is finished?
+        //TODO give feedback that section is finished, unlock the next section
 
         Intent intent = new Intent(LessonActivity.this, MainActivity.class);
         startActivity(intent);
@@ -184,8 +177,8 @@ public class LessonActivity extends AppCompatActivity {
 
     public void updateProgress(){
         //add the lask task to finished taks list
-       // userProgress.addFinisehdTask(currentTask);
-        progressController.addfinishedTask(currentTask);
+       // userProgress.addFinishedTask(currentTask);
+       // progressController.addFinishedTask(currentTask);
 //        int oldTasktype = currentTask.getType();
 //        if(oldTasktype == 1){
 //            progressController.addReadLesson(currentTask);
@@ -200,7 +193,7 @@ public class LessonActivity extends AppCompatActivity {
         Log.i("M CheckProgress", " currentProgreessScreen: " + progressCurrentScreen +" currentNmber: " +currentTask.getTaskNumber());
         if(progressCurrentScreen == currentTask.getTaskNumber()) {
             //TODO only ad when task was right? check if task already there
-            progressController.addfinishedTask(currentTask);
+            //progressController.addFinishedTask(currentTask);
             progressCurrentScreen = currentTask.getTaskNumber() + 1;
             progressController.updateCurrentScreen(progressCurrentScreen);
             Log.i("M CheckProgress if", " currentProgreessScreen: " + progressCurrentScreen +" currentNmber: " +currentTask.getTaskNumber());
@@ -218,12 +211,12 @@ public class LessonActivity extends AppCompatActivity {
         Log.i("M UPDATE_CURRENTTASK", "in LessonActivity" + currentTask.getTaskName() + "currentTaskNumber: " + currentTask.getTaskNumber());
     }
 
-    public void loadContent(){
-        String sectionFile = "section"+sectionNumber;
-       taskContent =  readJson.readTask(sectionFile, this);
-       Log.i("loadContent", " in Lessonactivity"+sectionNumber);
-
-    }
+//    public void loadContent(int sectionNumber){
+//        String sectionFile = "section"+sectionNumber;
+//       taskContent =  readJson.readTask(sectionFile, this);
+//       Log.i("loadContent", " in Lessonactivity"+sectionNumber);
+//
+//    }
 
     public void exerciseSolved(){
         currentTask.isSolved();
@@ -264,12 +257,12 @@ public class LessonActivity extends AppCompatActivity {
 
         Log.i("M BackButtonPressed", " in navigation");
         //TODO shouldallwback method?
-        if (!shouldAllowBack) {
-            super.onBackPressed();
-            //don't allow it when first lesson is reached -> us then back button or ask if you want to exit the lesson
-        } else {
-            super.onBackPressed();
-        }
+//        if (!shouldAllowBack) {
+//            //super.onBackPressed();
+//            //don't allow it when first lesson is reached -> us then back button or ask if you want to exit the lesson
+//        } else {
+//            super.onBackPressed();
+//        }
     }
 
     @Override
@@ -285,6 +278,5 @@ public class LessonActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
 }

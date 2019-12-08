@@ -10,6 +10,8 @@ public interface ExerciseCommunication {
 
     void sendAnswerFromExerciseView(boolean answerChecked);
 
+    void justOpenNext();
+
 
 
 }

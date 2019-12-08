@@ -32,6 +32,7 @@ public class LessonActivity extends AppCompatActivity {
     ArrayList<ModelTask> taskContent;
 
     ModelTask currentTask;
+    int currentTaskNumber;
 
     ReadJson readJson = new ReadJson();
 
@@ -55,7 +56,7 @@ public class LessonActivity extends AppCompatActivity {
         Bundle b = intent.getExtras();
         if(b!=null)
             sectionNumber = (int) b.get("LESSON_NUMBER");
-            Log.i("Section opened", " "+ sectionNumber);
+            Log.i("M Section opened", " "+ sectionNumber);
             progressController.updateCurrentSection(sectionNumber);
 
 
@@ -78,45 +79,47 @@ public class LessonActivity extends AppCompatActivity {
     public void openNewTask(int taskType){
 
         switch (taskType) {
-
-
             //TODO listener attach in exerciseView Fragment--- how to do that? other method than six interfaces?
+
+            //open the first Lesson
             case 0:
                 //get the currentTask content
                 setCurrentTask();
+                Log.i("M CheckProgress", " currentProgreessScreen: " + progressCurrentScreen +" currentNmber: " +currentTask.getTaskNumber());
                 //load a fragment
                 LessonFragment firstlessonFragment = new LessonFragment();
-                firstlessonFragment.setFragmentContent(currentTask);
+                firstlessonFragment.setFragmentContentLesson(currentTask);
                 getSupportFragmentManager()
                         .beginTransaction()
                         .add(R.id.FragmentHolder, firstlessonFragment)
                         .addToBackStack(null)
                         .commit();
-                Log.d("FirstLesson", " loaded progress: " + progressCurrentScreen);
+                Log.d(" M FirstLesson", " loaded progress: " + progressCurrentScreen);
                 break;
 
+            //open the next Lesson
             case 1:
-                //update the currentScreen and the current task
-                updateProgress();
+                checkProgress();
                 setCurrentTask();
                 //open new lessonFragment and set its content
                 LessonFragment lessonFragment = new LessonFragment();
-                lessonFragment.setFragmentContent(currentTask);
+                lessonFragment.setFragmentContentLesson(currentTask);
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.FragmentHolder, lessonFragment)
                         .addToBackStack(null)
                         .commit();
-                Log.d("Nextbuttenclicked", " lesson progress: " + progressCurrentScreen);
+                Log.d(" M loadLesson", " progress: " + progressCurrentScreen);
                 break;
 
+            //open the next Exercise
             case 2:
                 //update the CurrentScreen and currentTask
-                updateProgress();
+                checkProgress();
                 setCurrentTask();
                 //Open a new Fragment and set its content
                 ExerciseFragment exerciseFragment = new ExerciseFragment();
-                exerciseFragment.setFragmentContent(currentTask);
+                exerciseFragment.setFragmentContentExercise(currentTask);
                 // exerciseFragment.setExerciseLayout();
                 getSupportFragmentManager()
                         .beginTransaction()
@@ -125,8 +128,38 @@ public class LessonActivity extends AppCompatActivity {
                         .addToBackStack(null)
                         .commit();
 
-                Log.d("Nextbuttenclicked", " exercise progress: " + progressCurrentScreen);
+                Log.i(" M LoadExercise", " progress: " + progressCurrentScreen);
                 break;
+
+            //open the last Lesson
+            case 3:
+                ModelTask lastLesson = progressController.getLastLesson();
+                checkProgress();
+                currentTask = lastLesson;
+                //load a fragment
+                LessonFragment lastLessonFragment = new LessonFragment();
+                lastLessonFragment.setFragmentContentLesson(currentTask);
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.FragmentHolder, lastLessonFragment)
+                        .addToBackStack(null)
+                        .commit();
+                Log.i(" M LastLesson", " loaded progress: " + progressCurrentScreen);
+                break;
+
+            //open the same Fragment again
+            //TODO is this good pratice? reset fragment method in each viewFragment?
+            case 4:
+                ExerciseFragment sameFragment = new ExerciseFragment();
+                sameFragment.setFragmentContentExercise(currentTask);
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.FragmentHolder, sameFragment)
+                        .addToBackStack(null)
+                        .commit();
+                Log.d(" M SameExercise", " loaded progress: " + progressCurrentScreen);
+                break;
+
         }
     }
 
@@ -136,12 +169,12 @@ public class LessonActivity extends AppCompatActivity {
         progressController.updateFinishedSection(sectionNumber);
         //use a singelton?
         //userProgress.updateUserProgressFinishedSections(sectionNumber);
-        Log.i("last task", " of section is reached");
+        Log.i("M last task", " of section is reached");
         //TODO give feedback that section is finished?
 
         Intent intent = new Intent(LessonActivity.this, MainActivity.class);
         startActivity(intent);
-        Log.d("ChangeActivity", " to activity: MainActivity");
+        Log.d("M ChangeActivity", " to activity: MainActivity");
     }
 
 
@@ -157,14 +190,32 @@ public class LessonActivity extends AppCompatActivity {
 //        if(oldTasktype == 1){
 //            progressController.addReadLesson(currentTask);
 //        }
-        Log.i("oldcurrentTask", " " + currentTask.getTaskName());
+        Log.i("M oldcurrentTask", " " + currentTask.getTaskName());
+        //TODO check if user was an this screen before?? when going back
         progressCurrentScreen += 1;
         progressController.updateCurrentScreen(progressCurrentScreen);
     }
 
+    private void checkProgress(){
+        Log.i("M CheckProgress", " currentProgreessScreen: " + progressCurrentScreen +" currentNmber: " +currentTask.getTaskNumber());
+        if(progressCurrentScreen == currentTask.getTaskNumber()) {
+            //TODO only ad when task was right? check if task already there
+            progressController.addfinishedTask(currentTask);
+            progressCurrentScreen = currentTask.getTaskNumber() + 1;
+            progressController.updateCurrentScreen(progressCurrentScreen);
+            Log.i("M CheckProgress if", " currentProgreessScreen: " + progressCurrentScreen +" currentNmber: " +currentTask.getTaskNumber());
+        }
+        else{
+            progressCurrentScreen = currentTask.getTaskNumber() + 1;
+            progressController.updateCurrentScreen(progressCurrentScreen);
+            Log.i("M CheckProgress else", " currentProgreessScreen: " + progressCurrentScreen +" currentNmber: " +currentTask.getTaskNumber());
+        }
+    }
+
     public void setCurrentTask(){
         currentTask = taskContent.get(progressCurrentScreen);
-        Log.i("UPDATE_CURRENTTASK", "in LessonActivity" + currentTask.getTaskName());
+        currentTaskNumber = currentTask.getTaskNumber();
+        Log.i("M UPDATE_CURRENTTASK", "in LessonActivity" + currentTask.getTaskName() + "currentTaskNumber: " + currentTask.getTaskNumber());
     }
 
     public void loadContent(){
@@ -211,7 +262,7 @@ public class LessonActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        Log.i("BackButtonPressed", " in navigation");
+        Log.i("M BackButtonPressed", " in navigation");
         //TODO shouldallwback method?
         if (!shouldAllowBack) {
             super.onBackPressed();
@@ -228,7 +279,7 @@ public class LessonActivity extends AppCompatActivity {
                 //TODO display an dialog an notify the progressmodel to discard all progress?
                 Intent intent = new Intent(LessonActivity.this, MainActivity.class);
                 startActivity(intent);
-                Log.d("ChangeActivity", " to Mainactivity");
+                Log.d("M ChangeActivity", " to Mainactivity");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

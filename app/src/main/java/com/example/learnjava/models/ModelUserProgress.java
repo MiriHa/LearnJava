@@ -26,7 +26,7 @@ public class ModelUserProgress {
     // not needed only to track the progress and open lesson an entsprechender stelle
     //nicht möglich da modeltask list und currenttask modelTask ist
     private  ArrayList<ModelTask> solvedExercises = new ArrayList<>();
-    private ArrayList<ModelLesson> readLessons = new ArrayList<>();
+    private ArrayList<ModelTask> readLessons = new ArrayList<>();
 
     //IS this better? acess over task number
     //TODO tasknumber muss platz in arraylist übereinstimmen?
@@ -35,6 +35,7 @@ public class ModelUserProgress {
     //TODO open the laste Screen so that the user can skip sscreens
     private int latetestTaskNumber;
 
+    private ModelTask lastLesson;
 
 
     public ModelUserProgress(){
@@ -59,13 +60,17 @@ public class ModelUserProgress {
         this.userProgressCurrentScreen = userProgressCurrentScreen;
     }
 
+    public void setLastLesson(ModelTask lastLesson){
+        this.lastLesson = lastLesson;
+    }
+
     //check if exercise was already solved
     public boolean checkExercises(ModelTask aExercise) {
         return solvedExercises.contains(aExercise);
     }
 
     //check if lesson was already read
-    public boolean checkLessons(ModelLesson aLesson){
+    public boolean checkLessons(ModelTask aLesson){
         return readLessons.contains(aLesson);
     }
 
@@ -77,7 +82,7 @@ public class ModelUserProgress {
 
     //TODO add the lessons!!!
 
-    public void addReadLesson(ModelLesson lesson){
+    public void addReadLesson(ModelTask lesson){
         if(!checkLessons(lesson)){
             readLessons.add(lesson);
         }
@@ -113,6 +118,10 @@ public class ModelUserProgress {
 
     public int getExerciseNumber(){
         return solvedExercises.size();
+    }
+
+    public ModelTask getLastLesson(){
+        return lastLesson;
     }
 
 }

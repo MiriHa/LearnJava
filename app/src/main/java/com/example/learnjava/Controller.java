@@ -1,38 +1,45 @@
 package com.example.learnjava;
 
 import android.app.Application;
+import android.content.Context;
 import android.util.Log;
 
-import com.example.learnjava.models.ModelExercise;
-import com.example.learnjava.models.ModelLesson;
 import com.example.learnjava.models.ModelTask;
 import com.example.learnjava.models.ModelUserProgress;
 
-public class Controller extends Application {
+import java.util.ArrayList;
+
+public class Controller extends android.app.Application {
 
     ModelUserProgress modelUserProgress = new ModelUserProgress();
 
+    ArrayList<ModelTask> taskContent;
+    ReadJson readJson = new ReadJson();
 
-    public void addFinishedExercise(ModelTask exercise){
-        modelUserProgress.addFinishedExercise(exercise);
-        Log.i("M updateUserProgress", " addFinishedExercise");
-    }
+    public Controller(){
 
-    public void addReadLesson(ModelTask lesson){
-        modelUserProgress.addReadLesson(lesson);
-        Log.i("M updateUserProgress", " addReadLesson");
-    }
-
-    public void addfinishedTask(ModelTask task){
-        modelUserProgress.addFinisehdTask(task);
-        Log.i("M updateUserProgress", " addfnishedTask");
     }
 
 
-    public void updateFinishedSection(Integer number){
-       modelUserProgress.updateUserProgressFinishedSections(number);
-        Log.i("M updateUserProgress", " finishedSectionNumber "+number);
+    public void addFinishedTask(ModelTask task){
+        modelUserProgress.addFinishedTask(task);
+        Log.i("M updateUserProgress", " addfnishedTask " + task.getTaskNumber());
     }
+
+    public boolean checkExercise(ModelTask task){
+        Log.i("M updateUserProgress", "checkExercise" + modelUserProgress.checkTasks(task));
+       return modelUserProgress.checkTasks(task);
+
+    }
+
+    public boolean checkUnlockedSections(Integer sectionNumber){
+       return modelUserProgress.checkProgressUnlockedSection(sectionNumber);
+    }
+
+    public void updateUnlockedSections(Integer sectionNumber){
+        modelUserProgress.updateUserProgressUnlockedSections(sectionNumber);
+    }
+
 
     public void updateCurrentSection(int number){
         modelUserProgress.updateUserProgressCurrentSection(number);
@@ -50,6 +57,29 @@ public class Controller extends Application {
 
     public ModelTask getLastLesson(){
         return modelUserProgress.getLastLesson();
+    }
+
+    public void loadContent(int sectionNumber, Context context){
+        String sectionFile = "section" + sectionNumber;
+        taskContent =  readJson.readTask(sectionFile, context);
+        Log.i("loadContent", " section" + sectionNumber);
+        Log.i("M updateUserProgress", "loadContent");
+//        ArrayList<ModelTask> taskContent = new ArrayList<>();
+//        //TODO load all at once?
+//        for(int i=0; i<= sectionCount; i++ ){
+//           taskContent =  readJson.readTask("section"+i, this);
+//            Log.i("M updateUserProgress", "loadContent section: " +i);
+//        }
+//        return taskContent;
+    }
+
+    public ArrayList<ModelTask> getTaskContent(){
+        Log.i("M updateUserProgress", "getTaskContent");
+        return taskContent;
+    }
+
+    public ArrayList<Integer> getSections(){
+        return modelUserProgress.getUserProgressUnlockedSections();
     }
 
 

@@ -13,36 +13,58 @@ import com.example.learnjava.lessons.LessonActivity;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener{
 
+    Controller myProgressController;
+
+    LinearLayout lesson1, lesson2, lesson3, lesson4, lesson5, lesson6, lesson7;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.i("M Main activity loaded", " on create");
 
-        final Controller myProgressController = (Controller) getApplicationContext();
+        myProgressController = (Controller) getApplicationContext();
 
         FrameLayout lessonLayout = findViewById(R.id.FragmentHolder);
         //findLinearLayouts
-        LinearLayout lesson1 = findViewById(R.id.Lesson1);
-        LinearLayout lesson2 = findViewById(R.id.lesson2);
-        LinearLayout lesson3 = findViewById(R.id.lesson3);
-        LinearLayout lesson4 = findViewById(R.id.lesson4);
-        LinearLayout lesson5 = findViewById(R.id.lesson5);
-        LinearLayout lesson6 = findViewById(R.id.lesson6);
-        LinearLayout lesson7 = findViewById(R.id.lesson7);
+        lesson1 = findViewById(R.id.Lesson1);
+        lesson2 = findViewById(R.id.lesson2);
+        lesson3 = findViewById(R.id.lesson3);
+        lesson4 = findViewById(R.id.lesson4);
+        lesson5 = findViewById(R.id.lesson5);
+        lesson6 = findViewById(R.id.lesson6);
+        lesson7 = findViewById(R.id.lesson7);
+
+        Log.i("CheckCOntrollerMain", " progressController Sections " + myProgressController.getSections().toString());
 
         //SetOnClickListener for Layouts defined in onClick
-        lesson1.setOnClickListener(this);
-        lesson2.setOnClickListener(this);
-        lesson3.setOnClickListener(this);
-        lesson4.setOnClickListener(this);
-        lesson5.setOnClickListener(this);
-        lesson6.setOnClickListener(this);
-        lesson7.setOnClickListener(this);
+        checkIfSolved(lesson1, 1);
+        checkIfSolved(lesson2, 2);
+        checkIfSolved(lesson3, 3);
+        checkIfSolved(lesson4, 4);
+        checkIfSolved(lesson5, 5);
+        checkIfSolved(lesson6, 6);
+        checkIfSolved(lesson7, 7);
+
 
 
     }
 
+
+    public void checkIfSolved(LinearLayout lesson, Integer number){
+
+        if(number == 1){
+            myProgressController.updateUnlockedSections(1);
+            lesson.setOnClickListener(this);
+        }
+        else if(myProgressController.checkUnlockedSections(number)){
+            lesson.setOnClickListener(this);
+        }
+        else{
+            lesson.setBackgroundColor(getResources().getColor(R.color.grey));
+        }
+
+    }
 
 
     @Override
@@ -104,6 +126,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         Intent startMain = new Intent(Intent.ACTION_MAIN);
         startMain.addCategory(Intent.CATEGORY_HOME);
         startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(startMain);
 
         //finsish()
     }

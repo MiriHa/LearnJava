@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.learnjava.Controller;
 import com.example.learnjava.ExerciseCommunication;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
@@ -30,7 +31,8 @@ public class ExerciseViewAnswerFragment extends Fragment {
     private ExerciseCommunication mListener;
 
 
-    ModelTask currentTask;
+    private ModelTask currentTask;
+    private Controller progressController;
 
     private LinearLayout exerciseViewHolder;
     private EditText editText;
@@ -51,6 +53,7 @@ public class ExerciseViewAnswerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_exercise_view_answer, container, false);
+        progressController = (Controller) getActivity().getApplicationContext();
 
         //get the currentTask
         receiveCurrentTask();
@@ -59,6 +62,11 @@ public class ExerciseViewAnswerFragment extends Fragment {
         TextView exerciseText = view.findViewById(R.id.exerciseTextAnswer);
         editText = view.findViewById(R.id.editTextAnswer);
         nextButton = view.findViewById(R.id.nextButtonExerciseAnswer);
+
+        if(progressController.checkExercise(currentTask)) {
+            Log.i("MExerciseVIEW", "checkExericse and skip");
+            nextButton.setText("Skip");
+        }
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,17 +100,24 @@ public class ExerciseViewAnswerFragment extends Fragment {
 
     private void checkAnswers() {
         String userInput = editText.getText().toString();
-        Log.i("M CheckAnswers", " anser: " + userInput + " solution: " + currentTask.getSolutionString());
-        if (currentTask.getSolutionString().equals(userInput)) {
-            mListener.sendAnswerFromExerciseView(true);
-            Log.i("MSENDANSWERFROMEXERCISE", " answer: true");
-            Toast.makeText(getContext(), "Answer was right.", Toast.LENGTH_SHORT).show();
+        if (progressController.checkExercise(currentTask) && userInput.isEmpty()) {
+            Log.i("MExerciseVIEW", "checkExericse and skip");
+            mListener.justOpenNext();
+            //TODO listnefor textinput, when input change skip to check
         } else {
-            Log.i("M ANSWER", " was wrong");
-            mListener.sendAnswerFromExerciseView(false);
-            Log.i("MSENDANSWERFROMEXERCISE", " answer: false");
-            Toast.makeText(getContext(), "Answer was false", Toast.LENGTH_SHORT).show();
-            //TODO give feedback that false answer??
+            if (userInput.isEmpty()) {
+                Toast.makeText(getContext(), "Pleas enter an answer", Toast.LENGTH_SHORT).show();
+            } else {
+                Log.i("M CheckAnswers", " anser: " + userInput + " solution: " + currentTask.getSolutionString());
+                if (currentTask.getSolutionString().equals(userInput)) {
+                    mListener.sendAnswerFromExerciseView(true);
+                    Log.i("MSENDANSWERFROMEXERCISE", " answer: true");
+                } else {
+                    Log.i("M ANSWER", " was wrong");
+                    mListener.sendAnswerFromExerciseView(false);
+                    Log.i("MSENDANSWERFROMEXERCISE", " answer: false");
+                }
+            }
         }
     }
 

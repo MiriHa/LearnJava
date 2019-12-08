@@ -2,7 +2,7 @@
   "tasks": [
     {
       "taskName" : "Tutorial",
-      "taskNumber" : 1,
+      "taskNumber" : 0,
       "taskText" : "How to Use this app. Hello! This learning App will present you different Lessons to help you learn java. Here will be presented a lesson with theory that you need to read and understand and follwing this there will be an exercise to check our nearly learned knowledge",
       "taskWhatsNext" : 1,
       "taskType" : 1,
@@ -10,21 +10,29 @@
     },
     {
       "taskName": "Introduction",
-      "taskNumber": 2,
+      "taskNumber": 1,
       "taskText" : " THis is an indrocution TExt blabla",
       "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
     },
     {
-      "taskName": "introdduction2",
-      "taskNumber": 3,
+      "taskName": "introduction2",
+      "taskNumber": 2,
       "taskText": "Fill in the Blanks to complete this hello World program,",
+      "taskWhatsNext": 2,
+      "taskType" : 2,
+      "exerciseViewType" : 1,
+      "exerciseSolutionString" : "answer"
+    },
+    {
+      "taskName": "introduction3",
+      "taskNumber": 3,
+      "taskText": "Do a last thing",
       "taskWhatsNext": 1,
       "taskType" : 2,
       "exerciseViewType" : 1,
-      "exerciseSolutionString" : ["static", "main", "args"],
-      "exerciseSolutionInt" : []
+      "exerciseSolutionString" : "abc"
     },
     {
       "taskName": "Main Method",
@@ -41,8 +49,7 @@
       "taskWhatsNext": 1,
       "taskType" : 2,
       "exerciseViewType" : 2,
-      "exerciseSolutionString" : [],
-      "exerciseSolutionInt" : [1,2,3]
+      "exerciseSolutionInt" : 2
     },
     {
       "taskName": "Main Method3",
@@ -56,12 +63,21 @@
       "taskName": "Main Method4",
       "taskNumber": 7,
       "taskText": "Do a thing yes",
+      "taskWhatsNext": 2,
+      "taskType" : 2,
+      "exerciseViewType" : 1,
+      "exerciseSolutionString" : "2"
+    },
+    {
+      "taskName": "Main Method5",
+      "taskNumber": 8,
+      "taskText": "Do a last thing yes",
       "taskWhatsNext": 3,
       "taskType" : 2,
-      "exerciseViewType" : 3,
-      "exerciseSolutionString" : [],
-      "exerciseSolutionInt" : [1,2,3]
+      "exerciseViewType" : 1,
+      "exerciseSolutionString" : "bb"
     }
+
   ]
 
 }

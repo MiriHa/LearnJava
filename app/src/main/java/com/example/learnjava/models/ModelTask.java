@@ -57,5 +57,7 @@ public abstract class ModelTask {
 
     public abstract int getSolutionInt();
 
+    public abstract String[] getContentStringArray();
+
 
 }

@@ -27,19 +27,9 @@ public class ModelExercise extends ModelTask{
     private String[] userinputString;
     private int[] userinputInt;
 
-//    public ModelExercise(String exerciseText, int exerciseNumber, String[] solution){
-//        this.exerciseText = exerciseText;
-//        this.exerciseNumber = exerciseNumber;
-//        this.solutionStringArray = solution;
-//    }
-//
-//    public ModelExercise(String exerciseText, int exerciseNumber, int[] solution){
-//        this.exerciseText = exerciseText;
-//        this.exerciseNumber = exerciseNumber;
-//        this.solutionIntArray = solution;
-//    }
+    private String[] contentString;
 
-    public ModelExercise(String exerciseName, String exerciseText, int exercisenumber, String[] solutionStringArray, int[] solutionIntArray, int whatsNext, int viewType, int solutionInt, String solutionString){
+    public ModelExercise(String exerciseName, String exerciseText, int exercisenumber, String[] solutionStringArray, int[] solutionIntArray, int whatsNext, int viewType, int solutionInt, String solutionString,  String[] contentString){
 
         super(exerciseName, exerciseText, whatsNext, exercisenumber, 2);
         this.solutionStringArray = solutionStringArray;
@@ -47,6 +37,7 @@ public class ModelExercise extends ModelTask{
         this.exerciseViewType = viewType;
         this.solutionInt = solutionInt;
         this.solutionString = solutionString;
+        this.contentString = contentString;
 
     }
 
@@ -96,6 +87,10 @@ public class ModelExercise extends ModelTask{
 
     public String[] getKeywords(){
         return null;
+    }
+
+    public String[] getContentStringArray(){
+        return contentString;
     }
 
 

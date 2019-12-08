@@ -41,6 +41,11 @@ public class ModelLesson extends ModelTask {
         return 0;
     }
 
+    @Override
+    public String[] getContentStringArray() {
+        return new String[0];
+    }
+
     public boolean getIsSolved(){
         return false;
     }

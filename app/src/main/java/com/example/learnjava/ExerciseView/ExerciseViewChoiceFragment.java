@@ -64,7 +64,7 @@ public class ExerciseViewChoiceFragment extends Fragment {
         TextView exerciseText = view.findViewById(R.id.exerciseTextChoice);
         exerciseText.setText(currentTask.getTaskText());
 
-        answerChoices = currentTask.getSolutionStringArray();
+        answerChoices = currentTask.getContentStringArray();
 
         answer1 = view.findViewById(R.id.answer1);
         answer1.setText(answerChoices[0]);

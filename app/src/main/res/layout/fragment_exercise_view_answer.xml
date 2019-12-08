@@ -21,7 +21,7 @@
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/nextButtonExerciseAnswer"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/nextButtonExerciseFrag"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
@@ -49,9 +49,9 @@
                     android:id="@+id/editTextAnswer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="1"
                     android:layout_marginLeft="@dimen/PaddingSide"
                     android:layout_marginRight="@dimen/PaddingSide"
+                    android:maxLines="1"
                     android:textSize="@dimen/TextSize25" />
 
             </LinearLayout>

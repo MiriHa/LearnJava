@@ -45,11 +45,7 @@ public abstract class ModelTask {
         return type;
     }
 
-    public abstract boolean getIsSolved();
-
     public abstract int getExerciseViewType();
-
-    public abstract void isSolved();
 
     public abstract String[]  getKeywords();
 

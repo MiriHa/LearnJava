@@ -49,9 +49,9 @@
                     android:id="@+id/editTextAnswer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLines="1"
                     android:layout_marginLeft="@dimen/PaddingSide"
                     android:layout_marginRight="@dimen/PaddingSide"
-                    android:lines="2"
                     android:textSize="@dimen/TextSize25" />
 
             </LinearLayout>

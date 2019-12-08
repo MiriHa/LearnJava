@@ -30,15 +30,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/PaddingSide"
-                android:text="@string/shortString"
-                android:textSize="@dimen/TextSize30" />
+                android:text="Fill in the Blanks:"
+                android:textSize="@dimen/TextSize20" />
 
             <TextView
                 android:id="@+id/exerciseBlanksText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/PaddingSide"
-                android:textSize="@dimen/TextSize25" />
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:id="@+id/exerciseBlanksAnswerHolder"

@@ -60,6 +60,7 @@ public class ExerciseViewAnswerFragment extends Fragment {
 
         exerciseViewHolder = view.findViewById(R.id.contentHolderAnswer);
         TextView exerciseText = view.findViewById(R.id.exerciseTextAnswer);
+        exerciseText.setText(currentTask.getTaskText());
         editText = view.findViewById(R.id.editTextAnswer);
         nextButton = view.findViewById(R.id.nextButtonExerciseAnswer);
 
@@ -109,7 +110,7 @@ public class ExerciseViewAnswerFragment extends Fragment {
                 Toast.makeText(getContext(), "Pleas enter an answer", Toast.LENGTH_SHORT).show();
             } else {
                 Log.i("M CheckAnswers", " anser: " + userInput + " solution: " + currentTask.getSolutionString());
-                if (currentTask.getSolutionString().equals(userInput)) {
+                if (currentTask.getSolutionString().equalsIgnoreCase(userInput)) {
                     mListener.sendAnswerFromExerciseView(true);
                     Log.i("MSENDANSWERFROMEXERCISE", " answer: true");
                 } else {

@@ -2,6 +2,8 @@ package com.example.learnjava;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.example.learnjava.models.ModelTask;
@@ -16,10 +18,11 @@ public class Controller extends android.app.Application {
     ArrayList<ModelTask> taskContent;
     ReadJson readJson = new ReadJson();
 
-    public Controller(){
 
+    //Make sure to only use this once
+    public void setModelUserProgress(ModelUserProgress progress){
+        this.modelUserProgress = progress;
     }
-
 
     public void addFinishedTask(ModelTask task){
         modelUserProgress.addFinishedTask(task);
@@ -76,6 +79,10 @@ public class Controller extends android.app.Application {
     public ArrayList<ModelTask> getTaskContent(){
         Log.i("M updateUserProgress", "getTaskContent");
         return taskContent;
+    }
+
+    public ModelUserProgress getModelUserProgress(){
+        return modelUserProgress;
     }
 
     public ArrayList<Integer> getSections(){

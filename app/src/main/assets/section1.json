@@ -11,11 +11,11 @@
     {
       "taskName": "introduction",
       "taskNumber": 1,
-      "taskText": "Fill in the Blanks to complete this hello World program,",
+      "taskText": "String ___1___ = 'some Object'; \n ___2___ age = 5; \n ___3____ height = 0.5;",
       "taskWhatsNext": 1,
       "taskType" : 2,
-      "exerciseViewType" : 1,
-      "exerciseSolutionString" : "answer"
+      "exerciseViewType" : 3,
+      "exerciseSolutionStringArray" : ["object", "int","double"]
     },
     {
       "taskName": "Main Method",
@@ -32,6 +32,7 @@
       "taskWhatsNext": 3,
       "taskType" : 2,
       "exerciseViewType" : 2,
+      "exerciseAnswerChoices": ["answer1", "answer2", "answer3", "answer4"],
       "exerciseSolutionInt" : 2
     }
 

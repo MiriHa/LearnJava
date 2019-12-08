@@ -2,7 +2,9 @@ package com.example.learnjava;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,10 +12,14 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.example.learnjava.lessons.LessonActivity;
+import com.example.learnjava.models.ModelUserProgress;
+import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener{
 
     Controller myProgressController;
+//    SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
+    Context context;
 
     LinearLayout lesson1, lesson2, lesson3, lesson4, lesson5, lesson6, lesson7;
 
@@ -24,6 +30,9 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         Log.i("M Main activity loaded", " on create");
 
         myProgressController = (Controller) getApplicationContext();
+       // retriveSave();
+
+        context = getApplicationContext();
 
         FrameLayout lessonLayout = findViewById(R.id.FragmentHolder);
         //findLinearLayouts
@@ -74,37 +83,30 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         switch (v.getId()) {
 
             case R.id.Lesson1:
-                //TODO check if user has acess, if its looked
                 startActivity(LessonActivity.class, 1);
                 break;
 
             case R.id.lesson2:
-                //TODO check if user has acess, if its looked
                 startActivity(LessonActivity.class, 2);
                 break;
 
             case R.id.lesson3:
-                //TODO check if user has acess, if its looked
                 startActivity(LessonActivity.class, 3);
                 break;
 
             case R.id.lesson4:
-                //TODO check if user has acess, if its looked
                 startActivity(LessonActivity.class,4);
                 break;
 
             case R.id.lesson5:
-                //TODO check if user has acess, if its looked
                 startActivity(LessonActivity.class,5);
                 break;
 
             case R.id.lesson6:
-                //TODO check if user has acess, if its looked
                 startActivity(LessonActivity.class, 6);
                 break;
 
             case R.id.lesson7:
-                //TODO check if user has acess, if its looked
                 startActivity(LessonActivity.class,7);
                 break;
         }
@@ -112,6 +114,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
     public void startActivity(Class<?> otherActivityClass, int lessonNumber) {
 
+        //saveState();
         Intent intent = new Intent(MainActivity.this, otherActivityClass);
         intent.putExtra("LESSON_NUMBER", lessonNumber);
         startActivity(intent);
@@ -122,7 +125,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     @Override
     public void onBackPressed() {
         Log.i("M BackButtonPressed", " in Mainacitivity");
-        //TODO when backbutten pressed close the application or do nothing
+       //Got to MainScreen when backputton is pressed
         Intent startMain = new Intent(Intent.ACTION_MAIN);
         startMain.addCategory(Intent.CATEGORY_HOME);
         startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -130,5 +133,42 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
         //finsish()
     }
+
+
+//    void saveState() {
+//        ModelUserProgress userProgress = myProgressController.getModelUserProgress();
+//
+//        SharedPreferences.Editor prefsEditor = mPrefs.edit();
+//        Gson gson = new Gson();
+//        String json = gson.toJson(userProgress);
+//        prefsEditor.putString("userProgress", json);
+//        prefsEditor.commit();
+//    }
+//
+//    public void retriveSave(){
+//        Gson gson = new Gson();
+//        String json = mPrefs.getString("userProgress", "");
+//        ModelUserProgress userProgress = gson.fromJson(json, ModelUserProgress.class);
+//        myProgressController.setModelUserProgress(userProgress);
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

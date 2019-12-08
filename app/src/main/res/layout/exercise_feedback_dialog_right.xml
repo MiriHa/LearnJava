@@ -12,7 +12,7 @@
         android:padding="@dimen/PaddingSide"/>
 
     <Button
-        android:id="@+id/FeedbackRight"
+        android:id="@+id/FeedbackRightButton"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="50dp"

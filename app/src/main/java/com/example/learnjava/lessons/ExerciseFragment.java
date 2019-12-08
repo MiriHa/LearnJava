@@ -1,19 +1,19 @@
 package com.example.learnjava.lessons;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.learnjava.Controller;
 import com.example.learnjava.ExerciseCommunication;
 import com.example.learnjava.ExerciseView.ExerciseViewAnswerFragment;
 import com.example.learnjava.ExerciseView.ExerciseViewChoiceFragment;
@@ -30,9 +30,10 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
 
     private ExerciseCommunication mListener;
 
-    private ModelUserProgress progressController;
+    private Controller progressController;
 
     private TextView exerciseName;
+    private ViewGroup viewGroup;
     private int whatsNext;
     private int viewType;
     private ModelTask currentTask;
@@ -58,14 +59,15 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_exercise, container, false);
+        progressController = (Controller) getContext().getApplicationContext();
         exerciseName = view.findViewById(R.id.exerciseName);
         exerciseName.setText(currentTask.getTaskName());
+        viewGroup = view.findViewById(android.R.id.content);
         setViewContent();
 
 
         return view;
     }
-
 
     @Override
     public void onAttach(Context context) {
@@ -73,21 +75,13 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
 
         }
 
-
-
     @Override
     public void onDetach() {
         super.onDetach();
 
     }
 
-    private void setFragmentContent(ModelTask currentTask){
-        this.currentTask = currentTask;
-        whatsNext = currentTask.getWhatsNext();
-        viewType = currentTask.getExerciseViewType();
-        Log.i("GIVE_CONTENT", "in exerciseFragment");
-    }
-
+    //Set the right ExerciseView
     private void setViewContent(){
         switch (viewType){
             case 1:
@@ -155,24 +149,15 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         }
     }
 
-
-
-    public void setExerciseLayout(){
-
-        //TODO get the current exercisenumber and make maaany switch statements?
-//        Rel mRlayout = (RelativeLayout) findViewById(R.id.mRlayout);
-        LinearLayout.LayoutParams mRparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        EditText myEditText = new EditText(getContext());
-        myEditText.setLayoutParams(mRparams);
-
-
-//        for(String title: listOfTitles){
-//            TextView field = new TextView(this);
-//            field.setText(title);
-//            container.addView(field);
-//        }
+    //used in Exercise Activity to set the currentTask
+    public void setFragmentContentExercise(ModelTask currentTask) {
+        Log.i("M GIVE_CONTENT", "in ExerciseFragment");
+        this.currentTask = currentTask;
+        whatsNext = currentTask.getWhatsNext();
+        viewType = currentTask.getExerciseViewType();
     }
 
+    //open the next task according to the getNext value from the currentTask
     private void openNextTask(){
         try {
             //TODO check the answers an report the progress when right, when wrong load dialog feedback
@@ -182,26 +167,27 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
                 //notify the exerciseViewFragment that nextButton is clicked
                 if( whatsNext == 2) {
                     ((LessonActivity) getActivity()).openNewTask(2);
-                    Log.i("Buttonclicked", " openExerciseFragment");
+                    Log.i("M Buttonclicked", " openExerciseFragment");
                 }
                 else if (whatsNext == 1) {
                     ((LessonActivity) getActivity()).openNewTask(1);
-                    Log.i("Buttonclicked", " opnenLesson");
+                    Log.i("M Buttonclicked", " opnenLesson");
                 }
                 else if (whatsNext == 3){
                     ((LessonActivity) getActivity()).updateProgressLastTask();
-                    Log.i("Buttonclicked", " lastExercise");
+                    Log.i("M Buttonclicked", " lastExercise");
                 }
                 else {
-                    Log.e("Buttonclicked", " FalseWhatsNextType");
+                    Log.i("M Buttonclicked", " FalseWhatsNextType");
                 }
             }
         }
         catch (Exception e){
-            Log.e("Not clickable", "error");
+            Log.e("M Not clickable", "error");
         }
     }
 
+    //Communication with the ExerciseViewFragment
     @Override
     public ModelTask sendCurrentTask() {
         return currentTask;
@@ -210,31 +196,68 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
     @Override
     public void sendAnswerFromExerciseView(boolean answerChecked) {
         if (answerChecked){
-            openNextTask();
             progressController.addFinishedExercise(currentTask);
-            //TODO give Feedback
-            Log.i("ANSWER", " was right");
+            showFeedbackDialogRight();
+            Log.i("M ANSWER", " was right");
         }
         else{
-            //TODO give feedback
-            Log.i("ANSWER", " was wrong");
+            showFeedbackDialogWrong();
+            Log.i("M ANSWER", " was wrong");
         }
     }
 
+    private void showFeedbackDialogRight(){
+        View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.exercise_feedback_dialog_right, viewGroup, false);
+        Button nextButton = dialogView.findViewById(R.id.FeedbackRightButton);
 
-//    @Override
-//    public ModelTask sendCurrentTask() {
-//        return currentTask;
-//    }
-//
-//    @Override
-//    public void sendAnswerFromExerciseView(boolean answerChecked) {
-//        if (answerChecked){
-//            openNextTask();
-//        }
-//        else {
-//            Log.i("ANSWER", " was wrong");
-//            //TODO give Feedback that answer is false??
-//        }
-//    }
+        if(currentTask.getWhatsNext() == 3){
+            nextButton.setText("Finish Section");
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setView(dialogView);
+
+        final AlertDialog rightFeedbackDialog = builder.create();
+        rightFeedbackDialog.show();
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNextTask();
+                rightFeedbackDialog.dismiss();
+
+            }
+        });
+
+    }
+
+    private void showFeedbackDialogWrong(){
+        View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.exercise_feedback_dialog_wrong, viewGroup, false);
+        Button tryagainButton = dialogView.findViewById(R.id.FeedbackWrongTryAgainButton);
+        Button previousButton = dialogView.findViewById(R.id.FeedbackWrongPreviousButton);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        //  AlertDialog builder = new AlertDialog.Builder(getContext()).create();
+        builder.setView(dialogView);
+        final AlertDialog feedbackDialog = builder.create();
+        feedbackDialog.show();
+
+        tryagainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((LessonActivity) getActivity()).openNewTask(4);
+                feedbackDialog.dismiss();
+
+            }
+        });
+        previousButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((LessonActivity) getActivity()).openNewTask(3);
+                feedbackDialog.dismiss();
+            }
+        });
+
+    }
+
 }

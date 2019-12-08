@@ -13,35 +13,43 @@ public class Controller extends Application {
     ModelUserProgress modelUserProgress = new ModelUserProgress();
 
 
-    public void addFinishedExercise(ModelExercise exercise){
+    public void addFinishedExercise(ModelTask exercise){
         modelUserProgress.addFinishedExercise(exercise);
-        Log.i("updateUserProgress", " addFinishedExercise");
+        Log.i("M updateUserProgress", " addFinishedExercise");
     }
 
-    public void addReadLesson(ModelLesson lesson){
+    public void addReadLesson(ModelTask lesson){
         modelUserProgress.addReadLesson(lesson);
-        Log.i("updateUserProgress", " addReadLesson");
+        Log.i("M updateUserProgress", " addReadLesson");
     }
 
     public void addfinishedTask(ModelTask task){
         modelUserProgress.addFinisehdTask(task);
-        Log.i("updateUserProgress", " addfnishedTask");
+        Log.i("M updateUserProgress", " addfnishedTask");
     }
 
 
     public void updateFinishedSection(Integer number){
        modelUserProgress.updateUserProgressFinishedSections(number);
-        Log.i("updateUserProgress", " finishedSectionNumber "+number);
+        Log.i("M updateUserProgress", " finishedSectionNumber "+number);
     }
 
     public void updateCurrentSection(int number){
         modelUserProgress.updateUserProgressCurrentSection(number);
-        Log.i("updateUserProgress", " CurrentSectionNumber "+number);
+        Log.i("M updateUserProgress", " CurrentSectionNumber "+number);
     }
 
     public void updateCurrentScreen(int number){
-        Log.i("updateUserProgress", " CurrentSreenNumber "+number);
+        Log.i("M updateUserProgress", " CurrentSreenNumber "+number);
         modelUserProgress.updateUserProgressCurrentScreen(number);
+    }
+
+    public void setLastLesson(ModelTask lastLesson){
+        modelUserProgress.setLastLesson(lastLesson);
+    }
+
+    public ModelTask getLastLesson(){
+        return modelUserProgress.getLastLesson();
     }
 
 

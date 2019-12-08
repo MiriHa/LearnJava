@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d("Main activity loaded", " on create");
+        Log.i("M Main activity loaded", " on create");
 
         final Controller myProgressController = (Controller) getApplicationContext();
 
@@ -93,13 +93,13 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         Intent intent = new Intent(MainActivity.this, otherActivityClass);
         intent.putExtra("LESSON_NUMBER", lessonNumber);
         startActivity(intent);
-        Log.d("ChangeActivity", " to activity: " + otherActivityClass);
+        Log.i("M ChangeActivity", " to activity: " + otherActivityClass);
     }
 
 
     @Override
     public void onBackPressed() {
-        Log.i("BackButtonPressed", " in Mainacitivity");
+        Log.i("M BackButtonPressed", " in Mainacitivity");
         //TODO when backbutten pressed close the application or do nothing
         Intent startMain = new Intent(Intent.ACTION_MAIN);
         startMain.addCategory(Intent.CATEGORY_HOME);

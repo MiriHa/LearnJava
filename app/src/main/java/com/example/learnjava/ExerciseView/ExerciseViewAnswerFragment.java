@@ -62,7 +62,7 @@ public class ExerciseViewAnswerFragment extends Fragment {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("BUTTONCLICKED", " in AnswerView");
+                Log.i("M BUTTONCLICKED", " in AnswerView");
                 checkAnswers();
             }
         });
@@ -92,22 +92,22 @@ public class ExerciseViewAnswerFragment extends Fragment {
 
     private void checkAnswers() {
         String userInput = editText.getText().toString();
-        Log.i("CheckAnswers", " anser: " + userInput + " solution: " + currentTask.getSolutionString());
+        Log.i("M CheckAnswers", " anser: " + userInput + " solution: " + currentTask.getSolutionString());
         if (currentTask.getSolutionString().equals(userInput)) {
             mListener.sendAnswerFromExerciseView(true);
-            Log.i("SENDANSWERFROMEXERCISE", " answer: true");
+            Log.i("MSENDANSWERFROMEXERCISE", " answer: true");
             Toast.makeText(getContext(), "Answer was right.", Toast.LENGTH_SHORT).show();
         } else {
-            Log.i("ANSWER", " was wrong");
+            Log.i("M ANSWER", " was wrong");
             mListener.sendAnswerFromExerciseView(false);
-            Log.i("SENDANSWERFROMEXERCISE", " answer: false");
+            Log.i("MSENDANSWERFROMEXERCISE", " answer: false");
             Toast.makeText(getContext(), "Answer was false", Toast.LENGTH_SHORT).show();
             //TODO give feedback that false answer??
         }
     }
 
     public void setExerciseCommunication(ExerciseCommunication callback) {
-        Log.d("SETEXERCISECOMM", " setMlistenere");
+        Log.d("M SETEXERCISECOMM", " setMlistenere");
         this.mListener = callback;
     }
 

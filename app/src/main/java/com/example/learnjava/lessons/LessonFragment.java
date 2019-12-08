@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.learnjava.Controller;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
 
@@ -25,6 +26,7 @@ public class LessonFragment extends Fragment {
    private int whatsNext;
 
    private ModelTask currentTask;
+   private Controller progressController;
 
     public LessonFragment() {
         // Required empty public constructor
@@ -43,32 +45,34 @@ public class LessonFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lesson, container, false);
+        progressController = (Controller) getContext().getApplicationContext();
 
         lessonName = view.findViewById(R.id.lessonName);
         lessonText = view.findViewById(R.id.lessonText);
         lessonExample = view.findViewById(R.id.lessonExample);
         nextButton = view.findViewById(R.id.nextButtonLessonFrag);
 
-        Log.i("WHats Next", " " + whatsNext);
+        Log.i("M WHats Next", " " + whatsNext);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("Buttonclicked", " inLessonFragment. Next: "+whatsNext );
+                Log.i("M Buttonclicked", " inLessonFragment. Next: "+whatsNext );
                 if ((getActivity() != null)) {
+                    progressController.setLastLesson(currentTask);
                     if( whatsNext == 2) {
                         ((LessonActivity) getActivity()).openNewTask(2);
-                        Log.i("Buttonclicked", " openExercise");
+                        Log.i("M Buttonclicked", " openExercise");
                     }
                     else if (whatsNext == 1) {
                         ((LessonActivity) getActivity()).openNewTask(1);
-                        Log.i("Buttonclicked", " openLesson");
+                        Log.i("M Buttonclicked", " openLesson");
                     }
                     else if (whatsNext == 3){
                         ((LessonActivity) getActivity()).updateProgressLastTask();
-                        Log.i("Buttonclicked", " lastLesson");
+                        Log.i("M Buttonclicked", " lastLesson");
                     }
                     else {
-                        Log.e("Buttonclicked", " FalseWhatsNextType");
+                        Log.e("M Buttonclicked", " FalseWhatsNextType");
                     }
                 }
             }
@@ -103,8 +107,8 @@ public class LessonFragment extends Fragment {
 */
     }
 
-    public void setFragmentContent(ModelTask currentTask){
-        Log.i("GIVE_CONTENT", "in LessonFragment");
+    public void setFragmentContentLesson(ModelTask currentTask){
+        Log.i("M GIVE_CONTENT", "in LessonFragment");
         this.currentTask = currentTask;
         whatsNext = currentTask.getWhatsNext();
     }

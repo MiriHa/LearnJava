@@ -18,7 +18,7 @@
         android:weightSum="2">
 
         <Button
-            android:id="@+id/FeedbackWrongPrevious"
+            android:id="@+id/FeedbackWrongPreviousButton"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
@@ -28,7 +28,7 @@
 
 
         <Button
-        android:id="@+id/FeedbackWrongNext"
+        android:id="@+id/FeedbackWrongTryAgainButton"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"

@@ -11,6 +11,16 @@
     {
       "taskName": "introduction",
       "taskNumber": 1,
+      "taskText": "Drag and Drop the Answers in the Blanks",
+      "taskWhatsNext": 2,
+      "taskType" : 2,
+      "exerciseViewType" : 4,
+      "exerciseContentStringArray" : ["task =", "", "words", "blub", "bla","", "", "miau", "neko"],
+      "exerciseSolutionStringArray" : ["object", "int","double"]
+    },
+    {
+      "taskName": "introduction",
+      "taskNumber": 2,
       "taskText": "String ___1___ = 'some Object'; \n ___2___ age = 5; \n ___3____ height = 0.5;",
       "taskWhatsNext": 1,
       "taskType" : 2,
@@ -19,7 +29,7 @@
     },
     {
       "taskName": "Main Method",
-      "taskNumber": 2,
+      "taskNumber": 3,
       "taskText" : " THis is an indrocution to the main method ahahaaaa",
       "taskWhatsNext" : 2,
       "taskType" : 1,
@@ -27,7 +37,7 @@
     },
     {
       "taskName": "Main Method2",
-      "taskNumber": 3,
+      "taskNumber": 4,
       "taskText": "Do a thing",
       "taskWhatsNext": 3,
       "taskType" : 2,

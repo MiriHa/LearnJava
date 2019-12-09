@@ -16,7 +16,7 @@
       "taskType" : 2,
       "exerciseViewType" : 4,
       "exerciseContentStringArray" : ["task =", "", "words", "blub", "bla","", "", "miau", "neko"],
-      "exerciseSolutionStringArray" : ["object", "int","double"]
+      "exerciseSolutionStringArray" : ["object", "int","double", "getter", "Setter", "better", "blub", "chhhh"]
     },
     {
       "taskName": "introduction",

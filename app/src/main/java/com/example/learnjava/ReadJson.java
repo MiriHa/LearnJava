@@ -100,9 +100,12 @@ public class ReadJson {
                             JSONArray contentStringArray = taskObject.getJSONArray("exerciseContentStringArray");
                             String[] contentStringArray_value = toStringArray(contentStringArray);
 
+                            JSONArray solutionIntArray = taskObject.getJSONArray("exerciseSolutionIntArray");
+                            int[] solutionIntArray_value = toIntArray(solutionIntArray);
+
 
                             //Add values in ArrayList
-                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,solutionStringArray_value, null, next_value, viewType_value,0,"", contentStringArray_value);
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,solutionStringArray_value, solutionIntArray_value, next_value, viewType_value,0,"", contentStringArray_value);
                             taskList.add(newExercise);
 
                         }

@@ -76,39 +76,49 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnLon
         //Arrag length needs to bedivisble through 3 -> per row textview dropView textview
         //ansosten zweidimensionales array? verschachteltes array?
         String[] contentArray = currentTask.getContentStringArray();
+        int linearLayoutsNeeded = contentArray.length / 3;
 
         LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         LinearLayout.LayoutParams mParamsWeight = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, (float) 1.0);
+        LinearLayout.LayoutParams mParamsWrap = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-
-        for (int i = 0; i < contentArray.length; i++) {
+        //created the Lines
+        for (int j = 0; j < linearLayoutsNeeded*3; j += 3 ) {
 
             LinearLayout holder = new LinearLayout(getContext());
             holder.setLayoutParams(mParams);
             holder.setOrientation(LinearLayout.HORIZONTAL);
 
-            if(contentArray[i].equals("")){
-                TextView textView1 = new TextView((getContext()));
-                textView1.setLayoutParams(mParams);
-                textView1.setText(contentArray[i]);
-                textView1.setTag("dropView" + i);
-                Log.i("M DRAGDROP", " content: " + i + " " + contentArray[i] );
-                holder.addView(textView1);
-            }else {
-                TextView textView1 = new TextView((getContext()));
-                textView1.setLayoutParams(mParams);
-                textView1.setText(contentArray[i]);
-                Log.i("M DRAGDROP", " content: " + i + " " + contentArray[i] );
-                holder.addView(textView1);
-            }
+            String[] currentLineContent = {contentArray[j], contentArray[j+1], contentArray[j + 2]};
+            Log.i("M DRAGDROP", " content: " + j + " " + currentLineContent.toString());
 
-            if ((i+1) % 3 == 0) {
-                Log.i("M DRAGDROP modulo", " content: " + i + " " + contentArray[i] );
-                contentHolder.addView(holder);
+            //create the three Textview in each Line
+            for (int i = 0; i < 3; i++) {
+
+                if (currentLineContent[i].equals("")) {
+                    TextView textView1 = new TextView((getContext()));
+                    textView1.setLayoutParams(mParamsWrap);
+                    textView1.setText("___________");
+                    textView1.setPadding(10,20,10,20);
+                    textView1.setTag("dropView" + i);
+                    textView1.setTextSize(20);
+                    Log.i("M DRAGDROP", " content: " + i + " " + currentLineContent[i]);
+                    holder.addView(textView1);
+                } else {
+                    TextView textView1 = new TextView((getContext()));
+                    textView1.setLayoutParams(mParamsWrap);
+                    textView1.setText(currentLineContent[i]);
+                    textView1.setPadding(20,25,20,25);
+                    textView1.setTextSize(20);
+                    Log.i("M DRAGDROP", " content: " + i + " " + currentLineContent[i]);
+                    holder.addView(textView1);
+                }
+
             }
+            contentHolder.addView(holder);
         }
 
-}
+    }
 
     @Override
     public void onAttach(Context context) {

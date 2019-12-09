@@ -3,33 +3,28 @@ package com.example.learnjava.ExerciseView;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.net.LinkAddress;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.text.Layout;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.learnjava.Controller;
 import com.example.learnjava.ExerciseCommunication;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -45,9 +40,15 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
 
 
     ModelTask currentTask;
-
+    Controller progressController;
+    private String[] answerArray;
+    private ArrayList<String> dropTags = new ArrayList<>();
+    private ArrayList<String> dragTags = new ArrayList<>();
     private Button nextButton;
     private LinearLayout contentHolder, answerHolder;
+
+    private View currentView;
+
 
     public ExerciseViewDragDropFragment() {
         // Required empty public constructor
@@ -62,13 +63,17 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_exercise_view_drag_drop, container, false);
+        final View view = inflater.inflate(R.layout.fragment_exercise_view_drag_drop, container, false);
+        currentView = view;
+        progressController = (Controller) getActivity().getApplicationContext();
+
 
         //get the currentTask
         receiveCurrentTask();
 
         contentHolder = view.findViewById(R.id.contentHolderDragDrop);
         answerHolder = view.findViewById(R.id.answerHolderDragDrop);
+        answerArray = currentTask.getSolutionStringArray();
 
         setContentLayout();
 
@@ -76,8 +81,18 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("BUTTONCLICKED", " in DragDropView");
+                Log.i("DRAGDROP", "check button pressed");
                 checkAnswers();
+            }
+        });
+
+
+        final Button resetButton = view.findViewById(R.id.resetButton);
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("DRAGDROP", "Reset Button pressed");
+                reset(view);
             }
         });
 
@@ -90,7 +105,6 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
         //Arrag length needs to bedivisble through 3 -> per row textview dropView textview
         //ansosten zweidimensionales array? verschachteltes array?
         String[] contentArray = currentTask.getContentStringArray();
-        String[] answerArray = currentTask.getSolutionStringArray();
 
         List<String> answerArrayRandom = new ArrayList<>(answerArray.length);
         Collections.addAll(answerArrayRandom, answerArray);
@@ -122,7 +136,10 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                     textView1.setLayoutParams(mParamsWrap);
                     textView1.setText("___________");
                     textView1.setPadding(10, 20, 10, 20);
-                    textView1.setTag("dropView" + (i + j));
+                    String tag = "dropView" + (i + j);
+                    textView1.setTag(tag);
+                    dropTags.add(tag);
+                    Log.i("DRAGDROP", "setDragviewTExt: dropView " + (i+j));
                     textView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 
                     textView1.setOnDragListener(this);
@@ -161,12 +178,15 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                         TextView myTextview = new TextView(getContext());
                         myTextview.setLayoutParams(mParamsWeight);
                         myTextview.setText(answerArrayRandom.get(j + k));
-                        myTextview.setTag("DRAGVIEW" + (j + k));
+
+                        String tag = "DRAGVIEW" + (j + k);
+                        myTextview.setTag(tag);
+                        dragTags.add(tag);
 
                         myTextview.setOnLongClickListener(this);
 
                         myTextview.setPadding(10, 30, 30, 10);
-                        myTextview.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
+                        myTextview.setTextSize(TypedValue.COMPLEX_UNIT_SP, 23);
                         holder.addView(myTextview);
                     } else {
                         break;
@@ -186,12 +206,14 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                 TextView myTextview = new TextView(getContext());
                 myTextview.setLayoutParams(mParamsWeight);
                 myTextview.setText(answerArrayRandom.get(i));
-                myTextview.setTag("DRAGVIEW" + i);
+                String tag = "DRAGVIEW" + i;
+                myTextview.setTag(tag);
+                dragTags.add(tag);
 
                 myTextview.setOnLongClickListener(this);
 
                 myTextview.setPadding(15, 10, 15, 10);
-                myTextview.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
+                myTextview.setTextSize(TypedValue.COMPLEX_UNIT_SP, 23);
                 holder.addView(myTextview);
             }
             answerHolder.addView(holder);
@@ -216,24 +238,41 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
         mListener = null;
     }
 
-
     //right answers are in an int array saved. The seequence gives the right order and the numbers represent the Strings in
     //exerciseSolutionIntArray
 
     private void checkAnswers() {
-//        String userInput = editText.getText().toString();
-//        Log.i("CheckAnswers", " anser: " + userInput + " solution: " + currentTask.getSolutionString());
-//        if (currentTask.getSolutionString().equals(userInput)) {
-//            mListener.sendAnswerFromExerciseView(true);
-//            Log.i("SENDANSWERFROMEXERCISE", " answer: true");
-//            Toast.makeText(getContext(), "Answer was right.", Toast.LENGTH_SHORT).show();
-//        } else {
-//            Log.i("ANSWER", " was wrong");
-//            mListener.sendAnswerFromExerciseView(false);
-//            Log.i("SENDANSWERFROMEXERCISE", " answer: false");
-//            Toast.makeText(getContext(), "Answer was false", Toast.LENGTH_SHORT).show();
-//            //TODO give feedback that false answer??
-//        }
+
+        if (progressController.checkExercise(currentTask)) {
+            Log.i("DRAGDROP", "checkExericse and skip");
+            mListener.justOpenNext();
+        }else {
+            //fetch the Solution and convert to StringArray
+            int[] solutionInt = currentTask.getSolutionIntArray();
+            String[] solutionString = new String[solutionInt.length];
+            for (int i = 0; i < solutionInt.length; i++) {
+                int place = solutionInt[i];
+                solutionString[i] = answerArray[place];
+            }
+
+            //fetch the userInput
+            String[] userSolution = new String[solutionInt.length];
+            for (int i = 0; i < solutionInt.length; i++) {
+                Log.i("DRAGDROP", "dropViewANswer: " + "dropView" + (i + 1));
+                TextView solView = currentView.findViewWithTag(dropTags.get(i));
+                userSolution[i] = solView.getText().toString();
+            }
+
+            //TODO check when no Answer is inputted
+            if (Arrays.equals(solutionString, userSolution)) {
+                mListener.sendAnswerFromExerciseView(true);
+                Log.i("SENDANSWERFROMEXERCISE", " answer: true");
+            } else {
+                Log.i("ANSWER", " was wrong");
+                mListener.sendAnswerFromExerciseView(false);
+                Log.i("SENDANSWERFROMEXERCISE", " answer: false");
+            }
+        }
     }
 
     public void setExerciseCommunication(ExerciseCommunication callback) {
@@ -247,69 +286,71 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
     }
 
 
-    private final class MyTouchListener implements View.OnTouchListener {
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            view.performClick();
-            if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                Log.i("DRAGDROP", "Actiondown touch detected");
-                ClipData data = ClipData.newPlainText("", "");
-                View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
-                view.startDrag(data, shadowBuilder, view, 0);
-                view.setVisibility(View.INVISIBLE);
-                return true;
-            } else {
-                return false;
-            }
+    public void reset(View view) {
+        for(int i=0; i<dragTags.size();i++) {
+
+            TextView text = view.findViewWithTag(dragTags.get(i));
+            text.setVisibility(TextView.VISIBLE);
+        }
+
+        for(int i=0; i<dropTags.size();i++) {
+
+            TextView text = view.findViewWithTag(dropTags.get(i));
+            text.setTag(dropTags.get(i));
+            text.setTypeface(Typeface.DEFAULT);
+            text.setText("___________");
+            text.setOnDragListener(this);
         }
     }
 
 
-
-
-        @Override
-        public boolean onLongClick(View v) {
+    @Override
+    public boolean onLongClick(View v) {
 
 //            ClipData.Item item = new ClipData.Item((CharSequence) v.getTag());
 //            String[] mimeTypes = {ClipDescription.MIMETYPE_TEXT_PLAIN};
 //
 //            ClipData data = new ClipData(v.getTag().toString(), mimeTypes, item);
 
-            Log.i("DRAGDROP", "Actiondown touch detected");
-            ClipData data = ClipData.newPlainText("", "");
-            View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
-            v.startDrag(data, shadowBuilder, v, 0);
-            v.setVisibility(View.INVISIBLE);
-            return true;
-        }
+        Log.i("DRAGDROP", "Actiondown touch detected");
+        ClipData data = ClipData.newPlainText("", "");
+        View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
+        v.startDrag(data, shadowBuilder, v, 0);
+        v.setVisibility(View.INVISIBLE);
+        return true;
+    }
 
-        @Override
-        public boolean onDrag(View v, DragEvent event) {
-            int action = event.getAction();
-            switch (action) {
-                case DragEvent.ACTION_DRAG_STARTED:
-                    if (event.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
+    @Override
+    public boolean onDrag(View v, DragEvent event) {
+        int action = event.getAction();
+        int correct = 0;
+        switch (action) {
+            case DragEvent.ACTION_DRAG_STARTED:
+                if (event.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
 //                        v.setBackgroundColor(getResources().getColor(R.color.grey));
 //                        v.invalidate();
-                        return true;
-                    }
-                    return false;
-                case DragEvent.ACTION_DRAG_ENTERED:
+                    return true;
+                }
+                return false;
+            case DragEvent.ACTION_DRAG_ENTERED:
 //                    v.setBackgroundColor(getResources().getColor(R.color.lightGreen2));
 //                    v.invalidate();
-                    return true;
-                case DragEvent.ACTION_DRAG_EXITED:
+                return true;
+            case DragEvent.ACTION_DRAG_EXITED:
 
-                    break;
-                case DragEvent.ACTION_DROP:
+                break;
+            case DragEvent.ACTION_DROP:
 
-                    Log.i("DRAGDROP", "ACTION DROP");
+                Log.i("DRAGDROP", "ACTION DROP");
 
-                    View view = (View) event.getLocalState();
-                    //view dragged item is being dropped on
-                    TextView dropTarget = (TextView) v;
-                    //view being dragged and dropped
-                    TextView dropped = (TextView) view;
-                    //checking whether first character of dropTarget equals first character of dropped
+                View view = (View) event.getLocalState();
+                //view dragged item is being dropped on
+                TextView dropTarget = (TextView) v;
+                //view being dragged and dropped
+                TextView dropped = (TextView) view;
+                //checking whether first character of dropTarget equals first character of dropped
+                if (String.valueOf(dropTarget.getText().toString().charAt(0)).equals("_")){
+                    correct = 1;
 //                    if (dropTarget.getText().toString().charAt(0) == dropped.getText().toString().charAt(0)) {
                         //stop displaying the view where it was before it was dragged
                         view.setVisibility(View.INVISIBLE);
@@ -319,31 +360,49 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                         dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
                         //if an item has already been dropped here, there will be a tag
                         Object tag = dropTarget.getTag();
+
+
                         //if there is already an item here, set it back visible in its original place
-                    Log.i("DRAGDROP", " droptTarget: " + dropTarget.getTag() + " dropped: " + dropped.getTag());
-//                        if (dropTarget.getText().toString().charAt(2) == dropped.getText().toString().charAt(2)) {
+                        Log.i("DRAGDROP", " droptTarget: " + dropTarget.getTag() + " dropped: " + dropped.getTag());
+                        //TODO hANDLE when text is already set
+                        //TODO handle when drop ended not over dropVIew, make that drops can be changed
+                    //TODO check why drag is invisble when noch draged in coorrect drop
+
+//                if (!String.valueOf(dropTarget.getText().toString().charAt(1)).equals( "_" )){{
 //                            //the tag is the view id already dropped here
 //                            String existingID = (String) tag;
 //                            //set the original view visible again
 //                            view.findViewWithTag(existingID).setVisibility(View.VISIBLE);
 //                        }
                         //set the tag in the target view being dropped on - to the Tag of the view being dropped
-                       //TODO is this needed? answer fetching with old Tag would be better
-                       // dropTarget.setTag(dropped.getTag());
+                        //TODO is this needed? answer fetching with old Tag would be better
+                        //dropTarget.setTag(dropped.getTag());
+
                         //remove setOnDragListener by setting OnDragListener to null, so that no further drag & dropping on this TextView can be done
                         dropTarget.setOnDragListener(null);
                         return true;
-//                    }
+                    }
 
-                case DragEvent.ACTION_DRAG_ENDED:
-                    //v.setBackgroundDrawable(normalShape);
+                else{
+                    correct = 2;
+                    Log.i("DRAGDROP", "was not droped correctly");
+                    view.setVisibility(View.VISIBLE);
+                }
+
+            case DragEvent.ACTION_DRAG_ENDED:
+                Log.i("DRAGDROP", "Drag ended" + correct);
+                if(correct == 2){
+                    Log.i("DRAGDROP", "was not droped correctly");
+                    v.setVisibility(View.VISIBLE);
+                }
+                //v.setBackgroundDrawable(normalShape);
 //                default:
 //                    Log.e("DragDrop", "Unknown action type received by OnDragListener.");
 //                    break;
-            }
-            return false;
         }
+        return false;
     }
+}
 
 
 

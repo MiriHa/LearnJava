@@ -240,6 +240,64 @@
                     android:text="@string/Lesson7" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/lesson8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/darkerBlue"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
+                android:paddingTop="@dimen/PaddingScroll"
+                android:paddingBottom="@dimen/PaddingScroll">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7/7"
+                    android:autoSizeTextType="uniform" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:autoSizeTextType="uniform"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="@string/Lesson8" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lesson9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/purpleBlue"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
+                android:paddingTop="@dimen/PaddingScroll"
+                android:paddingBottom="@dimen/PaddingScroll">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7/7"
+                    android:autoSizeTextType="uniform" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:autoSizeTextType="uniform"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="@string/Lesson9" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>

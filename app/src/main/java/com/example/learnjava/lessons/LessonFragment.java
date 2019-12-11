@@ -5,22 +5,26 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Layout;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.learnjava.Controller;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
 
+import static android.graphics.text.LineBreaker.JUSTIFICATION_MODE_INTER_WORD;
+
 public class LessonFragment extends Fragment {
 
    private TextView lessonName;
-   private TextView lessonText;
-   private TextView lessonExample;
+   private LinearLayout textHolder;
    private Button nextButton;
 
    private int whatsNext;
@@ -45,9 +49,10 @@ public class LessonFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_lesson, container, false);
         progressController = (Controller) getContext().getApplicationContext();
 
+        textHolder = view.findViewById(R.id.lessonTextHolder);
+
         lessonName = view.findViewById(R.id.lessonName);
-        lessonText = view.findViewById(R.id.lessonText);
-        lessonExample = view.findViewById(R.id.lessonExample);
+
         nextButton = view.findViewById(R.id.nextButtonLessonFrag);
 
         Log.i("M WHats Next", " " + whatsNext);
@@ -77,7 +82,7 @@ public class LessonFragment extends Fragment {
         });
 
         lessonName.setText(currentTask.getTaskName());
-        lessonText.setText(currentTask.getTaskText());
+        setLessonText();
        // lessonExample.setText("Maybe we need in json more text section for examples to better format them");
 
         return view;
@@ -110,4 +115,32 @@ public class LessonFragment extends Fragment {
         this.currentTask = currentTask;
         whatsNext = currentTask.getWhatsNext();
     }
+
+    private void setLessonText(){
+        String text = currentTask.getTaskText();
+        //Split the string so that in can be passed to diffrent textviews
+        String[] textParts = text.split("@");
+
+        for(int i = 0; i < textParts.length; i++){
+          // TextView textView = getTextView(i);
+            String currentText = textParts[i];
+            //TODO make some words bold?
+           // String[] boldParts = currentText.split("§");
+
+                LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+                TextView myTextView = new TextView(getContext());
+                myTextView.setLayoutParams(mParams);
+                myTextView.setText(currentText);
+                myTextView.setPadding(8,12,8,12);
+                //TODO find a better way or see if its in packages
+                //myTextView.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+                myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+
+                textHolder.addView(myTextView);
+
+        }
+    }
+
+
 }

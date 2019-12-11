@@ -4,39 +4,33 @@
       "taskName" : "Tutorial",
       "taskNumber" : 0,
       "taskText" : "How to Use this app. Hello! This learning App will present you different Lessons to help you learn java. Here will be presented a lesson with theory that you need to read and understand and follwing this there will be an exercise to check our nearly learned knowledge",
-      "taskWhatsNext" : 1,
-      "taskType" : 1,
-      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
-    },
-    {
-      "taskName": "Introduction",
-      "taskNumber": 1,
-      "taskText" : " THis is an indrocution TExt blabla",
       "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
     },
     {
-      "taskName": "introduction2",
-      "taskNumber": 2,
-      "taskText": "Fill in the Blanks to complete this hello World program,",
+      "taskName": "introduction",
+      "taskNumber": 1,
+      "taskText": "Drag and Drop the Answers in the Blanks",
       "taskWhatsNext": 2,
       "taskType" : 2,
-      "exerciseViewType" : 1,
-      "exerciseSolutionString" : "answer"
+      "exerciseViewType" : 4,
+      "exerciseContentStringArray" : ["task =", "", "words", "blub", "bla","", "", "miau", "neko"],
+      "exerciseSolutionStringArray" : ["object", "int","double", "getter", "Setter", "better", "blub", "chhhh"],
+      "exerciseSolutionIntArray" : [0,2,4]
     },
     {
-      "taskName": "introduction3",
-      "taskNumber": 3,
-      "taskText": "Do a last thing",
+      "taskName": "introduction",
+      "taskNumber": 2,
+      "taskText": "String ___1___ = 'some Object'; \n ___2___ age = 5; \n ___3____ height = 0.5;",
       "taskWhatsNext": 1,
       "taskType" : 2,
-      "exerciseViewType" : 1,
-      "exerciseSolutionString" : "abc"
+      "exerciseViewType" : 3,
+      "exerciseSolutionStringArray" : ["object", "int","double"]
     },
     {
       "taskName": "Main Method",
-      "taskNumber": 4,
+      "taskNumber": 3,
       "taskText" : " THis is an indrocution to the main method ahahaaaa",
       "taskWhatsNext" : 2,
       "taskType" : 1,
@@ -44,38 +38,13 @@
     },
     {
       "taskName": "Main Method2",
-      "taskNumber": 5,
+      "taskNumber": 4,
       "taskText": "Do a thing",
-      "taskWhatsNext": 1,
-      "taskType" : 2,
-      "exerciseViewType" : 2,
-      "exerciseSolutionInt" : 2
-    },
-    {
-      "taskName": "Main Method3",
-      "taskNumber": 6,
-      "taskText" : " THis is an indrocution to the main method ahahaaaablub",
-      "taskWhatsNext" : 2,
-      "taskType" : 1,
-      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
-    },
-    {
-      "taskName": "Main Method4",
-      "taskNumber": 7,
-      "taskText": "Do a thing yes",
-      "taskWhatsNext": 2,
-      "taskType" : 2,
-      "exerciseViewType" : 1,
-      "exerciseSolutionString" : "2"
-    },
-    {
-      "taskName": "Main Method5",
-      "taskNumber": 8,
-      "taskText": "Do a last thing yes",
       "taskWhatsNext": 3,
       "taskType" : 2,
-      "exerciseViewType" : 1,
-      "exerciseSolutionString" : "bb"
+      "exerciseViewType" : 2,
+      "exerciseAnswerChoices": ["answer1", "answer2", "answer3", "answer4"],
+      "exerciseSolutionInt" : 2
     }
 
   ]

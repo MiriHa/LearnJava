@@ -1,50 +1,47 @@
 {
   "tasks": [
     {
+      "taskType" : 1,
       "taskName" : "Tutorial",
       "taskNumber" : 0,
-      "taskText" : "How to Use this app. Hello! This learning App will present you different Lessons to help you learn java. Here will be presented a lesson with theory that you need to read and understand and follwing this there will be an exercise to check our nearly learned knowledge",
-      "taskWhatsNext" : 2,
-      "taskType" : 1,
-      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
+      "taskText" : "Hello! Here is a guide on how to use this Learning app:@There are nine Sections that will guide you to learn the Programming language Java. You will unlock them as you go. Each Section consists of a variety of Theory lessons and exercise. These will test your learned theory knowledge.@So have fun learning Java!",
+      "taskWhatsNext" : 1,
+      "lessonKeyWords" : ["LearningApp", "sections", "lessons", "exercises"]
     },
     {
-      "taskName": "introduction",
+      "taskType" : 1,
+      "taskName": "Welcome to Java!",
       "taskNumber": 1,
-      "taskText": "Drag and Drop the Answers in the Blanks",
+      "taskText": "Java is a high level, modern programming language designed in the early 1990s by Sun Microsystems, and currently owned by Oracle. @Java is Platform Independent, which means that you only need to write the program once to be able to run it on a number of different platforms such as Windows, Mac or Linux.\nJava is portable, powerful, robust, and dynamic, with the ability to fit the needs of virtually any type of application.@Java guarantees that you'll be able to Write Once, Run Nearly Anywhere.",
       "taskWhatsNext": 2,
-      "taskType" : 2,
-      "exerciseViewType" : 4,
-      "exerciseContentStringArray" : ["task =", "", "words", "blub", "bla","", "", "miau", "neko"],
-      "exerciseSolutionStringArray" : ["object", "int","double", "getter", "Setter", "better", "blub", "chhhh"],
-      "exerciseSolutionIntArray" : [0,2,4]
+      "lessonKeyWords" : ["Java", "Programming Language", "portable","robust","Platform Independent"]
     },
     {
-      "taskName": "introduction",
+      "taskType" : 2,
+      "taskName": "Welcome to Java",
       "taskNumber": 2,
-      "taskText": "String ___1___ = 'some Object'; \n ___2___ age = 5; \n ___3____ height = 0.5;",
+      "taskText": "To distribute your application to different platforms, how many Java versions do you need to create?",
       "taskWhatsNext": 1,
-      "taskType" : 2,
-      "exerciseViewType" : 3,
-      "exerciseSolutionStringArray" : ["object", "int","double"]
-    },
-    {
-      "taskName": "Main Method",
-      "taskNumber": 3,
-      "taskText" : " THis is an indrocution to the main method ahahaaaa",
-      "taskWhatsNext" : 2,
-      "taskType" : 1,
-      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
-    },
-    {
-      "taskName": "Main Method2",
-      "taskNumber": 4,
-      "taskText": "Do a thing",
-      "taskWhatsNext": 3,
-      "taskType" : 2,
       "exerciseViewType" : 2,
-      "exerciseAnswerChoices": ["answer1", "answer2", "answer3", "answer4"],
-      "exerciseSolutionInt" : 2
+      "exerciseSolutionStringArray" : ["Just one version", "Two version", "One for each platform", "Every time a new one"],
+      "exerciseSolutionInt" : 1
+    },
+    {
+      "taskType" : 1,
+      "taskName": "Java",
+      "taskNumber": 3,
+      "taskText": "More than 3 billion devices run Java.\nJava is used to develop apps for Google's Android OS, various Desktop Applications, such as media players, antivirus programs, Web Applications, Enterprise Applications (i.e. banking), and many more!\nIt is easy to learn and simple to use.@Learn, practice, and then join the huge community of Java developers around the world!",
+      "taskWhatsNext": 2,
+      "lessonKeyWords" : ["Java","DesktopApplications","Mobile Applications","Easy","Community"] },
+    {
+      "taskType" : 2,
+      "taskName": "Java",
+      "taskNumber": 4,
+      "taskText": "Which one of the following statements is true?",
+      "taskWhatsNext": 3,
+      "exerciseViewType" : 2,
+      "exerciseSolutionStringArray" : ["Java is used only in Nasa's space related applications", "Java is used only in web and mobile applications","Java has a huge developer community", "Java runs on ca. 1000 devices"],
+      "exerciseSolutionInt": 3
     }
 
   ]

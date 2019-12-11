@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 //    SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
     Context context;
 
-    LinearLayout lesson1, lesson2, lesson3, lesson4, lesson5, lesson6, lesson7;
+    LinearLayout lesson1, lesson2, lesson3, lesson4, lesson5, lesson6, lesson7, lesson8, lesson9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,9 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
         context = getApplicationContext();
 
+        //Only for testing purposes
+        myProgressController.updateUnlockedSections(2);
+
         FrameLayout lessonLayout = findViewById(R.id.FragmentHolder);
         //findLinearLayouts
         lesson1 = findViewById(R.id.Lesson1);
@@ -43,6 +46,9 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         lesson5 = findViewById(R.id.lesson5);
         lesson6 = findViewById(R.id.lesson6);
         lesson7 = findViewById(R.id.lesson7);
+        lesson8 = findViewById(R.id.lesson8);
+        lesson9 = findViewById(R.id.lesson9);
+
 
         Log.i("CheckCOntrollerMain", " progressController Sections " + myProgressController.getSections().toString());
 
@@ -54,6 +60,8 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         checkIfSolved(lesson5, 5);
         checkIfSolved(lesson6, 6);
         checkIfSolved(lesson7, 7);
+        checkIfSolved(lesson8, 8);
+        checkIfSolved(lesson9, 9);
 
 
 

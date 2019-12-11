@@ -73,7 +73,7 @@ public class ReadJson {
                         }
                         //Type: Answer Choice -> int
                         else if(viewType_value == 2){
-                            JSONArray answerChoicesStringArray = taskObject.getJSONArray("exerciseAnswerChoices");
+                            JSONArray answerChoicesStringArray = taskObject.getJSONArray("exerciseSolutionStringArray");
                             String[] answerChoicesArray_value = toStringArray(answerChoicesStringArray);
 
                             int solutionInt_value = taskObject.getInt("exerciseSolutionInt");

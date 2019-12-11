@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".lessons.ExerciseFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,9 +29,10 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:autoSizeTextType="uniform"
-            android:paddingHorizontal="@dimen/PaddingSide"
-            android:paddingVertical="10dp"
-            android:text="LessonName"
+            android:paddingLeft="@dimen/PaddingSide"
+            android:paddingTop="10dp"
+            android:paddingRight="@dimen/PaddingSide"
+            android:paddingBottom="10dp"
             app:layout_constraintBottom_toTopOf="@+id/scrollViewLes"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,42 +45,21 @@
             android:layout_height="0dp"
             android:layout_marginTop="3dp"
             android:paddingHorizontal="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/nextButtonExerciseFrag"
+            app:layout_constraintBottom_toTopOf="@+id/nextButtonLessonFrag"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lessonName">
 
             <LinearLayout
+                android:id="@+id/lessonTextHolder"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/lessonText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-                android:textSize="25sp" />
-
-            <TextView
-                android:id="@+id/lessonExample"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="25sp"/>
 
             </LinearLayout>
 
         </ScrollView>
-
-        <!--        <Button-->
-        <!--            android:id="@+id/checkButtonExerciseFrag"-->
-        <!--            android:layout_width="70dp"-->
-        <!--            android:layout_height="70dp"-->
-        <!--            android:layout_marginBottom="6dp"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="@+id/scrollViewEx"-->
-        <!--            app:layout_constraintHorizontal_bias="1.0"-->
-        <!--            app:layout_constraintStart_toStartOf="@+id/scrollViewEx" />-->
 
         <Button
             android:id="@+id/nextButtonLessonFrag"

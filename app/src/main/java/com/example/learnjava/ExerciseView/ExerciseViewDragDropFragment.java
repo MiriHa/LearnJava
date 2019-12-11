@@ -323,7 +323,6 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
     @Override
     public boolean onDrag(View v, DragEvent event) {
         int action = event.getAction();
-        int correct = 0;
         switch (action) {
             case DragEvent.ACTION_DRAG_STARTED:
                 if (event.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
@@ -350,7 +349,6 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                 TextView dropped = (TextView) view;
                 //checking whether first character of dropTarget equals first character of dropped
                 if (String.valueOf(dropTarget.getText().toString().charAt(0)).equals("_")){
-                    correct = 1;
 //                    if (dropTarget.getText().toString().charAt(0) == dropped.getText().toString().charAt(0)) {
                         //stop displaying the view where it was before it was dragged
                         view.setVisibility(View.INVISIBLE);
@@ -377,24 +375,23 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                         //set the tag in the target view being dropped on - to the Tag of the view being dropped
                         //TODO is this needed? answer fetching with old Tag would be better
                         //dropTarget.setTag(dropped.getTag());
-
+                       view.setVisibility(View.INVISIBLE);
                         //remove setOnDragListener by setting OnDragListener to null, so that no further drag & dropping on this TextView can be done
                         dropTarget.setOnDragListener(null);
                         return true;
                     }
 
                 else{
-                    correct = 2;
+
                     Log.i("DRAGDROP", "was not droped correctly");
                     view.setVisibility(View.VISIBLE);
                 }
 
             case DragEvent.ACTION_DRAG_ENDED:
-                Log.i("DRAGDROP", "Drag ended" + correct);
-                if(correct == 2){
+                Log.i("DRAGDROP", "Drag ended");
                     Log.i("DRAGDROP", "was not droped correctly");
                     v.setVisibility(View.VISIBLE);
-                }
+
                 //v.setBackgroundDrawable(normalShape);
 //                default:
 //                    Log.e("DragDrop", "Unknown action type received by OnDragListener.");

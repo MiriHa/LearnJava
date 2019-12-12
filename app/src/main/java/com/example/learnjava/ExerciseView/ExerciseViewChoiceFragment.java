@@ -6,10 +6,12 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -19,6 +21,8 @@ import com.example.learnjava.Controller;
 import com.example.learnjava.ExerciseCommunication;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
+
+import java.util.ArrayList;
 
 /**
  * This is the ExerciseView to give a multiple choice answer.
@@ -36,9 +40,10 @@ public class ExerciseViewChoiceFragment extends Fragment {
     private String[] answerChoices;
     private int userAnswer = 0;
 
-    private Button nextButton;
     private RadioGroup answerGroup;
-    private RadioButton answer1, answer2, answer3, answer4;
+    ArrayList<String> tags = new ArrayList<>();
+
+
 
 
     public ExerciseViewChoiceFragment() {
@@ -64,15 +69,15 @@ public class ExerciseViewChoiceFragment extends Fragment {
         TextView exerciseText = view.findViewById(R.id.exerciseTextChoice);
         exerciseText.setText(currentTask.getTaskText());
 
-        answerChoices = currentTask.getContentStringArray();
+        answerChoices = currentTask.getSolutionStringArray();
 
-        answer1 = view.findViewById(R.id.answer1);
+        RadioButton answer1 = view.findViewById(R.id.answer1);
         answer1.setText(answerChoices[0]);
-        answer2 = view.findViewById(R.id.answer2);
+        RadioButton answer2 = view.findViewById(R.id.answer2);
         answer2.setText(answerChoices[1]);
-        answer3 = view.findViewById(R.id.answer3);
+        RadioButton answer3 = view.findViewById(R.id.answer3);
         answer3.setText(answerChoices[2]);
-        answer4 = view.findViewById(R.id.answer4);
+        RadioButton answer4 = view.findViewById(R.id.answer4);
         answer4.setText(answerChoices[3]);
 
         answerGroup = view.findViewById(R.id.answerGroup);
@@ -94,7 +99,7 @@ public class ExerciseViewChoiceFragment extends Fragment {
                 }
             }
         });
-        nextButton = view.findViewById(R.id.nextButtonExerciseChoice);
+        Button nextButton = view.findViewById(R.id.nextButtonExerciseChoice);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,6 +163,26 @@ public class ExerciseViewChoiceFragment extends Fragment {
         this.currentTask = mListener.sendCurrentTask();
     }
 
+
+    //TODO for dynamiclly adding the buttons
+    private void setLayout(){
+
+        LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        for (int i=0; i<answerChoices.length;i++){
+
+            RadioButton mButton = new RadioButton(getContext());
+            mButton.setLayoutParams(mParams);
+            mButton.setTag("answer"+i);
+            //mButton.setId(R.id.Choice[i]);
+            tags.add("answer"+i);
+            mButton.setPadding(0,6,0,0);
+            mButton.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
+
+            answerGroup.addView(mButton);
+        }
+
+    }
 
 }
 

@@ -66,8 +66,7 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
         userSolutionArray = new String[currentTask.getSolutionStringArray().length];
         solutionArray = currentTask.getSolutionStringArray();
 
-        TextView exerciseNameText = view.findViewById(R.id.exerciseTextFillBlanks);
-        exerciseNameText.setText(currentTask.getTaskName());
+
         TextView exerciseTaskText = view.findViewById(R.id.exerciseBlanksText);
         exerciseTaskText.setText(currentTask.getTaskText());
 
@@ -210,8 +209,6 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
 
     private void setDynamicLayout() {
         LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        LinearLayout.LayoutParams mParamsSmall = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, (float) 0.5);
-        LinearLayout.LayoutParams mParamsWeightHeavy = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, (float) 4.5);
 
         String[] contentArray = currentTask.getContentStringArray();
         for (int i = 0; i < contentArray.length; i++) {
@@ -236,7 +233,7 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
                     myEditText.setHint("____");
                     myEditText.setMaxLines(1);
                     myEditText.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
-                    //myEditText.setPadding(6, 6, 6, 6);
+                    myEditText.setSingleLine(true);
                     String tag = "fillBlankAnswer" + i + j;
                     myEditText.setTag(tag);
                     tags.add(tag);

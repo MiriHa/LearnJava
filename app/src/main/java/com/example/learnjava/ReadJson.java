@@ -80,7 +80,7 @@ public class ReadJson {
                             int solutionInt_value = taskObject.getInt("exerciseSolutionInt");
 
                             //Add values in ArrayList,
-                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value, null, null, next_value, viewType_value, solutionInt_value,"", answerChoicesArray_value);
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value, answerChoicesArray_value, null, next_value, viewType_value, solutionInt_value,"", null);
                             taskList.add(newExercise);
                         }
                         //Type: Answer FillBlanks -> String[]

@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
         //TODO Only for testing purposes
         myProgressController.updateUnlockedSections(2);
-        myProgressController.updateUnlockedSections(3);
+       // myProgressController.updateUnlockedSections(3);
 
         FrameLayout lessonLayout = findViewById(R.id.FragmentHolder);
         //findLinearLayouts

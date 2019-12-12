@@ -6,6 +6,7 @@ import android.util.Log;
 import com.example.learnjava.models.ModelExercise;
 import com.example.learnjava.models.ModelLesson;
 import com.example.learnjava.models.ModelTask;
+import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -79,7 +80,6 @@ public class ReadJson {
                             int solutionInt_value = taskObject.getInt("exerciseSolutionInt");
 
                             //Add values in ArrayList,
-                            //TODO USE SOLUTIONSTRINGARRAY AS ANSWERCHOICES, changethis
                             ModelTask newExercise = new ModelExercise(name_value,text_value,number_value, null, null, next_value, viewType_value, solutionInt_value,"", answerChoicesArray_value);
                             taskList.add(newExercise);
                         }
@@ -88,8 +88,11 @@ public class ReadJson {
                             JSONArray solutionStringArray = taskObject.getJSONArray("exerciseSolutionStringArray");
                             String[] solutionStringArray_value = toStringArray(solutionStringArray);
 
+                            JSONArray contentStringArray = taskObject.getJSONArray("exerciseContentStringArray");
+                            String[] contentStringArray_value = toStringArray(contentStringArray);
+
                             //Add values in ArrayList
-                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,solutionStringArray_value, null, next_value, viewType_value,0,"", null);
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,solutionStringArray_value, null, next_value, viewType_value,0,"", contentStringArray_value);
                             taskList.add(newExercise);
                         }
                         //Type: Drag and Drop -> string[]

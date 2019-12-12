@@ -1,9 +1,11 @@
-package com.example.learnjava.lessons;
+package com.example.learnjava.Section;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -23,7 +25,6 @@ import com.example.learnjava.ExerciseView.ExerciseViewFillBlanksFragment;
 import com.example.learnjava.ExerciseView.ExerciseViewOrderFragment;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
-import com.example.learnjava.models.ModelUserProgress;
 
 
 public class ExerciseFragment extends Fragment implements ExerciseCommunication {
@@ -34,6 +35,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
 
     private TextView exerciseName;
     private ViewGroup viewGroup;
+    private ConstraintLayout background;
     private int whatsNext;
     private int viewType;
     private ModelTask currentTask;
@@ -58,11 +60,15 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         if(getActivity() != null)
             progressController = (Controller) getActivity().getApplicationContext();
         Log.i("CheckCOntroller", " progressController Sections " + progressController.getSections().toString());
+
         exerciseName = view.findViewById(R.id.exerciseName);
         exerciseName.setText(currentTask.getTaskName());
 
+        background = view.findViewById(R.id.ExerciseHolder);
+
         viewGroup = view.findViewById(android.R.id.content);
         setViewContent();
+        setSectionColor();
 
 
         return view;
@@ -243,6 +249,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         //  AlertDialog builder = new AlertDialog.Builder(getContext()).create();
         builder.setView(dialogView);
         final AlertDialog feedbackDialog = builder.create();
+      //  feedbackDialog.getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.transparent)));
         feedbackDialog.show();
 
         tryagainButton.setOnClickListener(new View.OnClickListener() {
@@ -261,6 +268,41 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
             }
         });
 
+    }
+
+    private void setSectionColor() {
+        switch (progressController.getCurrentSection()) {
+
+            case 1:
+                background.setBackgroundColor(getResources().getColor(R.color.lightGreen1));
+                break;
+            case 2:
+                background.setBackgroundColor(getResources().getColor(R.color.lightGreen2));
+                break;
+            case 3:
+                background.setBackgroundColor(getResources().getColor(R.color.lightGreen3));
+                break;
+            case 4:
+                background.setBackgroundColor(getResources().getColor(R.color.Green1));
+                break;
+            case 5:
+                background.setBackgroundColor(getResources().getColor(R.color.Green2));
+                break;
+            case 6:
+                background.setBackgroundColor(getResources().getColor(R.color.Blue1));
+                break;
+            case 7:
+                background.setBackgroundColor(getResources().getColor(R.color.Blue2));
+                break;
+            case 8:
+                background.setBackgroundColor(getResources().getColor(R.color.Blue3));
+                break;
+            case 9:
+                background.setBackgroundColor(getResources().getColor(R.color.Blue4));
+                break;
+
+
+        }
     }
 
 }

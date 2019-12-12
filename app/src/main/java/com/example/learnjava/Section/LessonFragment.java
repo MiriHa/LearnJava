@@ -1,11 +1,11 @@
-package com.example.learnjava.lessons;
+package com.example.learnjava.Section;
 
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
-import android.text.Layout;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -19,12 +19,11 @@ import com.example.learnjava.Controller;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
 
-import static android.graphics.text.LineBreaker.JUSTIFICATION_MODE_INTER_WORD;
-
 public class LessonFragment extends Fragment {
 
    private TextView lessonName;
    private LinearLayout textHolder;
+   private ConstraintLayout background;
    private Button nextButton;
 
    private int whatsNext;
@@ -50,6 +49,7 @@ public class LessonFragment extends Fragment {
         progressController = (Controller) getContext().getApplicationContext();
 
         textHolder = view.findViewById(R.id.lessonTextHolder);
+        background = view.findViewById(R.id.LessonHolder);
 
         lessonName = view.findViewById(R.id.lessonName);
 
@@ -83,7 +83,7 @@ public class LessonFragment extends Fragment {
 
         lessonName.setText(currentTask.getTaskName());
         setLessonText();
-       // lessonExample.setText("Maybe we need in json more text section for examples to better format them");
+        setSectionColor();
 
         return view;
 
@@ -121,9 +121,10 @@ public class LessonFragment extends Fragment {
         //Split the string so that in can be passed to diffrent textviews
         String[] textParts = text.split("@");
 
-        for(int i = 0; i < textParts.length; i++){
+//        for(int i = 0; i < textParts.length; i++){
+        for(String element : textParts){
           // TextView textView = getTextView(i);
-            String currentText = textParts[i];
+//            String currentText = element;
             //TODO make some words bold?
            // String[] boldParts = currentText.split("§");
 
@@ -131,13 +132,48 @@ public class LessonFragment extends Fragment {
 
                 TextView myTextView = new TextView(getContext());
                 myTextView.setLayoutParams(mParams);
-                myTextView.setText(currentText);
+                myTextView.setText(element);
                 myTextView.setPadding(8,12,8,12);
                 //TODO find a better way or see if its in packages
                 //myTextView.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                 myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
 
                 textHolder.addView(myTextView);
+
+        }
+    }
+
+    private void setSectionColor() {
+        switch (progressController.getCurrentSection()) {
+
+            case 1:
+                background.setBackgroundColor(getResources().getColor(R.color.lightGreen1));
+                break;
+            case 2:
+                background.setBackgroundColor(getResources().getColor(R.color.lightGreen2));
+                break;
+            case 3:
+                background.setBackgroundColor(getResources().getColor(R.color.lightGreen3));
+                break;
+            case 4:
+                background.setBackgroundColor(getResources().getColor(R.color.Green1));
+                break;
+            case 5:
+                background.setBackgroundColor(getResources().getColor(R.color.Green2));
+                break;
+            case 6:
+                background.setBackgroundColor(getResources().getColor(R.color.Blue1));
+                break;
+            case 7:
+                background.setBackgroundColor(getResources().getColor(R.color.Blue2));
+                break;
+            case 8:
+                background.setBackgroundColor(getResources().getColor(R.color.Blue3));
+                break;
+            case 9:
+                background.setBackgroundColor(getResources().getColor(R.color.Blue4));
+                break;
+
 
         }
     }

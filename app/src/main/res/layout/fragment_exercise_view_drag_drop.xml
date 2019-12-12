@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="@drawable/rounded_corners"
             app:layout_constraintBottom_toTopOf="@+id/nextButtonExerciseAnswer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +28,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/PaddingSide"
                 android:padding="@dimen/PaddingSide"
-                android:text="Drag and Drop the Answers in the Gaps:"
                 android:textSize="@dimen/TextSize20" />
 
             <LinearLayout
@@ -38,7 +38,7 @@
                 android:layout_gravity="center"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:textSize="@dimen/TextSize20" />
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:id="@+id/answerHolderDragDrop"

@@ -1,4 +1,4 @@
-package com.example.learnjava.lessons;
+package com.example.learnjava.Section;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import com.example.learnjava.Controller;
 import com.example.learnjava.MainActivity;
 import com.example.learnjava.R;
-import com.example.learnjava.ReadJson;
 import com.example.learnjava.models.ModelTask;
 
 import java.util.ArrayList;
@@ -29,6 +28,8 @@ public class LessonActivity extends AppCompatActivity {
     ModelTask currentTask;
     int currentTaskNumber;
 
+    int currentSection;
+
 
     //TODO use the one from the progressMOdel instead of here?
     int progressCurrentScreen = 0;
@@ -42,6 +43,7 @@ public class LessonActivity extends AppCompatActivity {
 
         //get the progresscontroller
         progressController = (Controller) getApplicationContext();
+
 
         //use a singelton
         //userProgress = ModelUserProgress.getInstance();
@@ -252,5 +254,41 @@ public class LessonActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    public void setSectionCOlor() {
+        switch (progressController.getCurrentSection()) {
+
+            case 1:
+                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.lightGreen1));
+                break;
+            case 2:
+                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.lightGreen2));
+                break;
+            case 3:
+                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.lightGreen3));
+                break;
+            case 4:
+                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.Green1));
+                break;
+            case 5:
+                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.Green2));
+                break;
+            case 6:
+                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.Blue1));
+                break;
+            case 7:
+                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.Blue2));
+                break;
+            case 8:
+                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.Blue3));
+                break;
+            case 9:
+                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.Blue4));
+                break;
+
+
+        }
+    }
+
 
 }

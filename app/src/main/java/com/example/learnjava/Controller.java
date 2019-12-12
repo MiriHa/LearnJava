@@ -54,6 +54,7 @@ public class Controller extends android.app.Application {
         modelUserProgress.updateUserProgressCurrentScreen(number);
     }
 
+
     public void setLastLesson(ModelTask lastLesson){
         modelUserProgress.setLastLesson(lastLesson);
     }
@@ -87,6 +88,10 @@ public class Controller extends android.app.Application {
 
     public ArrayList<Integer> getSections(){
         return modelUserProgress.getUserProgressUnlockedSections();
+    }
+
+    public int getCurrentSection(){
+        return modelUserProgress.getCurrentSection();
     }
 
 

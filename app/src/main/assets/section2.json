@@ -1,52 +1,130 @@
 {
   "tasks": [
     {
-      "taskName" : "Tutorial",
-      "taskNumber" : 0,
-      "taskText" : "How to Use this app. Hello! This learning App will present you different Lessons to help you learn java. Here will be presented a lesson with theory that you need to read and understand and follwing this there will be an exercise to check our nearly learned knowledge",
-      "taskWhatsNext" : 2,
       "taskType" : 1,
-      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
+      "taskName" : "Your first Java program",
+      "taskNumber" : 0,
+      "taskText" : "Let's start by creating a simple program that prints “Hello World” to the screen.@class MyClass {\n  public static void main(String[ ] args) {\n     System.out.println(\"Hello World\");\n   }\n}@In Java, every line of code that can actually run needs to be inside a class.\nIn our example, we named the class MyClass. You will learn more about classes in the upcoming modules.\n\nIn Java, each application has an entry point, or a starting point, which is a method called main. Along with main, the keywords public and static will also be explained later.@As a summary:\n- Every program in Java must have a class.\n- Every Java program starts from the main method.\n",
+      "taskWhatsNext" : 2,
+      "lessonKeyWords" : ["Hello World", "System.out.println", "main", "method", "class"]
     },
     {
-      "taskName": "introduction",
+      "taskName": "Your first Java program",
       "taskNumber": 1,
-      "taskText": "Drag and Drop the Answers in the Blanks",
-      "taskWhatsNext": 2,
+      "taskText": "Which method is the starting point for all Java programs?",
+      "taskWhatsNext": 1,
       "taskType" : 2,
-      "exerciseViewType" : 4,
-      "exerciseContentStringArray" : ["task =", "", "words", "blub", "bla","", "", "miau", "neko"],
-      "exerciseSolutionStringArray" : ["object", "int","double", "getter", "Setter", "better", "blub", "chhhh"],
-      "exerciseSolutionIntArray" : [0,2,4]
+      "exerciseViewType" : 1,
+      "exerciseSolutionString": "main"
     },
     {
-      "taskName": "introduction",
+      "taskType": 1,
+      "taskName" : "The main method",
       "taskNumber": 2,
-      "taskText": "String ___1___ = 'some Object'; \n ___2___ age = 5; \n ___3____ height = 0.5;",
+      "taskText": "To run our program, the main method must be identical to this signature:@   public static void main(String[ ] args)@- public: anyone can access it\n- static: method can be run without creating an instance of the class containing the main method\n- void: method doesn't return any value\n- main: the name of the method@For example, the following code declares a method called test, which does not return anything and has no parameters:@    void test(){}@The method's parameters are declared inside the parentheses that follow the name of the method.\nFor main, it's an array of strings called args. We will use it in our next lesson, so don't worry if you don't understand it all now.",
+      "taskWhatsNext": 2,
+      "lessonKeyWords": ["main method","starting point", "curly brackets","program"]
+    },
+    {
+      "taskName": "The main method",
+      "taskNumber": 3,
+      "taskText": "Fill in the Blanks to declare a method called \"hello()\".",
       "taskWhatsNext": 1,
       "taskType" : 2,
       "exerciseViewType" : 3,
-      "exerciseSolutionStringArray" : ["object", "int","double"]
+      "exerciseContentStringArray" : ["void@#@()"],
+      "exerciseSolutionStringArray" : ["hello"]
     },
     {
-      "taskName": "Main Method",
-      "taskNumber": 3,
-      "taskText" : " THis is an indrocution to the main method ahahaaaa",
+      "taskName": "Displaying text",
+      "taskNumber": 4,
+      "taskText" : "Next is the body of the main method, enclosed in curly braces:@  {\n      System.out.println(\"Hello World!\");\n  }@The println method prints a line of text to the screen.\nThe System class and its out stream are used to access the println method.@In classes, methods, and other flow-control structures code is always enclosed in curly braces { }.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
-      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
+      "lessonKeyWords" : ["System.out.println", "print", "text","display text"]
     },
     {
-      "taskName": "Main Method2",
-      "taskNumber": 4,
-      "taskText": "Do a thing",
+      "taskName": "Displaying text",
+      "taskNumber": 5,
+      "taskText": "Which method prints text in a Java program?",
+      "taskWhatsNext": 1,
+      "taskType" : 2,
+      "exerciseViewType" : 2,
+      "exerciseSolutionStringArray": ["System.printText()","System.out()","System.out.println()","out.writeText()"],
+      "exerciseSolutionInt" : 3
+    },
+    {
+      "taskName": "Semicolons in Java",
+      "taskNumber": 6,
+      "taskText" : "You can pass a different text as the parameter to the println method to print it.@class MyClass {\n   public static void main(String[ ] args) {\n      System.out.println(\"I am learning Java\");\n   }}@In Java, each code statement must end with a semicolon. @Remember: do not use semicolons after method and class declarations that follow with the body defined using the curly braces.",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["Semicolons",";","parameters","statement","ends"]
+    },
+    {
+      "taskName": "Java program",
+      "taskNumber": 7,
+      "taskText": "Fill in the blanks to create a valid Java Program:",
+      "taskWhatsNext": 1,
+      "taskType" : 2,
+      "exerciseViewType" : 3,
+      "exerciseContentStringArray" : ["#@Apples {","    public static void@#@(String[ ]args) {","    System.out.println(\"Hello, World!\")@#","   }","}"],
+      "exerciseSolutionStringArray" : ["class","main",";"]
+    },
+    {
+      "taskName": "Comments",
+      "taskNumber": 8,
+      "taskText" : "The purpose of including comments in your code is to explain what the code is doing. Java supports both single and multi-line comments. All characters that appear within a comment are ignored by the Java compiler.@A single-line comment starts with two forward slashes and continues until it reaches the end of the line. \nFor example:@   // this is a single-line comment\n    x = 5;  // a single-line comment after code@Adding comments as you write code is a good practice, because they provide clarification and understanding when you need to refer back to it, as well as for others who might need to read it.",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["comments","//","good practice","single-line"]
+    },
+    {
+      "taskName": "Single-line Comments",
+      "taskNumber": 9,
+      "taskText": "Single-line comments are created using:",
+      "taskWhatsNext": 1,
+      "taskType" : 2,
+      "exerciseViewType" : 2,
+      "exerciseSolutionStringArray": ["//Characters at the end of the line","*/characters at the beginning of the line","//Characters at the beginning of the line","**Characters at the beginning of the line"],
+      "exerciseSolutionInt" : 3
+    },
+    {
+      "taskName": "Multi-line Comments",
+      "taskNumber": 10,
+      "taskText" : "Java also supports comments that span multiple lines.\nYou start this type of comment with a forward slash followed by an asterisk, and end it with an asterisk followed by a forward slash. \nFor example:@ /* This is also a\n      comment spanning\n      multiple lines\n*/@Note that Java does not support nested multi-line comments. However, you can nest single-line comments within multi-line comments. @/* This is a single-line comment:\n\n     // a single-line comment\n*/@Another name for a Multi-Line comment is a Block comment.",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["comments","/*","good practice","Multi-line","*/"]
+    },
+    {
+      "taskName": "Multi-line Comments",
+      "taskNumber": 11,
+      "taskText": "Make this a multi-line comment:",
+      "taskWhatsNext": 1,
+      "taskType" : 2,
+      "exerciseViewType" : 3,
+      "exerciseContentStringArray" : ["#@some","  comment text","#"],
+      "exerciseSolutionStringArray" : ["/*","*/"]
+    },
+    {
+      "taskName": "Documentation Comments",
+      "taskNumber": 12,
+      "taskText"  : "Documentation comments are special comments that have the appearance of multi-line comments, with the difference being that they generate external documentation of your source code. These begin with a forward slash followed by two asterisks, and end with an asterisk followed by a forward slash. \nFor example:@/** This is a documentation comment */\n\n/** This is also a\ndocumentation comment */@Javadoc is a tool which comes with JDK and it is used for generating Java code documentation in HTML format from Java source code which has required documentation in a predefined format.@When a documentation comment begins with more than two asterisks, Javadoc assumes that you want to create a \"box\" around the comment in the source code. It simply ignores the extra asterisks.\nFor example:@ /**********************\n\nThis is the start of a method\n\n***********************/@This will retain just the text \"This is the start of a method\" for the documentation.",
+      "taskWhatsNext": 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["comments","/**","good practice","documentation comments","*/"]
+    },
+    {
+      "taskName": "Documentation Comments",
+      "taskNumber": 13,
+      "taskText": "You can add a Java doc style comment by using:",
       "taskWhatsNext": 3,
       "taskType" : 2,
       "exerciseViewType" : 2,
-      "exerciseAnswerChoices": ["answer1", "answer2", "answer3", "answer4"],
+      "exerciseSolutionStringArray": ["/* and */ character to wrap a comment","/** and */ characters to wrap a comment","// characters in the beginning of the line","// and */ characters to wrap a comment"],
       "exerciseSolutionInt" : 2
     }
-
   ]
 
 }

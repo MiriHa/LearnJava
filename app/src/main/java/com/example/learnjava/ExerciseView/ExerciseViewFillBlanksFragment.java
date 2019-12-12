@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.example.learnjava.ExerciseCommunication;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -36,6 +38,7 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
 
     private String[] userSolutionArray;
     private String[] solutionArray;
+    private ArrayList<String> tags = new ArrayList<>();
 
     private Button nextButton;
     private LinearLayout blankHolder;
@@ -63,9 +66,10 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
         userSolutionArray = new String[currentTask.getSolutionStringArray().length];
         solutionArray = currentTask.getSolutionStringArray();
 
-        TextView exerciseText = view.findViewById(R.id.exerciseTextAnswer);
-        TextView exerciseBlankText = view.findViewById(R.id.exerciseBlanksText);
-        exerciseBlankText.setText(currentTask.getTaskText());
+        TextView exerciseNameText = view.findViewById(R.id.exerciseTextFillBlanks);
+        exerciseNameText.setText(currentTask.getTaskName());
+        TextView exerciseTaskText = view.findViewById(R.id.exerciseBlanksText);
+        exerciseTaskText.setText(currentTask.getTaskText());
 
 
         blankHolder = view.findViewById(R.id.exerciseBlanksAnswerHolder);
@@ -79,7 +83,7 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
         });
 
         //set the Layout with the Blanks needed
-        setLayout();
+        setDynamicLayout();
 
 
         return view;
@@ -114,8 +118,8 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
             mListener.justOpenNext();
         } else {
             //get answers from edittexts and add them to the userSolutionArray
-            for (int i = 0; i < solutionArray.length; i++) {
-                EditText myEditText = blankHolder.findViewWithTag("fillBlanksAnswer" + i);
+            for (int i = 0; i < tags.size(); i++) {
+                EditText myEditText = blankHolder.findViewWithTag(tags.get(i));
                 String solution = myEditText.getText().toString();
                 if (solution.isEmpty()) {
                     wasEmpty = true;
@@ -137,6 +141,31 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
                     Log.i("SENDANSWERFROMEXERCISE", " answer: false");
                 }
             }
+//        } else {
+//            //get answers from edittexts and add them to the userSolutionArray
+//            for (int i = 0; i < solutionArray.length; i++) {
+//                EditText myEditText = blankHolder.findViewWithTag("fillBlanksAnswer" + i);
+//                String solution = myEditText.getText().toString();
+//                if (solution.isEmpty()) {
+//                    wasEmpty = true;
+//                    break;
+//                } else {
+//                    userSolutionArray[i] = solution;
+//                }
+//            }
+//            //check if the answers are right
+//            if (wasEmpty) {
+//                Toast.makeText(getContext(), "Pleas enter all answers", Toast.LENGTH_SHORT).show();
+//            } else {
+//                if (Arrays.equals(solutionArray, userSolutionArray)) {
+//                    mListener.sendAnswerFromExerciseView(true);
+//                    Log.i("SENDANSWERFROMEXERCISE", " answer: true");
+//                } else {
+//                    Log.i("ANSWER", " was wrong");
+//                    mListener.sendAnswerFromExerciseView(false);
+//                    Log.i("SENDANSWERFROMEXERCISE", " answer: false");
+//                }
+//            }
         }
     }
 
@@ -174,6 +203,57 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
             holder.addView(myEditText);
 
             blankHolder.addView(holder);
+        }
+
+
+    }
+
+    private void setDynamicLayout() {
+        LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams mParamsSmall = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, (float) 0.5);
+        LinearLayout.LayoutParams mParamsWeightHeavy = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, (float) 4.5);
+
+        String[] contentArray = currentTask.getContentStringArray();
+        for (int i = 0; i < contentArray.length; i++) {
+            //one array element holds the Content of a row
+            String[] textParts = contentArray[i].split("@");
+
+            Log.i("FILLBLANKS","getContentArray, textParts: " + textParts.toString());
+            LinearLayout rowHolder = new LinearLayout(getContext());
+            rowHolder.setLayoutParams(mParams);
+            rowHolder.setPadding(10,0,0,0);
+            rowHolder.setOrientation(LinearLayout.HORIZONTAL);
+
+
+            for (int j = 0; j < textParts.length; j++) {
+
+                //This is either a text or a Space to indicate a editText needed
+                if (textParts[j].equals("#")) {
+                    Log.i("FILLBLANKS","textParts need EditText");
+                    //Set A editText with a Task
+                    EditText myEditText = new EditText(getContext());
+                    myEditText.setLayoutParams(mParams);
+                    myEditText.setHint("____");
+                    myEditText.setMaxLines(1);
+                    myEditText.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
+                    //myEditText.setPadding(6, 6, 6, 6);
+                    String tag = "fillBlankAnswer" + i + j;
+                    myEditText.setTag(tag);
+                    tags.add(tag);
+                    rowHolder.addView(myEditText);
+
+                } else {
+                    Log.i("FILLBLANKS","textParts need TextView");
+                    TextView myTextView = new TextView(getContext());
+                    myTextView.setLayoutParams(mParams);
+                    myTextView.setText(textParts[j]);
+                    myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
+                    //myTextView.setPadding(6, 6, 6, 6);
+                    rowHolder.addView(myTextView);
+
+                }
+            }
+            blankHolder.addView(rowHolder);
         }
 
 

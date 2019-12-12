@@ -53,7 +53,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1/7"
+                    android:text="1/9"
                     android:autoSizeTextType="uniform" />
 
                 <TextView
@@ -82,7 +82,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2/7"
+                    android:text="2/9"
                     android:autoSizeTextType="uniform" />
 
                 <TextView
@@ -111,7 +111,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3/7"
+                    android:text="3/9"
                     android:autoSizeTextType="uniform" />
 
                 <TextView
@@ -140,7 +140,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="4/7"
+                    android:text="4/9"
                     android:autoSizeTextType="uniform" />
 
                 <TextView
@@ -157,7 +157,7 @@
                 android:id="@+id/lesson5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/Green3"
+                android:background="@color/Green2"
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -169,7 +169,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5/7"
+                    android:text="5/9"
                     android:autoSizeTextType="uniform" />
 
                 <TextView
@@ -186,7 +186,7 @@
                 android:id="@+id/lesson6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/cadetBlue"
+                android:background="@color/Blue1"
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -198,7 +198,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="6/7"
+                    android:text="6/9"
                     android:autoSizeTextType="uniform" />
 
                 <TextView
@@ -215,7 +215,7 @@
                 android:id="@+id/lesson7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/QueenBlue"
+                android:background="@color/Blue2"
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -227,7 +227,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="7/7"
+                    android:text="7/9"
                     android:autoSizeTextType="uniform" />
 
                 <TextView
@@ -244,7 +244,7 @@
                 android:id="@+id/lesson8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/darkerBlue"
+                android:background="@color/Blue3"
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -256,7 +256,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="7/7"
+                    android:text="8/9"
                     android:autoSizeTextType="uniform" />
 
                 <TextView
@@ -273,7 +273,7 @@
                 android:id="@+id/lesson9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/purpleBlue"
+                android:background="@color/Blue4"
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -285,7 +285,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="7/7"
+                    android:text="9/9"
                     android:autoSizeTextType="uniform" />
 
                 <TextView

@@ -45,10 +45,8 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingLeft="@dimen/PaddingSide"
-                android:paddingRight="@dimen/PaddingSide"
-                android:paddingTop="@dimen/PaddingScroll"
-                android:paddingBottom="@dimen/PaddingScroll">
+                android:paddingHorizontal="@dimen/PaddingSide"
+                android:paddingVertical="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -74,10 +72,8 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingLeft="@dimen/PaddingSide"
-                android:paddingRight="@dimen/PaddingSide"
-                android:paddingTop="@dimen/PaddingScroll"
-                android:paddingBottom="@dimen/PaddingScroll">
+                android:paddingHorizontal="@dimen/PaddingSide"
+                android:paddingVertical="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -103,10 +99,8 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingLeft="@dimen/PaddingSide"
-                android:paddingRight="@dimen/PaddingSide"
-                android:paddingTop="@dimen/PaddingScroll"
-                android:paddingBottom="@dimen/PaddingScroll">
+                android:paddingHorizontal="@dimen/PaddingSide"
+                android:paddingVertical="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -132,10 +126,8 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingLeft="@dimen/PaddingSide"
-                android:paddingRight="@dimen/PaddingSide"
-                android:paddingTop="@dimen/PaddingScroll"
-                android:paddingBottom="@dimen/PaddingScroll">
+                android:paddingHorizontal="@dimen/PaddingSide"
+                android:paddingVertical="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -161,11 +153,8 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingLeft="@dimen/PaddingSide"
-                android:paddingRight="@dimen/PaddingSide"
-                android:paddingTop="@dimen/PaddingScroll"
-                android:paddingBottom="@dimen/PaddingScroll">
-
+                android:paddingHorizontal="@dimen/PaddingSide"
+                android:paddingVertical="@dimen/PaddingScroll">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -190,10 +179,8 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingLeft="@dimen/PaddingSide"
-                android:paddingRight="@dimen/PaddingSide"
-                android:paddingTop="@dimen/PaddingScroll"
-                android:paddingBottom="@dimen/PaddingScroll">
+                android:paddingHorizontal="@dimen/PaddingSide"
+                android:paddingVertical="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -219,10 +206,8 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingLeft="@dimen/PaddingSide"
-                android:paddingRight="@dimen/PaddingSide"
-                android:paddingTop="@dimen/PaddingScroll"
-                android:paddingBottom="@dimen/PaddingScroll">
+                android:paddingHorizontal="@dimen/PaddingSide"
+                android:paddingVertical="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -248,10 +233,8 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingLeft="@dimen/PaddingSide"
-                android:paddingRight="@dimen/PaddingSide"
-                android:paddingTop="@dimen/PaddingScroll"
-                android:paddingBottom="@dimen/PaddingScroll">
+                android:paddingHorizontal="@dimen/PaddingSide"
+                android:paddingVertical="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -277,10 +260,8 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingLeft="@dimen/PaddingSide"
-                android:paddingRight="@dimen/PaddingSide"
-                android:paddingTop="@dimen/PaddingScroll"
-                android:paddingBottom="@dimen/PaddingScroll">
+                android:paddingHorizontal="@dimen/PaddingSide"
+                android:paddingVertical="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/FeedbackRight"
-        android:textSize="@dimen/TextSize40"
+        android:textSize="@dimen/TextSize30"
         android:textAlignment="center"
         android:padding="@dimen/PaddingSide"/>
 
@@ -17,9 +17,10 @@
         android:id="@+id/FeedbackRightButton"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:text="Next Lesson"/>
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="20dp"
+        android:text="Next Lesson"
+        android:background="@drawable/button_altert_green"/>
 
 
 </LinearLayout>

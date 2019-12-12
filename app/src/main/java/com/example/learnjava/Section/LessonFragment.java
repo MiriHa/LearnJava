@@ -4,8 +4,10 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.text.Layout;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -133,9 +135,9 @@ public class LessonFragment extends Fragment {
                 TextView myTextView = new TextView(getContext());
                 myTextView.setLayoutParams(mParams);
                 myTextView.setText(element);
-                myTextView.setPadding(8,12,8,12);
+                myTextView.setPadding(10,6,10,6);
                 //TODO find a better way or see if its in packages
-                //myTextView.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+                myTextView.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                 myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
 
                 textHolder.addView(myTextView);
@@ -147,31 +149,31 @@ public class LessonFragment extends Fragment {
         switch (progressController.getCurrentSection()) {
 
             case 1:
-                background.setBackgroundColor(getResources().getColor(R.color.lightGreen1));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(),(R.color.lightGreen1)));
                 break;
             case 2:
-                background.setBackgroundColor(getResources().getColor(R.color.lightGreen2));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(),(R.color.lightGreen2)));
                 break;
             case 3:
-                background.setBackgroundColor(getResources().getColor(R.color.lightGreen3));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.lightGreen3));
                 break;
             case 4:
-                background.setBackgroundColor(getResources().getColor(R.color.Green1));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(),(R.color.Green1)));
                 break;
             case 5:
-                background.setBackgroundColor(getResources().getColor(R.color.Green2));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(),(R.color.Green2)));
                 break;
             case 6:
-                background.setBackgroundColor(getResources().getColor(R.color.Blue1));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.Blue1));
                 break;
             case 7:
-                background.setBackgroundColor(getResources().getColor(R.color.Blue2));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(),(R.color.Blue2)));
                 break;
             case 8:
-                background.setBackgroundColor(getResources().getColor(R.color.Blue3));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(),(R.color.Blue3)));
                 break;
             case 9:
-                background.setBackgroundColor(getResources().getColor(R.color.Blue4));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.Blue4));
                 break;
 
 

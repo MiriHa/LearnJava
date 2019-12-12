@@ -56,7 +56,7 @@
     {
       "taskName": "Semicolons in Java",
       "taskNumber": 6,
-      "taskText" : "You can pass a different text as the parameter to the println method to print it.@class MyClass {\n   public static void main(String[ ] args) {\n      System.out.println(\"I am learning Java\");\n   }}@In Java, each code statement must end with a semicolon. @Remember: do not use semicolons after method and class declarations that follow with the body defined using the curly braces.",
+      "taskText" : "You can pass a different text as the parameter to the println method to print it.@class MyClass{\n  public static void main(String[ ] args) {\n  System.out.println(\"I am learning Java\");\n   }}@In Java, each code statement must end with a semicolon. @Remember: Do not use semicolons after method and class declarations that follow with the body defined using the curly braces.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["Semicolons",";","parameters","statement","ends"]

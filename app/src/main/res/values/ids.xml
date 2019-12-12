@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <item name="fillBlanksAnswer0" type="id"/>
-    <item name="fillBlanksAnswer1" type="id"/>
-    <item name="fillBlanksAnswer2" type="id"/>
-    <item name="fillBlanksAnswer3" type="id"/>
-    <item name="fillBlanksAnswer4" type="id"/>
-    <item name="fillBlanksAnswer5" type="id"/>
-    <item name="fillBlanksAnswer6" type="id"/>
-    <item name="fillBlanksAnswer7" type="id"/>
-    <item name="fillBlanksAnswer8" type="id"/>
-    <item name="fillBlanksAnswer9" type="id"/>
+    <item name="Choice1" type="id"/>
+    <item name="Choice2" type="id"/>
+    <item name="Choice3" type="id"/>
+    <item name="Choice4" type="id"/>
+    <item name="Choice5" type="id"/>
+    <item name="Choice6" type="id"/>
+    <item name="Choice7" type="id"/>
+    <item name="Choice8" type="id"/>
+
 
 </resources>

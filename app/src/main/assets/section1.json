@@ -4,7 +4,7 @@
       "taskType" : 1,
       "taskName" : "Tutorial",
       "taskNumber" : 0,
-      "taskText" : "Hello! Here is a guide on how to use this Learning app:@There are nine Sections that will guide you to learn the Programming language Java. You will unlock them as you go. Each Section consists of a variety of Theory lessons and exercise. These will test your learned theory knowledge.@So have fun learning Java!",
+      "taskText" : "Hello! \nHere is a guide on how to use this Learning app:@There are nine Sections that will guide you to learn the Programming language Java.\nYou will unlock them as you go. Each Section consists of a variety of Theory lessons and exercise. These will test your learned theory knowledge.@\nSo have fun learning Java!",
       "taskWhatsNext" : 1,
       "lessonKeyWords" : ["LearningApp", "sections", "lessons", "exercises"]
     },

@@ -9,7 +9,8 @@
         <solid
             android:color="#c7ff9c"
             />
-        <corners android:radius="10dp" />
+
+<!--        <corners android:radius="10dp" />-->
 
         <padding
             android:left="20dp"

@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".lessons.LessonFragment">
+    tools:context=".Section.LessonFragment">
 
 
    <androidx.constraintlayout.widget.ConstraintLayout
+       android:id="@+id/ExerciseHolder"
        android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:background= "@color/lightGreen1" >
+       android:layout_height="match_parent">
 
        <TextView
            android:id="@+id/exerciseType"

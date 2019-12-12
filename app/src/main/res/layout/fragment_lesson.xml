@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".lessons.ExerciseFragment">
+    tools:context=".Section.ExerciseFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/LessonHolder"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/lightGreen1">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/lessonType"
@@ -45,6 +45,8 @@
             android:layout_height="0dp"
             android:layout_marginTop="3dp"
             android:paddingHorizontal="16dp"
+            android:background="@drawable/rounded_corners"
+            android:layout_margin="10dp"
             app:layout_constraintBottom_toTopOf="@+id/nextButtonLessonFrag"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -87,4 +87,8 @@ public class ModelUserProgress {
         return finishedTasks;
     }
 
+    public int getCurrentSection(){
+        return userProgressCurrentSection;
+    }
+
 }

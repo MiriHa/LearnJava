@@ -4,16 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.example.learnjava.lessons.LessonActivity;
-import com.example.learnjava.models.ModelUserProgress;
-import com.google.gson.Gson;
+import com.example.learnjava.Section.LessonActivity;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener{
 
@@ -34,8 +31,9 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
         context = getApplicationContext();
 
-        //Only for testing purposes
+        //TODO Only for testing purposes
         myProgressController.updateUnlockedSections(2);
+        myProgressController.updateUnlockedSections(3);
 
         FrameLayout lessonLayout = findViewById(R.id.FragmentHolder);
         //findLinearLayouts

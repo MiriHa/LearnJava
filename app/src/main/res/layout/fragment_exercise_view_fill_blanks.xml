@@ -19,6 +19,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="9dp"
             android:orientation="vertical"
+            android:background="@drawable/rounded_corners"
             app:layout_constraintBottom_toTopOf="@+id/nextButtonExerciseAnswer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,15 +30,14 @@
                 android:id="@+id/exerciseTextFillBlanks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/PaddingSide"
-                android:text="Fill in the Blanks:"
+                android:layout_margin="2dp"
                 android:textSize="@dimen/TextSize20" />
 
             <TextView
                 android:id="@+id/exerciseBlanksText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/PaddingSide"
+                android:layout_margin="2dp"
                 android:textSize="20sp" />
 
             <LinearLayout
@@ -45,11 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="@dimen/PaddingSide">
-
-
-
-
+                android:layout_margin="2dp">
             </LinearLayout>
 
         </LinearLayout>
@@ -58,7 +54,7 @@
             android:id="@+id/nextButtonExerciseAnswer"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:layout_margin="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

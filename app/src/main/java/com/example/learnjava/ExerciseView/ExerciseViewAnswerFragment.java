@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,7 +61,7 @@ public class ExerciseViewAnswerFragment extends Fragment {
 
         exerciseViewHolder = view.findViewById(R.id.contentHolderAnswer);
         TextView exerciseText = view.findViewById(R.id.exerciseTextAnswer);
-        exerciseText.setText(currentTask.getTaskText());
+        exerciseText.setText(Html.fromHtml(currentTask.getTaskText()));
         editText = view.findViewById(R.id.editTextAnswer);
         nextButton = view.findViewById(R.id.nextButtonExerciseAnswer);
 
@@ -130,6 +131,11 @@ public class ExerciseViewAnswerFragment extends Fragment {
 
     private void receiveCurrentTask() {
         this.currentTask = mListener.sendCurrentTask();
+    }
+
+
+    public void reset(){
+        editText.setText(" ");
     }
 
 

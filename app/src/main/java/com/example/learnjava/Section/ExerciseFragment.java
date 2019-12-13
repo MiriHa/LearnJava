@@ -198,6 +198,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         return currentTask;
     }
 
+
     @Override
     public void sendAnswerFromExerciseView(boolean answerChecked) {
         if (answerChecked){
@@ -257,6 +258,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
             @Override
             public void onClick(View v) {
                 ((LessonActivity) getActivity()).openNewTask(4);
+                //TODO reset the layout
                 feedbackDialog.dismiss();
 
             }

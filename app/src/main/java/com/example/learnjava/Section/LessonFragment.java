@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.text.Html;
 import android.text.Layout;
 import android.util.Log;
 import android.util.TypedValue;
@@ -134,10 +135,10 @@ public class LessonFragment extends Fragment {
 
                 TextView myTextView = new TextView(getContext());
                 myTextView.setLayoutParams(mParams);
-                myTextView.setText(element);
+                myTextView.setText(Html.fromHtml(element));
                 myTextView.setPadding(10,6,10,6);
                 //TODO find a better way or see if its in packages
-                myTextView.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+              //  myTextView.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                 myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
 
                 textHolder.addView(myTextView);

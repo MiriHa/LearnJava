@@ -4,7 +4,7 @@
       "taskType" : 1,
       "taskName" : "Your first Java program",
       "taskNumber" : 0,
-      "taskText" : "Let's start by creating a simple program that prints “Hello World” to the screen.@class MyClass {\n  public static void main(String[ ] args) {\n     System.out.println(\"Hello World\");\n   }\n}@In Java, every line of code that can actually run needs to be inside a class.\nIn our example, we named the class MyClass. You will learn more about classes in the upcoming modules.\n\nIn Java, each application has an entry point, or a starting point, which is a method called main. Along with main, the keywords public and static will also be explained later.@As a summary:\n- Every program in Java must have a class.\n- Every Java program starts from the main method.\n",
+      "taskText" : "Let's start by creating a simple program that prints <b>“Hello World”</b> to the screen.@class MyClass {<br>&ensp;public static void main(String[ ] args) {<br>&ensp;&ensp;System.out.println(\"Hello World\");<br>&ensp;}<br>}@In Java, every line of code that can actually run needs to be inside a class.<br>In our example, we named the class MyClass. You will learn more about classes in the upcoming modules.<br><br>In Java, each application has an <b>entry point</b>, or a starting point, which is a method called <b>main</b>. Along with main, the keywords public and static will also be explained later.@<b>As a summary:</b><br>- Every program in Java must have a class.<br>- Every Java program starts from the main method.",
       "taskWhatsNext" : 2,
       "lessonKeyWords" : ["Hello World", "System.out.println", "main", "method", "class"]
     },
@@ -21,7 +21,7 @@
       "taskType": 1,
       "taskName" : "The main method",
       "taskNumber": 2,
-      "taskText": "To run our program, the main method must be identical to this signature:@   public static void main(String[ ] args)@- public: anyone can access it\n- static: method can be run without creating an instance of the class containing the main method\n- void: method doesn't return any value\n- main: the name of the method@For example, the following code declares a method called test, which does not return anything and has no parameters:@    void test(){}@The method's parameters are declared inside the parentheses that follow the name of the method.\nFor main, it's an array of strings called args. We will use it in our next lesson, so don't worry if you don't understand it all now.",
+      "taskText": "To run our program, the main method must be identical to this signature:@<br><b>   public static void main(String[ ] args)</b><br>@  <b>public</b>: anyone can access it<br> <b>static:</b> method can be run without creating an instance of the class containing the main method<br> <b>void:</b> method doesn't return any value<br> <b>main:</b> the name of the method@For example, the following code declares a method called test, which does not return anything and has no parameters:@    <b>void test(){}</b>@The method's parameters are declared inside the parentheses that follow the name of the method.<br>For main, it's an array of strings called <b>args</b>. We will use it in our next lesson, so don't worry if you don't understand it all now.",
       "taskWhatsNext": 2,
       "lessonKeyWords": ["main method","starting point", "curly brackets","program"]
     },
@@ -38,7 +38,7 @@
     {
       "taskName": "Displaying text",
       "taskNumber": 4,
-      "taskText" : "Next is the body of the main method, enclosed in curly braces:@  {\n      System.out.println(\"Hello World!\");\n  }@The println method prints a line of text to the screen.\nThe System class and its out stream are used to access the println method.@In classes, methods, and other flow-control structures code is always enclosed in curly braces { }.",
+      "taskText" : "Next is the body of the main method, enclosed in curly braces:@  {<br><b>&ensp;&emsp;System.out.println(\"Hello World!\");</b><br>&ensp;}@The <b>println</b> method prints a line of text to the screen.<br>The System class and its out stream are used to access the println method.@In classes, methods, and other flow-control structures code is always enclosed in <b>curly braces { }</b>.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["System.out.println", "print", "text","display text"]
@@ -56,7 +56,7 @@
     {
       "taskName": "Semicolons in Java",
       "taskNumber": 6,
-      "taskText" : "You can pass a different text as the parameter to the println method to print it.@class MyClass{\n  public static void main(String[ ] args) {\n  System.out.println(\"I am learning Java\");\n   }}@In Java, each code statement must end with a semicolon. @Remember: Do not use semicolons after method and class declarations that follow with the body defined using the curly braces.",
+      "taskText" : "You can pass a different text as the parameter to the <b>println method</b> to print it.@class MyClass{<br>&ensp;public static void main(String[ ] args) {<br>&ensp;System.out.println(\"I am learning Java\");<br>&ensp;}<br>}@In Java, each code statement must end with a <b>semicolon</b>. @Remember: Do <b>not</b> use semicolons after method and class declarations that follow with the body defined using the curly braces.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["Semicolons",";","parameters","statement","ends"]
@@ -74,7 +74,7 @@
     {
       "taskName": "Comments",
       "taskNumber": 8,
-      "taskText" : "The purpose of including comments in your code is to explain what the code is doing. Java supports both single and multi-line comments. All characters that appear within a comment are ignored by the Java compiler.@A single-line comment starts with two forward slashes and continues until it reaches the end of the line. \nFor example:@   // this is a single-line comment\n    x = 5;  // a single-line comment after code@Adding comments as you write code is a good practice, because they provide clarification and understanding when you need to refer back to it, as well as for others who might need to read it.",
+      "taskText" : "The purpose of including <b>comments</b> in your code is to explain what the code is doing. Java supports both <b>single and multi-line</b> comments. All characters that appear within a comment are ignored by the Java compiler.@A single-line comment starts with two forward slashes and continues until it reaches the end of the line. <br><b>For example:</b>@&ensp;// this is a single-line comment<br>&ensp;&ensp;x = 5;// a single-line comment after code@Adding comments as you write code is a <b>good practice</b>, because they provide clarification and understanding when you need to refer back to it, as well as for others who might need to read it.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["comments","//","good practice","single-line"]
@@ -92,7 +92,7 @@
     {
       "taskName": "Multi-line Comments",
       "taskNumber": 10,
-      "taskText" : "Java also supports comments that span multiple lines.\nYou start this type of comment with a forward slash followed by an asterisk, and end it with an asterisk followed by a forward slash. \nFor example:@ /* This is also a\n      comment spanning\n      multiple lines\n*/@Note that Java does not support nested multi-line comments. However, you can nest single-line comments within multi-line comments. @/* This is a single-line comment:\n\n     // a single-line comment\n*/@Another name for a Multi-Line comment is a Block comment.",
+      "taskText" : "Java also supports comments that span <b>multiple lines.</b><br>You start this type of comment with a forward slash followed by an asterisk, and end it with an asterisk followed by a forward slash. <br>For example:@ /* This is also a<br>     comment spanning<br>      multiple lines<br>*/@Note that Java does not support nested multi-line comments. However, you can nest single-line comments within multi-line comments. @/* This is a single-line comment:<br><br>     // a single-line comment<br>*/@Another name for a Multi-Line comment is a <b>Block comment</b>.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["comments","/*","good practice","Multi-line","*/"]
@@ -110,7 +110,7 @@
     {
       "taskName": "Documentation Comments",
       "taskNumber": 12,
-      "taskText"  : "Documentation comments are special comments that have the appearance of multi-line comments, with the difference being that they generate external documentation of your source code. These begin with a forward slash followed by two asterisks, and end with an asterisk followed by a forward slash. \nFor example:@/** This is a documentation comment */\n\n/** This is also a\ndocumentation comment */@Javadoc is a tool which comes with JDK and it is used for generating Java code documentation in HTML format from Java source code which has required documentation in a predefined format.@When a documentation comment begins with more than two asterisks, Javadoc assumes that you want to create a \"box\" around the comment in the source code. It simply ignores the extra asterisks.\nFor example:@ /**********************\n\nThis is the start of a method\n\n***********************/@This will retain just the text \"This is the start of a method\" for the documentation.",
+      "taskText"  : "Documentation comments are special comments that have the appearance of multi-line comments, with the difference being that they <b>generate external documentation</b> of your source code. These begin with a forward slash followed by two asterisks, and end with an asterisk followed by a forward slash. <br>For example:@/** This is a documentation comment */<br><br>/** This is also a<br>documentation comment */@Javadoc is a tool which comes with JDK and it is used for generating Java code documentation in HTML format from Java source code which has required documentation in a predefined format.@When a documentation comment begins with more than two asterisks, Javadoc assumes that you want to create a \"box\" around the comment in the source code. It simply ignores the extra asterisks.<br>For example:@ /**********************<br><br>This is the start of a method<br><br>***********************/@This will retain just the text \"This is the start of a method\" for the documentation.",
       "taskWhatsNext": 2,
       "taskType" : 1,
       "lessonKeyWords" : ["comments","/**","good practice","documentation comments","*/"]

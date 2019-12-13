@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.InputFilter;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -230,7 +231,10 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
                     //Set A editText with a Task
                     EditText myEditText = new EditText(getContext());
                     myEditText.setLayoutParams(mParams);
-                    myEditText.setHint("____");
+                    int maxLength = solutionArray[tags.size()].length();
+                    Log.i("FILLBLANKS","maxLength: " + maxLength);
+                    myEditText.setHint("    ");
+                    myEditText.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength)});
                     myEditText.setMaxLines(1);
                     myEditText.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
                     myEditText.setSingleLine(true);

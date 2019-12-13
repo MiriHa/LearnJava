@@ -10,7 +10,7 @@
     },
     {
       "taskName": "Different Data Types",
-      "taskNumber": 1,
+      "taskNumber": 2,
       "taskText" : "What DataType is the value \"Tree\"?",
       "taskWhatsNext" : 2,
       "taskType" : 2,
@@ -38,12 +38,12 @@
     {
       "taskName": "Variables",
       "taskNumber": 4,
-      "taskText": "Which data Type would you use for a city Name?",
+      "taskText": "Which data Type would you use for the age of a person?",
       "taskWhatsNext": 2,
       "taskType" : 2,
       "exerciseViewType" : 2,
-      "exerciseSolutionStringArray" : ["String","Int","float","double"],
-      "exerciseSolutionInt" : 1
+      "exerciseSolutionStringArray" : ["String","float","double","Int"],
+      "exerciseSolutionInt" : 3
     },
     {
       "taskName": "Variables",
@@ -70,7 +70,7 @@
       "taskType": 2,
       "exerciseViewType": 4,
       "exerciseSolutionStringArray":["int","true","boolean","float","String","void","class"],
-      "exerciseContentStringArray":["class","Person","{"," public static","void main","(String[ ]args) {","","name = ","\"John\";","","age = ","24;","","height = ","189,87;"," ","}"," ","}","  ","  "],
+      "exerciseContentStringArray":["class Person{"," public static void main(String[ ]args){","  @#@name = \"John\";","  @#@age = 24;","  @#@height = 189,87;"," }","}"],
       "exerciseSolutionIntArray": [4,0,3]
     },
     {

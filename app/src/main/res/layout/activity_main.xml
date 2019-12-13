@@ -45,14 +45,17 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/PaddingSide"
-                android:paddingVertical="@dimen/PaddingScroll">
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
+                android:paddingBottom="@dimen/PaddingScroll"
+                android:paddingTop="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1/9"
-                    android:autoSizeTextType="uniform" />
+                    android:layout_margin="6dp"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -72,14 +75,16 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/PaddingSide"
-                android:paddingVertical="@dimen/PaddingScroll">
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
+                android:paddingBottom="@dimen/PaddingScroll"
+                android:paddingTop="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2/9"
-                    android:autoSizeTextType="uniform" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -99,14 +104,16 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/PaddingSide"
-                android:paddingVertical="@dimen/PaddingScroll">
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
+                android:paddingBottom="@dimen/PaddingScroll"
+                android:paddingTop="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="3/9"
-                    android:autoSizeTextType="uniform" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -126,14 +133,16 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/PaddingSide"
-                android:paddingVertical="@dimen/PaddingScroll">
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
+                android:paddingBottom="@dimen/PaddingScroll"
+                android:paddingTop="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="4/9"
-                    android:autoSizeTextType="uniform" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -153,13 +162,15 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/PaddingSide"
-                android:paddingVertical="@dimen/PaddingScroll">
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
+                android:paddingBottom="@dimen/PaddingScroll"
+                android:paddingTop="@dimen/PaddingScroll">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5/9"
-                    android:autoSizeTextType="uniform" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -179,14 +190,16 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/PaddingSide"
-                android:paddingVertical="@dimen/PaddingScroll">
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
+                android:paddingBottom="@dimen/PaddingScroll"
+                android:paddingTop="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="6/9"
-                    android:autoSizeTextType="uniform" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -206,14 +219,16 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/PaddingSide"
-                android:paddingVertical="@dimen/PaddingScroll">
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
+                android:paddingBottom="@dimen/PaddingScroll"
+                android:paddingTop="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="7/9"
-                    android:autoSizeTextType="uniform" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -233,14 +248,16 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/PaddingSide"
-                android:paddingVertical="@dimen/PaddingScroll">
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
+                android:paddingBottom="@dimen/PaddingScroll"
+                android:paddingTop="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="8/9"
-                    android:autoSizeTextType="uniform" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -260,14 +277,16 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/PaddingSide"
-                android:paddingVertical="@dimen/PaddingScroll">
+                android:paddingLeft="@dimen/PaddingSide"
+                android:paddingRight="@dimen/PaddingSide"
+                android:paddingBottom="@dimen/PaddingScroll"
+                android:paddingTop="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="9/9"
-                    android:autoSizeTextType="uniform" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="match_parent"

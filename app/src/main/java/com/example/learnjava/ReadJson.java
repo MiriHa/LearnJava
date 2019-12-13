@@ -6,7 +6,6 @@ import android.util.Log;
 import com.example.learnjava.models.ModelExercise;
 import com.example.learnjava.models.ModelLesson;
 import com.example.learnjava.models.ModelTask;
-import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONException;

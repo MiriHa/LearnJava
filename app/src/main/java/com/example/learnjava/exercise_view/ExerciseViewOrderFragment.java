@@ -1,4 +1,4 @@
-package com.example.learnjava.ExerciseView;
+package com.example.learnjava.exercise_view;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,10 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.learnjava.ExerciseCommunication;
 import com.example.learnjava.R;
@@ -21,11 +18,11 @@ import com.example.learnjava.models.ModelTask;
 
 
 /**
- * This is the View to give an code answer.
- * ViewType: 6
+ * This is the View order lines in corret order.
+ * ViewType: 5
  */
 
-public class ExerciseViewCodeFragment extends Fragment {
+public class ExerciseViewOrderFragment extends Fragment {
 
     private ExerciseCommunication mListener;
 
@@ -35,7 +32,7 @@ public class ExerciseViewCodeFragment extends Fragment {
     private Button nextButton;
 
 
-    public ExerciseViewCodeFragment() {
+    public ExerciseViewOrderFragment() {
         // Required empty public constructor
     }
 
@@ -48,7 +45,7 @@ public class ExerciseViewCodeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_exercise_view_code, container, false);
+        View view = inflater.inflate(R.layout.fragment_exercise_view_order, container, false);
 
         //get the currentTask
         receiveCurrentTask();
@@ -87,7 +84,7 @@ public class ExerciseViewCodeFragment extends Fragment {
 
 
     private void checkAnswers() {
-//
+//        String userInput = editText.getText().toString();
 //        Log.i("CheckAnswers", " anser: " + userInput + " solution: " + currentTask.getSolutionString());
 //        if (currentTask.getSolutionString().equals(userInput)) {
 //            mListener.sendAnswerFromExerciseView(true);
@@ -113,5 +110,8 @@ public class ExerciseViewCodeFragment extends Fragment {
     }
 
 
+    public void reset(){
+
+    }
 }
 

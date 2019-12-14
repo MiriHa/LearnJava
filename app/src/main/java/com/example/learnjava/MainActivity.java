@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.example.learnjava.Section.LessonActivity;
+import com.example.learnjava.sections.LessonActivity;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener{
 

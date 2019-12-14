@@ -1,4 +1,4 @@
-package com.example.learnjava.ExerciseView;
+package com.example.learnjava.exercise_view;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -24,6 +25,8 @@ import com.example.learnjava.models.ModelTask;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
 /**
  * This is the exercise View to give a fill in the Blanks Answer.
@@ -79,6 +82,10 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
             public void onClick(View v) {
                 Log.i("BUTTONCLICKED", " in AnswerView");
                 checkAnswers();
+
+                //Hide the keyboard
+                InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(),0);
             }
         });
 
@@ -260,5 +267,12 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
 
     }
 
+    public void reset(){
+
+        for(int i=0;i<tags.size();i++){
+            EditText myeditText = blankHolder.findViewWithTag(tags.get(i));
+            myeditText.setText("");
+        }
+    }
 }
 

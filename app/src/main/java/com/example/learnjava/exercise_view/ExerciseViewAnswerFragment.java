@@ -1,4 +1,4 @@
-package com.example.learnjava.ExerciseView;
+package com.example.learnjava.exercise_view;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -20,6 +21,8 @@ import com.example.learnjava.Controller;
 import com.example.learnjava.ExerciseCommunication;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
+
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
 
 /**
@@ -61,7 +64,7 @@ public class ExerciseViewAnswerFragment extends Fragment {
 
         exerciseViewHolder = view.findViewById(R.id.contentHolderAnswer);
         TextView exerciseText = view.findViewById(R.id.exerciseTextAnswer);
-        exerciseText.setText(Html.fromHtml(currentTask.getTaskText()));
+        exerciseText.setText(currentTask.getTaskText());
         editText = view.findViewById(R.id.editTextAnswer);
         nextButton = view.findViewById(R.id.nextButtonExerciseAnswer);
 
@@ -74,6 +77,9 @@ public class ExerciseViewAnswerFragment extends Fragment {
             public void onClick(View v) {
                 Log.i("M BUTTONCLICKED", " in AnswerView");
                 checkAnswers();
+                //Hide the Keyboard
+                InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(),0);
             }
         });
 
@@ -110,8 +116,10 @@ public class ExerciseViewAnswerFragment extends Fragment {
             if (userInput.isEmpty()) {
                 Toast.makeText(getContext(), "Pleas enter an answer", Toast.LENGTH_SHORT).show();
             } else {
+                String userAnswer = userInput.replaceAll("\\s+","");
                 Log.i("M CheckAnswers", " anser: " + userInput + " solution: " + currentTask.getSolutionString());
-                if (currentTask.getSolutionString().equalsIgnoreCase(userInput)) {
+                //TODO ingore case? when code answer not?  -> in code view fragment?
+                if (currentTask.getSolutionString().equalsIgnoreCase(userAnswer)) {
                     mListener.sendAnswerFromExerciseView(true);
                     Log.i("MSENDANSWERFROMEXERCISE", " answer: true");
                 } else {

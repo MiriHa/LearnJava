@@ -1,4 +1,4 @@
-package com.example.learnjava.ExerciseView;
+package com.example.learnjava.exercise_view;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -182,6 +182,10 @@ public class ExerciseViewChoiceFragment extends Fragment {
             answerGroup.addView(mButton);
         }
 
+    }
+
+    public void reset(){
+        answerGroup.clearCheck();
     }
 
 }

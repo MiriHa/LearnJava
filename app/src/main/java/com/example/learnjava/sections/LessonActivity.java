@@ -1,4 +1,4 @@
-package com.example.learnjava.Section;
+package com.example.learnjava.sections;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -138,19 +138,6 @@ public class LessonActivity extends AppCompatActivity {
                         .addToBackStack(null)
                         .commit();
                 Log.i(" M LastLesson", " loaded progress: " + progressCurrentScreen);
-                break;
-
-            //open the same Fragment again
-            //TODO is this good pratice? reset fragment method in each viewFragment?
-            case 4:
-                ExerciseFragment sameFragment = new ExerciseFragment();
-                sameFragment.setFragmentContentExercise(currentTask);
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .add(R.id.FragmentHolder, sameFragment)
-                        .addToBackStack(null)
-                        .commit();
-                Log.d(" M SameExercise", " loaded progress: " + progressCurrentScreen);
                 break;
 
         }

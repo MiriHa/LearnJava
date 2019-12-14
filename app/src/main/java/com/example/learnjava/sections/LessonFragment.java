@@ -1,4 +1,4 @@
-package com.example.learnjava.Section;
+package com.example.learnjava.sections;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.text.Html;
-import android.text.Layout;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;

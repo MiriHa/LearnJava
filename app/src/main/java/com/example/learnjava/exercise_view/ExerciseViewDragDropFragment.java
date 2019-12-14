@@ -1,4 +1,4 @@
-package com.example.learnjava.ExerciseView;
+package com.example.learnjava.exercise_view;
 
 import android.content.ClipData;
 import android.content.ClipDescription;
@@ -97,7 +97,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
             @Override
             public void onClick(View v) {
                 Log.i("DRAGDROP", "Reset Button pressed");
-                reset(view);
+                reset();
             }
         });
 
@@ -409,16 +409,16 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
     }
 
 
-    public void reset(View view) {
+    public void reset() {
         for(int i=0; i<dragTags.size();i++) {
 
-            TextView text = view.findViewWithTag(dragTags.get(i));
+            TextView text = currentView.findViewWithTag(dragTags.get(i));
             text.setVisibility(TextView.VISIBLE);
         }
 
         for(int i=0; i<dropTags.size();i++) {
 
-            TextView text = view.findViewWithTag(dropTags.get(i));
+            TextView text = currentView.findViewWithTag(dropTags.get(i));
             text.setTag(dropTags.get(i));
             text.setTypeface(Typeface.DEFAULT);
             text.setText("___________");

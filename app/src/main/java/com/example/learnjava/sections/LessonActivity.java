@@ -1,11 +1,19 @@
 package com.example.learnjava.sections;
 
+import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.learnjava.Controller;
 import com.example.learnjava.MainActivity;
@@ -29,6 +37,8 @@ public class LessonActivity extends AppCompatActivity {
     int currentTaskNumber;
 
     int currentSection;
+
+    LinearLayout progressHolder;
 
 
     //TODO use the one from the progressMOdel instead of here?
@@ -59,12 +69,12 @@ public class LessonActivity extends AppCompatActivity {
         progressController.loadContent(sectionNumber, this);
         taskContent = progressController.getTaskContent();
 
+        progressHolder = findViewById(R.id.progressHolder);
+        setProgressBar();
+
+        //set the Toolbar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getSectionTitle());
-
-
-        //get the current task content
-       // setCurrentTask();
 
         //open the first lesson Fragment
         openNewTask(0);
@@ -79,6 +89,7 @@ public class LessonActivity extends AppCompatActivity {
             case 0:
                 //get the currentTask content
                 setCurrentTask();
+                setProgressBackground();
                 Log.i("M CheckProgress", " currentProgreessScreen: " + progressCurrentScreen +" currentNmber: " +currentTask.getTaskNumber());
                 //load a fragment
                 LessonFragment firstlessonFragment = new LessonFragment();
@@ -95,6 +106,7 @@ public class LessonActivity extends AppCompatActivity {
             case 1:
                 checkProgress();
                 setCurrentTask();
+                setProgressBackground();
                 //open new lessonFragment and set its content
                 LessonFragment lessonFragment = new LessonFragment();
                 lessonFragment.setFragmentContentLesson(currentTask);
@@ -111,6 +123,7 @@ public class LessonActivity extends AppCompatActivity {
                 //update the CurrentScreen and currentTask
                 checkProgress();
                 setCurrentTask();
+                setProgressBackground();
                 //Open a new Fragment and set its content
                 ExerciseFragment exerciseFragment = new ExerciseFragment();
                 exerciseFragment.setFragmentContentExercise(currentTask);
@@ -129,6 +142,8 @@ public class LessonActivity extends AppCompatActivity {
                 ModelTask lastLesson = progressController.getLastLesson();
                 checkProgress();
                 currentTask = lastLesson;
+                currentTaskNumber = lastLesson.getTaskNumber();
+                setProgressBackground();
                 //load a fragment
                 LessonFragment lastLessonFragment = new LessonFragment();
                 lastLessonFragment.setFragmentContentLesson(currentTask);
@@ -183,6 +198,7 @@ public class LessonActivity extends AppCompatActivity {
     public void setCurrentTask(){
         currentTask = taskContent.get(progressCurrentScreen);
         currentTaskNumber = currentTask.getTaskNumber();
+        progressController.updateLatesTaskNumber(currentTaskNumber);
         Log.i("M UPDATE_CURRENTTASK", "in LessonActivity" + currentTask.getTaskName() + "currentTaskNumber: " + currentTask.getTaskNumber());
     }
 
@@ -216,6 +232,69 @@ public class LessonActivity extends AppCompatActivity {
         return title;
     }
 
+    public void setProgressBar(){
+        int tasksSize = taskContent.size();
+        int[] taskNumber = new int[tasksSize];
+        int[] taskTypes = new int[tasksSize];
+
+        for(int i=0; i<tasksSize;i++){
+            ModelTask task = taskContent.get(i);
+            taskNumber[i] = task.getTaskNumber();
+            taskTypes[i] = task.getType();
+        }
+
+        LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        //Make scrollVIew um Linaralyout falls viele Lessons?
+        for(int j =0; j<tasksSize;j++){
+            int counter = 1;
+            if(taskTypes[j] == 1){
+                TextView myTextView = new TextView(this);
+                //TODO change the counter, counts exercises mit
+                myTextView.setText(String.valueOf(j+1));
+                myTextView.setLayoutParams(mParams);
+                myTextView.setWidth(120);
+                myTextView.setTag("PROGRESS_FIELD_"+taskNumber[j]);
+                myTextView.setGravity(Gravity.CENTER);
+                myTextView.setBackgroundResource(R.drawable.border);
+                myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+
+                myTextView.setOnClickListener(new ProgressLessonClickListener());
+                progressHolder.addView(myTextView);
+
+
+            }else if(taskTypes[j] == 2 || taskTypes[j] == 3){
+                TextView myTextView = new TextView(this);
+                myTextView.setText("?");
+                myTextView.setWidth(120);
+                myTextView.setTag("PROGRESS_FIELD_"+taskNumber[j]);
+                myTextView.setGravity(Gravity.CENTER);
+                myTextView.setLayoutParams(mParams);
+                myTextView.setBackgroundResource(R.drawable.border);
+                myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+
+                myTextView.setOnClickListener(new ProgressExerciseClickListener());
+                progressHolder.addView(myTextView);
+            }
+
+        }
+    }
+
+    public void setProgressBackground(){
+
+        for(int i=0; i<=progressController.getLatestTaskNumber();i++){
+            String tagOld = "PROGRESS_FIELD_"+i;
+            Log.i("LESSONACTIVITY","latesTasknumber: "+progressController.getLatestTaskNumber()+" updateProgressBackground");
+            TextView textViewOld = progressHolder.findViewWithTag(tagOld);
+            textViewOld.setBackgroundResource(R.drawable.border);
+        }
+
+        String tag = "PROGRESS_FIELD_"+currentTaskNumber;
+        TextView textView = progressHolder.findViewWithTag(tag);
+
+        textView.setBackgroundResource(R.drawable.border_dark);
+    }
+
     @Override
     public void onBackPressed() {
 
@@ -242,38 +321,24 @@ public class LessonActivity extends AppCompatActivity {
         }
     }
 
-    public void setSectionCOlor() {
-        switch (progressController.getCurrentSection()) {
 
-            case 1:
-                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.lightGreen1));
-                break;
-            case 2:
-                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.lightGreen2));
-                break;
-            case 3:
-                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.lightGreen3));
-                break;
-            case 4:
-                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.Green1));
-                break;
-            case 5:
-                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.Green2));
-                break;
-            case 6:
-                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.Blue1));
-                break;
-            case 7:
-                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.Blue2));
-                break;
-            case 8:
-                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.Blue3));
-                break;
-            case 9:
-                getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.Blue4));
-                break;
+    public class ProgressExerciseClickListener implements View.OnClickListener{
 
 
+        @Override
+        public void onClick(View v) {
+            Log.i("LESSONACTIVITY","on progressBar clicked Exercise");
+
+
+        }
+    }
+
+    public class ProgressLessonClickListener implements View.OnClickListener{
+
+
+        @Override
+        public void onClick(View v) {
+            Log.i("LESSONACTIVITY","on progressBar clicked lesson");
         }
     }
 

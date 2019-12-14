@@ -54,6 +54,10 @@ public class Controller extends android.app.Application {
         modelUserProgress.updateUserProgressCurrentScreen(number);
     }
 
+    public void updateLatesTaskNumber(int number){
+        modelUserProgress.updateLatestTaskNumber(number);
+    }
+
 
     public void setLastLesson(ModelTask lastLesson){
         modelUserProgress.setLastLesson(lastLesson);
@@ -61,6 +65,10 @@ public class Controller extends android.app.Application {
 
     public ModelTask getLastLesson(){
         return modelUserProgress.getLastLesson();
+    }
+
+    public int getLatestTaskNumber(){
+        return modelUserProgress.getLatetestTaskNumber();
     }
 
     public void loadContent(int sectionNumber, Context context){

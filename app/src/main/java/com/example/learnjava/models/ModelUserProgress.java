@@ -45,6 +45,10 @@ public class ModelUserProgress {
         this.userProgressCurrentScreen = userProgressCurrentScreen;
     }
 
+    public void updateLatestTaskNumber(int tasknumber){
+        this.latetestTaskNumber = tasknumber;
+    }
+
     public void setLastLesson(ModelTask lastLesson){
         this.lastLesson = lastLesson;
     }
@@ -70,6 +74,10 @@ public class ModelUserProgress {
 
 
     //Getter
+
+    public int getLatetestTaskNumber(){
+        return latetestTaskNumber;
+    }
 
     public int getUserProgressCurrentScreen() {
         return userProgressCurrentScreen;

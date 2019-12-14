@@ -28,10 +28,10 @@
         <TextView
             android:id="@+id/exerciseName"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="45dp"
             android:autoSizeTextType="uniform"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="6dp"
             android:paddingLeft="@dimen/PaddingSide"
             android:paddingRight="@dimen/PaddingSide"
             app:layout_constraintEnd_toEndOf="parent"

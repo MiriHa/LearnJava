@@ -26,44 +26,51 @@ public class Controller extends android.app.Application {
 
     public void addFinishedTask(ModelTask task){
         modelUserProgress.addFinishedTask(task);
-        Log.i("M updateUserProgress", " addfnishedTask " + task.getTaskNumber());
+        Log.i("M_CONTROLLER", " addfnishedTask " + task.getTaskNumber());
     }
 
-    public boolean checkExercise(ModelTask task){
-        Log.i("M updateUserProgress", "checkExercise" + modelUserProgress.checkTasks(task));
+    public boolean checkTasks(ModelTask task){
+        Log.i("M_CONTROLLER", "checkTasks" + modelUserProgress.checkTasks(task));
        return modelUserProgress.checkTasks(task);
 
     }
 
+
+
     public boolean checkUnlockedSections(Integer sectionNumber){
+        Log.i("M_CONTROLLER","checkUnlockedSections "+sectionNumber);
        return modelUserProgress.checkProgressUnlockedSection(sectionNumber);
     }
 
     public void updateUnlockedSections(Integer sectionNumber){
+        Log.i("M_CONTROLLER","updateUnlockedSections"+sectionNumber);
         modelUserProgress.updateUserProgressUnlockedSections(sectionNumber);
     }
 
 
     public void updateCurrentSection(int number){
         modelUserProgress.updateUserProgressCurrentSection(number);
-        Log.i("M updateUserProgress", " CurrentSectionNumber "+number);
+        Log.i("M_CONTROLLER", " CurrentSectionNumber "+number);
     }
 
     public void updateCurrentScreen(int number){
-        Log.i("M updateUserProgress", " CurrentSreenNumber "+number);
+        Log.i("M_CONTROLLER", " CurrentSreenNumber "+number);
         modelUserProgress.updateUserProgressCurrentScreen(number);
     }
 
-    public void updateLatesTaskNumber(int number){
+    public void updateLatestTaskNumber(int number){
+        Log.i("M_CONTROLLER","updateLatesTaskNumber "+number);
         modelUserProgress.updateLatestTaskNumber(number);
     }
 
 
     public void setLastLesson(ModelTask lastLesson){
+        Log.i("M_CONTROLLER","setLastLesson: "+lastLesson.getTaskName() +" " + lastLesson.getTaskNumber());
         modelUserProgress.setLastLesson(lastLesson);
     }
 
-    public ModelTask getLastLesson(){
+    public ModelTask getLastLesson()
+    {
         return modelUserProgress.getLastLesson();
     }
 
@@ -101,6 +108,7 @@ public class Controller extends android.app.Application {
     public int getCurrentSection(){
         return modelUserProgress.getCurrentSection();
     }
+
 
 
 }

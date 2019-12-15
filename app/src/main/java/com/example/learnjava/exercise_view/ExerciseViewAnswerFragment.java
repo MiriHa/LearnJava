@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,7 +67,7 @@ public class ExerciseViewAnswerFragment extends Fragment {
         editText = view.findViewById(R.id.editTextAnswer);
         nextButton = view.findViewById(R.id.nextButtonExerciseAnswer);
 
-        if(progressController.checkExercise(currentTask)) {
+        if(progressController.checkTasks(currentTask)) {
             Log.i("MExerciseVIEW", "checkExericse and skip");
             nextButton.setText("Skip");
         }
@@ -108,7 +107,7 @@ public class ExerciseViewAnswerFragment extends Fragment {
 
     private void checkAnswers() {
         String userInput = editText.getText().toString();
-        if (progressController.checkExercise(currentTask) && userInput.isEmpty()) {
+        if (progressController.checkTasks(currentTask) && userInput.isEmpty()) {
             Log.i("MExerciseVIEW", "checkExericse and skip");
             mListener.justOpenNext();
             //TODO listnefor textinput, when input change skip to check

@@ -57,27 +57,33 @@ public class LessonFragment extends Fragment {
 
         nextButton = view.findViewById(R.id.nextButtonLessonFrag);
 
-        Log.i("M WHats Next", " " + whatsNext);
+        Log.i("M_LESSON_FRAGMENT", " whatsNext: " + whatsNext + " currenTasknumber: " + currentTask.getTaskNumber());
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("M Buttonclicked", " inLessonFragment. Next: "+whatsNext );
+                Log.i("M_LESSON_FRAGMENT", "Button clicked, Next: "+whatsNext );
                 if ((getActivity() != null)) {
+                    //save this as the Las lesson to come back to
                     progressController.setLastLesson(currentTask);
+                    //Add lesson to finished tasks
+                    progressController.addFinishedTask(currentTask);
+                    //open a exerciseFragment
                     if( whatsNext == 2) {
                         ((LessonActivity) getActivity()).openNewTask(2);
-                        Log.i("M Buttonclicked", " openExercise");
+                        Log.i("M_LESSON_FRAGMENT", " openExercise");
                     }
+                    //open a lessonFragment
                     else if (whatsNext == 1) {
                         ((LessonActivity) getActivity()).openNewTask(1);
-                        Log.i("M Buttonclicked", " openLesson");
+                        Log.i("M_LESSON_FRAGMENT", " openLesson");
                     }
+                    //finish the section an go to the main Screen
                     else if (whatsNext == 3){
                         ((LessonActivity) getActivity()).updateProgressLastTask();
-                        Log.i("M Buttonclicked", " lastLesson");
+                        Log.i("M_LESSON_FRAGMENT", " lastLesson");
                     }
                     else {
-                        Log.e("M Buttonclicked", " FalseWhatsNextType");
+                        Log.e("M_LESSON_FRAGMENT", " FalseWhatsNextType");
                     }
                 }
             }
@@ -113,7 +119,7 @@ public class LessonFragment extends Fragment {
     }
 
     public void setFragmentContentLesson(ModelTask currentTask){
-        Log.i("M GIVE_CONTENT", "in LessonFragment");
+        Log.i("M_LESSON_FRAGMENt", "setFragmentCOntent");
         this.currentTask = currentTask;
         whatsNext = currentTask.getWhatsNext();
     }

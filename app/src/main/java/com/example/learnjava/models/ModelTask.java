@@ -14,6 +14,7 @@ public abstract class ModelTask {
 
     //1 for lessone 2 for exercise
     private int type;
+    private String tag;
 
 
     public ModelTask(String name, String text, int next, int number, int type){

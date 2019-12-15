@@ -14,6 +14,7 @@
         android:layout_centerHorizontal="true"
         android:paddingStart="6dp"
         android:paddingEnd="6dp"
+        android:clickable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:clickable="false"
             android:gravity="center" />
 
     </HorizontalScrollView>

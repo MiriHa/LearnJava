@@ -366,7 +366,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
 
     private void checkAnswers() {
 
-        if (progressController.checkExercise(currentTask)) {
+        if (progressController.checkTasks(currentTask)) {
             Log.i("DRAGDROP", "checkExericse and skip");
             mListener.justOpenNext();
         }else {

@@ -29,6 +29,7 @@
     <string name="FeedbackRight">Good job, that was right!</string>
     <string name="FeedbackWrong">That was not right.</string>
 
+    <string name="Skip">Skip</string>
 
     //For testing
     <string name="longstring">nothing here yet nothin ghere yet nothing nothing nothing</string>

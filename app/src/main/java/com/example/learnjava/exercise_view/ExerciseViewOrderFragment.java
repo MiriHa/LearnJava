@@ -52,6 +52,7 @@ public class ExerciseViewOrderFragment extends Fragment {
 
         TextView exerciseText = view.findViewById(R.id.exerciseTextAnswer);
         nextButton = view.findViewById(R.id.nextButtonExerciseAnswer);
+
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

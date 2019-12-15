@@ -68,13 +68,13 @@ public class ExerciseViewAnswerFragment extends Fragment {
         nextButton = view.findViewById(R.id.nextButtonExerciseAnswer);
 
         if(progressController.checkTasks(currentTask)) {
-            Log.i("MExerciseVIEW", "checkExericse and skip");
-            nextButton.setText("Skip");
+            Log.i("M_Exercise_VIEW_ANSWER", "checkExericse and skip");
+            nextButton.setText(R.string.Skip);
         }
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("M BUTTONCLICKED", " in AnswerView");
+                Log.i("M_EXERCISE_VIEW_ANSWER", "buttonclicked in AnswerView");
                 checkAnswers();
                 //Hide the Keyboard
                 InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
@@ -108,7 +108,7 @@ public class ExerciseViewAnswerFragment extends Fragment {
     private void checkAnswers() {
         String userInput = editText.getText().toString();
         if (progressController.checkTasks(currentTask) && userInput.isEmpty()) {
-            Log.i("MExerciseVIEW", "checkExericse and skip");
+            Log.i("M_Exercise_VIEW_ANSWER", "checkExericse and skip");
             mListener.justOpenNext();
             //TODO listnefor textinput, when input change skip to check
         } else {
@@ -116,22 +116,22 @@ public class ExerciseViewAnswerFragment extends Fragment {
                 Toast.makeText(getContext(), "Pleas enter an answer", Toast.LENGTH_SHORT).show();
             } else {
                 String userAnswer = userInput.replaceAll("\\s+","");
-                Log.i("M CheckAnswers", " anser: " + userInput + " solution: " + currentTask.getSolutionString());
+                Log.i("M_EXERCISE_VIEW_ANSWER", "check answer: " + userInput + " solution: " + currentTask.getSolutionString());
                 //TODO ingore case? when code answer not?  -> in code view fragment?
                 if (currentTask.getSolutionString().equalsIgnoreCase(userAnswer)) {
                     mListener.sendAnswerFromExerciseView(true);
-                    Log.i("MSENDANSWERFROMEXERCISE", " answer: true");
+                    Log.i("M_EXERCISE_VIEW_ANSWER", " send answer: true");
                 } else {
                     Log.i("M ANSWER", " was wrong");
                     mListener.sendAnswerFromExerciseView(false);
-                    Log.i("MSENDANSWERFROMEXERCISE", " answer: false");
+                    Log.i("M_EXERCISE_VIEW_ANSWER", "send answer: false");
                 }
             }
         }
     }
 
     public void setExerciseCommunication(ExerciseCommunication callback) {
-        Log.d("M SETEXERCISECOMM", " setMlistenere");
+        Log.d("M_EXERCISE_VIEW_ANSWER", " setMlistenere");
         this.mListener = callback;
     }
 

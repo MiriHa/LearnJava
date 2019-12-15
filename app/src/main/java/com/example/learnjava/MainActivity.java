@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.i("M Main activity loaded", " on create");
+        Log.i("M_MAIN_ACTIVITY", " on create");
 
         myProgressController = (Controller) getApplicationContext();
        // retriveSave();
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         lesson9 = findViewById(R.id.lesson9);
 
 
-        Log.i("CheckCOntrollerMain", " progressController Sections " + myProgressController.getSections().toString());
+        Log.i("M_MAIN_ACTIVITY", " CheckCOntroller: progressController Sections " + myProgressController.getSections().toString());
 
         //SetOnClickListener for Layouts defined in onClick
         checkIfSolved(lesson1, 1);
@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
     public void checkIfSolved(LinearLayout lesson, Integer number){
 
+        Log.i("M_MAIN_ACTIVITY", "checkIfSOlved");
         if(number == 1){
             myProgressController.updateUnlockedSections(1);
             lesson.setOnClickListener(this);
@@ -125,13 +126,13 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         Intent intent = new Intent(MainActivity.this, otherActivityClass);
         intent.putExtra("LESSON_NUMBER", lessonNumber);
         startActivity(intent);
-        Log.i("M ChangeActivity", " to activity: " + otherActivityClass);
+        Log.i("M_MAIN_ACTIVITY", " change to activity: " + otherActivityClass);
     }
 
 
     @Override
     public void onBackPressed() {
-        Log.i("M BackButtonPressed", " in Mainacitivity");
+        Log.i("M_MAIN_ACTIVITY", "backbutton pressed");
        //Got to MainScreen when backputton is pressed
         Intent startMain = new Intent(Intent.ACTION_MAIN);
         startMain.addCategory(Intent.CATEGORY_HOME);

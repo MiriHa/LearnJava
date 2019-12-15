@@ -59,7 +59,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         View view = inflater.inflate(R.layout.fragment_exercise, container, false);
         if (getActivity() != null)
             progressController = (Controller) getActivity().getApplicationContext();
-        Log.i("CheckCOntroller", " progressController Sections " + progressController.getSections().toString());
+        Log.i("M_EXERCISE_FRAGMENT", " checkContorller: progressController Sections " + progressController.getSections().toString());
 
         exerciseName = view.findViewById(R.id.exerciseName);
         exerciseName.setText(currentTask.getTaskName());
@@ -98,7 +98,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
                         .replace(R.id.ExerciseViewHolder, answerFragment, "EXERCISE_VIEW_ANSWER")
                         .addToBackStack("EXERCISE_VIEW_ANSWER")
                         .commit();
-                Log.i("LOADVIEW", " 1 Answer");
+                Log.i("M_EXERCISE_FRAGMENT", "Loadview: 1 Answer");
                 break;
             case 2:
                 ExerciseViewChoiceFragment choiceFragment = new ExerciseViewChoiceFragment();
@@ -108,7 +108,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
                         .replace(R.id.ExerciseViewHolder, choiceFragment, "EXERCISE_VIEW_CHOICE")
                         .addToBackStack("EXERCISE_VIEW_CHOICE")
                         .commit();
-                Log.i("LOADVIEW", " 2 Choice");
+                Log.i("M_EXERCISE_FRAGMENT", "loadview: 2 Choice");
                 break;
             case 3:
                 ExerciseViewFillBlanksFragment fillBlanksFragment = new ExerciseViewFillBlanksFragment();
@@ -118,7 +118,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
                         .replace(R.id.ExerciseViewHolder, fillBlanksFragment, "EXERCISE_VIEW_FILL_BLANKS")
                         .addToBackStack("EXERCISE_VIEW_FILL_BLANKS")
                         .commit();
-                Log.i("LOADVIEW", " 3 FillBlanks");
+                Log.i("M_EXERCISE_FRAGMENT", "loadView: 3 FillBlanks");
                 break;
             case 4:
                 ExerciseViewDragDropFragment dragDropFragment = new ExerciseViewDragDropFragment();
@@ -128,7 +128,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
                         .replace(R.id.ExerciseViewHolder, dragDropFragment, "EXERCISE_VIEW_DRAG_DROP")
                         .addToBackStack("EXERCISE_VIEW_DRAG_DROP")
                         .commit();
-                Log.i("LOADVIEW", " 4 DragAnsDrop");
+                Log.i("M_EXERCISE_FRAGMENT", "loadView: 4 DragAnsDrop");
                 break;
             case 5:
                 ExerciseViewOrderFragment orderFragment = new ExerciseViewOrderFragment();
@@ -138,7 +138,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
                         .replace(R.id.ExerciseViewHolder, orderFragment, "EXERCISE_VIEW_ORDER")
                         .addToBackStack("EXERCISE_VIEW_ORDER")
                         .commit();
-                Log.i("LOADVIEW", " 5 Order");
+                Log.i("M_EXERCISE_FRAGMENT", "loadView: 5 Order");
                 break;
             case 6:
                 ExerciseViewCodeFragment codeFragment = new ExerciseViewCodeFragment();
@@ -148,7 +148,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
                         .replace(R.id.ExerciseViewHolder, codeFragment, "EXERCISE_VIEW_CODE")
                         .addToBackStack("EXERCISE_VIEW_CODE")
                         .commit();
-                Log.i("LOADVIEW", " 6 Code");
+                Log.i("M_EXERCISE_FRAGMENT", "laodview: 6 Code");
                 break;
 
 
@@ -157,7 +157,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
 
     //used in Exercise Activity to set the currentTask
     public void setFragmentContentExercise(ModelTask currentTask) {
-        Log.i("M GIVE_CONTENT", "in ExerciseFragment");
+        Log.i("M_EXERCISE_FRAGMENT", "setFragmentContent");
         this.currentTask = currentTask;
         whatsNext = currentTask.getWhatsNext();
         viewType = currentTask.getExerciseViewType();
@@ -170,19 +170,19 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
                 //notify the exerciseViewFragment that nextButton is clicked
                 if (whatsNext == 2) {
                     ((LessonActivity) getActivity()).openNewTask(2);
-                    Log.i("M Buttonclicked", " openExerciseFragment");
+                    Log.i("M_EXERCISE_FRAGMENT", "ButtonClicked: openExerciseFragment");
                 } else if (whatsNext == 1) {
                     ((LessonActivity) getActivity()).openNewTask(1);
-                    Log.i("M Buttonclicked", " opnenLesson");
+                    Log.i("M_EXERCISE_FRAGMENT ", "ButtonCLicked: opnenLesson");
                 } else if (whatsNext == 3) {
                     ((LessonActivity) getActivity()).updateProgressLastTask();
-                    Log.i("M Buttonclicked", " lastExercise");
+                    Log.i("M_EXERCISE_FRAGMENT", "BUttonCLicked: lastExercise");
                 } else {
-                    Log.i("M Buttonclicked", " FalseWhatsNextType");
+                    Log.i("M_EXERCISE_FRAGMENT", "ButtonClicked: FalseWhatsNextType");
                 }
             }
         } catch (Exception e) {
-            Log.e("M Not clickable", "error");
+            Log.e("M_EXERCISE_FRAGMENT", "Not clickable_error");
         }
     }
 
@@ -198,10 +198,10 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         if (answerChecked) {
             progressController.addFinishedTask(currentTask);
             showFeedbackDialogRight();
-            Log.i("M ANSWER", " was right");
+            Log.i("M_EXERCISE_FRAGMENT", "answer was right");
         } else {
             showFeedbackDialogWrong();
-            Log.i("M ANSWER", " was wrong");
+            Log.i("M_EXERCISE_FRAGMENT", "answer was wrong");
         }
     }
 
@@ -211,6 +211,8 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
     }
 
     private void showFeedbackDialogRight() {
+
+        Log.i("M_EXERCISE_FRAGMENT","showFeedBackDialogRight");
         View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.exercise_feedback_dialog_right, viewGroup, false);
         Button nextButton = dialogView.findViewById(R.id.FeedbackRightButton);
 
@@ -236,6 +238,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
     }
 
     private void showFeedbackDialogWrong() {
+        Log.i("M_EXERCISE_FRAGMENT","showFeedBackDialogWrong");
         View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.exercise_feedback_dialog_wrong, viewGroup, false);
         Button tryagainButton = dialogView.findViewById(R.id.FeedbackWrongTryAgainButton);
         Button previousButton = dialogView.findViewById(R.id.FeedbackWrongPreviousButton);
@@ -269,6 +272,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
     }
 
     public void reset() {
+        Log.i("M_EXERCISE_FRAGMENT","Reset");
         int viewType = currentTask.getExerciseViewType();
 
         switch (viewType) {

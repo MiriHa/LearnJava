@@ -132,7 +132,7 @@ public class ExerciseViewChoiceFragment extends Fragment {
 
 
     private void checkAnswers() {
-        if (progressController.checkExercise(currentTask) && userAnswer == 0) {
+        if (progressController.checkTasks(currentTask) && userAnswer == 0) {
             Log.i("MExerciseVIEW", "checkExericse and skip");
             mListener.justOpenNext();
             //TODO listnefor textinput, when input change skip to check

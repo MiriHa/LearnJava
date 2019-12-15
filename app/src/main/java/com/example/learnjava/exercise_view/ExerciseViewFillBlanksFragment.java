@@ -120,7 +120,7 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
 
         boolean wasEmpty = false;
 
-        if (progressController.checkExercise(currentTask)) {
+        if (progressController.checkTasks(currentTask)) {
             Log.i("MExerciseVIEW", "checkExericse and skip");
             mListener.justOpenNext();
         } else {

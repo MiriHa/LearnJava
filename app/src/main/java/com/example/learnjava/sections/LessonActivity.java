@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,6 +39,7 @@ public class LessonActivity extends AppCompatActivity {
     int currentTaskNumber;
 
     int currentSection;
+    Context context;
 
     LinearLayout progressHolder;
 
@@ -53,6 +55,7 @@ public class LessonActivity extends AppCompatActivity {
 
         //get the progresscontroller
         progressController = (Controller) getApplicationContext();
+        context = this;
 
 
         //use a singelton
@@ -85,6 +88,7 @@ public class LessonActivity extends AppCompatActivity {
     public void openNewTask(int taskType) {
 
         FragmentManager manager = getSupportFragmentManager();
+        Log.i("M_LESSON_ACTIVITY", " backstack:" + manager.getFragments().toString());
         switch (taskType) {
             //open the first Lesson
             case 0:
@@ -201,9 +205,10 @@ public class LessonActivity extends AppCompatActivity {
         //use a singelton?
         //userProgress.updateUserProgressFinishedSections(sectionNumber);
         Log.i("M_LESSON_ACTIVITY", "last task of section is reached");
-
+        Log.i("M_LESSON_ACTIVITY", " backstack:" + getSupportFragmentManager().getFragments().toString());
         Intent intent = new Intent(LessonActivity.this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         Log.d("M_LESSON_ACTIVITY", "change to activity: MainActivity");
     }
@@ -353,6 +358,7 @@ public class LessonActivity extends AppCompatActivity {
             case android.R.id.home:
                 //TODO display an dialog an notify the progressmodel to discard all progress?
                 Intent intent = new Intent(LessonActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 Log.d("M_LESSON_ACTIVITY", " change to Mainactivity");
                 return true;
@@ -370,8 +376,11 @@ public class LessonActivity extends AppCompatActivity {
             TextView tv = (TextView) v;
             int number = Integer.valueOf(tv.getTag().toString());
             //currentTask = taskContent.get(number);
-            progressCurrentScreen = number;
-            openTaskProgress(2);
+            if(progressController.checkTasks(taskContent.get(number)) || number == progressController.getLatestTaskNumber()) {
+                openTaskProgress(2, number);
+            } else {
+                Toast.makeText(context, "Not unlocked yet", Toast.LENGTH_SHORT).show();
+            }
             Log.i("M LESSON_ACTIVITY", "on progressBar clicked Exercise number: " + number);
 
         }
@@ -385,20 +394,23 @@ public class LessonActivity extends AppCompatActivity {
             TextView tv = (TextView) v;
             int number = Integer.valueOf(tv.getTag().toString());
             // currentTask = taskContent.get(number);
-            progressCurrentScreen = number;
-            openTaskProgress(1);
+            if(progressController.checkTasks(taskContent.get(number)) || number == progressController.getLatestTaskNumber()) {
+                openTaskProgress(1, number);
+            } else {
+            Toast.makeText(context, "Not unlocked yet", Toast.LENGTH_SHORT).show();
+        }
             Log.i("M_LESSON_ACTIVITY", "on progressBar clicked lesson number: " + number);
         }
     }
 
     //TODO integirer das in openNewTask -> zweiter parameter? nur checkprogress weggelassen
-    public void openTaskProgress(int tasktype) {
+    public void openTaskProgress(int tasktype, int number) {
         FragmentManager manager = getSupportFragmentManager();
+        progressCurrentScreen = number;
         currentTask = taskContent.get(progressCurrentScreen);
         currentTaskNumber = currentTask.getTaskNumber();
 
-        if (progressController.checkTasks(currentTask)|| progressCurrentScreen == progressController.getLatestTaskNumber()) {
-            setProgressBackground();
+        setProgressBackground();
             switch (tasktype) {
 
                 case 1:
@@ -440,9 +452,6 @@ public class LessonActivity extends AppCompatActivity {
 
                 //open the last Lesson
             }
-        } else {
-            Toast.makeText(this, "Not unlocked yet", Toast.LENGTH_SHORT).show();
-        }
     }
 
 

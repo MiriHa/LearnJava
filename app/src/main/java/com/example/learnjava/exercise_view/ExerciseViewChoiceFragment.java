@@ -100,10 +100,14 @@ public class ExerciseViewChoiceFragment extends Fragment {
             }
         });
         Button nextButton = view.findViewById(R.id.nextButtonExerciseChoice);
+        if(progressController.checkTasks(currentTask)) {
+            Log.i("M_Exercise_VIEW_CHOICE", "checkExericse and skip");
+            nextButton.setText(R.string.Skip);
+        }
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("M BUTTONCLICKED", " in ChoiceView");
+                Log.i("M_EXERCISE_VIEW_CHOICE", " in ChoiceView");
                 checkAnswers();
             }
         });
@@ -133,28 +137,28 @@ public class ExerciseViewChoiceFragment extends Fragment {
 
     private void checkAnswers() {
         if (progressController.checkTasks(currentTask) && userAnswer == 0) {
-            Log.i("MExerciseVIEW", "checkExericse and skip");
+            Log.i("M_Exercise_VIEW_CHOICE", "checkExericse and skip");
             mListener.justOpenNext();
             //TODO listnefor textinput, when input change skip to check
         } else {
             if (userAnswer == 0) {
                 Toast.makeText(getContext(), "Please choose an answer", Toast.LENGTH_SHORT).show();
             } else {
-                Log.i("M CheckAnswers", " anser: " + " solution: " + currentTask.getSolutionInt());
+                Log.i("M_EXERCISE_VIEW_CHOICE", " checkanswer: " + " solution: " + currentTask.getSolutionInt());
                 if (currentTask.getSolutionInt() == userAnswer) {
                     mListener.sendAnswerFromExerciseView(true);
-                    Log.i("MSENDANSWERFROMEXERCISE", " answer: true");
+                    Log.i("M_EXERCISE_VIEW_CHOICE", " send answer: true");
                 } else {
                     Log.i("M ANSWER", " was wrong");
                     mListener.sendAnswerFromExerciseView(false);
-                    Log.i("MSENDANSWERFROMEXERCISE", " answer: false");
+                    Log.i("M_EXERCISE_VIEW_CHOICE", " sen answer: false");
                 }
             }
         }
     }
 
     public void setExerciseCommunication(ExerciseCommunication callback) {
-        Log.d("M SETEXERCISECOMM", " setMlistenere");
+        Log.d("M_EXERCISE_VIEW_CHOICE", " setMlistenere");
         this.mListener = callback;
     }
 

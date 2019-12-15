@@ -83,10 +83,14 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
 //        setContentLayout();
 
         nextButton = view.findViewById(R.id.nextButtonExerciseDragDrop);
+        if(progressController.checkTasks(currentTask)) {
+            Log.i("M_Exercise_VIEW_DRAG", "checkExericse and skip");
+            nextButton.setText(R.string.Skip);
+        }
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("DRAGDROP", "check button pressed");
+                Log.i("M_EXERCISE_VIEW_DRAG", "check button pressed");
                 checkAnswers();
             }
         });
@@ -96,132 +100,13 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("DRAGDROP", "Reset Button pressed");
+                Log.i("M_EXERCISE_VIEW_DRAG", "Reset Button pressed");
                 reset();
             }
         });
 
 
         return view;
-    }
-
-    private void setContentLayout() {
-        //TODO vllt überarbeiten etwas kompliziert so? siehe Fill blanks
-        //Arrag length needs to bedivisble through 3 -> per row textview dropView textview
-        String[] contentArray = currentTask.getContentStringArray();
-
-        List<String> answerArrayRandom = new ArrayList<>(answerArray.length);
-        Collections.addAll(answerArrayRandom, answerArray);
-        Collections.shuffle(answerArrayRandom);
-
-
-        Log.i("MDRAGDROP", "answerArray: " + answerArrayRandom.toString());
-
-        LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        LinearLayout.LayoutParams mParamsWeight = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, (float) 1.0);
-        LinearLayout.LayoutParams mParamsWrap = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-        //created the Lines in the ContentHolder
-        int linearLayoutsNeeded = contentArray.length / 3;
-        for (int j = 0; j < linearLayoutsNeeded * 3; j += 3) {
-
-            LinearLayout holder = new LinearLayout(getContext());
-            holder.setLayoutParams(mParams);
-            holder.setOrientation(LinearLayout.HORIZONTAL);
-
-            String[] currentLineContent = {contentArray[j], contentArray[j + 1], contentArray[j + 2]};
-            Log.i("M DRAGDROP", " content: " + j + " " + currentLineContent.toString());
-
-            //create the three Textview in each Line
-            for (int i = 0; i < 3; i++) {
-
-                if (currentLineContent[i].equals("")) {
-                    TextView textView1 = new TextView((getContext()));
-                    textView1.setLayoutParams(mParamsWrap);
-                    textView1.setText("___________");
-                    textView1.setPadding(4, 8, 4, 8);
-                    String tag = "dropView" + (i + j);
-                    textView1.setTag(tag);
-                    dropTags.add(tag);
-                    Log.i("DRAGDROP", "setDragviewTExt: dropView " + (i+j));
-                    textView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-
-                    textView1.setOnDragListener(this);
-
-                    Log.i("M DRAGDROP", " content: " + i + " " + currentLineContent[i]);
-                    holder.addView(textView1);
-                } else {
-                    TextView textView1 = new TextView((getContext()));
-                    textView1.setLayoutParams(mParamsWrap);
-                    textView1.setText(currentLineContent[i]);
-                    textView1.setPadding(4, 8, 4, 8);
-                    textView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-                    Log.i("M DRAGDROP", " content: " + i + " " + currentLineContent[i]);
-                    holder.addView(textView1);
-                }
-
-            }
-            contentHolder.addView(holder);
-        }
-
-        //create the DragViews with the Solutions
-        if (answerArrayRandom.size() > 4) {
-
-            //answer Array needs to be 4 or eight if more than four
-            int linearLayouts = answerArrayRandom.size() / 4;
-            for (int j = 0; j <= linearLayouts * 4; j += 4) {
-
-                LinearLayout holder = new LinearLayout(getContext());
-                holder.setLayoutParams(mParams);
-                holder.setOrientation(LinearLayout.HORIZONTAL);
-
-                for (int k = 0; k < 4; k++) {
-
-                    if ((j + k) < answerArrayRandom.size()) {
-                        Log.i("MDRAGDROP", "addAnswerDragVIews more than four " + (j + k));
-                        TextView myTextview = new TextView(getContext());
-                        myTextview.setLayoutParams(mParamsWeight);
-                        myTextview.setText(answerArrayRandom.get(j + k));
-
-                        String tag = "DRAGVIEW" + (j + k);
-                        myTextview.setTag(tag);
-                        dragTags.add(tag);
-
-                        myTextview.setOnLongClickListener(this);
-
-                        myTextview.setPadding(10, 30, 30, 10);
-                        myTextview.setTextSize(TypedValue.COMPLEX_UNIT_SP, 23);
-                        holder.addView(myTextview);
-                    } else {
-                        break;
-                    }
-                }
-                answerHolder.addView(holder);
-
-            }
-        } else {
-            LinearLayout holder = new LinearLayout(getContext());
-            holder.setLayoutParams(mParams);
-            holder.setOrientation(LinearLayout.HORIZONTAL);
-            holder.setWeightSum(answerArrayRandom.size());
-
-            for (int i = 0; i < answerArrayRandom.size(); i++) {
-                Log.i("MDRAGDROP", "addAnswerDragVIew less dan four " + i);
-                TextView myTextview = new TextView(getContext());
-                myTextview.setLayoutParams(mParamsWeight);
-                myTextview.setText(answerArrayRandom.get(i));
-                String tag = "DRAGVIEW" + i;
-                myTextview.setTag(tag);
-                dragTags.add(tag);
-
-                myTextview.setOnLongClickListener(this);
-
-                myTextview.setPadding(15, 10, 15, 10);
-                myTextview.setTextSize(TypedValue.COMPLEX_UNIT_SP, 23);
-                holder.addView(myTextview);
-            }
-            answerHolder.addView(holder);
-        }
     }
 
     private void setDynamicLayout() {
@@ -233,7 +118,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
         Collections.shuffle(answerArrayRandom);
 
 
-        Log.i("MDRAGDROP", "answerArray: " + answerArrayRandom.toString());
+        Log.i("M_EXERCISE_VIEW_DRAG", "setLayout: answerArray: " + answerArrayRandom.toString());
 
         LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         LinearLayout.LayoutParams mParamsWeight = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, (float) 1.0);
@@ -244,7 +129,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
             //one array element holds the Content of a row
             String[] textParts = contentArray[i].split("@");
 
-            Log.i("DRAGDROP","getContentArray, textParts: " + textParts.toString() + "contentLength: " + contentArray.length);
+            Log.i("M_EXERCISE_VIEW_DRAG","getContentArray, textParts: " + textParts.toString() + "contentLength: " + contentArray.length);
             LinearLayout rowHolder = new LinearLayout(getContext());
             rowHolder.setLayoutParams(mParamsWrap);
             //rowHolder.setPadding(10,0,0,0);
@@ -262,12 +147,11 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                     String tag = "dropView" + i + j;
                     textView1.setTag(tag);
                     dropTags.add(tag);
-                    Log.i("DRAGDROP", "setDragviewTExt: dropView " + i+j);
                     textView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 
                     textView1.setOnDragListener(this);
 
-                    Log.i("M DRAGDROP", " content: " + j + " " + textParts[j]);
+                    Log.i("M_EXERCISE_VIEW_DROP", " content: " + j + " " + textParts[j]);
                     rowHolder.addView(textView1);
                 } else {
                     TextView textView1 = new TextView((getContext()));
@@ -275,7 +159,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                     textView1.setText(textParts[j]);
                     textView1.setPadding(4, 8, 4, 8);
                     textView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-                    Log.i("M DRAGDROP", " content: " + j + " " + textParts[j]);
+                    Log.i("M_EXERCISE_VIEW_DRAG", " content: " + j + " " + textParts[j]);
                     rowHolder.addView(textView1);
                 }
 
@@ -297,7 +181,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                 for (int k = 0; k < 4; k++) {
 
                     if ((j + k) < answerArrayRandom.size()) {
-                        Log.i("MDRAGDROP", "addAnswerDragVIews more than four " + (j + k));
+                        Log.i("M_EXERCISE_VIEW_DRAG", "addAnswerDragVIews more than four " + (j + k));
                         TextView myTextview = new TextView(getContext());
                         myTextview.setLayoutParams(mParamsWeight);
                         myTextview.setText(answerArrayRandom.get(j + k));
@@ -325,7 +209,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
             holder.setWeightSum(answerArrayRandom.size());
 
             for (int i = 0; i < answerArrayRandom.size(); i++) {
-                Log.i("MDRAGDROP", "addAnswerDragVIew less dan four " + i);
+                Log.i("M_EXERCISE_VIEW_DRAG", "addAnswerDragVIew less dan four " + i);
                 TextView myTextview = new TextView(getContext());
                 myTextview.setLayoutParams(mParamsWeight);
                 myTextview.setText(answerArrayRandom.get(i));
@@ -367,7 +251,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
     private void checkAnswers() {
 
         if (progressController.checkTasks(currentTask)) {
-            Log.i("DRAGDROP", "checkExericse and skip");
+            Log.i("M_EXERCISE_VIEW_DRAG", "checkExericse and skip");
             mListener.justOpenNext();
         }else {
             //fetch the Solution and convert to StringArray
@@ -381,7 +265,6 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
             //fetch the userInput
             String[] userSolution = new String[solutionInt.length];
             for (int i = 0; i < solutionInt.length; i++) {
-                Log.i("DRAGDROP", "dropViewANswer: " + "dropView" + (i + 1));
                 TextView solView = currentView.findViewWithTag(dropTags.get(i));
                 userSolution[i] = solView.getText().toString();
             }

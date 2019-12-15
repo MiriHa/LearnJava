@@ -77,6 +77,10 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
 
         blankHolder = view.findViewById(R.id.exerciseBlanksAnswerHolder);
         nextButton = view.findViewById(R.id.nextButtonExerciseAnswer);
+        if(progressController.checkTasks(currentTask)) {
+            Log.i("M_Exercise_VIEW_ANSWER", "checkExericse and skip");
+            nextButton.setText(R.string.Skip);
+        }
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

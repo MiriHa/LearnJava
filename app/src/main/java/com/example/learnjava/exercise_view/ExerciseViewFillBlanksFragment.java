@@ -242,7 +242,9 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
                     //Set A editText with a Task
                     EditText myEditText = new EditText(getContext());
                     myEditText.setLayoutParams(mParams);
-                    int maxLength = solutionArray[tags.size()].length();
+                    //TODO doenst work here
+//                    int maxLength = solutionArray[tags.size()].length();
+                    int maxLength = solutionArray.length;
                     Log.i("FILLBLANKS","maxLength: " + maxLength);
                     myEditText.setHint("    ");
                     myEditText.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength)});

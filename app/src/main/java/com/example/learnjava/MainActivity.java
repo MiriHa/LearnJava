@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
         context = getApplicationContext();
 
+        Log.i("M_MAIN_ACTIVITY", " backstack:" + getSupportFragmentManager().getFragments().toString());
+
         //TODO Only for testing purposes
         myProgressController.updateUnlockedSections(2);
         myProgressController.updateUnlockedSections(3);

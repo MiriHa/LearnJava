@@ -21,4 +21,25 @@
 
     <color name="lightGreen4">#84bc76</color>
     <color name="Green">#66af69</color>
+
+<!--    new Color palette-->
+
+    <color name="beige">#ffc7a6</color>
+
+    <color name="lightOrange">#ff9e4f</color>
+    //primary
+    <color name="orange">#ff843d</color>
+    //primary
+    <color name="darkOrange">#f55a00</color>
+
+    <color name="lightBlue">#a9c6d9</color>
+    //primary
+    <color name="greyBlue">#608cb5</color>
+    //primary
+    <color name="darkGreyBlue">#3964a8</color>
+
+    <color name="lilac">#174896</color>
+    <color name="darkLilac">#2b2f86</color>
+
+    <color name="darkdarkLilay">#00074f</color>
 </resources>

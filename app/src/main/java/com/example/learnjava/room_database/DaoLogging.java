@@ -7,8 +7,6 @@ import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
 
-import com.example.learnjava.models.ModelUserProgress;
-
 import java.util.List;
 
 @Dao

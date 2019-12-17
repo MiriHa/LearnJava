@@ -4,22 +4,49 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.learnjava.models.ModelTask;
-import com.example.learnjava.models.ModelUserProgress;
+import com.example.learnjava.room_database.Logging;
+import com.example.learnjava.room_database.ModelUserProgress;
+import com.example.learnjava.room_database.UserDatabase;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Controller extends android.app.Application {
 
-    ModelUserProgress modelUserProgress = new ModelUserProgress();
+    //UserDatabase database = UserDatabase.getInstance(this);
+    ModelUserProgress modelUserProgress;
+
+    //TODO get das??
+    UserDatabase database = UserDatabase.getInstance(this);
 
     ArrayList<ModelTask> taskContent;
     ReadJson readJson = new ReadJson();
 
 
-    //Make sure to only use this once
-    public void setModelUserProgress(ModelUserProgress progress){
-        this.modelUserProgress = progress;
+    //call only once per user -> in popupwindow where user chooses Id
+    public void initializeModelUserProgress(String userID, UserDatabase database){
+        modelUserProgress = new ModelUserProgress(userID);
+
+        database.getUserDao().insertModelUserProgress(modelUserProgress);
     }
+
+    public void updateProgresstoDatabase(UserDatabase database){
+        database.getUserDao().updateUserProgress(modelUserProgress);
+    }
+
+    public void makeaLog(String userOwnerId, Date time, String eventType, String details){
+        Logging newLog = new Logging(userOwnerId, time, eventType, details);
+        database.getLoggingDao().insertLog(newLog);
+
+    }
+
+    public  void deleteAllTabels(){
+        database.getUserDao().deleteTable();
+        database.getLoggingDao().deleteTable();
+    }
+
+
+
 
     public void addFinishedTask(ModelTask task){
         modelUserProgress.addFinishedTask(task);
@@ -31,6 +58,7 @@ public class Controller extends android.app.Application {
        return modelUserProgress.checkTasks(task);
 
     }
+
 
 
 
@@ -80,22 +108,11 @@ public class Controller extends android.app.Application {
         taskContent =  readJson.readTask(sectionFile, context);
         Log.i("loadContent", " section" + sectionNumber);
         Log.i("M updateUserProgress", "loadContent");
-//        ArrayList<ModelTask> taskContent = new ArrayList<>();
-//        //TODO load all at once?
-//        for(int i=0; i<= sectionCount; i++ ){
-//           taskContent =  readJson.readTask("section"+i, this);
-//            Log.i("M updateUserProgress", "loadContent section: " +i);
-//        }
-//        return taskContent;
     }
 
     public ArrayList<ModelTask> getTaskContent(){
         Log.i("M updateUserProgress", "getTaskContent");
         return taskContent;
-    }
-
-    public ModelUserProgress getModelUserProgress(){
-        return modelUserProgress;
     }
 
     public ArrayList<Integer> getSections(){

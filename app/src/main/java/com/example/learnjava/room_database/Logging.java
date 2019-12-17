@@ -6,8 +6,6 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
-import com.example.learnjava.models.ModelUserProgress;
-
 import java.sql.Timestamp;
 import java.util.Date;
 

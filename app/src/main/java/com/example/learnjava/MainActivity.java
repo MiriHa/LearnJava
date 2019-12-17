@@ -10,19 +10,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
 import com.example.learnjava.room_database.Logging;
+import com.example.learnjava.room_database.UserDatabase;
 import com.example.learnjava.sections.LessonActivity;
 
-import java.sql.Time;
-import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener{
 
     Controller myProgressController;
+    UserDatabase database = UserDatabase.getInstance(this);
+
+
 //    SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
     Context context;
 
@@ -93,7 +94,8 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
         Log.i("M_MAIN_ACTIVITY", "checkIfSOlved");
         if(number == 1){
-            myProgressController.updateUnlockedSections(1);
+            //TODO already in Modeoluser inizialize
+           // myProgressController.updateUnlockedSections(1);
             lesson.setOnClickListener(this);
         }
         else if(myProgressController.checkUnlockedSections(number)){
@@ -106,6 +108,8 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     }
 
     public void showUserIdPOpUP(){
+
+
         SharedPreferences sp = getSharedPreferences("FirstTimeFile", Context.MODE_PRIVATE);
 //
 //        SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);

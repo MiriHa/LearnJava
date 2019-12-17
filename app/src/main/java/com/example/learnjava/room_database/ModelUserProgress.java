@@ -1,4 +1,4 @@
-package com.example.learnjava.models;
+package com.example.learnjava.room_database;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -6,6 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
+import com.example.learnjava.models.ModelTask;
 import com.example.learnjava.room_database.TypeConverter;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ import java.util.List;
 @Entity
 public class ModelUserProgress {
 
-    @PrimaryKey @NonNull
+    @PrimaryKey
     //TODO use a int instead?
     private String userId;
 
@@ -56,6 +57,10 @@ public class ModelUserProgress {
 
 
 
+    public ModelUserProgress(String userId){
+        this.userId = userId;
+        userUnlockedSections.add(1);
+    }
 
 
     //Update Methoden

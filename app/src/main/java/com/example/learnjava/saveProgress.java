@@ -1,10 +1,5 @@
 package com.example.learnjava;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-
-import com.example.learnjava.models.ModelUserProgress;
-
 public class saveProgress {
 
 //    protected final static int DEFAULT = 0;

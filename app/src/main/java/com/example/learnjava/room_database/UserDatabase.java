@@ -8,8 +8,6 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-import com.example.learnjava.models.ModelUserProgress;
-
 @Database(entities = {Logging.class, ModelUserProgress.class}, version = 1)
 @TypeConverters({TypeConverter.class})
 public abstract class UserDatabase extends RoomDatabase {

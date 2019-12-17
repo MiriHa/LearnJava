@@ -4,13 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.example.learnjava.room_database.Logging;
 import com.example.learnjava.sections.LessonActivity;
+
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener{
 
@@ -18,12 +26,21 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 //    SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
     Context context;
 
-    LinearLayout lesson1, lesson2, lesson3, lesson4, lesson5, lesson6, lesson7, lesson8, lesson9;
+    String userID;
+
+//    LinearLayout lesson1, lesson2, lesson3, lesson4, lesson5, lesson6, lesson7, lesson8, lesson9;
+      Button lesson1, lesson2, lesson3, lesson4, lesson5, lesson6, lesson7, lesson8, lesson9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        if (savedInstanceState != null) {
+            userID = savedInstanceState.getString("userId");
+        }
+        else{
+            showUserIdPOpUP();
+        }
+        setContentView(R.layout.activity_main_alternate);
         Log.i("M_MAIN_ACTIVITY", " on create");
 
         myProgressController = (Controller) getApplicationContext();
@@ -40,7 +57,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
         FrameLayout lessonLayout = findViewById(R.id.FragmentHolder);
         //findLinearLayouts
-        lesson1 = findViewById(R.id.Lesson1);
+        lesson1 = findViewById(R.id.lesson1);
         lesson2 = findViewById(R.id.lesson2);
         lesson3 = findViewById(R.id.lesson3);
         lesson4 = findViewById(R.id.lesson4);
@@ -69,7 +86,10 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     }
 
 
-    public void checkIfSolved(LinearLayout lesson, Integer number){
+    public void checkIfSolved(Button lesson, Integer number){
+
+
+        Date currentTime = Calendar.getInstance().getTime();
 
         Log.i("M_MAIN_ACTIVITY", "checkIfSOlved");
         if(number == 1){
@@ -85,6 +105,37 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
     }
 
+    public void showUserIdPOpUP(){
+        SharedPreferences sp = getSharedPreferences("FirstTimeFile", Context.MODE_PRIVATE);
+
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+
+        // Writing data to SharedPreferences
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("key", "some value");
+        editor.apply();
+
+        // Reading from SharedPreferences
+        String value = settings.getString("key", "");
+        Log.d(TAG, value);
+
+/**
+ * when the app is opened for the first time, no such variable
+ * (appIsOpenedForTheFirstTime) exists. So, it becomes true.
+ */
+        boolean appIsOpenedForTheFirstTime = sp.getBoolean("IsAppOpenedForFirstTime",true);
+
+
+//since it is true, it will be set to false after the execution of following block:
+        if(appIsOpenedForTheFirstTime) {
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putBoolean("IsAppOpenedForFirstTime", false);
+            editor.apply();
+
+            //PUT THE CODE FOR YOUR POPUP HERE
+        }
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -94,6 +145,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
             case R.id.Lesson1:
                 startActivity(LessonActivity.class, 1);
+                Logging log = new Logging(userID, Calendar.getInstance().getTime(), "OPEN_A_SECTION","Section 1");
                 break;
 
             case R.id.lesson2:
@@ -123,7 +175,6 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     }
 
     public void startActivity(Class<?> otherActivityClass, int lessonNumber) {
-
         //saveState();
         Intent intent = new Intent(MainActivity.this, otherActivityClass);
         intent.putExtra("LESSON_NUMBER", lessonNumber);
@@ -143,6 +194,17 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
         //finsish()
     }
+
+    @Override
+    protected void onSaveInstanceState (Bundle outState) {
+
+        super.onSaveInstanceState(outState);
+       // outState.putCharSequence(EDIT_TEXT_VALUE, mTextView.getText()); //<-- Saving operation, change the values to what ever you want.
+
+        outState.putString("userID", "This is my message to be reloaded");
+    }
+
+
 
 
 //    void saveState() {

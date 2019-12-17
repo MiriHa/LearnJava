@@ -1,9 +1,6 @@
 package com.example.learnjava;
 
-import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.example.learnjava.models.ModelTask;
@@ -75,7 +72,7 @@ public class Controller extends android.app.Application {
     }
 
     public int getLatestTaskNumber(){
-        return modelUserProgress.getLatetestTaskNumber();
+        return modelUserProgress.getLatestTaskNumber();
     }
 
     public void loadContent(int sectionNumber, Context context){

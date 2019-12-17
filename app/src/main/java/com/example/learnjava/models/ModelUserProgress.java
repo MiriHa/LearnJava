@@ -1,8 +1,15 @@
 package com.example.learnjava.models;
 
-import android.view.Display;
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.example.learnjava.room_database.TypeConverter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This model tracks the progress of a user and contains all user informations.
@@ -10,26 +17,45 @@ import java.util.ArrayList;
  * Each Sections has various tasks either a theory lessons or Exercises.
  */
 
+@Entity
 public class ModelUserProgress {
 
-    //USe a singelton?
-
-    //Keeps track over the unlocked sections
-    private ArrayList<Integer> userUnlockedSections = new ArrayList<>();
+    @PrimaryKey @NonNull
+    //TODO use a int instead?
+    private String userId;
 
     //Keeps track over the current Section and the current Screen the user is on
+    @ColumnInfo(name = "current_Section")
     private int userProgressCurrentSection;
+
+    @ColumnInfo(name = "current_Screen")
     private int userProgressCurrentScreen;
+
+    //TODO open the last Screen so that the user can skip sscreens
+
+    @ColumnInfo(name = "latest_taskNumber")
+    private int latestTaskNumber;
+
+    //stores the last theorey lesson, so the the user can skip back
+    @ColumnInfo(name = "last_Lesson")
+    private ModelTask lastLesson;
+
+
+    //Keeps track over the unlocked sections
+    @TypeConverters({TypeConverter.class})
+    private ArrayList<Integer> userUnlockedSections = new ArrayList<>();
 
     //stores the solved exercises
     //
-    private ArrayList<ModelTask> finishedTasks = new ArrayList<>();
+    //TODO Make this also Integer and give each task a unique number
 
-    //TODO open the last Screen so that the user can skip sscreens
-    private int latetestTaskNumber;
+    @TypeConverters({TypeConverter.class})
+    private List<ModelTask> finishedTasks = new ArrayList<>();
 
-    //stores the last theorey lesson, so the the user can skip back
-    private ModelTask lastLesson;
+    private ArrayList<Float> finishedTasksNumbers = new ArrayList<>();
+
+
+
 
 
     //Update Methoden
@@ -46,11 +72,15 @@ public class ModelUserProgress {
     }
 
     public void updateLatestTaskNumber(int tasknumber){
-        this.latetestTaskNumber = tasknumber;
+        this.latestTaskNumber = tasknumber;
     }
 
     public void setLastLesson(ModelTask lastLesson){
         this.lastLesson = lastLesson;
+    }
+
+    public void setUserId(String userId){
+        this.userId = userId;
     }
 
     //add a finishedTask bzw exercise so that the user can skip it
@@ -75,8 +105,12 @@ public class ModelUserProgress {
 
     //Getter
 
-    public int getLatetestTaskNumber(){
-        return latetestTaskNumber;
+    public String getUserId(){
+        return userId;
+    }
+
+    public int getLatestTaskNumber(){
+        return latestTaskNumber;
     }
 
     public int getUserProgressCurrentScreen() {
@@ -91,7 +125,7 @@ public class ModelUserProgress {
         return lastLesson;
     }
 
-    public ArrayList<ModelTask> getFinishedTasks(){
+    public List<ModelTask> getFinishedTasks(){
         return finishedTasks;
     }
 

@@ -280,6 +280,8 @@ public class LessonActivity extends AppCompatActivity {
         }
 
         LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams mParamsWeight = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1.5f);
+        progressHolder.setWeightSum(tasksSize+(tasksSize/2));
 
         for (int j = 0; j < tasksSize; j++) {
             int counter = 1;
@@ -287,8 +289,7 @@ public class LessonActivity extends AppCompatActivity {
                 TextView myTextView = new TextView(this);
                 //TODO change the counter, counts exercises mit
                 myTextView.setText(String.valueOf(j + 1));
-                myTextView.setLayoutParams(mParams);
-                myTextView.setWidth(120);
+                myTextView.setLayoutParams(mParamsWeight);
                 String tag = String.valueOf(taskNumber[j]);
                 myTextView.setClickable(true);
 //                myTextView.setTag("PROGRESS_FIELD_" + taskNumber[j]);
@@ -304,13 +305,12 @@ public class LessonActivity extends AppCompatActivity {
             } else if (taskTypes[j] == 2 || taskTypes[j] == 3) {
                 TextView myTextView = new TextView(this);
                 myTextView.setText("?");
-                myTextView.setWidth(120);
                 String tag = String.valueOf(taskNumber[j]);
                 myTextView.setClickable(true);
 //                myTextView.setTag("PROGRESS_FIELD_" + taskNumber[j]);
                 myTextView.setTag(tag);
                 myTextView.setGravity(Gravity.CENTER);
-                myTextView.setLayoutParams(mParams);
+                myTextView.setLayoutParams(mParamsWeight);
                 myTextView.setBackgroundResource(R.drawable.border);
                 myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
 

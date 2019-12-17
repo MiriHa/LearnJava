@@ -107,17 +107,17 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
     public void showUserIdPOpUP(){
         SharedPreferences sp = getSharedPreferences("FirstTimeFile", Context.MODE_PRIVATE);
-
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-
-        // Writing data to SharedPreferences
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString("key", "some value");
-        editor.apply();
-
-        // Reading from SharedPreferences
-        String value = settings.getString("key", "");
-        Log.d(TAG, value);
+//
+//        SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+//
+//        // Writing data to SharedPreferences
+//        SharedPreferences.Editor editor = settings.edit();
+//        editor.putString("key", "some value");
+//        editor.apply();
+//
+//        // Reading from SharedPreferences
+//        String value = settings.getString("key", "");
+//        Log.d(TAG, value);
 
 /**
  * when the app is opened for the first time, no such variable

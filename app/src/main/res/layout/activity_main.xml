@@ -38,7 +38,7 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/Lesson1"
+                android:id="@+id/lesson1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/lightGreen1"

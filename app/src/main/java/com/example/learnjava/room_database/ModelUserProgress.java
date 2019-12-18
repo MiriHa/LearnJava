@@ -3,6 +3,8 @@ package com.example.learnjava.room_database;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
@@ -18,12 +20,13 @@ import java.util.List;
  * Each Sections has various tasks either a theory lessons or Exercises.
  */
 
-@Entity
+@Entity (indices = {@Index("user_ID")})
 public class ModelUserProgress {
 
-    @PrimaryKey
     //TODO use a int instead?
-    private String userId;
+    @PrimaryKey @NonNull
+    @ColumnInfo(name = "user_ID")
+    private String userId = " ";
 
     //Keeps track over the current Section and the current Screen the user is on
     @ColumnInfo(name = "current_Section")
@@ -39,6 +42,7 @@ public class ModelUserProgress {
 
     //stores the last theorey lesson, so the the user can skip back
     @ColumnInfo(name = "last_Lesson")
+    @TypeConverters({TypeConverter.class})
     private ModelTask lastLesson;
 
 
@@ -53,6 +57,7 @@ public class ModelUserProgress {
     @TypeConverters({TypeConverter.class})
     private List<ModelTask> finishedTasks = new ArrayList<>();
 
+    @Ignore
     private ArrayList<Float> finishedTasksNumbers = new ArrayList<>();
 
 
@@ -60,6 +65,10 @@ public class ModelUserProgress {
     public ModelUserProgress(String userId){
         this.userId = userId;
         userUnlockedSections.add(1);
+    }
+
+    @Ignore
+    public ModelUserProgress(){
     }
 
 
@@ -138,4 +147,39 @@ public class ModelUserProgress {
         return userProgressCurrentSection;
     }
 
+    public int getUserProgressCurrentSection() {
+        return userProgressCurrentSection;
+    }
+
+    public void setUserProgressCurrentSection(int userProgressCurrentSection) {
+        this.userProgressCurrentSection = userProgressCurrentSection;
+    }
+
+    public void setUserProgressCurrentScreen(int userProgressCurrentScreen) {
+        this.userProgressCurrentScreen = userProgressCurrentScreen;
+    }
+
+    public void setLatestTaskNumber(int latestTaskNumber) {
+        this.latestTaskNumber = latestTaskNumber;
+    }
+
+    public ArrayList<Integer> getUserUnlockedSections() {
+        return userUnlockedSections;
+    }
+
+    public void setUserUnlockedSections(ArrayList<Integer> userUnlockedSections) {
+        this.userUnlockedSections = userUnlockedSections;
+    }
+
+    public void setFinishedTasks(List<ModelTask> finishedTasks) {
+        this.finishedTasks = finishedTasks;
+    }
+
+    public ArrayList<Float> getFinishedTasksNumbers() {
+        return finishedTasksNumbers;
+    }
+
+    public void setFinishedTasksNumbers(ArrayList<Float> finishedTasksNumbers) {
+        this.finishedTasksNumbers = finishedTasksNumbers;
+    }
 }

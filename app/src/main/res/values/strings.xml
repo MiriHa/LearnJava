@@ -30,6 +30,7 @@
     <string name="FeedbackWrong">That was not right.</string>
 
     <string name="Skip">Skip</string>
+    <string name="PopUpText">Hello and Welcome to Learn Java! Please select an Username that you can remember:</string>
 
     //For testing
     <string name="longstring">nothing here yet nothin ghere yet nothing nothing nothing</string>

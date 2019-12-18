@@ -33,7 +33,7 @@ public interface DaoLogging {
     void deleteTable();
 
 
-     @Query("SELECT * FROM Logging WHERE userOwnerId=:userId")
+     @Query("SELECT * FROM Logging WHERE User_Owner_ID=:userId")
      List<Logging> findLogsForUser(final int userId);
 
 

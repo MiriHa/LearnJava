@@ -13,7 +13,7 @@ import java.util.List;
 public class UserWithLog {
 
     @Embedded public ModelUserProgress user;
-    @Relation(parentColumn = "userId", entityColumn = "userOwnerId")
+    @Relation(parentColumn = "user_ID", entityColumn = "User_Owner_ID")
 
     public List<Logging> logging;
 }

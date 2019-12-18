@@ -60,6 +60,22 @@ public class TypeConverter {
         return gson.toJson(modelTasks);
     }
 
+
+    @androidx.room.TypeConverter
+    public static ModelTask stringToModelTask(String data){
+        Gson gson = new Gson();
+        Type taskType = new TypeToken<ModelTask>(){}.getType();
+
+        return gson.fromJson(data, taskType);
+    }
+
+
+    @androidx.room.TypeConverter
+    public static String modelTaskToString(ModelTask task){
+        Gson gson = new Gson();
+        return gson.toJson(task);
+    }
+
     /**
      * Convert date to String
      */

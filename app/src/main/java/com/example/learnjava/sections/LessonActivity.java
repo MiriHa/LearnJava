@@ -21,8 +21,10 @@ import com.example.learnjava.Controller;
 import com.example.learnjava.MainActivity;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
+import com.example.learnjava.room_database.UserDatabase;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class LessonActivity extends AppCompatActivity {
 
@@ -30,6 +32,8 @@ public class LessonActivity extends AppCompatActivity {
     //ModelUserProgress userProgress;
 
     Controller progressController;
+    UserDatabase database;
+
     private int sectionNumber;
     private boolean shouldAllowBack = false;
 
@@ -56,6 +60,7 @@ public class LessonActivity extends AppCompatActivity {
         //get the progresscontroller
         progressController = (Controller) getApplicationContext();
         context = this;
+        database = UserDatabase.getInstance(this);
 
 
         //use a singelton
@@ -67,7 +72,7 @@ public class LessonActivity extends AppCompatActivity {
         if (b != null)
             sectionNumber = (int) b.get("LESSON_NUMBER");
         Log.i("M_LESSON_ACTIVITY", " section opend: " + sectionNumber);
-        progressController.updateCurrentSection(sectionNumber);
+        progressController.updateCurrentSection(sectionNumber, database);
 
         progressController.loadContent(sectionNumber, this);
         taskContent = progressController.getTaskContent();
@@ -96,6 +101,7 @@ public class LessonActivity extends AppCompatActivity {
                 setCurrentTask();
                 setProgressBackground();
                 Log.i("M_LESSON_ACTIVITY", "opennewtask: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
+                progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "First Lesson of a Section", database);
                 //load a fragment
                 LessonFragment firstlessonFragment = new LessonFragment();
                 firstlessonFragment.setFragmentContentLesson(currentTask);
@@ -133,6 +139,7 @@ public class LessonActivity extends AppCompatActivity {
                             .commit();
                 }
                 Log.d(" M_LESSON_ACTIVITY", "checkprogress 1: progress: " + progressCurrentScreen);
+                progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "open the next lesson: " + currentTask.getTaskNumber(), database);
                 break;
 
             //open the next Exercise
@@ -155,6 +162,7 @@ public class LessonActivity extends AppCompatActivity {
                             .commit();
                 }
                 Log.i(" M_LESSON_ACTIVITY", " checkprogress 2: progress: " + progressCurrentScreen);
+                progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "open the next exercise: " + currentTask.getTaskNumber(), database);
                 break;
 
             //open the last Lesson
@@ -177,6 +185,8 @@ public class LessonActivity extends AppCompatActivity {
                 //                        .addToBackStack(null)
                 //                        .commit();
                 Log.i(" M_LESSON_ACTIVITY", "checkProgress 3: loaded progress: " + progressCurrentScreen);
+                progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "open the last lesson: " + currentTask.getTaskNumber(), database);
+
 
 //                    Fragment lastLessonFragment = manager.findFragmentByTag(tagLast);
                 //                manager.popBackStack(tagLast, 0);
@@ -200,7 +210,7 @@ public class LessonActivity extends AppCompatActivity {
     public void updateProgressLastTask() {
 
         //add the finished section to the PorgressCOntrolller
-        progressController.updateUnlockedSections((Integer) sectionNumber + 1);
+        progressController.updateUnlockedSections((Integer) sectionNumber + 1, database);
         Log.i("M_LESSON_ACTIVITY", " updateprogress: section added " + progressController.getSections().toString());
         //use a singelton?
         //userProgress.updateUserProgressFinishedSections(sectionNumber);
@@ -220,11 +230,11 @@ public class LessonActivity extends AppCompatActivity {
             //TODO progressController.addFinishedTask(currentTask)
             //TODO why is it the same code? here
             progressCurrentScreen = currentTask.getTaskNumber() + 1;
-            progressController.updateCurrentScreen(progressCurrentScreen);
+            progressController.updateCurrentScreen(progressCurrentScreen, database);
             Log.i("M_LESSON_ACTIVITY", " checkprogress: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
         } else {
             progressCurrentScreen = currentTask.getTaskNumber() + 1;
-            progressController.updateCurrentScreen(progressCurrentScreen);
+            progressController.updateCurrentScreen(progressCurrentScreen, database);
             Log.i("M_LESSON_ACTIVITY", " checkProgress else: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
         }
     }
@@ -232,7 +242,7 @@ public class LessonActivity extends AppCompatActivity {
     public void setCurrentTask() {
         currentTask = taskContent.get(progressCurrentScreen);
         currentTaskNumber = currentTask.getTaskNumber();
-        progressController.updateLatestTaskNumber(currentTaskNumber);
+        progressController.updateLatestTaskNumber(currentTaskNumber, database);
         Log.i("M_LESSON_ACTIVITY", "set current task" + currentTask.getTaskName() + "currentTaskNumber: " + currentTask.getTaskNumber());
     }
 

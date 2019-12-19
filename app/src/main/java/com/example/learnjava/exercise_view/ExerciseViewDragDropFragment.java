@@ -22,9 +22,11 @@ import com.example.learnjava.Controller;
 import com.example.learnjava.ExerciseCommunication;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
+import com.example.learnjava.room_database.UserDatabase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
@@ -39,8 +41,9 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
     private ExerciseCommunication mListener;
 
 
-    ModelTask currentTask;
-    Controller progressController;
+    private ModelTask currentTask;
+    private Controller progressController;
+    private UserDatabase database;
     private String[] answerArray;
     private ArrayList<String> dropTags = new ArrayList<>();
     private ArrayList<String> dragTags = new ArrayList<>();
@@ -70,6 +73,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
 
         //get the currentTask
         receiveCurrentTask();
+        database = UserDatabase.getInstance(getActivity());
 
 
         contentHolder = view.findViewById(R.id.contentHolderDragDrop);
@@ -268,7 +272,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                 TextView solView = currentView.findViewWithTag(dropTags.get(i));
                 userSolution[i] = solView.getText().toString();
             }
-
+            progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_DRAG_DROP_FRAGMENT", "number: " + currentTask.getTaskNumber() + " userInput: " + userSolution, database);
             //TODO check when no Answer is inputted
             if (Arrays.equals(solutionString, userSolution)) {
                 mListener.sendAnswerFromExerciseView(true);

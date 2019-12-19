@@ -21,8 +21,10 @@ import com.example.learnjava.Controller;
 import com.example.learnjava.ExerciseCommunication;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
+import com.example.learnjava.room_database.UserDatabase;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * This is the ExerciseView to give a multiple choice answer.
@@ -36,6 +38,7 @@ public class ExerciseViewChoiceFragment extends Fragment {
 
     private ModelTask currentTask;
     private Controller progressController;
+    private UserDatabase database;
 
     private String[] answerChoices;
     private int userAnswer = 0;
@@ -65,6 +68,7 @@ public class ExerciseViewChoiceFragment extends Fragment {
 
         //get the currentTask
         receiveCurrentTask();
+        database = UserDatabase.getInstance(getActivity());
 
         TextView exerciseText = view.findViewById(R.id.exerciseTextChoice);
         exerciseText.setText(currentTask.getTaskText());
@@ -145,6 +149,7 @@ public class ExerciseViewChoiceFragment extends Fragment {
                 Toast.makeText(getContext(), "Please choose an answer", Toast.LENGTH_SHORT).show();
             } else {
                 Log.i("M_EXERCISE_VIEW_CHOICE", " checkanswer: " + " solution: " + currentTask.getSolutionInt());
+                progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_CHOICE_FRAGMENT", "number: " + currentTask.getTaskNumber() + " userInput: " + userAnswer, database);
                 if (currentTask.getSolutionInt() == userAnswer) {
                     mListener.sendAnswerFromExerciseView(true);
                     Log.i("M_EXERCISE_VIEW_CHOICE", " send answer: true");

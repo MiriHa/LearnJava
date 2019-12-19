@@ -5,16 +5,12 @@ import android.icu.lang.UScript;
 import android.util.Log;
 
 import com.example.learnjava.models.ModelTask;
-import com.example.learnjava.room_database.DaoUserProgress;
 import com.example.learnjava.room_database.Logging;
 import com.example.learnjava.room_database.ModelUserProgress;
 import com.example.learnjava.room_database.UserDatabase;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-
 public class Controller extends android.app.Application {
 
 
@@ -71,8 +67,9 @@ public class Controller extends android.app.Application {
      * Methods to Update or check on the ModelUserProgress
      */
 
-    public void addFinishedTask(ModelTask task) {
+    public void addFinishedTask(ModelTask task, UserDatabase database) {
         modelUserProgress.addFinishedTask(task);
+        updateProgresstoDatabase(database);
         Log.i("M_CONTROLLER", " addfnishedTask " + task.getTaskNumber());
     }
 
@@ -87,25 +84,29 @@ public class Controller extends android.app.Application {
         return modelUserProgress.checkProgressUnlockedSection(sectionNumber);
     }
 
-    public void updateUnlockedSections(Integer sectionNumber) {
+    public void updateUnlockedSections(Integer sectionNumber, UserDatabase database) {
         Log.i("M_CONTROLLER", "updateUnlockedSections" + sectionNumber);
         modelUserProgress.updateUserProgressUnlockedSections(sectionNumber);
+        updateProgresstoDatabase(database);
     }
 
 
-    public void updateCurrentSection(int number) {
+    public void updateCurrentSection(int number, UserDatabase database) {
         modelUserProgress.updateUserProgressCurrentSection(number);
+        updateProgresstoDatabase(database);
         Log.i("M_CONTROLLER", " CurrentSectionNumber " + number);
     }
 
-    public void updateCurrentScreen(int number) {
+    public void updateCurrentScreen(int number, UserDatabase database) {
         Log.i("M_CONTROLLER", " CurrentSreenNumber " + number);
         modelUserProgress.updateUserProgressCurrentScreen(number);
+        updateProgresstoDatabase(database);
     }
 
-    public void updateLatestTaskNumber(int number) {
+    public void updateLatestTaskNumber(int number, UserDatabase database) {
         Log.i("M_CONTROLLER", "updateLatesTaskNumber " + number);
         modelUserProgress.updateLatestTaskNumber(number);
+        updateProgresstoDatabase(database);
     }
 
 
@@ -114,9 +115,10 @@ public class Controller extends android.app.Application {
      */
 
 
-    public void setLastLesson(ModelTask lastLesson) {
+    public void setLastLesson(ModelTask lastLesson, UserDatabase database) {
         Log.i("M_CONTROLLER", "setLastLesson: " + lastLesson.getTaskName() + " " + lastLesson.getTaskNumber());
         modelUserProgress.setLastLesson(lastLesson);
+        updateProgresstoDatabase(database);
     }
 
     public void setModelUserProgress(ModelUserProgress userProgress){

@@ -53,6 +53,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         database = UserDatabase.getInstance(this);
         myProgressController = (Controller) getApplicationContext();
 
+        //TODO for testing purposes
+        myProgressController.deleteAllTabels(database);
+
         //CHeck and retrive USerID or open UserID PopUpWindow
         myDialog = new Dialog(this);
         showUserIdPOpUP();
@@ -78,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lesson9 = findViewById(R.id.lesson9);
 
 
-        Log.i("M_MAIN_ACTIVITY", " CheckCOntroller: progressController Sections " + myProgressController.getSections().toString());
+        //Log.i("M_MAIN_ACTIVITY", " CheckCOntroller: progressController Sections " + myProgressController.getSections().toString());
 
         //SetOnClickListener for Layouts defined in onClick
 //        checkIfSolved(lesson1, 1);
@@ -95,8 +98,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void setTheCOntent(){
-        myProgressController.updateUnlockedSections(2);
-        myProgressController.updateUnlockedSections(3);
+        myProgressController.updateUnlockedSections(2, database);
+        myProgressController.updateUnlockedSections(3, database);
 
 
         checkIfSolved(lesson1, 1);
@@ -199,32 +202,46 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
 
             case R.id.lesson1:
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 1", database);
                 startActivity(LessonActivity.class, 1);
-                Logging log = new Logging(userID, Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 1");
                 break;
 
             case R.id.lesson2:
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 2", database);
                 startActivity(LessonActivity.class, 2);
                 break;
 
             case R.id.lesson3:
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 3", database);
                 startActivity(LessonActivity.class, 3);
                 break;
 
             case R.id.lesson4:
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 4", database);
                 startActivity(LessonActivity.class, 4);
                 break;
 
             case R.id.lesson5:
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 5", database);
                 startActivity(LessonActivity.class, 5);
                 break;
 
             case R.id.lesson6:
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 6", database);
                 startActivity(LessonActivity.class, 6);
                 break;
 
             case R.id.lesson7:
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 7", database);
                 startActivity(LessonActivity.class, 7);
+                break;
+            case R.id.lesson8:
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 8", database);
+                startActivity(LessonActivity.class, 8);
+                break;
+            case R.id.lesson9:
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 9", database);
+                startActivity(LessonActivity.class, 9);
                 break;
         }
     }

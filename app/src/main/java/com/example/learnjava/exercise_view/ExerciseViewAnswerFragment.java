@@ -20,6 +20,9 @@ import com.example.learnjava.Controller;
 import com.example.learnjava.ExerciseCommunication;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
+import com.example.learnjava.room_database.UserDatabase;
+
+import java.util.Calendar;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
@@ -36,6 +39,7 @@ public class ExerciseViewAnswerFragment extends Fragment {
 
     private ModelTask currentTask;
     private Controller progressController;
+    private UserDatabase database;
 
     private LinearLayout exerciseViewHolder;
     private EditText editText;
@@ -60,6 +64,7 @@ public class ExerciseViewAnswerFragment extends Fragment {
 
         //get the currentTask
         receiveCurrentTask();
+        database = UserDatabase.getInstance(getContext());
 
         exerciseViewHolder = view.findViewById(R.id.contentHolderAnswer);
         TextView exerciseText = view.findViewById(R.id.exerciseTextAnswer);
@@ -117,6 +122,7 @@ public class ExerciseViewAnswerFragment extends Fragment {
             } else {
                 String userAnswer = userInput.replaceAll("\\s+","");
                 Log.i("M_EXERCISE_VIEW_ANSWER", "check answer: " + userInput + " solution: " + currentTask.getSolutionString());
+                progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_FRAGMENT", "number: " + currentTask.getTaskNumber() + " userInput: " + userInput, database);
                 //TODO ingore case? when code answer not?  -> in code view fragment?
                 if (currentTask.getSolutionString().equalsIgnoreCase(userAnswer)) {
                     mListener.sendAnswerFromExerciseView(true);

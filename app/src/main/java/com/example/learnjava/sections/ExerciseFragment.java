@@ -25,6 +25,9 @@ import com.example.learnjava.exercise_view.ExerciseViewFillBlanksFragment;
 import com.example.learnjava.exercise_view.ExerciseViewOrderFragment;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
+import com.example.learnjava.room_database.UserDatabase;
+
+import java.util.Calendar;
 
 
 public class ExerciseFragment extends Fragment implements ExerciseCommunication {
@@ -32,6 +35,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
     private ExerciseCommunication mListener;
 
     private Controller progressController;
+    UserDatabase database;
 
     private TextView exerciseName;
     private ViewGroup viewGroup;
@@ -60,6 +64,10 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         if (getActivity() != null)
             progressController = (Controller) getActivity().getApplicationContext();
         Log.i("M_EXERCISE_FRAGMENT", " checkContorller: progressController Sections " + progressController.getSections().toString());
+        database = UserDatabase.getInstance(getContext());
+
+        progressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_A_EXERCISE", "number: " + currentTask.getTaskNumber() + " type: " + currentTask.getExerciseViewType(), database);
+
 
         exerciseName = view.findViewById(R.id.exerciseName);
         exerciseName.setText(currentTask.getTaskName());
@@ -196,12 +204,15 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
     @Override
     public void sendAnswerFromExerciseView(boolean answerChecked) {
         if (answerChecked) {
-            progressController.addFinishedTask(currentTask);
+            progressController.addFinishedTask(currentTask, database);
             showFeedbackDialogRight();
             Log.i("M_EXERCISE_FRAGMENT", "answer was right");
+            progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_RIGHT", "number: " + currentTask.getTaskNumber() + " taskType: " + currentTask.getExerciseViewType(), database);
         } else {
             showFeedbackDialogWrong();
             Log.i("M_EXERCISE_FRAGMENT", "answer was wrong");
+            progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_WRONG", "number: " + currentTask.getTaskNumber() + " taskType: " + currentTask.getExerciseViewType(), database);
+
         }
     }
 
@@ -257,6 +268,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
                 //TODO reset the layout
                 reset();
                 feedbackDialog.dismiss();
+                progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_WRONG_TRY_AGAIN", "number: " + currentTask.getTaskNumber() + " taskType: " + currentTask.getExerciseViewType(), database);
 
 
             }
@@ -266,6 +278,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
             public void onClick(View v) {
                 ((LessonActivity) getActivity()).openNewTask(3);
                 feedbackDialog.dismiss();
+                progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_WRONG_SEE_LESSON", "number: " + currentTask.getTaskNumber() + " taskType: " + currentTask.getExerciseViewType(), database);
             }
         });
 

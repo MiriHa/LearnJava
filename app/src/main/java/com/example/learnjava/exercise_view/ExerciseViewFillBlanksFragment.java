@@ -22,9 +22,11 @@ import com.example.learnjava.Controller;
 import com.example.learnjava.ExerciseCommunication;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
+import com.example.learnjava.room_database.UserDatabase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
@@ -39,6 +41,7 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
 
     private ModelTask currentTask;
     private Controller progressController;
+    private UserDatabase database;
 
     private String[] userSolutionArray;
     private String[] solutionArray;
@@ -66,6 +69,7 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
 
         //get the currentTask
         receiveCurrentTask();
+        database = UserDatabase.getInstance(getActivity());
 
         userSolutionArray = new String[currentTask.getSolutionStringArray().length];
         solutionArray = currentTask.getSolutionStringArray();
@@ -143,6 +147,7 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
             if (wasEmpty) {
                 Toast.makeText(getContext(), "Pleas enter all answers", Toast.LENGTH_SHORT).show();
             } else {
+                progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_FILL_BLANKS_FRAGMENT", "number: " + currentTask.getTaskNumber() + " userInput: " + userSolutionArray, database);
                 if (Arrays.equals(solutionArray, userSolutionArray)) {
                     mListener.sendAnswerFromExerciseView(true);
                     Log.i("SENDANSWERFROMEXERCISE", " answer: true");

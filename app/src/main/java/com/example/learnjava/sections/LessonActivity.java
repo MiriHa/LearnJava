@@ -171,7 +171,7 @@ public class LessonActivity extends AppCompatActivity {
                 Log.i("M_LESSON_ACTIVTIY", "last Lesson: " + lastLesson.getTaskName() + " whats next: " + lastLesson.getWhatsNext());
                 checkProgress();
                 currentTask = lastLesson;
-                currentTaskNumber = lastLesson.getTaskNumber();
+                currentTaskNumber = (int) lastLesson.getTaskNumber();
                 setProgressBackground();
                 //load a fragment
                 String tagLast = "FRAGMENT_LESSON_" + currentTaskNumber;
@@ -229,11 +229,11 @@ public class LessonActivity extends AppCompatActivity {
         if (progressCurrentScreen == currentTask.getTaskNumber()) {
             //TODO progressController.addFinishedTask(currentTask)
             //TODO why is it the same code? here
-            progressCurrentScreen = currentTask.getTaskNumber() + 1;
+            progressCurrentScreen = (int) currentTask.getTaskNumber() + 1;
             progressController.updateCurrentScreen(progressCurrentScreen, database);
             Log.i("M_LESSON_ACTIVITY", " checkprogress: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
         } else {
-            progressCurrentScreen = currentTask.getTaskNumber() + 1;
+            progressCurrentScreen = (int) currentTask.getTaskNumber() + 1;
             progressController.updateCurrentScreen(progressCurrentScreen, database);
             Log.i("M_LESSON_ACTIVITY", " checkProgress else: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
         }
@@ -241,7 +241,7 @@ public class LessonActivity extends AppCompatActivity {
 
     public void setCurrentTask() {
         currentTask = taskContent.get(progressCurrentScreen);
-        currentTaskNumber = currentTask.getTaskNumber();
+        currentTaskNumber = (int) currentTask.getTaskNumber();
         progressController.updateLatestTaskNumber(currentTaskNumber, database);
         Log.i("M_LESSON_ACTIVITY", "set current task" + currentTask.getTaskName() + "currentTaskNumber: " + currentTask.getTaskNumber());
     }
@@ -285,7 +285,7 @@ public class LessonActivity extends AppCompatActivity {
 
         for (int i = 0; i < tasksSize; i++) {
             ModelTask task = taskContent.get(i);
-            taskNumber[i] = task.getTaskNumber();
+            taskNumber[i] = (int) task.getTaskNumber();
             taskTypes[i] = task.getType();
         }
 
@@ -418,7 +418,7 @@ public class LessonActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         progressCurrentScreen = number;
         currentTask = taskContent.get(progressCurrentScreen);
-        currentTaskNumber = currentTask.getTaskNumber();
+        currentTaskNumber = (int) currentTask.getTaskNumber();
 
         setProgressBackground();
             switch (tasktype) {

@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         myProgressController = (Controller) getApplicationContext();
 
         //TODO for testing purposes
+
         myProgressController.deleteAllTabels(database);
 
         //CHeck and retrive USerID or open UserID PopUpWindow

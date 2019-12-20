@@ -10,7 +10,7 @@ public abstract class ModelTask {
     private final String taskName;
     private final String taskText;
     private final int whatsNext;
-    private final int taskNumber;
+    private final float taskNumber;
 
     //1 for lessone 2 for exercise
     private int type;
@@ -38,7 +38,7 @@ public abstract class ModelTask {
         return whatsNext;
     }
 
-    public int getTaskNumber() {
+    public float getTaskNumber() {
         return taskNumber;
     }
 

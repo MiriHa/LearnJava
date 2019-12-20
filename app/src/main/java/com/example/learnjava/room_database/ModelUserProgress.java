@@ -38,7 +38,7 @@ public class ModelUserProgress {
     //TODO open the last Screen so that the user can skip sscreens
 
     @ColumnInfo(name = "latest_taskNumber")
-    private int latestTaskNumber;
+    private float latestTaskNumber;
 
     //stores the last theorey lesson, so the the user can skip back
     @ColumnInfo(name = "last_Lesson")
@@ -123,7 +123,7 @@ public class ModelUserProgress {
         return userId;
     }
 
-    public int getLatestTaskNumber(){
+    public float getLatestTaskNumber(){
         return latestTaskNumber;
     }
 

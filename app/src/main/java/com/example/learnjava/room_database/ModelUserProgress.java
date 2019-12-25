@@ -36,9 +36,13 @@ public class ModelUserProgress {
     private int userProgressCurrentScreen;
 
     //TODO open the last Screen so that the user can skip sscreens
-
+    //save this and check the latest section? or save latest section seperate?
+    //use latest section also to check the freigeschaltete sections instead of the array?
     @ColumnInfo(name = "latest_taskNumber")
-    private float latestTaskNumber;
+    private int latestTaskNumber;
+
+    @ColumnInfo (name = "latest_sectionNumber")
+    private int latestSectionNumber;
 
     //stores the last theorey lesson, so the the user can skip back
     @ColumnInfo(name = "last_Lesson")
@@ -123,7 +127,7 @@ public class ModelUserProgress {
         return userId;
     }
 
-    public float getLatestTaskNumber(){
+    public int getLatestTaskNumber(){
         return latestTaskNumber;
     }
 
@@ -137,6 +141,10 @@ public class ModelUserProgress {
 
     public ModelTask getLastLesson(){
         return lastLesson;
+    }
+
+    public int getLatestSectionNumber(){
+        return latestSectionNumber;
     }
 
     public List<ModelTask> getFinishedTasks(){
@@ -173,6 +181,10 @@ public class ModelUserProgress {
 
     public void setFinishedTasks(List<ModelTask> finishedTasks) {
         this.finishedTasks = finishedTasks;
+    }
+
+    public void setLatestSectionNumber(int sectionNumber){
+        this.latestSectionNumber = sectionNumber;
     }
 
     public ArrayList<Float> getFinishedTasksNumbers() {

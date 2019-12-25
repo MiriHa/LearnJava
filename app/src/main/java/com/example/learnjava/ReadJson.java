@@ -54,6 +54,7 @@ public class ReadJson {
                 //Read Json-values
                 String name_value = taskObject.getString("taskName");
                 int number_value = taskObject.getInt("taskNumber");
+                int section_number_value = taskObject.getInt("sectionNumber");
                 String text_value = taskObject.getString("taskText");
                 int next_value = taskObject.getInt("taskWhatsNext");
                 int type_value = taskObject.getInt("taskType");
@@ -68,7 +69,7 @@ public class ReadJson {
                             String solutionString_value = taskObject.getString("exerciseSolutionString");
 
                             //Add values in ArrayList
-                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,null, null, next_value, viewType_value,0,solutionString_value, null);
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,section_number_value, null, null, next_value, viewType_value,0,solutionString_value, null);
                             taskList.add(newExercise);
                         }
                         //Type: Answer Choice -> int
@@ -79,7 +80,7 @@ public class ReadJson {
                             int solutionInt_value = taskObject.getInt("exerciseSolutionInt");
 
                             //Add values in ArrayList,
-                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value, answerChoicesArray_value, null, next_value, viewType_value, solutionInt_value,"", null);
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value, section_number_value, answerChoicesArray_value, null, next_value, viewType_value, solutionInt_value,"", null);
                             taskList.add(newExercise);
                         }
                         //Type: Answer FillBlanks -> String[]
@@ -91,7 +92,7 @@ public class ReadJson {
                             String[] contentStringArray_value = toStringArray(contentStringArray);
 
                             //Add values in ArrayList
-                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,solutionStringArray_value, null, next_value, viewType_value,0,"", contentStringArray_value);
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,section_number_value,solutionStringArray_value, null, next_value, viewType_value,0,"", contentStringArray_value);
                             taskList.add(newExercise);
                         }
                         //Type: Drag and Drop -> string[]
@@ -107,7 +108,7 @@ public class ReadJson {
 
 
                             //Add values in ArrayList
-                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,solutionStringArray_value, solutionIntArray_value, next_value, viewType_value,0,"", contentStringArray_value);
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,section_number_value,solutionStringArray_value, solutionIntArray_value, next_value, viewType_value,0,"", contentStringArray_value);
                             taskList.add(newExercise);
 
                         }
@@ -117,7 +118,7 @@ public class ReadJson {
                             int[] solutionIntArray_value = toIntArray(solutionIntArray);
 
                             //Add values in ArrayList
-                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,null, solutionIntArray_value, next_value, viewType_value,0,"", null);
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,section_number_value,null, solutionIntArray_value, next_value, viewType_value,0,"", null);
                             taskList.add(newExercise);
                         }
                         //Type: Code -> String[]
@@ -126,7 +127,7 @@ public class ReadJson {
                             String[] solutionStringArray_value = toStringArray(solutionStringArray);
 
                             //Add values in ArrayList
-                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,solutionStringArray_value, null, next_value, viewType_value,0,"", null);
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,section_number_value,solutionStringArray_value, null, next_value, viewType_value,0,"", null);
                             taskList.add(newExercise);
 
                         }
@@ -142,7 +143,7 @@ public class ReadJson {
                     Log.i("READJSON", " " +name_value+text_value+number_value+keyWords_value);
 
                     //Add values in ArrayList
-                    ModelTask newLesson = new ModelLesson(name_value, text_value, number_value, keyWords_value, next_value);
+                    ModelTask newLesson = new ModelLesson(name_value, text_value, number_value, section_number_value, keyWords_value, next_value);
                     taskList.add(newLesson);
                 }
 

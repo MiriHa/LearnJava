@@ -90,6 +90,12 @@ public class Controller extends android.app.Application {
         updateProgresstoDatabase(database);
     }
 
+    public void updateLatestSection(int sectionNumber, UserDatabase database){
+        Log.i("M_CONTROLLER", "updateLatestSections" + sectionNumber);
+        modelUserProgress.setLatestSectionNumber(sectionNumber);
+        updateProgresstoDatabase(database);
+    }
+
 
     public void updateCurrentSection(int number, UserDatabase database) {
         modelUserProgress.updateUserProgressCurrentSection(number);
@@ -119,6 +125,10 @@ public class Controller extends android.app.Application {
         Log.i("M_CONTROLLER", "setLastLesson: " + lastLesson.getTaskName() + " " + lastLesson.getTaskNumber());
         modelUserProgress.setLastLesson(lastLesson);
         updateProgresstoDatabase(database);
+    }
+
+    public void setLatestSectionNumber(int sectionNumber){
+        modelUserProgress.setLatestSectionNumber(sectionNumber);
     }
 
     public void setModelUserProgress(ModelUserProgress userProgress){
@@ -151,6 +161,10 @@ public class Controller extends android.app.Application {
 
     public int getLatestTaskNumber() {
         return modelUserProgress.getLatestTaskNumber();
+    }
+
+    public int getLatestSectionNumber(){
+        return modelUserProgress.getLatestSectionNumber();
     }
 
 

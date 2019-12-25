@@ -6,9 +6,9 @@ public class ModelLesson extends ModelTask {
 
     private final String[] keywords;
 
-    public ModelLesson(String lessonName, String lessonText, int lessonNumber, String[] keywords, int whatsNext){
+    public ModelLesson(String lessonName, String lessonText, int lessonNumber, int sectionNumber, String[] keywords, int whatsNext){
 
-        super(lessonName, lessonText,whatsNext,lessonNumber,1);
+        super(lessonName, lessonText,whatsNext,lessonNumber,sectionNumber,1);
         this.keywords = keywords;
 
     }

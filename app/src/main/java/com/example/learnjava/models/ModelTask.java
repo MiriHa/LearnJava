@@ -10,19 +10,21 @@ public abstract class ModelTask {
     private final String taskName;
     private final String taskText;
     private final int whatsNext;
-    private final float taskNumber;
+    private final int taskNumber;
+    private final int sectionNumber;
 
     //1 for lessone 2 for exercise
     private int type;
     private String tag;
 
 
-    public ModelTask(String name, String text, int next, int number, int type){
+    public ModelTask(String name, String text, int next, int number, int section, int type){
         this.taskName = name;
         this.taskText = text;
         this.whatsNext = next;
         this.taskNumber = number;
         this.type = type;
+        this.sectionNumber = section;
     }
 
 
@@ -38,12 +40,16 @@ public abstract class ModelTask {
         return whatsNext;
     }
 
-    public float getTaskNumber() {
+    public int getTaskNumber() {
         return taskNumber;
     }
 
     public int getType(){
         return type;
+    }
+
+    public int getSectionNumber(){
+        return sectionNumber;
     }
 
     public abstract int getExerciseViewType();
@@ -59,6 +65,8 @@ public abstract class ModelTask {
     public abstract int getSolutionInt();
 
     public abstract String[] getContentStringArray();
+
+
 
 
 }

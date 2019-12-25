@@ -99,8 +99,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void setTheCOntent(){
-        myProgressController.updateUnlockedSections(2, database);
-        myProgressController.updateUnlockedSections(3, database);
+//        myProgressController.updateUnlockedSections(2, database);
+//        myProgressController.updateUnlockedSections(3, database);
+//
+        myProgressController.updateLatestSection(3, database);
 
 
         checkIfSolved(lesson1, 1);
@@ -125,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //TODO already in Modeoluser inizialize
             // myProgressController.updateUnlockedSections(1);
             lesson.setOnClickListener(this);
-        } else if (myProgressController.checkUnlockedSections(number)) {
+        } else if (number <= myProgressController.getLatestSectionNumber()) {
             lesson.setOnClickListener(this);
         } else {
             lesson.setBackgroundColor(getResources().getColor(R.color.grey));
@@ -140,9 +142,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         //Whenn the App is opened for the first time the appIsOPendFOrTHeFirstTime doesn't exist -> becomes true
-        //boolean appIsOpenedForTheFirstTime = sp.getBoolean("IsAppOpenedForFirstTime", true);
+        boolean appIsOpenedForTheFirstTime = sp.getBoolean("IsAppOpenedForFirstTime", true);
 
-         boolean appIsOpenedForTheFirstTime = true;
+        // boolean appIsOpenedForTheFirstTime = true;
 
         //since it is true, it will be set to false after the execution of following block:
         //set the variavle to false and open the PopUp to get the USerID

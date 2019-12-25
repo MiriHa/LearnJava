@@ -35,7 +35,7 @@ public class LessonActivity extends AppCompatActivity {
     UserDatabase database;
 
     private int sectionNumber;
-    private boolean shouldAllowBack = false;
+    private int latestTaskNumber;
 
     ArrayList<ModelTask> taskContent;
 
@@ -229,21 +229,28 @@ public class LessonActivity extends AppCompatActivity {
         if (progressCurrentScreen == currentTask.getTaskNumber()) {
             //TODO progressController.addFinishedTask(currentTask)
             //TODO why is it the same code? here
-            progressCurrentScreen = (int) currentTask.getTaskNumber() + 1;
+            progressCurrentScreen =  currentTask.getTaskNumber() + 1;
             progressController.updateCurrentScreen(progressCurrentScreen, database);
             Log.i("M_LESSON_ACTIVITY", " checkprogress: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
         } else {
-            progressCurrentScreen = (int) currentTask.getTaskNumber() + 1;
+            progressCurrentScreen =  currentTask.getTaskNumber() + 1;
             progressController.updateCurrentScreen(progressCurrentScreen, database);
             Log.i("M_LESSON_ACTIVITY", " checkProgress else: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
         }
     }
 
     public void setCurrentTask() {
-        currentTask = taskContent.get(progressCurrentScreen);
-        currentTaskNumber = (int) currentTask.getTaskNumber();
-        progressController.updateLatestTaskNumber(currentTaskNumber, database);
-        Log.i("M_LESSON_ACTIVITY", "set current task" + currentTask.getTaskName() + "currentTaskNumber: " + currentTask.getTaskNumber());
+        if (progressController.getLatestSectionNumber() == sectionNumber) {
+            currentTaskNumber = progressController.getLatestTaskNumber();
+            currentTask = taskContent.get(currentTaskNumber);
+            progressController.updateLatestTaskNumber(currentTaskNumber, database);
+            Log.i("M_LESSON_ACTIVITY","oepne recent task " + currentTask.getTaskName() + " " + currentTask.getTaskNumber());
+        } else {
+            currentTask = taskContent.get(progressCurrentScreen);
+            currentTaskNumber = currentTask.getTaskNumber();
+            progressController.updateLatestTaskNumber(currentTaskNumber, database);
+            Log.i("M_LESSON_ACTIVITY", "set current task" + currentTask.getTaskName() + "currentTaskNumber: " + currentTask.getTaskNumber());
+        }
     }
 
     public String getSectionTitle() {
@@ -285,7 +292,7 @@ public class LessonActivity extends AppCompatActivity {
 
         for (int i = 0; i < tasksSize; i++) {
             ModelTask task = taskContent.get(i);
-            taskNumber[i] = (int) task.getTaskNumber();
+            taskNumber[i] =  task.getTaskNumber();
             taskTypes[i] = task.getType();
         }
 
@@ -294,7 +301,7 @@ public class LessonActivity extends AppCompatActivity {
         progressHolder.setWeightSum(tasksSize+(tasksSize/2));
 
         for (int j = 0; j < tasksSize; j++) {
-            int counter = 1;
+
             if (taskTypes[j] == 1) {
                 TextView myTextView = new TextView(this);
                 //TODO change the counter, counts exercises mit
@@ -418,7 +425,7 @@ public class LessonActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         progressCurrentScreen = number;
         currentTask = taskContent.get(progressCurrentScreen);
-        currentTaskNumber = (int) currentTask.getTaskNumber();
+        currentTaskNumber = currentTask.getTaskNumber();
 
         setProgressBackground();
             switch (tasktype) {

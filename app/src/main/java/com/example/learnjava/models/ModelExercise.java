@@ -29,9 +29,9 @@ public class ModelExercise extends ModelTask{
 
     private String[] contentString;
 
-    public ModelExercise(String exerciseName, String exerciseText, int exercisenumber, String[] solutionStringArray, int[] solutionIntArray, int whatsNext, int viewType, int solutionInt, String solutionString,  String[] contentString){
+    public ModelExercise(String exerciseName, String exerciseText, int exercisenumber, int sectionNumber, String[] solutionStringArray, int[] solutionIntArray, int whatsNext, int viewType, int solutionInt, String solutionString,  String[] contentString){
 
-        super(exerciseName, exerciseText, whatsNext, exercisenumber, 2);
+        super(exerciseName, exerciseText, whatsNext, exercisenumber, sectionNumber, 2);
         this.solutionStringArray = solutionStringArray;
         this.solutionIntArray = solutionIntArray;
         this.exerciseViewType = viewType;

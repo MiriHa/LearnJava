@@ -3,6 +3,7 @@
     {
       "taskName" : "Tutorial",
       "taskNumber" : 0,
+      "sectionNumber": 4,
       "taskText" : "Hello! Here is a guide on how to use this Learning app:@There are nine Sections that will guide you to learn the Programming language Java. You will unlock them as you go. Each Section consists of a variety of Theory lessons and exercise. These will test your learned theory knowledge.@So have fun learning Java!",
       "taskWhatsNext" : 2,
       "taskType" : 1,
@@ -10,7 +11,8 @@
     },
     {
       "taskName": "Welcome to Java!",
-      "taskNumber": 2,
+      "taskNumber": 1,
+      "sectionNumber": 4,
       "taskText": "Java is a high level, modern programming language designed in the early 1990s by Sun Microsystems, and currently owned by Oracle. @Java is Platform Independent, which means that you only need to write the program once to be able to run it on a number of different platforms such as Windows, Mac or Linux.\nJava is portable, powerful, robust, and dynamic, with the ability to fit the needs of virtually any type of application.@Java guarantees that you'll be able to Write Once, Run Nearly Anywhere.",
       "taskWhatsNext": 2,
       "taskType" : 1,
@@ -18,7 +20,8 @@
     },
     {
       "taskName": "Welcome to Java",
-      "taskNumber": 3,
+      "taskNumber": 2,
+      "sectionNumber": 4,
       "taskText": "To distribute your application to different platforms, how many Java versions do you need to create?",
       "taskWhatsNext": 1,
       "taskType" : 2,
@@ -28,14 +31,16 @@
     },
     {
       "taskName": "Java",
-      "taskNumber": 4,
+      "taskNumber": 3,
+      "sectionNumber": 4,
       "taskText": "More than 3 billion devices run Java.\nJava is used to develop apps for Google's Android OS, various Desktop Applications, such as media players, antivirus programs, Web Applications, Enterprise Applications (i.e. banking), and many more!\\nIt is easy to learn and simple to use.@Learn, practice, and then join the huge community of Java developers around the world!",
       "taskWhatsNext": 2,
       "taskType" : 1,
       "lessonKeyWords" : ["Java","DesktopApplications","Mobile Applications","Easy","Community"] },
     {
       "taskName": "Java",
-      "taskNumber": 5,
+      "taskNumber": 4,
+      "sectionNumber": 4,
       "taskText": "Which one of the following statements is true?",
       "taskWhatsNext": 3,
       "taskType" : 2,

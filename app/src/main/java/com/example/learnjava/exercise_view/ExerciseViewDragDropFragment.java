@@ -272,15 +272,15 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                 TextView solView = currentView.findViewWithTag(dropTags.get(i));
                 userSolution[i] = solView.getText().toString();
             }
-            progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_DRAG_DROP_FRAGMENT", "number: " + currentTask.getTaskNumber() + " userInput: " + userSolution, database);
+            progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_DRAG_DROP_FRAGMENT", "check answer number: " + currentTask.getTaskNumber() + " userInput: " + userSolution, database);
             //TODO check when no Answer is inputted
             if (Arrays.equals(solutionString, userSolution)) {
                 mListener.sendAnswerFromExerciseView(true);
-                Log.i("SENDANSWERFROMEXERCISE", " answer: true");
+                Log.i("M_EXERCISE_VIEW_DRAG", " send answer: true");
             } else {
                 Log.i("ANSWER", " was wrong");
                 mListener.sendAnswerFromExerciseView(false);
-                Log.i("SENDANSWERFROMEXERCISE", " answer: false");
+                Log.i("M_EXERCISE_VIEW_DRAG", "send answer: false");
             }
         }
     }

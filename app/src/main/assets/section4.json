@@ -1,42 +1,45 @@
 {
   "tasks": [
     {
-      "taskName" : "Tutorial",
+      "taskName" : "Primitive Operator",
       "taskNumber" : 0,
       "sectionNumber": 4,
-      "taskText" : "Hello! Here is a guide on how to use this Learning app:@There are nine Sections that will guide you to learn the Programming language Java. You will unlock them as you go. Each Section consists of a variety of Theory lessons and exercise. These will test your learned theory knowledge.@So have fun learning Java!",
-      "taskWhatsNext" : 2,
+      "taskText" : "Java provides a rich set of <b>operators</b> to use in manipulating variables. A value used on either side of an operator is called an <b>operand</b>.<br>For example, in the expression below, the numbers 6 and 3 are operands of the plus operator:@int x = 6 + 3;@it can also be used to add together a variable and a value, or a variable and another variable:\n@int sum1 = 100 + 50;&ensp;&ensp;// 150 (100 + 50)@int sum2 = sum1 + 250;&ensp;&ensp;// 400 (150 + 250)@int sum3 = sum2 + sum2;&ensp;&ensp;// 800 (400 + 40",
+      "taskWhatsNext" : 1,
       "taskType" : 1,
-      "lessonKeyWords" : ["LearningApp", "sections", "lessons", "exercises"]
+      "lessonKeyWords" : ["Operators", "manipulate variables", "operand", "addition"]
     },
     {
-      "taskName": "Welcome to Java!",
+      "taskName": "Examples For Operators",
       "taskNumber": 1,
       "sectionNumber": 4,
-      "taskText": "Java is a high level, modern programming language designed in the early 1990s by Sun Microsystems, and currently owned by Oracle. @Java is Platform Independent, which means that you only need to write the program once to be able to run it on a number of different platforms such as Windows, Mac or Linux.\nJava is portable, powerful, robust, and dynamic, with the ability to fit the needs of virtually any type of application.@Java guarantees that you'll be able to Write Once, Run Nearly Anywhere.",
+      "taskText": "Java arithmetic operators:@<b>+ addition</b><br>&ensp;adds two values together@<b>- subtraction</b><br>&ensp;subtracts a value from another@<b>*multiplication</b><br>&ensp;multiplies two values@<b>/ division</b><br>&ensp;divides one value from another@<b>%modulo</b><br>&ensp;returns the division remainder@<b>!</b>Arithmetic operators are used in mathematical expressions in the same way that they are used in algebraic equations.",
       "taskWhatsNext": 2,
       "taskType" : 1,
-      "lessonKeyWords" : ["Java", "Programming Language", "portable","robust","Platform Independent"]
+      "lessonKeyWords" : ["Addition", "Subtraction", "Multiplication","Division","Modulo","+","-","/","*"]
     },
     {
-      "taskName": "Welcome to Java",
+      "taskName": "Operators",
       "taskNumber": 2,
       "sectionNumber": 4,
-      "taskText": "To distribute your application to different platforms, how many Java versions do you need to create?",
-      "taskWhatsNext": 1,
+      "taskText": "Fill in the Blanks to print the sum of the two variables:",
+      "taskWhatsNext": 2,
       "taskType" : 2,
-      "exerciseViewType" : 2,
-      "exerciseSolutionStringArray" : ["Just one version","Two version","One for each platform"],
-      "exerciseSolutionInt" : 1
+      "exerciseViewType" : 3,
+      "exerciseContentStringArray" : ["int x =2;","int y = 4;","int result = @#@;","System.out.println(@#@);"],
+      "exerciseSolutionStringArray": ["x+y","result"]
     },
     {
-      "taskName": "Java",
+      "taskName": "Operators",
       "taskNumber": 3,
       "sectionNumber": 4,
-      "taskText": "More than 3 billion devices run Java.\nJava is used to develop apps for Google's Android OS, various Desktop Applications, such as media players, antivirus programs, Web Applications, Enterprise Applications (i.e. banking), and many more!\\nIt is easy to learn and simple to use.@Learn, practice, and then join the huge community of Java developers around the world!",
-      "taskWhatsNext": 2,
-      "taskType" : 1,
-      "lessonKeyWords" : ["Java","DesktopApplications","Mobile Applications","Easy","Community"] },
+      "taskText": "Complete this Code that it's result is 20:",
+      "taskWhatsNext": 1,
+      "taskType" : 2,
+      "exerciseViewType" : 3,
+      "exerciseContentStringArray" : ["int x = 5;","int y = 4;","#@ result = @#@;","System.out.println(@#@);"],
+      "exerciseSolutionStringArray": ["x*y","int","result"]
+    },
     {
       "taskName": "Java",
       "taskNumber": 4,

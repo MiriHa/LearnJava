@@ -58,7 +58,7 @@
       "taskWhatsNext" : 1,
       "taskType" : 2,
       "exerciseViewType": 1,
-      "exerciseSolutionString": "String cityName = \"munich\""
+      "exerciseSolutionString": "StringcityName=\"munich\""
     },
     {
       "taskName": "Variables",

@@ -6,28 +6,18 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.Toast;
 
-import com.example.learnjava.room_database.Logging;
 import com.example.learnjava.room_database.UserDatabase;
 import com.example.learnjava.sections.LessonActivity;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -98,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void setTheCOntent(){
+    public void setTheContent(){
 //        myProgressController.updateUnlockedSections(2, database);
 //        myProgressController.updateUnlockedSections(3, database);
 //
@@ -142,9 +132,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         //Whenn the App is opened for the first time the appIsOPendFOrTHeFirstTime doesn't exist -> becomes true
-        boolean appIsOpenedForTheFirstTime = sp.getBoolean("IsAppOpenedForFirstTime", true);
+       // boolean appIsOpenedForTheFirstTime = sp.getBoolean("IsAppOpenedForFirstTime", true);
 
-        // boolean appIsOpenedForTheFirstTime = true;
+        boolean appIsOpenedForTheFirstTime = true;
 
         //since it is true, it will be set to false after the execution of following block:
         //set the variavle to false and open the PopUp to get the USerID
@@ -161,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             userID = preferences.getString("userID", "Blub");
             myProgressController.fetchModelUserProgress(userID, database);
 
-            setTheCOntent();
+            setTheContent();
 
             Log.i("M_MAIN_ACTIVITY","userId Retrived: " + userID);
         }
@@ -186,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 //instanziate a new UserProgressModel
                 myProgressController.initializeModelUserProgress(userID, database);
-                setTheCOntent();
+                setTheContent();
                 Log.i("M_MAIN_ACTIVITY","userId SAVED: " + userID);
                 myDialog.dismiss();
             }

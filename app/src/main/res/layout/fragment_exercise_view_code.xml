@@ -33,43 +33,49 @@
                 android:textSize="@dimen/TextSize20" />
 
 
-<!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:hint="@string/hint_text">-->
-
-<!--                <com.google.android.material.textfield.TextInputEditText-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"/>-->
-
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
-
-
-
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/CodeTextInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/editTextCode"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/CodeTextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/PaddingSide"
-                    android:layout_marginRight="@dimen/PaddingSide"
-                    android:autofillHints="answer"
-                    android:hint="answer"
-                    android:inputType="text"
-                    android:maxLines="10"
-                    android:minLines="5"
-                    android:textSize="@dimen/TextSize20" />
+                    android:maxEms="20"
+                    android:inputType="textMultiLine"
+                    android:hint="code"
+                    android:text="public class _____{\n\n\n\n\n\n}"/>
 
-            </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/editTextCode"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="@dimen/PaddingSide"-->
+<!--                    android:layout_marginRight="@dimen/PaddingSide"-->
+<!--                    android:autofillHints="answer"-->
+<!--                    android:hint="answer"-->
+<!--                    android:inputType="text"-->
+<!--                    android:maxLines="10"-->
+<!--                    android:minLines="5"-->
+<!--                    android:textSize="@dimen/TextSize20" />-->
+
+<!--            </LinearLayout>-->
 
         </LinearLayout>
 
         <Button
-            android:id="@+id/nextButtonExerciseAnswer"
+            android:id="@+id/nextButtonExerciseCode"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="end"

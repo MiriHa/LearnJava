@@ -6,6 +6,7 @@ import android.util.Log;
 import com.example.learnjava.models.ModelExercise;
 import com.example.learnjava.models.ModelLesson;
 import com.example.learnjava.models.ModelTask;
+import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -116,9 +117,11 @@ public class ReadJson {
                         else if(viewType_value == 5){
                             JSONArray solutionIntArray = taskObject.getJSONArray("exerciseSolutionIntArray");
                             int[] solutionIntArray_value = toIntArray(solutionIntArray);
+                            JSONArray contentStringArray = taskObject.getJSONArray("exerciseContentStringArray");
+                            String[] contentStringArray_value = toStringArray(contentStringArray);
 
                             //Add values in ArrayList
-                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,section_number_value,null, solutionIntArray_value, next_value, viewType_value,0,"", null);
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,section_number_value,null, solutionIntArray_value, next_value, viewType_value,0,"", contentStringArray_value);
                             taskList.add(newExercise);
                         }
                         //Type: Code -> String[]

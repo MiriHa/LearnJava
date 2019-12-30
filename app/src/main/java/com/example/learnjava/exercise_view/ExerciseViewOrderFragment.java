@@ -82,7 +82,7 @@ public class ExerciseViewOrderFragment extends Fragment {
             database = UserDatabase.getInstance(getActivity());
 
 
-            contentHolder = view.findViewById(R.id.contentRowHolderOrder);
+            contentHolder = (DragLinearLayout) view.findViewById(R.id.contentRowHolderOrder);
             answerArray = currentTask.getSolutionStringArray();
             row1 = view.findViewById(R.id.dragView1);
             row2 = view.findViewById(R.id.dragView2);
@@ -164,11 +164,13 @@ public class ExerciseViewOrderFragment extends Fragment {
 //                    Log.i("M_EXERCISE_VIEW_ORDER", " content: " + i + " " + contentArrayRandom.get(i));
 //                    contentHolder.addView(textView1);
                 String tag = "dragView" + (i+1);
-                if(contentArrayRandom.get(i) == null)
+                TextView textView = currentView.findViewWithTag(tag);
+                if(contentArrayRandom.get(i) == null){
                     textView.setText("");
-                else
+                }
+                else {
                     textView.setText(contentArrayRandom.get(i));
-
+                }
             }
 
             //make all childs of DragLinearLayout draggable

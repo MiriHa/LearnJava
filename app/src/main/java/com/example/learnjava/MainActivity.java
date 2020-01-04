@@ -1,5 +1,6 @@
 package com.example.learnjava;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
@@ -15,9 +16,15 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.example.learnjava.Registration.LogInActivity;
+import com.example.learnjava.Registration.SignUpActivity;
+import com.example.learnjava.Registration.Utils;
 import com.example.learnjava.resumption_cues.WordCueFragment;
-import com.example.learnjava.room_database.UserDatabase;
 import com.example.learnjava.sections.LessonActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
@@ -25,7 +32,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Controller myProgressController;
 
-    UserDatabase database;
+    FirebaseAuth auth;
+    DatabaseReference ref;
+
     String userID = "M";
 
     Context context;
@@ -35,6 +44,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     LinearLayout lesson1, lesson2, lesson3, lesson4, lesson5, lesson6, lesson7, lesson8, lesson9;
     EditText userIdEdit;
 
+    public static final String PREF_USER_FIRST_TIME = "user_first_time";
+    boolean isUserFirstTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.i("M_MAIN_ACTIVITY", " on create");
 
         context = getApplicationContext();
-        database = UserDatabase.getInstance(this);
         myProgressController = (Controller) getApplicationContext();
 
         //TODO for testing purposes
@@ -50,10 +61,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
        // myProgressController.deleteAllTabels(database);
 
         //CHeck and retrive USerID or open UserID PopUpWindow
-        myDialog = new Dialog(this);
-        showUserIdPOpUP();
+//        myDialog = new Dialog(this);
+//        showUserIdPOpUP();
 
-        Log.i("M_MAIN_ACTIVITY", " backstack:" + getSupportFragmentManager().getFragments().toString());
+        isUserFirstTime = Boolean.valueOf(Utils.readSharedSetting(MainActivity.this, PREF_USER_FIRST_TIME, "true"));
+        Intent introIntent = new Intent(MainActivity.this, SignUpActivity.class);
+        introIntent.putExtra(PREF_USER_FIRST_TIME, isUserFirstTime);
+        if (isUserFirstTime) {
+            startActivity(introIntent);
+        }
+
+        auth = FirebaseAuth.getInstance();
+        ref = FirebaseDatabase.getInstance().getReference();
+        myProgressController.fetchModelUserProgress();
+
 
         //TODO Only for testing purposes
 //        myProgressController.updateUnlockedSections(2);
@@ -73,20 +94,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lesson8 = findViewById(R.id.lesson8);
         lesson9 = findViewById(R.id.lesson9);
 
+        myProgressController.updateLatestSection(3);
 
-        //Log.i("M_MAIN_ACTIVITY", " CheckCOntroller: progressController Sections " + myProgressController.getSections().toString());
 
-        //SetOnClickListener for Layouts defined in onClick
-//        checkIfSolved(lesson1, 1);
-//        checkIfSolved(lesson2, 2);
-//        checkIfSolved(lesson3, 3);
-//        checkIfSolved(lesson4, 4);
-//        checkIfSolved(lesson5, 5);
-//        checkIfSolved(lesson6, 6);
-//        checkIfSolved(lesson7, 7);
-//        checkIfSolved(lesson8, 8);
-//        checkIfSolved(lesson9, 9);
-
+        checkIfSolved(lesson1, 1);
+        checkIfSolved(lesson2, 2);
+        checkIfSolved(lesson3, 3);
+        checkIfSolved(lesson4, 4);
+        checkIfSolved(lesson5, 5);
+        checkIfSolved(lesson6, 6);
+        checkIfSolved(lesson7, 7);
+        checkIfSolved(lesson8, 8);
+        checkIfSolved(lesson9, 9);
 
     }
 
@@ -94,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        myProgressController.updateUnlockedSections(2, database);
 //        myProgressController.updateUnlockedSections(3, database);
 //
-        myProgressController.updateLatestSection(3, database);
+        myProgressController.updateLatestSection(3);
 
 
         checkIfSolved(lesson1, 1);
@@ -151,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //get the UserID from shared Prefrences and fetch the saved ModelUSerProgress from the Database
             SharedPreferences preferences = context.getSharedPreferences("USER_ID", Context.MODE_PRIVATE);
             userID = preferences.getString("userID", "Blub");
-            myProgressController.fetchModelUserProgress(userID, database);
+            myProgressController.fetchModelUserProgress();
 
             setTheContent();
 
@@ -177,7 +196,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 editor.apply();
 
                 //instanziate a new UserProgressModel
-                myProgressController.initializeModelUserProgress(userID, database);
+              //  myProgressController.initializeModelUserProgress();
                 setTheContent();
                 Log.i("M_MAIN_ACTIVITY","userId SAVED: " + userID);
                 myDialog.dismiss();
@@ -203,45 +222,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
 
             case R.id.lesson1:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 1", database);
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 1");
                 startActivity(LessonActivity.class, 1);
                 break;
 
             case R.id.lesson2:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 2", database);
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 2");
                 startActivity(LessonActivity.class, 2);
                 break;
 
             case R.id.lesson3:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 3", database);
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 3");
                 startActivity(LessonActivity.class, 3);
                 break;
 
             case R.id.lesson4:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 4", database);
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 4");
                 startActivity(LessonActivity.class, 4);
                 break;
 
             case R.id.lesson5:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 5", database);
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 5");
                 startActivity(LessonActivity.class, 5);
                 break;
 
             case R.id.lesson6:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 6", database);
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 6");
                 startActivity(LessonActivity.class, 6);
                 break;
 
             case R.id.lesson7:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 7", database);
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 7");
                 startActivity(LessonActivity.class, 7);
                 break;
             case R.id.lesson8:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 8", database);
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 8");
                 startActivity(LessonActivity.class, 8);
                 break;
             case R.id.lesson9:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 9", database);
+                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 9");
                 startActivity(LessonActivity.class, 9);
                 break;
         }
@@ -266,6 +285,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(startMain);
 
         //finsish()
+    }
+
+
+    FirebaseAuth.AuthStateListener authStateListener = new FirebaseAuth.AuthStateListener() {
+        @Override
+        public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+            auth = FirebaseAuth.getInstance();
+            if (firebaseUser == null) {
+                Intent intent = new Intent(MainActivity.this, LogInActivity.class);
+                startActivity(intent);
+            }
+        }
+    };
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        auth.addAuthStateListener(authStateListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        auth.removeAuthStateListener(authStateListener);
     }
 
 //    @Override

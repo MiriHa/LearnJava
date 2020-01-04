@@ -25,6 +25,8 @@ android {
     }
 }
 
+apply plugin: 'com.android.application'
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -39,15 +41,24 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'dev.dworks.libs:volleyplus:0.1.4'
 
+    implementation 'com.google.firebase:firebase-database:19.2.0'
+    implementation 'com.google.firebase:firebase-core:17.2.1'
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
+    implementation 'com.google.firebase:firebase-database:19.2.0'
+    implementation 'com.google.firebase:firebase-storage:19.1.0'
+    implementation 'com.google.firebase:firebase-messaging:20.1.0'
+    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
+    implementation 'com.google.firebase:firebase-dynamic-links:19.0.0'
+
+    implementation 'com.google.gms:google-services:4.3.3'
+
+
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 
     implementation 'com.android.support:support-v4:29.0.0'
     implementation 'com.android.support:support-fragment:29.0.0'
     implementation 'com.android.support:support-compat:29.0.0'
     implementation 'com.android.support:appcompat-v7:29.0.0'
-
-    implementation 'android.arch.persistence.room:runtime:1.1.1'
-    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
 
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.jmedeisis:draglinearlayout:1.1.0'
@@ -58,3 +69,4 @@ configurations {
     compile.exclude group: "junit", module: "junit"
 }
 
+apply plugin: 'com.google.gms.google-services'

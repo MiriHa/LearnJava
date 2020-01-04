@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "916186510438",
+    "firebase_url": "https://learnjava-ed4b0.firebaseio.com",
+    "project_id": "learnjava-ed4b0",
+    "storage_bucket": "learnjava-ed4b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916186510438:android:a87af4520c166c87b4e9a7",
+        "android_client_info": {
+          "package_name": "com.example.learnjava"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "916186510438-eq4s0l2v5n4loftdtscj4043t2gqe7oh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3cXgbozmFP9Ovjf2RWJ-M6c5r1xcPu-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "916186510438-eq4s0l2v5n4loftdtscj4043t2gqe7oh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

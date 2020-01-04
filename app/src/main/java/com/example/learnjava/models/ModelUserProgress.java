@@ -1,17 +1,7 @@
-package com.example.learnjava.room_database;
-
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.Index;
-import androidx.room.PrimaryKey;
-import androidx.room.TypeConverters;
-
-import com.example.learnjava.models.ModelTask;
-import com.example.learnjava.room_database.TypeConverter;
+package com.example.learnjava.models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -20,58 +10,60 @@ import java.util.List;
  * Each Sections has various tasks either a theory lessons or Exercises.
  */
 
-@Entity (indices = {@Index("user_ID")})
 public class ModelUserProgress {
 
-    //TODO use a int instead?
-    @PrimaryKey @NonNull
-    @ColumnInfo(name = "user_ID")
-    private String userId = " ";
+    private String userId;
+    private String userName;
+    private String email;
 
     //Keeps track over the current Section and the current Screen the user is on
-    @ColumnInfo(name = "current_Section")
     private int userProgressCurrentSection;
-
-    @ColumnInfo(name = "current_Screen")
     private int userProgressCurrentScreen;
 
     //TODO open the last Screen so that the user can skip sscreens
     //save this and check the latest section? or save latest section seperate?
     //use latest section also to check the freigeschaltete sections instead of the array?
-    @ColumnInfo(name = "latest_taskNumber")
     private int latestTaskNumber;
-
-    @ColumnInfo (name = "latest_sectionNumber")
     private int latestSectionNumber;
 
     //stores the last theorey lesson, so the the user can skip back
-    @ColumnInfo(name = "last_Lesson")
-    @TypeConverters({TypeConverter.class})
+
     private ModelTask lastLesson;
 
 
     //Keeps track over the unlocked sections
-    @TypeConverters({TypeConverter.class})
+    //Not needed to save in firebase? -> latestSectionNumber is enough
     private ArrayList<Integer> userUnlockedSections = new ArrayList<>();
 
     //stores the solved exercises
     //
     //TODO Make this also Integer and give each task a unique number
-
-    @TypeConverters({TypeConverter.class})
     private List<ModelTask> finishedTasks = new ArrayList<>();
+    private HashMap<String, ModelTask> finishedTaskList = new HashMap<>();
 
-    @Ignore
     private ArrayList<Float> finishedTasksNumbers = new ArrayList<>();
 
 
 
-    public ModelUserProgress(String userId){
+    public ModelUserProgress(String userId, String userName, String email){
         this.userId = userId;
+        this.userName = userName;
+        this.email = email;
         userUnlockedSections.add(1);
+        latestSectionNumber = 1;
+
     }
 
-    @Ignore
+    public ModelUserProgress(String userId, String userName, String email, int latestTaskNumber, int latestSectionNumber, HashMap finishedTaskList){
+        this.userId = userId;
+        this.email = email;
+        this.userName = userName;
+        this.latestSectionNumber = latestSectionNumber;
+        this.latestTaskNumber = latestTaskNumber;
+        this.finishedTaskList = finishedTaskList;
+    }
+
+
     public ModelUserProgress(){
     }
 

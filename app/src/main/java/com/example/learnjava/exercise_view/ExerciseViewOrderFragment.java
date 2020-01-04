@@ -1,5 +1,6 @@
 package com.example.learnjava.exercise_view;
 
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
@@ -12,11 +13,15 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.learnjava.Controller;
@@ -50,13 +55,19 @@ public class ExerciseViewOrderFragment extends Fragment {
         private UserDatabase database;
 
         private String[] answerArray;
+        private String[] contentArray;
         private ArrayList<String> dropTags = new ArrayList<>();
         private ArrayList<String> dragTags = new ArrayList<>();
         private Button nextButton;
        // private LinearLayout contentHolder;
-        private DragLinearLayout contentHolder;
+       // private DragLinearLayout contentHolder;
+        private ListView contentHolder;
+        private boolean mSortable = false;
+        private String mDragString;
+        private int mPosition = -1;
+
+
         private View currentView;
-        private TextView row1, row2, row4, row5, row3, row6;
 
 
         public ExerciseViewOrderFragment() {
@@ -69,6 +80,7 @@ public class ExerciseViewOrderFragment extends Fragment {
 
         }
 
+        @SuppressLint("ClickableViewAccessibility")
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
@@ -82,15 +94,36 @@ public class ExerciseViewOrderFragment extends Fragment {
             database = UserDatabase.getInstance(getActivity());
 
 
-            contentHolder = (DragLinearLayout) view.findViewById(R.id.contentRowHolderOrder);
+           // contentHolder = (DragLinearLayout) view.findViewById(R.id.contentRowHolderOrder);
             answerArray = currentTask.getSolutionStringArray();
-            row1 = view.findViewById(R.id.dragView1);
-            row2 = view.findViewById(R.id.dragView2);
-            row3 = view.findViewById(R.id.dragView3);
-            row4 = view.findViewById(R.id.dragView4);
-            row5 = view.findViewById(R.id.dragView5);
-            row6 = view.findViewById(R.id.dragView6);
 
+            contentHolder = view.findViewById(R.id.listContentHolder);
+            contentArray = currentTask.getContentStringArray();
+            final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, contentArray );
+            contentHolder.setAdapter(adapter);
+            contentHolder.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    if(!mSortable){
+                        return false;
+                    }
+                    switch (event.getAction()){
+                        case MotionEvent.ACTION_DOWN:
+                            break;
+                        case MotionEvent.ACTION_MOVE:
+                            int position = contentHolder.pointToPosition((int) event.getX(), (int) event.getY());
+                            if(position <0){
+                                break;
+                            }
+                            if(position != mPosition){
+                                mPosition = position;
+                                adapter.remove(mDragString);
+                                adapter.insert(mDragString,mPosition);
+                            }
+                    }
+                    return false;
+                }
+            });
 
             TextView taskText = view.findViewById(R.id.exerciseTextDragDrop);
             taskText.setText(currentTask.getTaskText());
@@ -128,6 +161,15 @@ public class ExerciseViewOrderFragment extends Fragment {
         public void setExerciseCommunication(ExerciseCommunication callback) {
             Log.d("M_EXERCISE_VIEW_CODE", " setMlistenere");
             this.mListener = callback;
+        }
+
+        private void getContent(){
+            String[] contentArray = currentTask.getContentStringArray();
+//       //TODO randomize the ordedr
+//        List<String> contentArrayRandom = new ArrayList<>(contentArray.length);
+//            Collections.addAll(contentArrayRandom, contentArray);
+//            Collections.shuffle(contentArrayRandom);
+
         }
 
         private void setDynamicLayout() {
@@ -176,16 +218,16 @@ public class ExerciseViewOrderFragment extends Fragment {
             //make all childs of DragLinearLayout draggable
             for(int m = 0; m<contentHolder.getChildCount(); m++){
                 View child = contentHolder.getChildAt(m);
-                contentHolder.setViewDraggable(child,child);
+                //contentHolder.setViewDraggable(child,child);
             }
-            contentHolder.setOnViewSwapListener(new DragLinearLayout.OnViewSwapListener() {
-                @Override
-                public void onSwap(View firstView, int firstPosition, View secondView, int secondPosition) {
-
-                    //TODO update data? show number am rand?
-
-                 }
-            });
+//            contentHolder.setOnViewSwapListener(new DragLinearLayout.OnViewSwapListener() {
+//                @Override
+//                public void onSwap(View firstView, int firstPosition, View secondView, int secondPosition) {
+//
+//                    //TODO update data? show number am rand?
+//
+//                 }
+//            });
 
         }
 

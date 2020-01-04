@@ -30,7 +30,7 @@ public interface DaoUserProgress {
 //    @Query("SELECT * FROM ModelUserProgress ORDER BY userId ASC")
 //    LiveData<List<ModelUserProgress>> getAllModelUserProgress();
 
-    @Query("SELECT * FROM ModelUserProgress WHERE user_ID=:userId LIMIT 1")
+    @Query("SELECT * FROM ModelUserProgress WHERE user_ID=:userId")
     ModelUserProgress getModelUserProgress(String userId);
 
 //    @Query("SELECT * FROM ModelUserProgress WHERE userId=:userId LIMIT 1")

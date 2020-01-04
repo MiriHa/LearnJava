@@ -1,6 +1,7 @@
 package com.example.learnjava;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.example.learnjava.resumption_cues.WordCueFragment;
 import com.example.learnjava.room_database.UserDatabase;
 import com.example.learnjava.sections.LessonActivity;
 
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //TODO for testing purposes
 
-        myProgressController.deleteAllTabels(database);
+       // myProgressController.deleteAllTabels(database);
 
         //CHeck and retrive USerID or open UserID PopUpWindow
         myDialog = new Dialog(this);
@@ -132,9 +134,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         //Whenn the App is opened for the first time the appIsOPendFOrTHeFirstTime doesn't exist -> becomes true
-       // boolean appIsOpenedForTheFirstTime = sp.getBoolean("IsAppOpenedForFirstTime", true);
+        boolean appIsOpenedForTheFirstTime = sp.getBoolean("IsAppOpenedForFirstTime", true);
 
-        boolean appIsOpenedForTheFirstTime = true;
+       // boolean appIsOpenedForTheFirstTime = true;
 
         //since it is true, it will be set to false after the execution of following block:
         //set the variavle to false and open the PopUp to get the USerID
@@ -185,6 +187,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         myDialog.show();
         Log.i("M_MAIN_ACTIVITY","open PopUP");
         myDialog.setCanceledOnTouchOutside(false);
+    }
+
+    public void showCueWord(String text){
+        FragmentManager fm = getSupportFragmentManager();
+        WordCueFragment wordCueFragment = WordCueFragment.newIntance(text);
+        wordCueFragment.show(fm, "fragment_word_cue");
     }
 
 

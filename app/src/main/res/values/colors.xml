@@ -16,6 +16,7 @@
 
     <color name="grey">#d0d6d1</color>
     <color name="light">#fbfff7</color>
+    <color name="hintColor">#bbbec3</color>
     <color name="transparent">#80000000</color>
 
 

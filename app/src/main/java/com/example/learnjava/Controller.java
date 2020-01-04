@@ -1,13 +1,20 @@
 package com.example.learnjava;
 
 import android.content.Context;
-import android.icu.lang.UScript;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
+import com.example.learnjava.models.ModelLog;
 import com.example.learnjava.models.ModelTask;
-import com.example.learnjava.room_database.Logging;
-import com.example.learnjava.room_database.ModelUserProgress;
-import com.example.learnjava.room_database.UserDatabase;
+import com.example.learnjava.models.ModelUserProgress;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,6 +25,9 @@ public class Controller extends android.app.Application {
 //    Controller progressController = new Controller();
 
     //    UserDatabase database = UserDatabase.getInstance(this);
+    FirebaseAuth auth;
+    DatabaseReference ref;
+
     ModelUserProgress modelUserProgress;
 
     ArrayList<ModelTask> taskContent;
@@ -27,39 +37,49 @@ public class Controller extends android.app.Application {
     /**
      * Methods to acces the Database
      *
-     * @param userID: The Id the user choose, saved in Shared prefrences
+     *
      */
     //call only once per user -> in popupwindow where user chooses Id
     //TODO give database as variable
-    public void initializeModelUserProgress(String userID, UserDatabase database) {
-
-        Log.i("M_CONTROLLER","InstanzializeModelUserProgress: " + userID);
-                modelUserProgress = new ModelUserProgress(userID);
-                database.getUserDao().insertModelUserProgress(modelUserProgress);
+    public void initializeModelUser(ModelUserProgress modelUserProgress) {
+    auth = FirebaseAuth.getInstance();
+    ref = FirebaseDatabase.getInstance().getReference().child("users");
+    Log.i("M_CONTROLLER","InstanzializeModelUserProgress: " + modelUserProgress.getUserId());
+    this.modelUserProgress = modelUserProgress;
     }
 
-    public void fetchModelUserProgress(final String userID, UserDatabase database) {
-        Log.i("M_CONTROLLER","fetchModelUserProgress: " + userID);
-                modelUserProgress = database.getUserDao().getModelUserProgress(userID);
+    public void fetchModelUserProgress() {
+        Log.i("M_CONTROLLER","fetchModelUserProgress ");
+        auth = FirebaseAuth.getInstance();
+        ref = FirebaseDatabase.getInstance().getReference().child("users");
+
+            FirebaseUser firebaseUser = auth.getCurrentUser();
+            DatabaseReference currentReference = ref.child("users").child(firebaseUser.getUid());
+            currentReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.getValue() != null){
+                       modelUserProgress = dataSnapshot.getValue(ModelUserProgress.class);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
     }
 
-    public void updateProgresstoDatabase(final UserDatabase database) {
+    public void updateProgresstoDatabase() {
         Log.i("M_CONTROLLER","UpdateModelUserProgress");
-        database.getUserDao().updateUserProgress(modelUserProgress);
 
     }
 
-    public void makeaLog(Date time, String eventType, String details, UserDatabase database) {
+    public void makeaLog(Date time, String eventType, String details) {
         Log.i("M_CONTROLLER","Make a Log "+eventType);
-        Logging newLog = new Logging(modelUserProgress.getUserId(), time, eventType, details);
-        database.getLoggingDao().insertLog(newLog);
+//        ModelLog newLog = new ModelLog(modelUserProgress.getUserId(), time, eventType, details);
+//        database.getLoggingDao().insertLog(newLog);
 
-    }
-
-    public void deleteAllTabels(UserDatabase database) {
-        Log.i("M_CONTROLLER","Delte all tabels");
-        database.getUserDao().deleteTable();
-        database.getLoggingDao().deleteTable();
     }
 
 
@@ -67,9 +87,9 @@ public class Controller extends android.app.Application {
      * Methods to Update or check on the ModelUserProgress
      */
 
-    public void addFinishedTask(ModelTask task, UserDatabase database) {
+    public void addFinishedTask(ModelTask task) {
         modelUserProgress.addFinishedTask(task);
-        updateProgresstoDatabase(database);
+//        updateProgresstoDatabase(database);
         Log.i("M_CONTROLLER", " addfnishedTask " + task.getTaskNumber());
     }
 
@@ -84,35 +104,35 @@ public class Controller extends android.app.Application {
         return modelUserProgress.checkProgressUnlockedSection(sectionNumber);
     }
 
-    public void updateUnlockedSections(Integer sectionNumber, UserDatabase database) {
+    public void updateUnlockedSections(Integer sectionNumber) {
         Log.i("M_CONTROLLER", "updateUnlockedSections" + sectionNumber);
         modelUserProgress.updateUserProgressUnlockedSections(sectionNumber);
-        updateProgresstoDatabase(database);
+//        updateProgresstoDatabase(database);
     }
 
-    public void updateLatestSection(int sectionNumber, UserDatabase database){
+    public void updateLatestSection(int sectionNumber){
         Log.i("M_CONTROLLER", "updateLatestSections" + sectionNumber);
         modelUserProgress.setLatestSectionNumber(sectionNumber);
-        updateProgresstoDatabase(database);
+//        updateProgresstoDatabase(database);
     }
 
 
-    public void updateCurrentSection(int number, UserDatabase database) {
+    public void updateCurrentSection(int number) {
         modelUserProgress.updateUserProgressCurrentSection(number);
-        updateProgresstoDatabase(database);
+//        updateProgresstoDatabase(database);
         Log.i("M_CONTROLLER", " CurrentSectionNumber " + number);
     }
 
-    public void updateCurrentScreen(int number, UserDatabase database) {
+    public void updateCurrentScreen(int number) {
         Log.i("M_CONTROLLER", " CurrentSreenNumber " + number);
         modelUserProgress.updateUserProgressCurrentScreen(number);
-        updateProgresstoDatabase(database);
+//        updateProgresstoDatabase(database);
     }
 
-    public void updateLatestTaskNumber(int number, UserDatabase database) {
+    public void updateLatestTaskNumber(int number) {
         Log.i("M_CONTROLLER", "updateLatesTaskNumber " + number);
         modelUserProgress.updateLatestTaskNumber(number);
-        updateProgresstoDatabase(database);
+//        updateProgresstoDatabase(database);
     }
 
 
@@ -121,10 +141,10 @@ public class Controller extends android.app.Application {
      */
 
 
-    public void setLastLesson(ModelTask lastLesson, UserDatabase database) {
+    public void setLastLesson(ModelTask lastLesson) {
         Log.i("M_CONTROLLER", "setLastLesson: " + lastLesson.getTaskName() + " " + lastLesson.getTaskNumber());
         modelUserProgress.setLastLesson(lastLesson);
-        updateProgresstoDatabase(database);
+//        updateProgresstoDatabase(database);
     }
 
     public void setLatestSectionNumber(int sectionNumber){

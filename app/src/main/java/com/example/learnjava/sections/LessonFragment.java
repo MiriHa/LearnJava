@@ -20,7 +20,6 @@ import android.widget.TextView;
 import com.example.learnjava.Controller;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
-import com.example.learnjava.room_database.UserDatabase;
 
 import java.util.Calendar;
 
@@ -35,7 +34,6 @@ public class LessonFragment extends Fragment {
 
    private ModelTask currentTask;
    private Controller progressController;
-   private UserDatabase database;
 
     public LessonFragment() {
         // Required empty public constructor
@@ -53,7 +51,6 @@ public class LessonFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lesson, container, false);
         progressController = (Controller) getContext().getApplicationContext();
-        database = UserDatabase.getInstance(getContext());
 
         textHolder = view.findViewById(R.id.lessonTextHolder);
         background = view.findViewById(R.id.LessonHolder);
@@ -63,7 +60,7 @@ public class LessonFragment extends Fragment {
         nextButton = view.findViewById(R.id.nextButtonLessonFrag);
 
         Log.i("M_LESSON_FRAGMENT", " whatsNext: " + whatsNext + " currenTasknumber: " + currentTask.getTaskNumber());
-        progressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_A_LESSON", "number: " + currentTask.getTaskNumber(), database);
+        progressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_A_LESSON", "number: " + currentTask.getTaskNumber());
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,9 +68,9 @@ public class LessonFragment extends Fragment {
                 Log.i("M_LESSON_FRAGMENT", "Button clicked, Next: "+whatsNext );
                 if ((getActivity() != null)) {
                     //save this as the Las lesson to come back to
-                    progressController.setLastLesson(currentTask, database);
+                    progressController.setLastLesson(currentTask);
                     //Add lesson to finished tasks
-                    progressController.addFinishedTask(currentTask, database);
+                    progressController.addFinishedTask(currentTask);
                     //open a exerciseFragment
                     if( whatsNext == 2) {
                         ((LessonActivity) getActivity()).openNewTask(2);

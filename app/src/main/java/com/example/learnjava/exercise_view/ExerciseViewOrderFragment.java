@@ -1,25 +1,18 @@
 package com.example.learnjava.exercise_view;
 
 import android.annotation.SuppressLint;
-import android.content.ClipData;
-import android.content.ClipDescription;
 import android.content.Context;
-import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,8 +21,6 @@ import com.example.learnjava.Controller;
 import com.example.learnjava.ExerciseCommunication;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
-import com.example.learnjava.room_database.UserDatabase;
-import com.jmedeisis.draglinearlayout.DragLinearLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,7 +43,6 @@ public class ExerciseViewOrderFragment extends Fragment {
 
         private ModelTask currentTask;
         private Controller progressController;
-        private UserDatabase database;
 
         private String[] answerArray;
         private String[] contentArray;
@@ -91,7 +81,6 @@ public class ExerciseViewOrderFragment extends Fragment {
 
             //get the currentTask
             receiveCurrentTask();
-            database = UserDatabase.getInstance(getActivity());
 
 
            // contentHolder = (DragLinearLayout) view.findViewById(R.id.contentRowHolderOrder);
@@ -273,7 +262,7 @@ public class ExerciseViewOrderFragment extends Fragment {
                     TextView solView = currentView.findViewWithTag(dropTags.get(i));
                     userSolution[i] = solView.getText().toString();
                 }
-                progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ORDER_FRAGMENT", "check answers number: " + currentTask.getTaskNumber() + " userInput: " + userSolution, database);
+                progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ORDER_FRAGMENT", "check answers number: " + currentTask.getTaskNumber() + " userInput: " + userSolution);
                 //TODO check when no Answer is inputted
                 if (Arrays.equals(solutionString, userSolution)) {
                     mListener.sendAnswerFromExerciseView(true);

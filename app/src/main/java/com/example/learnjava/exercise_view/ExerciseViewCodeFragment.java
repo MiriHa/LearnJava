@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +19,6 @@ import com.example.learnjava.Controller;
 import com.example.learnjava.ExerciseCommunication;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
-import com.example.learnjava.room_database.UserDatabase;
 
 import java.util.Calendar;
 
@@ -40,7 +38,6 @@ public class ExerciseViewCodeFragment extends Fragment {
 
         private ModelTask currentTask;
         private Controller progressController;
-        private UserDatabase database;
 
         private EditText answerEditText;
 
@@ -63,7 +60,6 @@ public class ExerciseViewCodeFragment extends Fragment {
 
             //get the currentTask
             receiveCurrentTask();
-            database = UserDatabase.getInstance(getContext());
 
 
             TextView exerciseText = view.findViewById(R.id.exerciseTextCode);
@@ -121,7 +117,7 @@ public class ExerciseViewCodeFragment extends Fragment {
                 } else {
                     String userAnswer = userInput.replaceAll("\\s+","");
                     Log.i("M_EXERCISE_VIEW_CODE", "check answer: " + userInput + " solution: " + currentTask.getSolutionString());
-                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT", "number: " + currentTask.getTaskNumber() + " userInput: " + userInput, database);
+                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT", "number: " + currentTask.getTaskNumber() + " userInput: " + userInput);
 
                     if (currentTask.getSolutionString().equalsIgnoreCase(userAnswer)) {
                         mListener.sendAnswerFromExerciseView(true);

@@ -7,18 +7,16 @@ import androidx.fragment.app.FragmentManager;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.example.learnjava.Registration.LogInActivity;
-import com.example.learnjava.Registration.SignUpActivity;
-import com.example.learnjava.Registration.Utils;
+import com.example.learnjava.registration.LogInActivity;
+import com.example.learnjava.registration.SignUpActivity;
+import com.example.learnjava.registration.Utils;
 import com.example.learnjava.resumption_cues.WordCueFragment;
 import com.example.learnjava.sections.LessonActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -53,36 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Log.i("M_MAIN_ACTIVITY", " on create");
 
-        context = getApplicationContext();
-        myProgressController = (Controller) getApplicationContext();
-
-        //TODO for testing purposes
-
-       // myProgressController.deleteAllTabels(database);
-
-        //CHeck and retrive USerID or open UserID PopUpWindow
-//        myDialog = new Dialog(this);
-//        showUserIdPOpUP();
-
-        isUserFirstTime = Boolean.valueOf(Utils.readSharedSetting(MainActivity.this, PREF_USER_FIRST_TIME, "true"));
-        Intent introIntent = new Intent(MainActivity.this, SignUpActivity.class);
-        introIntent.putExtra(PREF_USER_FIRST_TIME, isUserFirstTime);
-        if (isUserFirstTime) {
-            startActivity(introIntent);
-        }
-
-        auth = FirebaseAuth.getInstance();
-        ref = FirebaseDatabase.getInstance().getReference();
-        myProgressController.fetchModelUserProgress();
-
-
-        //TODO Only for testing purposes
-//        myProgressController.updateUnlockedSections(2);
-//        myProgressController.updateUnlockedSections(3);
-        // myProgressController.updateUnlockedSections(4);
-
         FrameLayout lessonLayout = findViewById(R.id.FragmentHolder);
-
         //findLinearLayouts
         lesson1 = findViewById(R.id.lesson1);
         lesson2 = findViewById(R.id.lesson2);
@@ -94,28 +63,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lesson8 = findViewById(R.id.lesson8);
         lesson9 = findViewById(R.id.lesson9);
 
-        myProgressController.updateLatestSection(3);
 
+        context = getApplicationContext();
+        myProgressController = (Controller) getApplicationContext();
 
-        checkIfSolved(lesson1, 1);
-        checkIfSolved(lesson2, 2);
-        checkIfSolved(lesson3, 3);
-        checkIfSolved(lesson4, 4);
-        checkIfSolved(lesson5, 5);
-        checkIfSolved(lesson6, 6);
-        checkIfSolved(lesson7, 7);
-        checkIfSolved(lesson8, 8);
-        checkIfSolved(lesson9, 9);
+        //check if the app is opend for the first time
+        signUpActivity();
+
 
     }
 
     public void setTheContent(){
-//        myProgressController.updateUnlockedSections(2, database);
-//        myProgressController.updateUnlockedSections(3, database);
-//
         myProgressController.updateLatestSection(3);
-
-
         checkIfSolved(lesson1, 1);
         checkIfSolved(lesson2, 2);
         checkIfSolved(lesson3, 3);
@@ -129,8 +88,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void checkIfSolved(LinearLayout lesson, Integer number) {
-
-
        // Date currentTime = Calendar.getInstance().getTime();
 
         Log.i("M_MAIN_ACTIVITY", "checkIfSOlved");
@@ -146,72 +103,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void showUserIdPOpUP() {
-
-        Log.i("M_MAIN_ACTIVITY","showUserIdPopUp");
-        SharedPreferences sp = getSharedPreferences("FirstTimeFile", Context.MODE_PRIVATE);
-
-
-        //Whenn the App is opened for the first time the appIsOPendFOrTHeFirstTime doesn't exist -> becomes true
-        boolean appIsOpenedForTheFirstTime = sp.getBoolean("IsAppOpenedForFirstTime", true);
-
-       // boolean appIsOpenedForTheFirstTime = true;
-
-        //since it is true, it will be set to false after the execution of following block:
-        //set the variavle to false and open the PopUp to get the USerID
-        if (appIsOpenedForTheFirstTime) {
-            SharedPreferences.Editor editor = sp.edit();
-            editor.putBoolean("IsAppOpenedForFirstTime", false);
-            editor.apply();
-            Log.i("M_MAIN_ACTIVITY","openPopUP, app open for the first Time");
-            //Open the PopUP to set the UserID
-            openPopUp();
-        }else {
-            //get the UserID from shared Prefrences and fetch the saved ModelUSerProgress from the Database
-            SharedPreferences preferences = context.getSharedPreferences("USER_ID", Context.MODE_PRIVATE);
-            userID = preferences.getString("userID", "Blub");
-            myProgressController.fetchModelUserProgress();
-
-            setTheContent();
-
-            Log.i("M_MAIN_ACTIVITY","userId Retrived: " + userID);
-        }
-    }
-
-    private void openPopUp() {
-        myDialog.setContentView(R.layout.pop_up_user_name);
-        userIdEdit = (EditText) myDialog.findViewById(R.id.editTextPopUp);
-
-        Button checkButton = (Button) myDialog.findViewById(R.id.PopUpCheckButton);
-        checkButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Log.i("M_MAIN_ACTIVITY","Check Button in User Id PopUP");
-                userID = userIdEdit.getText().toString();
-                //save the userID to shared Prefrences
-                SharedPreferences prefs =  context.getSharedPreferences("USER_ID", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("userID", userID);
-                editor.apply();
-
-                //instanziate a new UserProgressModel
-              //  myProgressController.initializeModelUserProgress();
-                setTheContent();
-                Log.i("M_MAIN_ACTIVITY","userId SAVED: " + userID);
-                myDialog.dismiss();
-            }
-        });
-        //myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        myDialog.show();
-        Log.i("M_MAIN_ACTIVITY","open PopUP");
-        myDialog.setCanceledOnTouchOutside(false);
-    }
 
     public void showCueWord(String text){
         FragmentManager fm = getSupportFragmentManager();
         WordCueFragment wordCueFragment = WordCueFragment.newIntance(text);
         wordCueFragment.show(fm, "fragment_word_cue");
+    }
+
+    public void signUpActivity(){
+
+        isUserFirstTime = Boolean.valueOf(Utils.readSharedSetting(MainActivity.this, PREF_USER_FIRST_TIME, "true"));
+        Log.i("M_MAIN_ACTIVITY","isUserforthefirstTime: "+isUserFirstTime);
+
+        if (isUserFirstTime) {
+            Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+            intent.putExtra(PREF_USER_FIRST_TIME, isUserFirstTime);
+            startActivity(intent);
+            Log.i("M_MAIN_ACTIVITY","change to SignUp activity");
+        }else {
+            auth = FirebaseAuth.getInstance();
+            ref = FirebaseDatabase.getInstance().getReference();
+            auth.addAuthStateListener(authStateListener);
+            Log.i("M_MAIN_ACTIVITY","on start  add AuthListener");
+
+            myProgressController.fetchModelUserProgress();
+            setTheContent();
+            Log.i("M_MAIN_ACTIVITY","set Refrences and Controller");
+        }
     }
 
 
@@ -292,7 +210,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
             FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-            auth = FirebaseAuth.getInstance();
+            //auth = FirebaseAuth.getInstance();
             if (firebaseUser == null) {
                 Intent intent = new Intent(MainActivity.this, LogInActivity.class);
                 startActivity(intent);
@@ -303,13 +221,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
-        auth.addAuthStateListener(authStateListener);
+        if(!isUserFirstTime) {
+//            auth.addAuthStateListener(authStateListener);
+//            Log.i("M_MAIN_ACTIVITY","on start  add AuthListener");
+        }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        auth.removeAuthStateListener(authStateListener);
+        if(!isUserFirstTime) {
+            auth.removeAuthStateListener(authStateListener);
+            Log.i("M_MAIN_ACTIVITY","on stop remove AuthListener");
+        }
     }
 
 //    @Override

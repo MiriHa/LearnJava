@@ -37,6 +37,7 @@
     <string name="toast_signinSuccessful">SignIn Successful</string>
     <string name="toast_signinFailed">SignIn failed. Try again</string>
     <string name="toast_signin_password">Passwords are not identical</string>
+    <string name="toast_signin_password_short">Password length is to short, Minimal six character</string>
     <string name="toast_fieldRequired">Please enter all needed information in each field</string>
 
 
@@ -45,9 +46,8 @@
     <string name="login_email_hint">Email</string>
     <string name="login_password_1_hint">Enter password</string>
     <string name="login_submit">Log In</string>
-
-
     <string name="login_signin">Not a member? Sign Up!</string>
+    <string name="signin_login">Already a member? Log in!</string>
     <string name="toast_loginFailed">LogIn failed. Try again</string>
     <string name="error_wrongPassword">Wrong password. Try again</string>
 

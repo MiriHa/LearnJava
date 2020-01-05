@@ -156,7 +156,7 @@ public class LessonFragment extends Fragment {
     }
 
     private void setSectionColor() {
-        switch (progressController.getCurrentSection()) {
+        switch ((int) progressController.getCurrentSection()) {
 
             case 1:
                 background.setBackgroundColor(ContextCompat.getColor(getActivity(),(R.color.lightGreen1)));

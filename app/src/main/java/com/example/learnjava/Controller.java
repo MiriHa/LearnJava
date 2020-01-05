@@ -5,7 +5,6 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.learnjava.models.ModelLog;
 import com.example.learnjava.models.ModelTask;
 import com.example.learnjava.models.ModelUserProgress;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,10 +20,7 @@ import java.util.Date;
 public class Controller extends android.app.Application {
 
 
-    //Make this class a singelton?
-//    Controller progressController = new Controller();
 
-    //    UserDatabase database = UserDatabase.getInstance(this);
     FirebaseAuth auth;
     DatabaseReference ref;
 
@@ -51,7 +47,7 @@ public class Controller extends android.app.Application {
     public void fetchModelUserProgress() {
         Log.i("M_CONTROLLER","fetchModelUserProgress ");
         auth = FirebaseAuth.getInstance();
-        ref = FirebaseDatabase.getInstance().getReference().child("users");
+        ref = FirebaseDatabase.getInstance().getReference();
 
             FirebaseUser firebaseUser = auth.getCurrentUser();
             DatabaseReference currentReference = ref.child("users").child(firebaseUser.getUid());
@@ -60,11 +56,13 @@ public class Controller extends android.app.Application {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if(dataSnapshot.getValue() != null){
                        modelUserProgress = dataSnapshot.getValue(ModelUserProgress.class);
+                        Log.i("M_CONTROLLER","fetchModelUserProgress :" + modelUserProgress);
                     }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Log.i("M_CONTROLLER","fetchModelUserProgress cancelled");
 
                 }
             });
@@ -104,15 +102,9 @@ public class Controller extends android.app.Application {
         return modelUserProgress.checkProgressUnlockedSection(sectionNumber);
     }
 
-    public void updateUnlockedSections(Integer sectionNumber) {
-        Log.i("M_CONTROLLER", "updateUnlockedSections" + sectionNumber);
-        modelUserProgress.updateUserProgressUnlockedSections(sectionNumber);
-//        updateProgresstoDatabase(database);
-    }
-
     public void updateLatestSection(int sectionNumber){
         Log.i("M_CONTROLLER", "updateLatestSections" + sectionNumber);
-        modelUserProgress.setLatestSectionNumber(sectionNumber);
+        modelUserProgress.setLatestSectionNumber((long) sectionNumber);
 //        updateProgresstoDatabase(database);
     }
 
@@ -167,11 +159,7 @@ public class Controller extends android.app.Application {
         return taskContent;
     }
 
-    public ArrayList<Integer> getSections() {
-        return modelUserProgress.getUserProgressUnlockedSections();
-    }
-
-    public int getCurrentSection() {
+    public long getCurrentSection() {
         return modelUserProgress.getCurrentSection();
     }
 
@@ -179,11 +167,11 @@ public class Controller extends android.app.Application {
         return modelUserProgress.getLastLesson();
     }
 
-    public int getLatestTaskNumber() {
+    public long getLatestTaskNumber() {
         return modelUserProgress.getLatestTaskNumber();
     }
 
-    public int getLatestSectionNumber(){
+    public long getLatestSectionNumber(){
         return modelUserProgress.getLatestSectionNumber();
     }
 

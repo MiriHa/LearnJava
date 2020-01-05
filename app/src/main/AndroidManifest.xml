@@ -13,9 +13,15 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Registration.ForgotPasswortActivity"></activity>
-        <activity android:name=".Registration.SignUpActivity" />
-        <activity android:name=".Registration.LogInActivity" />
+        <activity android:name=".registration.ForgotPasswortActivity"/>
+        <activity android:name=".registration.SignUpActivity" />
+        <activity android:name=".registration.LogInActivity" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+            <action android:name="android.intent.action.VIEW" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".sections.LessonActivity"
             android:screenOrientation="portrait"
@@ -23,13 +29,11 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-
-                <action android:name="android.intent.action.VIEW" />
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--                <action android:name="android.intent.action.VIEW" />-->
+<!--            </intent-filter>-->
         </activity>
     </application>
 

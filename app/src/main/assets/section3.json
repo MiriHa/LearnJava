@@ -98,7 +98,7 @@
       "taskWhatsNext" : 3,
       "taskType" : 2,
       "exerciseViewType": 1,
-      "exerciseSolutionString": "name: John Smith, age: 30"
+      "exerciseSolutionString": "name:JohnSmith,age:30"
     }
   ]
 

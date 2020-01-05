@@ -9,6 +9,17 @@
       "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
     },
     {
+      "taskType" : 2,
+      "taskName" : "ORDER",
+      "taskNumber" : 1,
+      "sectionNumber": 1,
+      "taskText" : "Order the line to make a correct java code",
+      "taskWhatsNext" : 1,
+      "exerciseViewType" : 5,
+      "exerciseContentStringArray" : ["This is Line 1","This is line 2","this is line 3", "this is a very long line 4. verrry long. lonng.loooong- so looooong"],
+      "exerciseSolutionIntArray" : [1,2,3,4]
+    },
+    {
       "taskName": "Introduction",
       "taskNumber": 2,
       "taskText" : " THis is an indrocution TExt blabla",

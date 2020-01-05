@@ -25,9 +25,6 @@ import java.util.Calendar;
 
 public class LessonActivity extends AppCompatActivity {
 
-    //Use a songelton?
-    //ModelUserProgress userProgress;
-
     Controller progressController;
 
     private int sectionNumber;
@@ -53,6 +50,8 @@ public class LessonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson);
 
+        progressHolder = findViewById(R.id.progressHolder);
+
         //get the progresscontroller
         progressController = (Controller) getApplicationContext();
         context = this;
@@ -72,7 +71,8 @@ public class LessonActivity extends AppCompatActivity {
         progressController.loadContent(sectionNumber, this);
         taskContent = progressController.getTaskContent();
 
-        progressHolder = findViewById(R.id.progressHolder);
+        progressController.fetchModelUserProgress();
+
         setProgressBar();
 
         //set the Toolbar
@@ -85,6 +85,10 @@ public class LessonActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Open the next TaskFragment
+     * @param taskType O: first Lesson, 1: a lesson, 2: a exercise, 3: last seen lesson
+     */
     public void openNewTask(int taskType) {
 
         FragmentManager manager = getSupportFragmentManager();
@@ -176,10 +180,6 @@ public class LessonActivity extends AppCompatActivity {
                 Log.i(" M_LESSON_ACTIVITY", "checkProgress 3: loaded progress: " + progressCurrentScreen);
                 //progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "open the last lesson: " + currentTask.getTaskNumber());
 
-
-//                    Fragment lastLessonFragment = manager.findFragmentByTag(tagLast);
-                //                manager.popBackStack(tagLast, 0);
-
                 boolean fragmentPoppedLAST = manager.popBackStackImmediate(tagLast, 0);
 
                 if (!fragmentPoppedLAST && manager.findFragmentByTag(tagLast) == null) { //fragment not in back stack, create it.
@@ -196,15 +196,19 @@ public class LessonActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Update the Progress when the end of a Section is reached, unlock next Section and go to MainActivity
+     */
     public void updateProgressLastTask() {
 
-        //add the finished section to the PorgressCOntrolller
-        progressController.updateLatestSection(sectionNumber + 1);
-        Log.i("M_LESSON_ACTIVITY", " updateprogress: section added " + progressController.getLatestSectionNumber());
-        //use a singelton?
-        //userProgress.updateUserProgressFinishedSections(sectionNumber);
+        //add the finished section to the PorgressCOntrolller when needed
+        if(progressController.getLatestSectionNumber() == sectionNumber) {
+            progressController.updateLatestSection(sectionNumber + 1);
+            Log.i("M_LESSON_ACTIVITY", "updatet LatestSection");
+        }
+        Log.i("M_LESSON_ACTIVITY", " updateprogress: latestSection updated " + progressController.getLatestSectionNumber());
         Log.i("M_LESSON_ACTIVITY", "last task of section is reached");
-        Log.i("M_LESSON_ACTIVITY", " backstack:" + getSupportFragmentManager().getFragments().toString());
+        //GO Back to the MainActivity
         Intent intent = new Intent(LessonActivity.this, MainActivity.class);
 //        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -213,6 +217,9 @@ public class LessonActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Check if the current Progress matches the TaskNumbers
+     */
     private void checkProgress() {
         Log.i("M CheckProgress", " currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
         if (progressCurrentScreen == currentTask.getTaskNumber()) {
@@ -228,20 +235,31 @@ public class LessonActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * fetch the currentTask from the ContentArray according to the currentTaskNumber
+     */
     public void setCurrentTask() {
-        if (progressController.getLatestSectionNumber() == sectionNumber) {
-            currentTaskNumber = (int) progressController.getLatestTaskNumber();
-            currentTask = taskContent.get((int) currentTaskNumber);
-            progressController.updateLatestTaskNumber(currentTaskNumber);
-            Log.i("M_LESSON_ACTIVITY","oepne recent task " + currentTask.getTaskName() + " " + currentTask.getTaskNumber());
-        } else {
+        //Check if it is the latest unlocked section, when yes open the most recentTask
+//        progressController.doSomething();
+//        int latestSection = (int) progressController.getLatestSectionNumber();
+//        if (latestSection == sectionNumber) {
+//            currentTaskNumber = (int) progressController.getLatestTaskNumber();
+//            currentTask = taskContent.get((int) currentTaskNumber);
+//            progressController.updateLatestTaskNumber(currentTaskNumber);
+//            Log.i("M_LESSON_ACTIVITY","set recent task in latest Section " + currentTask.getTaskName() + " " + currentTask.getTaskNumber());
+//        } else {
             currentTask = taskContent.get(progressCurrentScreen);
             currentTaskNumber = currentTask.getTaskNumber();
-            progressController.updateLatestTaskNumber(currentTaskNumber);
+            //Only update latestTaskNumber when in latest Section
+            //progressController.updateLatestTaskNumber(currentTaskNumber);
             Log.i("M_LESSON_ACTIVITY", "set current task" + currentTask.getTaskName() + "currentTaskNumber: " + currentTask.getTaskNumber());
-        }
+//        }
     }
 
+    /**
+     * get SectionTitle
+     * @return Section title as String
+     */
     public String getSectionTitle() {
 
         String title = "Section";
@@ -272,7 +290,10 @@ public class LessonActivity extends AppCompatActivity {
         return title;
     }
 
-    //set the Top PrgressBar with the current Lessons und Exercises
+
+    /**
+     * set the Top ProgressBar dynamiclly with the current Lessons und Exercises
+     */
     public void setProgressBar() {
         Log.i("M_LESSON_ACTIVITY", "set progressbar");
         int tasksSize = taskContent.size();
@@ -326,8 +347,9 @@ public class LessonActivity extends AppCompatActivity {
 
         }
     }
-
-    //Update the Background of the ProgressBar
+    /**
+     * Update the Background of the ProgressBar for the current TaskNumber
+     **/
     public void setProgressBackground() {
 
 //        for (int i = 0; i <= progressController.getLatestTaskNumber(); i++) {
@@ -346,18 +368,19 @@ public class LessonActivity extends AppCompatActivity {
         textView.setBackgroundResource(R.drawable.border_dark);
     }
 
+
+    /**
+     * DO nothing on Backpressed, easier Fragment Backstack management
+     */
     @Override
     public void onBackPressed() {
 
         Log.i("M_BackButtonPressed", " in navigation");
-//        if (!shouldAllowBack) {
-//            //super.onBackPressed();
-//            //don't allow it when first lesson is reached -> us then back button or ask if you want to exit the lesson
-//        } else {
-//            super.onBackPressed();
-//        }
     }
 
+    /**
+     * Back pressed in the Toolbar, navigating to the MainActivity
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -374,15 +397,16 @@ public class LessonActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * ClickListener for the ProgressBar: Exercises clicked
+     */
     public class ProgressExerciseClickListener implements View.OnClickListener {
-
-
         @Override
         public void onClick(View v) {
             TextView tv = (TextView) v;
             int number = Integer.valueOf(tv.getTag().toString());
             //currentTask = taskContent.get(number);
-            if(progressController.checkTasks(taskContent.get(number)) || number == progressController.getLatestTaskNumber()) {
+            if(progressController.checkTasks(taskContent.get(number)) || number <= progressController.getLatestTaskNumber()) {
                 openTaskProgress(2, number);
             } else {
                 Toast.makeText(context, "Not unlocked yet", Toast.LENGTH_SHORT).show();
@@ -392,15 +416,16 @@ public class LessonActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * ClickListener for the ProgressBar: Lessons clicked
+     */
     public class ProgressLessonClickListener implements View.OnClickListener {
-
-
         @Override
         public void onClick(View v) {
             TextView tv = (TextView) v;
             int number = Integer.valueOf(tv.getTag().toString());
             // currentTask = taskContent.get(number);
-            if(progressController.checkTasks(taskContent.get(number)) || number == progressController.getLatestTaskNumber()) {
+            if(progressController.checkTasks(taskContent.get(number)) || number <= progressController.getLatestTaskNumber()) {
                 openTaskProgress(1, number);
             } else {
             Toast.makeText(context, "Not unlocked yet", Toast.LENGTH_SHORT).show();
@@ -409,6 +434,12 @@ public class LessonActivity extends AppCompatActivity {
         }
     }
 
+
+    /**
+     * open the clicked Task in the ProgressBar
+     * @param tasktype 1: lesson, 2: Exercise
+     * @param number which task to open
+     */
     //TODO integirer das in openNewTask -> zweiter parameter? nur checkprogress weggelassen
     public void openTaskProgress(int tasktype, int number) {
         FragmentManager manager = getSupportFragmentManager();

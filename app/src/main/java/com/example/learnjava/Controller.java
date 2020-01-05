@@ -74,6 +74,7 @@ public class Controller extends android.app.Application {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if(dataSnapshot.getValue() != null){
                        modelUserProgress = dataSnapshot.getValue(ModelUserProgress.class);
+
                         //ref.child("users").child(userId).setValue(modelUserProgress);
                         Log.i("M_CONTROLLER","fetchModelUserProgress2 :" + modelUserProgress.toString());
                     }
@@ -85,6 +86,8 @@ public class Controller extends android.app.Application {
 
                 }
             });
+            //DO something hat listener  aktivates
+        //  ref.child("users").child(userId).child("userId").setValue(userId);
     }
 
     public void updateProgresstoDatabase() {
@@ -92,13 +95,17 @@ public class Controller extends android.app.Application {
         String userId = auth.getCurrentUser().getUid();
         ref.child("users").child(userId).setValue(modelUserProgress);    }
 
-
+    public void doSomething(){
+        Log.i("M_CONTROLLER","DO something");
+        ref.child("users").child(userId).child(userId).setValue(userId);
+    }
 
     /**
      * Methods to check on the ModelUserProgress
      */
 
     public boolean checkTasks(ModelTask aTask) {
+        fetchModelUserProgress();
         ModelFinishedTask finishedTask = new ModelFinishedTask(aTask.getSectionNumber(),aTask.getTaskNumber(), aTask.getTaskName());
         Log.i("M_CONTROLLER", "checkTasks");
         return modelUserProgress.checkTasks(finishedTask);
@@ -125,7 +132,7 @@ public class Controller extends android.app.Application {
     }
 
     public void updateLatestSection(int sectionNumber){
-        Log.i("M_CONTROLLER", "updateLatestSections" + sectionNumber);
+        Log.i("M_CONTROLLER", "updateLatestSections " + sectionNumber);
         modelUserProgress.setLatestSectionNumber((long) sectionNumber);
         ref.child("users").child(userId).child("latestSectionNumber").setValue((long) sectionNumber);
        // updateProgresstoDatabase();
@@ -168,22 +175,32 @@ public class Controller extends android.app.Application {
     }
 
     public void setModelUserProgress(ModelUserProgress userProgress){
+        Log.i("M_CONTROLLER", "setModelUserProgress");
         this.modelUserProgress = userProgress;
     }
 
+
     public long getCurrentSection() {
+        Log.i("M_CONTROLLER", "getCurrentSection");
+      //  fetchModelUserProgress();
         return modelUserProgress.getCurrentSection();
     }
 
     public int getLastLessonNumber(){
+        Log.i("M_CONTROLLER", "getLastLessonNumber");
+       // fetchModelUserProgress();
         return (int) modelUserProgress.getLastLessonNumber();
     }
 
     public long getLatestTaskNumber() {
+        Log.i("M_CONTROLLER", "getLatestTaskNumber");
+       // fetchModelUserProgress();
         return modelUserProgress.getLatestTaskNumber();
     }
 
     public long getLatestSectionNumber(){
+        Log.i("M_CONTROLLER", "getLatestSectionNumber");
+        //fetchModelUserProgress();
         return modelUserProgress.getLatestSectionNumber();
     }
 

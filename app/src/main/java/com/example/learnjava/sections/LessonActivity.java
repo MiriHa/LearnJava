@@ -205,8 +205,8 @@ public class LessonActivity extends AppCompatActivity {
     public void updateProgressLastTask() {
 
         //add the finished section to the PorgressCOntrolller
-        progressController.updateUnlockedSections((Integer) sectionNumber + 1);
-        Log.i("M_LESSON_ACTIVITY", " updateprogress: section added " + progressController.getSections().toString());
+        progressController.updateLatestSection(sectionNumber + 1);
+        Log.i("M_LESSON_ACTIVITY", " updateprogress: section added " + progressController.getLatestSectionNumber());
         //use a singelton?
         //userProgress.updateUserProgressFinishedSections(sectionNumber);
         Log.i("M_LESSON_ACTIVITY", "last task of section is reached");
@@ -236,8 +236,8 @@ public class LessonActivity extends AppCompatActivity {
 
     public void setCurrentTask() {
         if (progressController.getLatestSectionNumber() == sectionNumber) {
-            currentTaskNumber = progressController.getLatestTaskNumber();
-            currentTask = taskContent.get(currentTaskNumber);
+            currentTaskNumber = (int) progressController.getLatestTaskNumber();
+            currentTask = taskContent.get((int) currentTaskNumber);
             progressController.updateLatestTaskNumber(currentTaskNumber);
             Log.i("M_LESSON_ACTIVITY","oepne recent task " + currentTask.getTaskName() + " " + currentTask.getTaskNumber());
         } else {

@@ -1,4 +1,4 @@
-package com.example.learnjava.Registration;
+package com.example.learnjava.registration;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learnjava.MainActivity;
@@ -29,6 +30,7 @@ public class LogInActivity extends AppCompatActivity {
 
     EditText userNameInput, userPasswordInput;
     Button logInSubmit;
+    TextView toSignUp;
 
     ProgressBar logInProgres;
 
@@ -40,6 +42,7 @@ public class LogInActivity extends AppCompatActivity {
         userNameInput = findViewById(R.id.login_email);
         userPasswordInput = findViewById(R.id.login_password);
         logInSubmit = findViewById(R.id.login_submit);
+        toSignUp = findViewById(R.id.login_signUp);
 
         auth = FirebaseAuth.getInstance();
         ref = FirebaseDatabase.getInstance().getReference();
@@ -48,6 +51,14 @@ public class LogInActivity extends AppCompatActivity {
         if (auth.getCurrentUser() != null) {
             startActivity(new Intent(LogInActivity.this, MainActivity.class));
         }
+
+        toSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LogInActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
 
         logInSubmit.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -4,9 +4,7 @@ import java.util.Date;
 
 public class ModelLog {
 
-    public class Logging {
-
-        private int loggingID;
+        //private long loggingID;
 
         public String userOwnerId;
 
@@ -16,7 +14,7 @@ public class ModelLog {
 
         private String details;
 
-        public Logging(String userOwnerId, Date time, String eventType, String details) {
+        public ModelLog(String userOwnerId, Date time, String eventType, String details) {
             this.userOwnerId = userOwnerId;
             this.time = time;
             this.eventType = eventType;
@@ -24,15 +22,7 @@ public class ModelLog {
 
         }
 
-        public Logging() {
-        }
-
-        public int getLoggingID() {
-            return loggingID;
-        }
-
-        public void setLoggingID(int loggingID) {
-            this.loggingID = loggingID;
+        public ModelLog() {
         }
 
         public Date getTime() {
@@ -59,4 +49,3 @@ public class ModelLog {
             this.details = details;
         }
     }
-}

@@ -1,4 +1,4 @@
-package com.example.learnjava.Registration;
+package com.example.learnjava.registration;
 
 import android.content.Context;
 import android.content.SharedPreferences;

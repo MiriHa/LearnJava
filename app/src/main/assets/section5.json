@@ -2,17 +2,28 @@
   "tasks": [
     {
       "taskName" : "Tutorial",
-      "taskNumber" : 1,
+      "taskNumber" : 0,
+      "sectionNumber": 5,
       "taskText" : "How to Use this app. Hello! This learning App will present you different Lessons to help you learn java. Here will be presented a lesson with theory that you need to read and understand and follwing this there will be an exercise to check our nearly learned knowledge",
-      "taskWhatsNext" : 1,
+      "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
     },
     {
       "taskType" : 2,
-      "taskName" : "ORDER",
+      "taskName" : "CODE",
       "taskNumber" : 1,
-      "sectionNumber": 1,
+      "sectionNumber": 5,
+      "taskText" : "Write a COde for a apple class with a value string appel",
+      "taskWhatsNext" : 2,
+      "exerciseViewType" : 6,
+      "exerciseSolutionString" : "publicclassAppel{StringAppel=\"red\";}"
+    },
+    {
+      "taskType" : 2,
+      "taskName" : "ORDER",
+      "taskNumber" : 2,
+      "sectionNumber": 5,
       "taskText" : "Order the line to make a correct java code",
       "taskWhatsNext" : 1,
       "exerciseViewType" : 5,

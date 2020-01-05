@@ -19,6 +19,7 @@ import com.example.learnjava.Controller;
 import com.example.learnjava.MainActivity;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
+import com.example.learnjava.resumption_cues.WordCueFragment;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -81,6 +82,7 @@ public class LessonActivity extends AppCompatActivity {
 
         //open the first lesson Fragment
         openNewTask(0);
+        showCueWord(currentTask.getTaskName(),currentSection);
 
     }
 
@@ -195,6 +197,14 @@ public class LessonActivity extends AppCompatActivity {
         }
     }
 
+    public void showCueWord(String text, int section) {
+        FragmentManager fm = getSupportFragmentManager();
+        WordCueFragment wordCueFragment = WordCueFragment.newIntance(text,section);
+        wordCueFragment.setCancelable(true);
+        //wordCueFragment.setCanceledOnTouchOutside(true);
+        wordCueFragment.show(fm, "fragment_word_cue");
+        Log.i("M_LESSON_ACTIVITY","show Word Cue " + text + " "+section);
+    }
 
     /**
      * Update the Progress when the end of a Section is reached, unlock next Section and go to MainActivity

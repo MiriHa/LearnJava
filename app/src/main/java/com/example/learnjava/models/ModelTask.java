@@ -7,11 +7,11 @@ package com.example.learnjava.models;
 
 public abstract class ModelTask {
 
-    private final String taskName;
-    private final String taskText;
-    private final int whatsNext;
-    private final int taskNumber;
-    private final int sectionNumber;
+    private String taskName;
+    private String taskText;
+    private int whatsNext;
+    private int taskNumber;
+    private int sectionNumber;
 
     //1 for lessone 2 for exercise
     private int type;
@@ -26,6 +26,8 @@ public abstract class ModelTask {
         this.type = type;
         this.sectionNumber = section;
     }
+
+    public ModelTask(){}
 
 
     public String getTaskName() {
@@ -66,7 +68,15 @@ public abstract class ModelTask {
 
     public abstract String[] getContentStringArray();
 
+    public void setType(int type) {
+        this.type = type;
+    }
 
+    public String getTag() {
+        return tag;
+    }
 
-
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 }

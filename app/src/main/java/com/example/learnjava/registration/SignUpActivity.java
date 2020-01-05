@@ -68,6 +68,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SignUpActivity.this, LogInActivity.class);
+                intent.putExtra("user_first_time",false);
                 startActivity(intent);
             }
         });

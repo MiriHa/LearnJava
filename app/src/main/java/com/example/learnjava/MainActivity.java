@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     FirebaseAuth auth;
     DatabaseReference ref;
 
-    String userID = "M";
+    String currentuserID;
 
     Context context;
     Dialog myDialog;
@@ -68,8 +68,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         myProgressController = (Controller) getApplicationContext();
 
         //check if the app is opend for the first time
-        signUpActivity();
+        auth = FirebaseAuth.getInstance();
+        ref = FirebaseDatabase.getInstance().getReference();
+        currentuserID = auth.getCurrentUser().getUid();
+        Log.i("M_MAIN_ACTIVITY","on start  add AuthListener");
 
+        myProgressController.fetchModelUserProgress();
+        Log.i("M_MAIN_ACTIVITY","set Refrences and Controller");
+        myProgressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_MAIN_ACTIVITY", "set Refrences and Content");
+
+        myProgressController.updateLatestSection(3);
+        checkIfSolved(lesson1, 1);
+        checkIfSolved(lesson2, 2);
+        checkIfSolved(lesson3, 3);
+        checkIfSolved(lesson4, 4);
+        checkIfSolved(lesson5, 5);
+        checkIfSolved(lesson6, 6);
+        checkIfSolved(lesson7, 7);
+        checkIfSolved(lesson8, 8);
+        checkIfSolved(lesson9, 9);
 
     }
 
@@ -110,27 +127,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         wordCueFragment.show(fm, "fragment_word_cue");
     }
 
-    public void signUpActivity(){
-
-        isUserFirstTime = Boolean.valueOf(Utils.readSharedSetting(MainActivity.this, PREF_USER_FIRST_TIME, "true"));
-        Log.i("M_MAIN_ACTIVITY","isUserforthefirstTime: "+isUserFirstTime);
-
-        if (isUserFirstTime) {
-            Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
-            intent.putExtra(PREF_USER_FIRST_TIME, isUserFirstTime);
-            startActivity(intent);
-            Log.i("M_MAIN_ACTIVITY","change to SignUp activity");
-        }else {
-            auth = FirebaseAuth.getInstance();
-            ref = FirebaseDatabase.getInstance().getReference();
-            auth.addAuthStateListener(authStateListener);
-            Log.i("M_MAIN_ACTIVITY","on start  add AuthListener");
-
-            myProgressController.fetchModelUserProgress();
-            setTheContent();
-            Log.i("M_MAIN_ACTIVITY","set Refrences and Controller");
-        }
-    }
 
 
     @Override
@@ -206,34 +202,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    FirebaseAuth.AuthStateListener authStateListener = new FirebaseAuth.AuthStateListener() {
-        @Override
-        public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-            //auth = FirebaseAuth.getInstance();
-            if (firebaseUser == null) {
-                Intent intent = new Intent(MainActivity.this, LogInActivity.class);
-                startActivity(intent);
-            }
-        }
-    };
+//    FirebaseAuth.AuthStateListener authStateListener = new FirebaseAuth.AuthStateListener() {
+//        @Override
+//        public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+//            //auth = FirebaseAuth.getInstance();
+//            if (firebaseUser == null) {
+//                Intent intent = new Intent(MainActivity.this, LogInActivity.class);
+//                startActivity(intent);
+//            }
+//        }
+//    };
 
     @Override
     protected void onStart() {
         super.onStart();
-        if(!isUserFirstTime) {
-//            auth.addAuthStateListener(authStateListener);
-//            Log.i("M_MAIN_ACTIVITY","on start  add AuthListener");
-        }
+//        if(!isUserFirstTime) {
+////            auth.addAuthStateListener(authStateListener);
+////            Log.i("M_MAIN_ACTIVITY","on start  add AuthListener");
+//        }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        if(!isUserFirstTime) {
-            auth.removeAuthStateListener(authStateListener);
-            Log.i("M_MAIN_ACTIVITY","on stop remove AuthListener");
-        }
+//        if(!isUserFirstTime) {
+//            auth.removeAuthStateListener(authStateListener);
+//            Log.i("M_MAIN_ACTIVITY","on stop remove AuthListener");
+//        }
     }
 
 //    @Override

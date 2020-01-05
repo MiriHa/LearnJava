@@ -96,7 +96,7 @@ public class LessonActivity extends AppCompatActivity {
                 setCurrentTask();
                 setProgressBackground();
                 Log.i("M_LESSON_ACTIVITY", "opennewtask: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
-                progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "First Lesson of a Section");
+                //progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "First Lesson of a Section");
                 //load a fragment
                 LessonFragment firstlessonFragment = new LessonFragment();
                 firstlessonFragment.setFragmentContentLesson(currentTask);
@@ -134,7 +134,7 @@ public class LessonActivity extends AppCompatActivity {
                             .commit();
                 }
                 Log.d(" M_LESSON_ACTIVITY", "checkprogress 1: progress: " + progressCurrentScreen);
-                progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "open the next lesson: " + currentTask.getTaskNumber());
+               // progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "open the next lesson: " + currentTask.getTaskNumber());
                 break;
 
             //open the next Exercise
@@ -157,12 +157,14 @@ public class LessonActivity extends AppCompatActivity {
                             .commit();
                 }
                 Log.i(" M_LESSON_ACTIVITY", " checkprogress 2: progress: " + progressCurrentScreen);
-                progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "open the next exercise: " + currentTask.getTaskNumber());
+               // progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "open the next exercise: " + currentTask.getTaskNumber());
                 break;
 
             //open the last Lesson
             case 3:
-                ModelTask lastLesson = progressController.getLastLesson();
+                int lastlessonNumber = progressController.getLastLessonNumber();
+                ModelTask lastLesson = taskContent.get(lastlessonNumber);
+               // ModelTask lastLesson = progressController.getLastLesson();
                 Log.i("M_LESSON_ACTIVTIY", "last Lesson: " + lastLesson.getTaskName() + " whats next: " + lastLesson.getWhatsNext());
                 checkProgress();
                 currentTask = lastLesson;
@@ -171,16 +173,8 @@ public class LessonActivity extends AppCompatActivity {
                 //load a fragment
                 String tagLast = "FRAGMENT_LESSON_" + currentTaskNumber;
                 Log.i("M_LESSON_ACTIVITY", " backstack:" + manager.getFragments().toString());
-                //manager.popBackStack(tagLast, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                //                LessonFragment lastLessonFragment = new LessonFragment();
-                //                lastLessonFragment.setFragmentContentLesson(currentTask);
-                //                getSupportFragmentManager()
-                //                        .beginTransaction()
-                //                        .add(R.id.FragmentHolder, lastLessonFragment)
-                //                        .addToBackStack(null)
-                //                        .commit();
                 Log.i(" M_LESSON_ACTIVITY", "checkProgress 3: loaded progress: " + progressCurrentScreen);
-                progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "open the last lesson: " + currentTask.getTaskNumber());
+                //progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "open the last lesson: " + currentTask.getTaskNumber());
 
 
 //                    Fragment lastLessonFragment = manager.findFragmentByTag(tagLast);

@@ -1,51 +1,68 @@
 package com.example.learnjava.models;
 
-import java.util.Date;
-
 public class ModelLog {
 
-        //private long loggingID;
+        private String loggingID;
 
-        public String userOwnerId;
+        //public String userOwnerId;
 
-        private Date time;
+        //private Date time;
+        private String time;
 
-        private String eventType;
+        private String event_Type;
 
-        private String details;
+        private String eventDetails;
 
-        public ModelLog(String userOwnerId, Date time, String eventType, String details) {
-            this.userOwnerId = userOwnerId;
+        public ModelLog(String id, String time, String eventType, String details) {
+           // this.userOwnerId = userOwnerId;
+            this.loggingID = id;
             this.time = time;
-            this.eventType = eventType;
-            this.details = details;
+            this.event_Type = eventType;
+            this.eventDetails = details;
 
         }
 
         public ModelLog() {
         }
 
-        public Date getTime() {
+        public String getTime() {
             return time;
         }
 
-        public void setTime(Date time) {
+        public void setTime(String time) {
             this.time = time;
         }
 
         public String getEventType() {
-            return eventType;
+            return event_Type;
         }
 
         public void setEventType(String eventType) {
-            this.eventType = eventType;
+            this.event_Type = eventType;
         }
 
         public String getDetails() {
-            return details;
+            return eventDetails;
         }
 
         public void setDetails(String details) {
-            this.details = details;
+            this.eventDetails = details;
         }
+
+    public String getLoggingID() {
+        return loggingID;
     }
+
+    public void setLoggingID(String loggingID) {
+        this.loggingID = loggingID;
+    }
+
+//    public String getUserOwnerId() {
+//        return userOwnerId;
+//    }
+//
+//    public void setUserOwnerId(String userOwnerId) {
+//        this.userOwnerId = userOwnerId;
+//    }
+}
+

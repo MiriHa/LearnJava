@@ -204,7 +204,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
             progressController.addFinishedTask(currentTask);
             showFeedbackDialogRight();
             Log.i("M_EXERCISE_FRAGMENT", "answer was right");
-            progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_RIGHT", "number: " + currentTask.getTaskNumber() + " taskType: " + currentTask.getExerciseViewType());
+            progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_RIGHT", "number: " + currentTask.getTaskNumber() + "section: "+currentTask.getSectionNumber()+" taskType: " + currentTask.getExerciseViewType());
         } else {
             showFeedbackDialogWrong();
             Log.i("M_EXERCISE_FRAGMENT", "answer was wrong");

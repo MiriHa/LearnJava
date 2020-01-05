@@ -1,11 +1,12 @@
 package com.example.learnjava.models;
 
+import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This model tracks the progress of a user and contains all user informations.
@@ -25,28 +26,25 @@ public class ModelUserProgress {
     private long userProgressCurrentScreen;
 
     //TODO open the last Screen so that the user can skip sscreens
-    //save this and check the latest section? or save latest section seperate?
-    //use latest section also to check the freigeschaltete sections instead of the array?
     private long latestTaskNumber;
     private long latestSectionNumber;
 
-    //stores the last theorey lesson, so the the user can skip back
-
-    //TODO is note saved? also nicht benötig zum saven da nur temporär?
+    //TODO is note saved? also nicht benötig zum saven da nur temporär? not needed?
+    @Exclude
     private ModelTask lastLesson;
 
-    //Keeps track over the unlocked sections
-    //Not needed to save in firebase? -> latestSectionNumber is enough
-   // private ArrayList<Integer> userUnlockedSections = new ArrayList<>();
+    //stores the last theorey lesson, so the the user can skip back
+    private long lastLessonNumber;
 
     //stores the solved exercises
-    //
     //TODO Make this also Integer and give each task a unique number
-   // private List<ModelTask> finishedTasks = new ArrayList<>();
-    private HashMap<String, ModelTask> finishedTasks = new HashMap<>();
+    //private List<ModelFinishedTask> finishedTasksList = new ArrayList<>();
+    private Map<String, ModelFinishedTask> finishedTasksList = new HashMap<>();
 
+
+    //Stores the Logs
    // private ArrayList<Float> finishedTasksNumbers = new ArrayList<>();
-    private HashMap<String, ModelLog> loggingList = new HashMap<>();
+    private Map<String, ModelLog> loggingList = new HashMap<>();
 
 
 
@@ -59,13 +57,17 @@ public class ModelUserProgress {
 
     }
 
-    public ModelUserProgress(String userId, String userName, String email, int latestTaskNumber, int latestSectionNumber, HashMap finishedTaskList){
+    public ModelUserProgress(String userId, String userName, String email, int latestTaskNumber, int latestSectionNumber){
         this.userId = userId;
         this.email = email;
         this.userName = userName;
         this.latestSectionNumber = latestSectionNumber;
         this.latestTaskNumber = latestTaskNumber;
-      //  this.finishedTaskList = finishedTaskList;
+        //this.finishedTasksList = finishedTaskList;
+    }
+
+    public ModelUserProgress(String userId){
+        this.userId = userName;
     }
 
 
@@ -73,10 +75,10 @@ public class ModelUserProgress {
     }
 
 
-    //Update Methoden
-//    public void updateUserProgressUnlockedSections(Integer number){
-//        userUnlockedSections.add(number);
-//    }
+    /**
+     * Update and Set Methods
+     *
+     */
 
     public void updateUserProgressCurrentSection(int number){
         this.userProgressCurrentSection = (long) number;
@@ -94,22 +96,31 @@ public class ModelUserProgress {
         this.lastLesson = lastLesson;
     }
 
+    public void setLastLessonNumber(int number){
+        this.lastLessonNumber = (long) number;
+    }
+
     public void setUserId(String userId){
         this.userId = userId;
     }
 
     //add a finishedTask bzw exercise so that the user can skip it
-    public void addFinishedTask(ModelTask task){
+    public void addFinishedTask(ModelFinishedTask task){
         if(!checkTasks(task)){
-           // finishedTasks.add(task);
-            finishedTasks.put(task.getTaskName(),task);
+           // finishedTasksList.add(task);
+            String id = task.getSectionNumber()+"."+task.getTaskNumber();
+            finishedTasksList.put(id,task);
         }
     }
 
 
+    /**
+     * Methods to check on UserProgress
+     */
+
     //check if task was already read/exercise was solved
-    public boolean checkTasks(ModelTask aTask){
-        return finishedTasks.containsValue(aTask);
+    public boolean checkTasks(ModelFinishedTask aTask){
+        return finishedTasksList.containsValue(aTask);
     }
 
     //check if a section is already unlocked
@@ -118,8 +129,10 @@ public class ModelUserProgress {
     }
 
 
-
-    //Getter
+    /**
+     * Getter
+     *
+     */
 
     public String getUserId(){
         return userId;
@@ -133,20 +146,37 @@ public class ModelUserProgress {
         return userProgressCurrentScreen;
     }
 
-//    //public ArrayList<Integer> getUserProgressUnlockedSections(){
-//        return userUnlockedSections;
-//    }
 
     public ModelTask getLastLesson(){
         return lastLesson;
+    }
+
+    public long getLastLessonNumber(){
+        return lastLessonNumber;
     }
 
     public long getLatestSectionNumber(){
         return latestSectionNumber;
     }
 
-//    public List<ModelTask> getFinishedTasks(){
-//        return finishedTasks;
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+//    public List<ModelFinishedTask> getFinishedTasksList() {
+//        return finishedTasksList;
+//    }
+
+    public Map<String, ModelFinishedTask> getFinishedTasksList() {
+        return finishedTasksList;
+    }
+
+//    public List<ModelTask> getFinishedTasksList(){
+//        return finishedTasksList;
 //    }
 
     public long getCurrentSection(){
@@ -155,6 +185,14 @@ public class ModelUserProgress {
 
     public long getUserProgressCurrentSection() {
         return userProgressCurrentSection;
+    }
+
+
+    /**
+     * Setter
+     */
+    public void setLatestSectionNumber(long sectionNumber){
+        this.latestSectionNumber = sectionNumber;
     }
 
     public void setUserProgressCurrentSection(long userProgressCurrentSection) {
@@ -169,59 +207,25 @@ public class ModelUserProgress {
         this.latestTaskNumber = latestTaskNumber;
     }
 
-//    public ArrayList<Integer> getUserUnlockedSections() {
-//        return userUnlockedSections;
-//    }
-//
-//    public void setUserUnlockedSections(ArrayList<Integer> userUnlockedSections) {
-//        this.userUnlockedSections = userUnlockedSections;
-//    }
-
-//    public void setFinishedTasks(List<ModelTask> finishedTasks) {
-//        this.finishedTasks = finishedTasks;
-//    }
-
-    public void setLatestSectionNumber(long sectionNumber){
-        this.latestSectionNumber = sectionNumber;
-    }
-
-//    public ArrayList<Float> getFinishedTasksNumbers() {
-//        return finishedTasksNumbers;
-//    }
-//
-//    public void setFinishedTasksNumbers(ArrayList<Float> finishedTasksNumbers) {
-//        this.finishedTasksNumbers = finishedTasksNumbers;
-//    }
-
-    public String getUserName() {
-        return userName;
-    }
 
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public HashMap<String, ModelTask> getFinishedTasks() {
-        return finishedTasks;
-    }
-
-    public void setFinishedTasks(HashMap<String, ModelTask> finishedTasks) {
-        this.finishedTasks = finishedTasks;
+    public void setFinishedTasksList(Map<String, ModelFinishedTask> finishedTasksList) {
+        this.finishedTasksList = finishedTasksList;
     }
 
     /**
      * Edit the Logging List
      */
 
-    public HashMap<String, ModelLog> getLoggingList() {
+    public Map<String, ModelLog> getLoggingList() {
         return loggingList;
     }
 
@@ -229,8 +233,7 @@ public class ModelUserProgress {
         this.loggingList = loggingList;
     }
 
-    public void addLog(String userOwnerName, Date time, String eventType, String details){
-        ModelLog modelLog = new ModelLog(userOwnerName, time, eventType, details);
-        loggingList.put(eventType,modelLog);
+    public void addLog(ModelLog log){
+        loggingList.put(log.getEventType(),log);
     }
 }

@@ -60,7 +60,7 @@ public class LessonFragment extends Fragment {
         nextButton = view.findViewById(R.id.nextButtonLessonFrag);
 
         Log.i("M_LESSON_FRAGMENT", " whatsNext: " + whatsNext + " currenTasknumber: " + currentTask.getTaskNumber());
-        progressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_A_LESSON", "number: " + currentTask.getTaskNumber());
+        progressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_A_LESSON", "number: " + currentTask.getTaskNumber() + "section: "+currentTask.getSectionNumber());
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +68,7 @@ public class LessonFragment extends Fragment {
                 Log.i("M_LESSON_FRAGMENT", "Button clicked, Next: "+whatsNext );
                 if ((getActivity() != null)) {
                     //save this as the Las lesson to come back to
-                    progressController.setLastLesson(currentTask);
+                    progressController.setLastLesson(currentTask.getTaskNumber());
                     //Add lesson to finished tasks
                     progressController.addFinishedTask(currentTask);
                     //open a exerciseFragment

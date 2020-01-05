@@ -71,13 +71,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         auth = FirebaseAuth.getInstance();
         ref = FirebaseDatabase.getInstance().getReference();
         currentuserID = auth.getCurrentUser().getUid();
-        Log.i("M_MAIN_ACTIVITY","on start  add AuthListener");
 
         myProgressController.fetchModelUserProgress();
         Log.i("M_MAIN_ACTIVITY","set Refrences and Controller");
         myProgressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_MAIN_ACTIVITY", "set Refrences and Content");
 
-        myProgressController.updateLatestSection(3);
+       // myProgressController.updateLatestSection(1);
         checkIfSolved(lesson1, 1);
         checkIfSolved(lesson2, 2);
         checkIfSolved(lesson3, 3);
@@ -90,32 +89,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void setTheContent(){
-        myProgressController.updateLatestSection(3);
-        checkIfSolved(lesson1, 1);
-        checkIfSolved(lesson2, 2);
-        checkIfSolved(lesson3, 3);
-        checkIfSolved(lesson4, 4);
-        checkIfSolved(lesson5, 5);
-        checkIfSolved(lesson6, 6);
-        checkIfSolved(lesson7, 7);
-        checkIfSolved(lesson8, 8);
-        checkIfSolved(lesson9, 9);
-    }
 
-
-    public void checkIfSolved(LinearLayout lesson, Integer number) {
+    /**
+     * Check id the Section is unlocked, if yes set Clicklistener, if no grey background
+     * @param section which section Layout should be checked
+     * @param number the number of the section
+     */
+    public void checkIfSolved(LinearLayout section, Integer number) {
        // Date currentTime = Calendar.getInstance().getTime();
+        myProgressController.fetchModelUserProgress();
 
-        Log.i("M_MAIN_ACTIVITY", "checkIfSOlved");
+        Log.i("M_MAIN_ACTIVITY", "checkIfSOlved " +String.valueOf(myProgressController.getLatestSectionNumber()) + " " + number);
         if (number == 1) {
             //TODO already in Modeoluser inizialize
             // myProgressController.updateUnlockedSections(1);
-            lesson.setOnClickListener(this);
+            section.setOnClickListener(this);
         } else if (number <= myProgressController.getLatestSectionNumber()) {
-            lesson.setOnClickListener(this);
+            section.setOnClickListener(this);
         } else {
-            lesson.setBackgroundColor(getResources().getColor(R.color.grey));
+            section.setBackgroundColor(getResources().getColor(R.color.grey));
         }
 
     }
@@ -128,7 +120,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
+    /**
+     * Handle the CLickEvents for the LinearLayouts of the Sections
+     */
     @Override
     public void onClick(View v) {
 
@@ -180,6 +174,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+
+    /**
+     * open the right lessonActivity
+     * @param otherActivityClass which activity is needed
+     * @param lessonNumber which lessonNumber is needed
+     */
     public void startActivity(Class<?> otherActivityClass, int lessonNumber) {
         //saveState();
         Intent intent = new Intent(MainActivity.this, otherActivityClass);
@@ -189,6 +189,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    /**
+     * Go to the Phone HomeScreen if Back is pressed
+     */
     @Override
     public void onBackPressed() {
         Log.i("M_MAIN_ACTIVITY", "backbutton pressed");
@@ -232,74 +235,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        }
     }
 
-//    @Override
-//    protected void onSaveInstanceState(Bundle outState) {
-//
-//        super.onSaveInstanceState(outState);
-//        // outState.putCharSequence(EDIT_TEXT_VALUE, mTextView.getText()); //<-- Saving operation, change the values to what ever you want.
-//
-//        outState.putString("userID", "This is my message to be reloaded");
-//    }
-
-
-//    private void showLoginPopUp(final View view) {
-//        //Create a View object yourself through inflater
-//        LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
-//        View popupView = inflater.inflate(R.layout.pop_up_user_name, null);
-//
-//        //Specify the length and width through constants
-//        int width = LinearLayout.LayoutParams.MATCH_PARENT;
-//        int height = LinearLayout.LayoutParams.MATCH_PARENT;
-//
-//        //Make Inactive Items Outside Of PopupWindow
-//        boolean focusable = true;
-//
-//        //Create a window with our parameters
-//        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-//
-//        //Set the location of the window on the screen
-//        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-//
-//        //Initialize the elements of our window, install the handler
-//
-//        EditText editText = popupView.findViewById(R.id.editTextPopUp);
-//
-//        Button buttonEdit = popupView.findViewById(R.id.PopUpCheckButton);
-//        buttonEdit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                //As an example, display the message
-//                Toast.makeText(view.getContext(), "Wow, popup action button", Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
-//
-//
-//        //Handler for clicking on the inactive zone of the window
-//
-//        popupView.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//
-//                //Close the window when clicked
-//                //popupWindow.dismiss();
-//                Log.i("M_POPUP", "outside of PopupWindows clicked");
-//                return true;
-//            }
-//        });
-//    }
-
-
-
-//    @Override
-//    protected void onSaveInstanceState (Bundle outState) {
-//
-//        super.onSaveInstanceState(outState);
-//        // outState.putCharSequence(EDIT_TEXT_VALUE, mTextView.getText()); //<-- Saving operation, change the values to what ever you want.
-//
-//        outState.putString("userID", "This is my message to be reloaded");
-//    }
 
 
 }

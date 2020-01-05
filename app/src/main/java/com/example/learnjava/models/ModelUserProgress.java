@@ -25,13 +25,14 @@ public class ModelUserProgress {
     private long userProgressCurrentSection;
     private long userProgressCurrentScreen;
 
-    //TODO open the last Screen so that the user can skip sscreens
+    //latestTaskNumber: when in latest Section jump to latestTask
     private long latestTaskNumber;
-    private long latestSectionNumber;
+    //latestSectionNumber: used for checking unlocked Sections
+    private long latestSectionNumber = 1;
 
     //TODO is note saved? also nicht benötig zum saven da nur temporär? not needed?
-    @Exclude
-    private ModelTask lastLesson;
+//    @Exclude
+//    private ModelTask lastLesson;
 
     //stores the last theorey lesson, so the the user can skip back
     private long lastLessonNumber;
@@ -63,6 +64,7 @@ public class ModelUserProgress {
         this.userName = userName;
         this.latestSectionNumber = latestSectionNumber;
         this.latestTaskNumber = latestTaskNumber;
+
         //this.finishedTasksList = finishedTaskList;
     }
 
@@ -92,9 +94,9 @@ public class ModelUserProgress {
         this.latestTaskNumber = (long) tasknumber;
     }
 
-    public void setLastLesson(ModelTask lastLesson){
-        this.lastLesson = lastLesson;
-    }
+//    public void setLastLesson(ModelTask lastLesson){
+//        this.lastLesson = lastLesson;
+//    }
 
     public void setLastLessonNumber(int number){
         this.lastLessonNumber = (long) number;
@@ -147,9 +149,9 @@ public class ModelUserProgress {
     }
 
 
-    public ModelTask getLastLesson(){
-        return lastLesson;
-    }
+//    public ModelTask getLastLesson(){
+//        return lastLesson;
+//    }
 
     public long getLastLessonNumber(){
         return lastLessonNumber;

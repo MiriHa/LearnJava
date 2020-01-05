@@ -6,33 +6,13 @@
       "taskNumber" : 0,
       "sectionNumber": 1,
       "taskText" : "Hello! <br>Here is a guide on how to use this Learning app:@There are <b> nine Sections</b> that will guide you to learn the Programming language Java.<br>You will unlock them as you go. Each Section consists of a variety of Theory <b> lessons and exercise</b>. These will test your learned theory knowledge.@<br>So have fun learning Java!",
-      "taskWhatsNext" : 2,
-      "lessonKeyWords" : ["LearningApp", "sections", "lessons", "exercises"]
-    },
-    {
-      "taskType" : 2,
-      "taskName" : "ORDER",
-      "taskNumber" : 1,
-      "sectionNumber": 1,
-      "taskText" : "Order the line to make a correct java code",
-      "taskWhatsNext" : 1,
-      "exerciseViewType" : 5,
-      "exerciseContentStringArray" : ["This is Line 1","This is line 2","this is line 3", "this is a very long line 4. verrry long. lonng.loooong- so looooong"],
-      "exerciseSolutionIntArray" : [1,2,3,4]
-    },
-    {
-      "taskType" : 1,
-      "taskName" : "Tutorial",
-      "taskNumber" : 2,
-      "sectionNumber": 1,
-      "taskText" : "Hello! <br>Here is a guide on how to use this Learning app:@There are <b> nine Sections</b> that will guide you to learn the Programming language Java.<br>You will unlock them as you go. Each Section consists of a variety of Theory <b> lessons and exercise</b>. These will test your learned theory knowledge.@<br>So have fun learning Java!",
       "taskWhatsNext" : 1,
       "lessonKeyWords" : ["LearningApp", "sections", "lessons", "exercises"]
     },
     {
       "taskType" : 1,
       "taskName": "Welcome to Java!",
-      "taskNumber": 3,
+      "taskNumber": 1,
       "sectionNumber": 1,
       "taskText": "Java is a high level, modern programming language designed in the early 1990s by Sun Microsystems, and currently owned by Oracle. @Java is <b>Platform Independent</b>, which means that you only need to write the program once to be able to run it on a number of different platforms such as Windows, Mac or Linux.<br>Java is <b>portable, powerful, robust, and dynamic</b>, with the ability to fit the needs of virtually any type of application.@Java guarantees that you'll be able to <b>Write Once, Run Nearly Anywhere.</b>",
       "taskWhatsNext": 2,
@@ -41,7 +21,7 @@
     {
       "taskType" : 2,
       "taskName": "Welcome to Java",
-      "taskNumber": 4,
+      "taskNumber": 2,
       "sectionNumber": 1,
       "taskText": "To distribute your application to different platforms, how many Java versions do you need to create?",
       "taskWhatsNext": 1,
@@ -52,7 +32,7 @@
     {
       "taskType" : 1,
       "taskName": "Java",
-      "taskNumber": 5,
+      "taskNumber": 3,
       "sectionNumber": 1,
       "taskText": "More than <b>3 billion devices</b> run Java.<br>Java is used to develop apps for Google's Android OS, various Desktop Applications, such as media players, antivirus programs, Web Applications, Enterprise Applications (i.e. banking), and many more!<br>It is easy to learn and simple to use.@Learn, practice, and then join the <b>huge community</b> of Java developers around the world!",
       "taskWhatsNext": 2,
@@ -60,7 +40,7 @@
     {
       "taskType" : 2,
       "taskName": "Java",
-      "taskNumber": 6,
+      "taskNumber": 4,
       "sectionNumber": 1,
       "taskText": "Which one of the following statements is true?",
       "taskWhatsNext": 3,

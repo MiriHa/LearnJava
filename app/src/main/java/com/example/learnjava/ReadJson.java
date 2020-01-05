@@ -126,11 +126,12 @@ public class ReadJson {
                         }
                         //Type: Code -> String[]
                         else if(viewType_value == 6){
-                            JSONArray solutionStringArray = taskObject.getJSONArray("exerciseSolutionStringArray");
-                            String[] solutionStringArray_value = toStringArray(solutionStringArray);
+//                            JSONArray solutionStringArray = taskObject.getJSONArray("exerciseSolutionStringArray");
+//                            String[] solutionStringArray_value = toStringArray(solutionStringArray);
+                            String solutionString_value = taskObject.getString("exerciseSolutionString");
 
                             //Add values in ArrayList
-                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,section_number_value,solutionStringArray_value, null, next_value, viewType_value,0,"", null);
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,section_number_value,null, null, next_value, viewType_value,0,solutionString_value, null);
                             taskList.add(newExercise);
 
                         }

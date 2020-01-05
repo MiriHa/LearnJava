@@ -319,31 +319,31 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         switch ((int) progressController.getCurrentSection()) {
 
             case 1:
-                background.setBackgroundColor(ContextCompat.getColor(getActivity(), (R.color.lightGreen1)));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(), (R.color.section1_color)));
                 break;
             case 2:
-                background.setBackgroundColor(ContextCompat.getColor(getActivity(), (R.color.lightGreen2)));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(), (R.color.section2_color)));
                 break;
             case 3:
-                background.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.lightGreen3));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.section3_color));
                 break;
             case 4:
-                background.setBackgroundColor(ContextCompat.getColor(getActivity(), (R.color.Green1)));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(), (R.color.section4_color)));
                 break;
             case 5:
-                background.setBackgroundColor(ContextCompat.getColor(getActivity(), (R.color.Green2)));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(), (R.color.section5_color)));
                 break;
             case 6:
-                background.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.Blue1));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.section6_color));
                 break;
             case 7:
-                background.setBackgroundColor(ContextCompat.getColor(getActivity(), (R.color.Blue2)));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(), (R.color.section7_color)));
                 break;
             case 8:
-                background.setBackgroundColor(ContextCompat.getColor(getActivity(), (R.color.Blue3)));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(), (R.color.section8_color)));
                 break;
             case 9:
-                background.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.Blue4));
+                background.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.section9_color));
                 break;
 
 

@@ -73,10 +73,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         currentuserID = auth.getCurrentUser().getUid();
 
         myProgressController.fetchModelUserProgress();
-        Log.i("M_MAIN_ACTIVITY","set Refrences and Controller");
+        Log.i("M_MAIN_ACTIVITY", "set Refrences and Controller");
         myProgressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_MAIN_ACTIVITY", "set Refrences and Content");
 
-       // myProgressController.updateLatestSection(1);
+        //TODO löschen wenn nicht mehr am test?
+        myProgressController.updateLatestSection(5);
         checkIfSolved(lesson1, 1);
         checkIfSolved(lesson2, 2);
         checkIfSolved(lesson3, 3);
@@ -92,14 +93,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * Check id the Section is unlocked, if yes set Clicklistener, if no grey background
+     *
      * @param section which section Layout should be checked
-     * @param number the number of the section
+     * @param number  the number of the section
      */
     public void checkIfSolved(LinearLayout section, Integer number) {
-       // Date currentTime = Calendar.getInstance().getTime();
-        myProgressController.fetchModelUserProgress();
+        // Date currentTime = Calendar.getInstance().getTime();
+       // myProgressController.fetchModelUserProgress();
 
-        Log.i("M_MAIN_ACTIVITY", "checkIfSOlved " +String.valueOf(myProgressController.getLatestSectionNumber()) + " " + number);
+        Log.i("M_MAIN_ACTIVITY", "checkIfSOlved " + String.valueOf(myProgressController.getLatestSectionNumber()) + " " + number);
         if (number == 1) {
             //TODO already in Modeoluser inizialize
             // myProgressController.updateUnlockedSections(1);
@@ -113,9 +115,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    public void showCueWord(String text){
+    public void showCueWord(String text, int section) {
         FragmentManager fm = getSupportFragmentManager();
-        WordCueFragment wordCueFragment = WordCueFragment.newIntance(text);
+        WordCueFragment wordCueFragment = WordCueFragment.newIntance(text,section);
         wordCueFragment.show(fm, "fragment_word_cue");
     }
 
@@ -177,8 +179,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * open the right lessonActivity
+     *
      * @param otherActivityClass which activity is needed
-     * @param lessonNumber which lessonNumber is needed
+     * @param lessonNumber       which lessonNumber is needed
      */
     public void startActivity(Class<?> otherActivityClass, int lessonNumber) {
         //saveState();
@@ -234,7 +237,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            Log.i("M_MAIN_ACTIVITY","on stop remove AuthListener");
 //        }
     }
-
 
 
 }

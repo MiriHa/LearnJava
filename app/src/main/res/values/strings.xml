@@ -51,5 +51,8 @@
     <string name="toast_loginFailed">LogIn failed. Try again</string>
     <string name="error_wrongPassword">Wrong password. Try again</string>
 
+    <!--Cues-->
+    <string name="wordCue_Button">Got it!</string>
+
 
 </resources>

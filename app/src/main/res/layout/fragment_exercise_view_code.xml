@@ -19,7 +19,6 @@
             android:layout_marginStart="6dp"
             android:background="@drawable/rounded_corners"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/nextButtonExerciseAnswer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -45,8 +44,8 @@
                     android:layout_height="wrap_content"
                     android:maxEms="20"
                     android:inputType="textMultiLine"
-                    android:hint="code"
-                    android:text="public class _____{\n\n\n\n\n\n}"/>
+                    android:hint="@string/code_fragment_inputtitle"
+                    android:text="@string/code_fragment_sample"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,7 +83,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contentHolderCode"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

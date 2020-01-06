@@ -4,7 +4,7 @@
       "taskName" : "Primitive Operator",
       "taskNumber" : 0,
       "sectionNumber": 4,
-      "taskText" : "Java provides a rich set of <b>operators</b> to use in manipulating variables. A value used on either side of an operator is called an <b>operand</b>.<br>For example, in the expression below, the numbers 6 and 3 are operands of the plus operator:@int x = 6 + 3;@it can also be used to add together a variable and a value, or a variable and another variable:\n@int sum1 = 100 + 50;&ensp;&ensp;// 150 (100 + 50)@int sum2 = sum1 + 250;&ensp;&ensp;// 400 (150 + 250)@int sum3 = sum2 + sum2;&ensp;&ensp;// 800 (400 + 40",
+      "taskText" : "Java provides a rich set of <b>operators</b> to use in manipulating variables. A value used on either side of an operator is called an <b>operand</b>.<br>For example, in the expression below, the numbers 6 and 3 are operands of the plus operator:@int x = 6 + 3;@it can also be used to add together a variable and a value, or a variable and another variable:@int sum1 = 100 + 50;<br>&ensp;&ensp;// 150 (100 + 50)@int sum2 = sum1 + 250;<br>&ensp;&ensp;// 400 (150 + 250)@int sum3 = sum2 + sum2;<br>&ensp;&ensp;// 800 (400 + 40)",
       "taskWhatsNext" : 1,
       "taskType" : 1,
       "lessonKeyWords" : ["Operators", "manipulate variables", "operand", "addition"]
@@ -26,7 +26,7 @@
       "taskWhatsNext": 2,
       "taskType" : 2,
       "exerciseViewType" : 3,
-      "exerciseContentStringArray" : ["int x =2;","int y = 4;","int result = @#@;","System.out.println(@#@);"],
+      "exerciseContentStringArray" : ["int x = 2;","int y = 4;","int result = @#@;","System.out.println(@#@);"],
       "exerciseSolutionStringArray": ["x+y","result"]
     },
     {
@@ -38,20 +38,106 @@
       "taskType" : 2,
       "exerciseViewType" : 3,
       "exerciseContentStringArray" : ["int x = 5;","int y = 4;","#@ result = @#@;","System.out.println(@#@);"],
-      "exerciseSolutionStringArray": ["x*y","int","result"]
+      "exerciseSolutionStringArray": ["int","x*y","result"]
     },
     {
-      "taskName": "Java",
+      "taskName": "Modulo",
       "taskNumber": 4,
       "sectionNumber": 4,
-      "taskText": "Which one of the following statements is true?",
-      "taskWhatsNext": 3,
+      "taskText": "The <b>modulo</b> (or remainder) math operation performs an integer division of one value by another, and returns the remainder of that division. <br>The operator for the modulo operation is the percentage (%) character.<br>Example:@int value = 23;<br>int res = value % 6; // res is 5@<b>!</b>Dividing 23 by 6 returns a quotient of 3, with a remainder of 5. Thus, the value of 5 is assigned to the <b>res</b> variable.",
+      "taskWhatsNext": 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["modulo", "operation", "division","remainder"]
+    },
+    {
+      "taskName": "Modulo",
+      "taskNumber": 5,
+      "sectionNumber": 4,
+      "taskText": "What value is stored in the result variable?\n\nint x = 8, y = 5;\nint result = x % y;",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 1,
+      "exerciseSolutionString": "3"
+    },
+    {
+      "taskName": "Increment Operators",
+      "taskNumber": 6,
+      "sectionNumber": 4,
+      "taskText": "An <b>increment</b> or <b>decrement</b> operator provides a more convenient and compact way to increase or decrease the value of a variable by <b>one</b>. <br>For example, the statement <b>x=x+1;</b> can be simplified to <b>++x; </b>@<b>++ increment</b><br>&ensp;increases the value by one@<b>-- decrement</b><br>&ensp;decreases the value by one<br><br>Example:@&ensp;&ensp;int test = 5;<br>&ensp;&ensp;++test; // test is now 6@&ensp;&ensp;int test = 5;<br>&ensp;&ensp;--test; // test is now 4",
+      "taskWhatsNext": 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["increment", "decrement", "operators","++","--"]
+    },
+    {
+      "taskName": "Increment and Decrement",
+      "taskNumber": 7,
+      "sectionNumber": 4,
+      "taskText": "Fill in the blank to print 11:",
+      "taskWhatsNext": 1,
       "taskType" : 2,
-      "exerciseViewType" : 2,
-      "exerciseSolutionStringArray" : ["Java is used only in Nasa's space related applications", "Java is used only in web and mobile applications","Java has a huge developer community"],
-      "exerciseSolutionInt": 3
+      "exerciseViewType" : 3,
+      "exerciseContentStringArray" : ["int a = 10;","#@a;","System.out.println(a);"],
+      "exerciseSolutionStringArray": ["++"]
+    },
+    {
+      "taskName": "Prefix and Postfix",
+      "taskNumber": 8,
+      "sectionNumber": 4,
+      "taskText": "Two forms,<b> prefix and postfix</b>, may be used with both the increment and decrement operators. With prefix form, the operator appears before the operand, while in postfix form, the operator appears after the operand. Below is an explanation of how the two forms work:<br><br><b>Prefix:</b> Increments the variable's value and uses the new value in the expression. <br>Example:@&ensp;&ensp;int x = 34;<br>&ensp;&ensp;int y = ++x; // y is 35@The value of x is first incremented to 35, and is then assigned to y, so the values of both x and y are now 35.<br><br><b>Postfix:</b> The variable's value is first used in the expression and is then increased. <br>Example:@&ensp;&ensp;int x = 34;<br>&ensp;&ensp;int y = x++; // y is 34",
+      "taskWhatsNext": 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["prefix", "postfix", "after operand","x++","--x"]
+    },
+    {
+      "taskName": "Prefix and Postfix",
+      "taskNumber": 9,
+      "sectionNumber": 4,
+      "taskText": "What is the output of the following code?\n     int x = 14;\n    System.out.println(x++);",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 1,
+      "exerciseSolutionString": "14"
+    },
+    {
+      "taskName": "Java Comparison Operators",
+      "taskNumber": 10,
+      "sectionNumber": 4,
+      "taskText": "Comparison operators are used to compare two values:@<b>==</b>&ensp;&ensp;Equal to<br>&ensp;&ensp;Example: x == y@<b>!=</b>&ensp;&ensp;Not equal<br>&ensp;&ensp;Example: x != y@<b>></b>&ensp;&ensp;Greater than<br>&ensp;&ensp;Example: x > y@<b> &lt; </b>&ensp;&ensp;Less than<br>&ensp;&ensp;Example: x < y@<b>>=</b>&ensp;&ensp;Greater than or equal to<br>&ensp;&ensp;Example: x >= y@<b>&lt;=</b>&ensp;&ensp;Less than or equal to<br>&ensp;&ensp;Example: x <= y",
+      "taskWhatsNext": 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["comparison", "operator", "Greater than","Lesser than"]
+    },
+    {
+      "taskName": "Comparison Operators",
+      "taskNumber": 11,
+      "sectionNumber": 4,
+      "taskText": "What are the outputs of these code snippets?\n\nint var1 = 4;\nint var2 = 7",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 3,
+      "exerciseContentStringArray": ["System.out.println(var1 == var2);","#","System.out.println(var2 <= var1);","#","System.out.Println(var1 < 5);","#"],
+      "exerciseSolutionStringArray": ["false","false","true"]
+    },
+    {
+      "taskName": "Java Logical Operators",
+      "taskNumber": 12,
+      "sectionNumber": 4,
+      "taskText": "Logical operators are used to determine the logic between variables or values:@<b>&&&ensp;Logical and</b><br>&ensp;Returns true if both statements are true<br>&ensp;Example: x < 5 && x < 10@<b>||&ensp;Logical or</b><br>&ensp;Returns true if one of the statements is true<br>&ensp;Example: x < 5 || x < 4@<b<>!&ensp; Logical not</b><br>&ensp;Reverse the result, returns false if the result is true<br>&ensp;Example: !(x < 5 && x < 10)",
+      "taskWhatsNext": 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["Logical", "operator", "and","or"]
+    },
+    {
+      "taskName": "Logical Operators",
+      "taskNumber": 13,
+      "sectionNumber": 4,
+      "taskText": "What ist the output of these code snippets?\n\nint var1 = 6;\nint var2 = 10;\n",
+      "taskWhatsNext": 3,
+      "taskType": 2,
+      "exerciseViewType": 3,
+      "exerciseContentStringArray": ["System.out.println(var1 > 3 || var2 <= 8);","#","System.out.println(var1 > 3 && var2 <= 8);","#","System.out.println( !(var1 == 6 && var2 <= 10) );","#"],
+      "exerciseSolutionStringArray": ["true","false","true"]
     }
-
   ]
 
 }

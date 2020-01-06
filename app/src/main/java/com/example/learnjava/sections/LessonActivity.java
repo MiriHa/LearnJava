@@ -19,6 +19,9 @@ import com.example.learnjava.Controller;
 import com.example.learnjava.MainActivity;
 import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
+import com.example.learnjava.resumption_cues.HistoryFragment;
+import com.example.learnjava.resumption_cues.QuestionsFragment;
+import com.example.learnjava.resumption_cues.WordCloudFragment;
 import com.example.learnjava.resumption_cues.WordCueFragment;
 
 import java.util.ArrayList;
@@ -67,6 +70,7 @@ public class LessonActivity extends AppCompatActivity {
         if (b != null)
             sectionNumber = (int) b.get("LESSON_NUMBER");
         Log.i("M_LESSON_ACTIVITY", " section opend: " + sectionNumber);
+
         progressController.updateCurrentSection(sectionNumber);
 
         progressController.loadContent(sectionNumber, this);
@@ -82,7 +86,7 @@ public class LessonActivity extends AppCompatActivity {
 
         //open the first lesson Fragment
         openNewTask(0);
-        showCueWord(currentTask.getTaskName(),currentSection);
+        showCue(sectionNumber,3);
 
     }
 
@@ -197,13 +201,47 @@ public class LessonActivity extends AppCompatActivity {
         }
     }
 
-    public void showCueWord(String text, int section) {
+    /**
+     * open the right resumption Cue
+     * @param section which is the currentSection
+     * @param cue which cue is needed: 1 WORD-CUE, 2: WORD-CLOUD, 3: HISTORY, 4: QUESTIONS
+     */
+
+
+    public void showCue(int section, int cue) {
         FragmentManager fm = getSupportFragmentManager();
-        WordCueFragment wordCueFragment = WordCueFragment.newIntance(text,section);
-        wordCueFragment.setCancelable(true);
-        //wordCueFragment.setCanceledOnTouchOutside(true);
-        wordCueFragment.show(fm, "fragment_word_cue");
-        Log.i("M_LESSON_ACTIVITY","show Word Cue " + text + " "+section);
+        switch (cue){
+            case 1:
+                WordCueFragment wordCueFragment = WordCueFragment.newIntance(currentTask.getTaskName(),section);
+               // wordCueFragment.getDialog().setCanceledOnTouchOutside(false);
+                wordCueFragment.show(fm, "fragment_word_cue");
+                //TODO log what before that cue was
+                progressController.makeaLog(Calendar.getInstance().getTime(),"OPENED_A_CUE","WordCue");
+                Log.i("M_LESSON_ACTIVITY","show Word Cue " + currentTask.getTaskName() + " "+section);
+                break;
+            case 2:
+                WordCloudFragment wordCloudFragment = WordCloudFragment.newInstance("bla","blub00");
+               // wordCloudFragment.getDialog().setCanceledOnTouchOutside(false);
+                wordCloudFragment.show(fm, "fragment_cloud_cue");
+                progressController.makeaLog(Calendar.getInstance().getTime(),"OPENED_A_CUE","CloudCue");
+                Log.i("M_LESSON_ACTIVITY","show Word Cloud Cue "+ " "+section);
+                break;
+            case 3:
+                HistoryFragment historyFragment = HistoryFragment.newInstance(section);
+               // historyFragment.getDialog().setCanceledOnTouchOutside(false);
+                historyFragment.show(fm, "fragment_cloud_cue");
+                progressController.makeaLog(Calendar.getInstance().getTime(),"OPENED_A_CUE","HistoryCue");
+                Log.i("M_LESSON_ACTIVITY","show History Cue "+ " "+section);
+                break;
+            case 4:
+                QuestionsFragment questionsFragment = QuestionsFragment.newInstance("aha","oho");
+                //questionsFragment.getDialog().setCanceledOnTouchOutside(false);
+                questionsFragment.show(fm, "fragment_cloud_cue");
+                progressController.makeaLog(Calendar.getInstance().getTime(),"OPENED_A_CUE","questionCue");
+                Log.i("M_LESSON_ACTIVITY","show Question Cue "+ " "+section);
+                break;
+
+        }
     }
 
     /**
@@ -384,7 +422,6 @@ public class LessonActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {
-
         Log.i("M_BackButtonPressed", " in navigation");
     }
 

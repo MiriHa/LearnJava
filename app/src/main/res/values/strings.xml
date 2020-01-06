@@ -8,7 +8,7 @@
     <string name="Lesson1">Tutorial and Introduction</string>
     <string name="Lesson2">Hello World and Comments</string>
     <string name="Lesson3">Data Types and Variables</string>
-    <string name="Lesson4">Primitve Operators</string>
+    <string name="Lesson4">Primitive Operators</string>
     <string name="Lesson5">Functions</string>
     <string name="Lesson6">Conditionals and Loops</string>
     <string name="Lesson7">Arrays</string>
@@ -24,6 +24,11 @@
     //For testing
     <string name="longstring">nothing here yet nothin ghere yet nothing nothing nothing</string>
     <string name="shortString">nothing here yet</string>
+
+
+    <!--Code Exercise-->
+    <string name="code_fragment_sample">public class       {\n\n\n\n\n\n\n\n\n\n\n\n}</string>
+    <string name="code_fragment_inputtitle">Code</string>
 
 
     <!-- SignIn -->
@@ -52,7 +57,13 @@
     <string name="error_wrongPassword">Wrong password. Try again</string>
 
     <!--Cues-->
-    <string name="wordCue_Button">Got it!</string>
+    <string name="Cue_Button">Got it!</string>
+    <string name="wordCue_text">Your last Lesson</string>
+
+    <string name="History_Cue_text">Your learned Sections</string>
+    <string name="Question_Cue_text">Can you answer these?</string>
+    <string name="Cloud_Cue_text">A Reminder</string>
+
 
 
 </resources>

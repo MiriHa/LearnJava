@@ -1,89 +1,65 @@
 {
   "tasks": [
     {
-      "taskName" : "Tutorial",
+      "taskName" : "Methods",
       "taskNumber" : 0,
       "sectionNumber": 5,
-      "taskText" : "How to Use this app. Hello! This learning App will present you different Lessons to help you learn java. Here will be presented a lesson with theory that you need to read and understand and follwing this there will be an exercise to check our nearly learned knowledge",
+      "taskText" : "Methods define <b>behavior.</b> A method is a collection of statements that are grouped together to perform an operation. <b>System.out.println()</b> is an example of a method. You can define your own methods to perform your desired tasks. <br>Let's consider the following code: @class MyClass {<br><br>&ensp;static void sayHello() {<br>&ensp;&ensp;System.out.println(\"Hello World!\");<br>&ensp;}<br><br>&ensp;public static void main(String[ ] args) {<br>&ensp;&ensp;sayHello();<br>&ensp;}<br>}<br>// Outputs \"Hello World!\"@The code above declares a method called \"sayHello\", which prints a text, and then gets called in <b>main.</b>@<b>!To call a method, type its name and then follow the name with a set of parentheses.</b>",
       "taskWhatsNext" : 2,
       "taskType" : 1,
-      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
+      "lessonKeyWords" : ["Methods", "statements", "operation", "tasks","body"]
     },
     {
-      "taskType" : 2,
-      "taskName" : "CODE",
-      "taskNumber" : 1,
+      "taskName": "Methods",
+      "taskNumber": 1,
       "sectionNumber": 5,
-      "taskText" : "Write a COde for a apple class with a value string appel",
-      "taskWhatsNext" : 2,
-      "exerciseViewType" : 6,
-      "exerciseSolutionString" : "publicclassAppel{StringAppel=\"red\";}"
-    },
-    {
-      "taskType" : 2,
-      "taskName" : "ORDER",
-      "taskNumber" : 2,
-      "sectionNumber": 5,
-      "taskText" : "Order the line to make a correct java code",
-      "taskWhatsNext" : 1,
-      "exerciseViewType" : 5,
-      "exerciseContentStringArray" : ["This is Line 1","This is line 2","this is line 3", "this is a very long line 4. verrry long. lonng.loooong- so looooong"],
-      "exerciseSolutionIntArray" : [1,2,3,4]
-    },
-    {
-      "taskName": "Introduction",
-      "taskNumber": 2,
-      "taskText" : " THis is an indrocution TExt blabla",
-      "taskWhatsNext" : 2,
-      "taskType" : 1,
-      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
-    },
-    {
-      "taskName": "introdduction2",
-      "taskNumber": 3,
-      "taskText": "Fill in the Blanks to complete this hello World program,",
+      "taskText": "Fill in the blanks to call the method \"hello\" form main:",
       "taskWhatsNext": 1,
-      "taskType" : 2,
-      "exerciseViewType" : 1,
-      "exerciseSolutionString" : ["static", "main", "args"],
-      "exerciseSolutionInt" : []
-    },
-    {
-      "taskName": "Main Method",
-      "taskNumber": 4,
-      "taskText" : " THis is an indrocution to the main method ahahaaaa",
-      "taskWhatsNext" : 2,
-      "taskType" : 1,
-      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
-    },
-    {
-      "taskName": "Main Method2",
-      "taskNumber": 5,
-      "taskText": "Do a thing",
-      "taskWhatsNext": 1,
-      "taskType" : 2,
-      "exerciseViewType" : 2,
-      "exerciseSolutionString" : [],
-      "exerciseSolutionInt" : [1,2,3]
-    },
-    {
-      "taskName": "Main Method3",
-      "taskNumber": 6,
-      "taskText" : " THis is an indrocution to the main method ahahaaaablub",
-      "taskWhatsNext" : 2,
-      "taskType" : 1,
-      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
-    },
-    {
-      "taskName": "Main Method4",
-      "taskNumber": 7,
-      "taskText": "Do a thing yes",
-      "taskWhatsNext": 3,
       "taskType" : 2,
       "exerciseViewType" : 3,
-      "exerciseSolutionString" : [],
-      "exerciseSolutionInt" : [1,2,3]
+      "exerciseContentStringArray" : ["public static void main(String[ ] args) {","    @#","}","static void hello{","   System.out.println(\"hi\");","}"],
+      "exerciseSolutionStringArray": ["hello();"]
+    },
+    {
+      "taskName" : "Calling Methods",
+      "taskNumber" : 2,
+      "sectionNumber": 5,
+      "taskText" : "You can call a <b>method</b> as many times as necessary. <br>When a method runs, the code jumps down to where the method is defined, executes the code inside of it, then goes back and proceeds to the next line.<br><b>Example: </b>@class MyClass {<br><br>&ensp;static void sayHello() {<br>&ensp;System.out.println(\"Hello World!\");<br>&ensp;}<br><br>&ensp;public static void main(String[ ] args) {<br>&ensp;&ensp;sayHello();<br>&ensp;&ensp;sayHello();<br>&ensp;&ensp;sayHello();<br>&ensp;}<br>}<br><br>// Hello World!<br>// Hello World!<br>// Hello World!<br>@<b>!</b>In cases like the one above, where the same thing is repeated over and over, you can achieve the same result using loops (while or for).",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["Calling Methods", "many times", "loops", "call","body"]
+    },
+    {
+      "taskName": "Calling Methods",
+      "taskNumber": 3,
+      "sectionNumber": 5,
+      "taskText": "How many times can you can call a method?",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 2,
+      "exerciseSolutionStringArray": ["one", "only two", "as many as you want","you have to set it in advance"],
+      "exerciseSolutionInt": 3
+    },
+    {
+      "taskName": "Method Parameters",
+      "taskNumber": 4,
+      "sectionNumber": 5,
+      "taskText": "You can also create a method that takes some data, called <b>parameters,</b> along with it when you call it. Write parameters within the method's parentheses.<br>For example, we can modify our <b>sayHello()</b> method to take and output a <b>String</b> parameter.@class MyClass {<br><br>@ensp;static void sayHello(<b>String name</b>) {<br>@ensp;@ensp;System.out.println(\"Hello \" + <b>name</b>);<br>@ensp;}<br><br>@ensp;public static void main(String[ ] args) {<br>@ensp;@ensp;sayHello(\"David\");<br>@ensp;@ensp;sayHello(\"Amy\");<br>@ensp;}<br><br>}<br>// Hello David<br>// Hello Amy@The method above takes a String called <b>name</b> as a parameter, which is used in the method's body. Then, when calling the method, we pass the parameter's value inside the parentheses.Methods can take multiple, comma-separated parameters.@<b>!</b>The advantages of using methods instead of simple statements include the following:<br><b>- code reuse: </b>You can write a method once, and use it multiple times, without having to rewrite the code each time.<br><b>-parameters:</b> Based on the parameters passed in, methods can perform various actions.",
+      "taskWhatsNext": 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["method","paramters","input","value"]
+    },
+    {
+      "taskName": "Method Parameters",
+      "taskNumber": 5,
+      "sectionNumber": 5,
+      "taskText": "What is the output results from this code?\n\npublic static void main(String[ ] args) {\n   doSomething(4);\n} \nstatic void doSomething(int x) {\n   System.out.println(x*x); \n}\n",
+      "taskWhatsNext": 3,
+      "taskType": 2,
+      "exerciseViewType": 1,
+      "exerciseContentString": "16"
     }
+
   ]
 
 }

@@ -332,12 +332,9 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
         int action = event.getAction();
         switch (action) {
             case DragEvent.ACTION_DRAG_STARTED:
-                if (event.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
-//                        v.setBackgroundColor(getResources().getColor(R.color.grey));
-//                        v.invalidate();
-                    return true;
-                }
-                return false;
+                //                        v.setBackgroundColor(getResources().getColor(R.color.grey));
+                //                        v.invalidate();
+                return event.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN);
             case DragEvent.ACTION_DRAG_ENTERED:
 //                    v.setBackgroundColor(getResources().getColor(R.color.lightGreen2));
 //                    v.invalidate();
@@ -354,7 +351,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                 TextView dropTarget = (TextView) v;
                 //view being dragged and dropped
                 TextView dropped = (TextView) view;
-                //checking whether first character of dropTarget equals first character of dropped
+
                 if (String.valueOf(dropTarget.getText().toString().charAt(0)).equals("_")){
 //                    if (dropTarget.getText().toString().charAt(0) == dropped.getText().toString().charAt(0)) {
                         //stop displaying the view where it was before it was dragged

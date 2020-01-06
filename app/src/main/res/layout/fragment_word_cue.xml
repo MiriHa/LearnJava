@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/holder"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,8 +13,7 @@
         android:id="@+id/wordCueBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/section1_color">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,6 +24,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.43">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="25dp"
+                android:textSize="30sp"
+                android:text="@string/wordCue_text"/>
 
             <TextView
                 android:id="@+id/wordCueText"
@@ -45,7 +54,7 @@
                 android:layout_marginEnd="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/button_altert_green"
-                android:text="@string/wordCue_Button" />
+                android:text="@string/Cue_Button" />
 
         </LinearLayout>
 

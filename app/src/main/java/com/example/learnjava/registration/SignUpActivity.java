@@ -137,7 +137,7 @@ public class SignUpActivity extends AppCompatActivity {
         String userId = auth.getCurrentUser().getUid();
         Log.i("M_SIGNUP_ACTIVITY","saveUserToFirebase id: " + userId);
         final ModelUserProgress user = new ModelUserProgress(userId, username, email);
-        myProgressController.initializeModelUser(user);
+        myProgressController.initializeModelUser(this, user);
         Utils.saveSharedSetting(SignUpActivity.this, MainActivity.PREF_USER_FIRST_TIME, "false");
 
         ref.child("users").child(userId).setValue(user);

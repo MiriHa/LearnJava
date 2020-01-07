@@ -71,12 +71,12 @@ public class LessonActivity extends AppCompatActivity {
             sectionNumber = (int) b.get("LESSON_NUMBER");
         Log.i("M_LESSON_ACTIVITY", " section opend: " + sectionNumber);
 
-        progressController.updateCurrentSection(sectionNumber);
+        progressController.updateCurrentSection(this,sectionNumber);
 
         progressController.loadContent(sectionNumber, this);
         taskContent = progressController.getTaskContent();
 
-        progressController.fetchModelUserProgress();
+        progressController.fetchModelUserProgress(this);
 
         setProgressBar();
 
@@ -172,7 +172,7 @@ public class LessonActivity extends AppCompatActivity {
 
             //open the last Lesson
             case 3:
-                int lastlessonNumber = progressController.getLastLessonNumber();
+                int lastlessonNumber = progressController.getLastLessonNumber(this);
                 ModelTask lastLesson = taskContent.get(lastlessonNumber);
                // ModelTask lastLesson = progressController.getLastLesson();
                 Log.i("M_LESSON_ACTIVTIY", "last Lesson: " + lastLesson.getTaskName() + " whats next: " + lastLesson.getWhatsNext());
@@ -250,11 +250,11 @@ public class LessonActivity extends AppCompatActivity {
     public void updateProgressLastTask() {
 
         //add the finished section to the PorgressCOntrolller when needed
-        if(progressController.getLatestSectionNumber() == sectionNumber) {
-            progressController.updateLatestSection(sectionNumber + 1);
+        if(progressController.getLatestSectionNumber(this) == sectionNumber) {
+            progressController.updateLatestSection(this,sectionNumber + 1);
             Log.i("M_LESSON_ACTIVITY", "updatet LatestSection");
         }
-        Log.i("M_LESSON_ACTIVITY", " updateprogress: latestSection updated " + progressController.getLatestSectionNumber());
+        Log.i("M_LESSON_ACTIVITY", " updateprogress: latestSection updated " + progressController.getLatestSectionNumber(this));
         Log.i("M_LESSON_ACTIVITY", "last task of section is reached");
         //GO Back to the MainActivity
         Intent intent = new Intent(LessonActivity.this, MainActivity.class);
@@ -274,11 +274,11 @@ public class LessonActivity extends AppCompatActivity {
             //TODO progressController.addFinishedTask(currentTask)
             //TODO why is it the same code? here
             progressCurrentScreen =  currentTask.getTaskNumber() + 1;
-            progressController.updateCurrentScreen(progressCurrentScreen);
+            progressController.updateCurrentScreen(this,progressCurrentScreen);
             Log.i("M_LESSON_ACTIVITY", " checkprogress: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
         } else {
             progressCurrentScreen =  currentTask.getTaskNumber() + 1;
-            progressController.updateCurrentScreen(progressCurrentScreen);
+            progressController.updateCurrentScreen(this,progressCurrentScreen);
             Log.i("M_LESSON_ACTIVITY", " checkProgress else: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
         }
     }
@@ -288,20 +288,19 @@ public class LessonActivity extends AppCompatActivity {
      */
     public void setCurrentTask() {
         //Check if it is the latest unlocked section, when yes open the most recentTask
-//        progressController.doSomething();
-//        int latestSection = (int) progressController.getLatestSectionNumber();
-//        if (latestSection == sectionNumber) {
-//            currentTaskNumber = (int) progressController.getLatestTaskNumber();
-//            currentTask = taskContent.get((int) currentTaskNumber);
-//            progressController.updateLatestTaskNumber(currentTaskNumber);
-//            Log.i("M_LESSON_ACTIVITY","set recent task in latest Section " + currentTask.getTaskName() + " " + currentTask.getTaskNumber());
-//        } else {
+        int latestSection = (int) progressController.getLatestSectionNumber(this);
+        if (latestSection == sectionNumber) {
+            currentTaskNumber = (int) progressController.getLatestTaskNumber(this);
+            currentTask = taskContent.get((int) currentTaskNumber);
+            progressController.updateLatestTaskNumber(this,currentTaskNumber);
+            Log.i("M_LESSON_ACTIVITY","set recent task in latest Section " + currentTask.getTaskName() + " " + currentTask.getTaskNumber());
+        } else {
             currentTask = taskContent.get(progressCurrentScreen);
             currentTaskNumber = currentTask.getTaskNumber();
             //Only update latestTaskNumber when in latest Section
             //progressController.updateLatestTaskNumber(currentTaskNumber);
             Log.i("M_LESSON_ACTIVITY", "set current task" + currentTask.getTaskName() + "currentTaskNumber: " + currentTask.getTaskNumber());
-//        }
+        }
     }
 
     /**
@@ -403,7 +402,7 @@ public class LessonActivity extends AppCompatActivity {
         for (int i = 0; i < taskContent.size(); i++) {
 //            String tagOld = "PROGRESS_FIELD_" + i;
             String tagOld = String.valueOf(i);
-            Log.i("M_LESSON_ACTIVITY", "latesTasknumber: " + progressController.getLatestTaskNumber() + " updateProgressBackground");
+            Log.i("M_LESSON_ACTIVITY", "latesTasknumber: " + progressController.getLatestTaskNumber(this) + " updateProgressBackground");
             TextView textViewOld = progressHolder.findViewWithTag(tagOld);
             textViewOld.setBackgroundResource(R.drawable.border);
         }
@@ -453,7 +452,7 @@ public class LessonActivity extends AppCompatActivity {
             int number = Integer.valueOf(tv.getTag().toString());
             //currentTask = taskContent.get(number);
            // if(progressController.checkTasks(taskContent.get(number)) || number <= progressController.getLatestTaskNumber()) {
-            if(progressController.checkTasks(taskContent.get(number)) || number <= progressController.getLatestTaskNumber()) {
+            if(progressController.checkTasks(taskContent.get(number)) && number <= progressController.getLatestTaskNumber(context)) {
                 openTaskProgress(2, number);
             } else {
                 Toast.makeText(context, "Not unlocked yet", Toast.LENGTH_SHORT).show();
@@ -472,7 +471,9 @@ public class LessonActivity extends AppCompatActivity {
             TextView tv = (TextView) v;
             int number = Integer.valueOf(tv.getTag().toString());
             // currentTask = taskContent.get(number);
-            if(progressController.checkTasks(taskContent.get(number)) || number <= progressController.getLatestTaskNumber()) {
+            //if(progressController.checkTasks(taskContent.get(number)) && number <= progressController.getLatestTaskNumber()) {
+            //TODO latest Tasknumber is the number in the lateste section -> useful?? when jumping in old sections all tasks should be unlocked
+            if(progressController.checkTasks(taskContent.get(number))&& number <= progressController.getLatestTaskNumber(context) ) {
                 openTaskProgress(1, number);
             } else {
             Toast.makeText(context, "Not unlocked yet", Toast.LENGTH_SHORT).show();

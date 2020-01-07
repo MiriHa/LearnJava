@@ -72,12 +72,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ref = FirebaseDatabase.getInstance().getReference();
         currentuserID = auth.getCurrentUser().getUid();
 
-        myProgressController.fetchModelUserProgress();
+        myProgressController.fetchModelUserProgress(this);
         Log.i("M_MAIN_ACTIVITY", "set Refrences and Controller");
         myProgressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_MAIN_ACTIVITY", "set Refrences and Content");
 
         //TODO löschen wenn nicht mehr am test?
-        myProgressController.updateLatestSection(9);
+        myProgressController.updateLatestSection(this, 9);
         checkIfSolved(lesson1, 1);
         checkIfSolved(lesson2, 2);
         checkIfSolved(lesson3, 3);
@@ -101,12 +101,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Date currentTime = Calendar.getInstance().getTime();
        // myProgressController.fetchModelUserProgress();
 
-        Log.i("M_MAIN_ACTIVITY", "checkIfSOlved " + String.valueOf(myProgressController.getLatestSectionNumber()) + " " + number);
+        Log.i("M_MAIN_ACTIVITY", "checkIfSOlved " + String.valueOf(myProgressController.getLatestSectionNumber(this)) + " " + number);
         if (number == 1) {
             //TODO already in Modeoluser inizialize
             // myProgressController.updateUnlockedSections(1);
             section.setOnClickListener(this);
-        } else if (number <= myProgressController.getLatestSectionNumber()) {
+        } else if (number <= myProgressController.getLatestSectionNumber(this)) {
             section.setOnClickListener(this);
         } else {
             section.setBackgroundColor(getResources().getColor(R.color.grey));

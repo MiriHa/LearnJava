@@ -61,7 +61,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         View view = inflater.inflate(R.layout.fragment_exercise, container, false);
         if (getActivity() != null)
             progressController = (Controller) getActivity().getApplicationContext();
-        Log.i("M_EXERCISE_FRAGMENT", " checkContorller: progressController Sections " + progressController.getLatestSectionNumber());
+        Log.i("M_EXERCISE_FRAGMENT", " checkContorller: progressController Sections " + progressController.getLatestSectionNumber(getContext()));
 
         progressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_A_EXERCISE", "number: " + currentTask.getTaskNumber() + " type: " + currentTask.getExerciseViewType());
 
@@ -201,7 +201,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
     @Override
     public void sendAnswerFromExerciseView(boolean answerChecked) {
         if (answerChecked) {
-            progressController.addFinishedTask(currentTask);
+            progressController.addFinishedTask(getContext(), currentTask);
             showFeedbackDialogRight();
             Log.i("M_EXERCISE_FRAGMENT", "answer was right");
             progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_RIGHT", "number: " + currentTask.getTaskNumber() + "section: "+currentTask.getSectionNumber()+" taskType: " + currentTask.getExerciseViewType());
@@ -316,7 +316,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
 
 
     private void setSectionColor() {
-        switch ((int) progressController.getCurrentSection()) {
+        switch ((int) progressController.getCurrentSection(getContext())) {
 
             case 1:
                 background.setBackgroundColor(ContextCompat.getColor(getActivity(), (R.color.section1_color)));

@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         myProgressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_MAIN_ACTIVITY", "set Refrences and Content");
 
         //TODO löschen wenn nicht mehr am test?
-        myProgressController.updateLatestSection(this, 9);
+        //myProgressController.updateLatestSection(this, 9);
         checkIfSolved(lesson1, 1);
         checkIfSolved(lesson2, 2);
         checkIfSolved(lesson3, 3);

@@ -354,7 +354,6 @@ public class LessonActivity extends AppCompatActivity {
             taskTypes[i] = task.getType();
         }
 
-        LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         LinearLayout.LayoutParams mParamsWeight = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1.5f);
         progressHolder.setWeightSum(tasksSize+(tasksSize/2));
 
@@ -453,6 +452,7 @@ public class LessonActivity extends AppCompatActivity {
             TextView tv = (TextView) v;
             int number = Integer.valueOf(tv.getTag().toString());
             //currentTask = taskContent.get(number);
+           // if(progressController.checkTasks(taskContent.get(number)) || number <= progressController.getLatestTaskNumber()) {
             if(progressController.checkTasks(taskContent.get(number)) || number <= progressController.getLatestTaskNumber()) {
                 openTaskProgress(2, number);
             } else {

@@ -2,19 +2,24 @@
   "tasks": [
     {
       "taskName" : "Tutorial",
-      "taskNumber" : 1,
+      "taskNumber" : 0,
+      "sectionNumber": 6,
       "taskText" : "How to Use this app. Hello! This learning App will present you different Lessons to help you learn java. Here will be presented a lesson with theory that you need to read and understand and follwing this there will be an exercise to check our nearly learned knowledge",
-      "taskWhatsNext" : 1,
+      "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
     },
     {
-      "taskName": "Introduction",
-      "taskNumber": 2,
-      "taskText" : " THis is an indrocution TExt blabla",
-      "taskWhatsNext" : 2,
-      "taskType" : 1,
-      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
+      "taskName": "Variables",
+      "taskNumber": 1,
+      "sectionNumber": 6,
+      "taskText": "Drag and drop from the options below to have a valid Java program.",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 4,
+      "exerciseSolutionStringArray":["int","true","boolean","float","String","void","class"],
+      "exerciseContentStringArray":["class Person{"," public static void main(String[ ]args){","  @#@name = \"John\";","  @#@age = 24;","  @#@height = 189,87;"," }","}"],
+      "exerciseSolutionIntArray": [4,0,3]
     },
     {
       "taskName": "introdduction2",

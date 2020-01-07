@@ -11,6 +11,7 @@ import com.example.learnjava.models.ModelFinishedTask;
 import com.example.learnjava.models.ModelLog;
 import com.example.learnjava.models.ModelTask;
 import com.example.learnjava.models.ModelUserProgress;
+import com.example.learnjava.registration.Utils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +28,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Controller extends android.app.Application {
 
@@ -50,22 +52,24 @@ public class Controller extends android.app.Application {
      */
     //call only once per user -> in popupwindow where user chooses Id
     //TODO give database as variable
-    public void initializeModelUser(ModelUserProgress modelUserProgress) {
+    public void initializeModelUser(Context ctx, ModelUserProgress modelUserProgress) {
     auth = FirebaseAuth.getInstance();
     ref = FirebaseDatabase.getInstance().getReference();
     userId = auth.getCurrentUser().getUid();
 
+    Utils.saveModelToProgress(ctx, modelUserProgress);
     Log.i("M_CONTROLLER","InstanzializeModelUserProgress: " + modelUserProgress.getUserId());
     this.modelUserProgress = modelUserProgress;
     }
 
-    public void fetchModelUserProgress() {
+    public void fetchModelUserProgress(Context ctx) {
         Log.i("M_CONTROLLER","fetchModelUserProgress1 ");
         auth = FirebaseAuth.getInstance();
         ref = FirebaseDatabase.getInstance().getReference();
         userId = auth.getCurrentUser().getUid();
 
-        modelUserProgress = new ModelUserProgress(userId);
+       // modelUserProgress = new ModelUserProgress(userId);
+        modelUserProgress = Utils.readProgress(ctx);
 
             FirebaseUser firebaseUser = auth.getCurrentUser();
             DatabaseReference currentReference = ref.child("users").child(firebaseUser.getUid());
@@ -92,6 +96,10 @@ public class Controller extends android.app.Application {
         String userId = auth.getCurrentUser().getUid();
         ref.child("users").child(userId).setValue(modelUserProgress);    }
 
+        public void saveProgresstoPrefrences(Context ctx){
+            Utils.saveModelToProgress(ctx,modelUserProgress);
+        }
+
     /**
      * Methods to check on the ModelUserProgress
      */
@@ -114,40 +122,45 @@ public class Controller extends android.app.Application {
      *
      */
 
-    public void addFinishedTask(ModelTask task) {
+    public void addFinishedTask(Context ctx, ModelTask task) {
         ModelFinishedTask finishedTask = new ModelFinishedTask(task.getSectionNumber(), task.getTaskNumber(), task.getTaskName());
         modelUserProgress.addFinishedTask(finishedTask);
         //ref.child("users").child(userId).child("finishedTasks").child(task.getTaskName()).setValue(task);
+        Utils.saveModelToProgress(ctx, modelUserProgress);
         ref.child("users").child(userId).child("finishedTasksList").child(task.getTaskName() + " " + task.getTaskNumber()).setValue(finishedTask);
         //updateProgresstoDatabase();
         Log.i("M_CONTROLLER", " addfnishedTask " + task.getTaskNumber());
     }
 
-    public void updateLatestSection(int sectionNumber){
+    public void updateLatestSection(Context ctx, int sectionNumber){
         Log.i("M_CONTROLLER", "updateLatestSections " + sectionNumber);
         modelUserProgress.setLatestSectionNumber((long) sectionNumber);
+        Utils.saveModelToProgress(ctx, modelUserProgress);
         ref.child("users").child(userId).child("latestSectionNumber").setValue((long) sectionNumber);
        // updateProgresstoDatabase();
     }
 
 
-    public void updateCurrentSection(int number) {
+    public void updateCurrentSection(Context ctx, int number) {
         modelUserProgress.updateUserProgressCurrentSection(number);
+        Utils.saveModelToProgress(ctx, modelUserProgress);
         ref.child("users").child(userId).child("userProgressCurrentSection").setValue((long) number);
        // updateProgresstoDatabase();
         Log.i("M_CONTROLLER", " CurrentSectionNumber " + number);
     }
 
-    public void updateCurrentScreen(int number) {
+    public void updateCurrentScreen(Context ctx, int number) {
         Log.i("M_CONTROLLER", " CurrentSreenNumber " + number);
         modelUserProgress.updateUserProgressCurrentScreen(number);
+        Utils.saveModelToProgress(ctx, modelUserProgress);
         ref.child("users").child(userId).child("userProgressCurrentScreen").setValue((long) number);
        // updateProgresstoDatabase();
     }
 
-    public void updateLatestTaskNumber(int number) {
+    public void updateLatestTaskNumber(Context ctx, int number) {
         Log.i("M_CONTROLLER", "updateLatesTaskNumber " + number);
         modelUserProgress.updateLatestTaskNumber(number);
+        Utils.saveModelToProgress(ctx, modelUserProgress);
         ref.child("users").child(userId).child("latestTaskNumber").setValue((long) number);
        // updateProgresstoDatabase();
     }
@@ -158,10 +171,11 @@ public class Controller extends android.app.Application {
      */
 
 
-    public void setLastLesson(int tasknumber) {
+    public void setLastLesson(Context ctx, int tasknumber) {
         Log.i("M_CONTROLLER", "setLastLesson: " + tasknumber);
        // modelUserProgress.setLastLesson(lastLesson);
         modelUserProgress.setLastLessonNumber(tasknumber);
+        Utils.saveModelToProgress(ctx, modelUserProgress);
         ref.child("users").child(userId).child("lastLessonNumber").setValue((long) tasknumber);
        //updateProgresstoDatabase();
     }
@@ -172,27 +186,31 @@ public class Controller extends android.app.Application {
     }
 
 
-    public long getCurrentSection() {
+    public long getCurrentSection(Context ctx) {
         Log.i("M_CONTROLLER", "getCurrentSection");
       //  fetchModelUserProgress();
+        modelUserProgress = Utils.readProgress(ctx);
         return modelUserProgress.getCurrentSection();
     }
 
-    public int getLastLessonNumber(){
+    public int getLastLessonNumber(Context ctx){
         Log.i("M_CONTROLLER", "getLastLessonNumber");
        // fetchModelUserProgress();
+        modelUserProgress = Utils.readProgress(ctx);
         return (int) modelUserProgress.getLastLessonNumber();
     }
 
-    public long getLatestTaskNumber() {
+    public long getLatestTaskNumber(Context ctx) {
         Log.i("M_CONTROLLER", "getLatestTaskNumber");
        // fetchModelUserProgress();
+        modelUserProgress = Utils.readProgress(ctx);
         return modelUserProgress.getLatestTaskNumber();
     }
 
-    public long getLatestSectionNumber(){
+    public long getLatestSectionNumber(Context ctx){
         Log.i("M_CONTROLLER", "getLatestSectionNumber");
         //fetchModelUserProgress();
+        modelUserProgress = Utils.readProgress(ctx);
         return modelUserProgress.getLatestSectionNumber();
     }
 
@@ -221,16 +239,16 @@ public class Controller extends android.app.Application {
      */
 
 
-    public Map<String, ModelLog> getLogList(){
-        return modelUserProgress.getLoggingList();
-    }
+//    public Map<String, ModelLog> getLogList(){
+//        return modelUserProgress.getLoggingList();
+//    }
 
     public void makeaLog(Date time, String eventType, String details){
         String strDate = dateFormat.format(time);
         String randomID = UUID.randomUUID().toString();
         String logID = "Log " + randomID;
         ModelLog modelLog = new ModelLog(logID, strDate, eventType, details);
-        modelUserProgress.addLog(modelLog);
+        //modelUserProgress.addLog(modelLog);
         ref.child("users").child(userId).child("loggingList").child(eventType +" "+ randomID).setValue(modelLog);
 
     }

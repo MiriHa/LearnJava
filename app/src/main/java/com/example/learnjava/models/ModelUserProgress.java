@@ -14,7 +14,7 @@ import java.util.Map;
  * Each Sections has various tasks either a theory lessons or Exercises.
  */
 
-@IgnoreExtraProperties
+//@IgnoreExtraProperties
 public class ModelUserProgress {
 
     private String userId;
@@ -45,7 +45,7 @@ public class ModelUserProgress {
 
     //Stores the Logs
    // private ArrayList<Float> finishedTasksNumbers = new ArrayList<>();
-    private Map<String, ModelLog> loggingList = new HashMap<>();
+   // private Map<String, ModelLog> loggingList = new HashMap<>();
 
 
 
@@ -227,15 +227,15 @@ public class ModelUserProgress {
      * Edit the Logging List
      */
 
-    public Map<String, ModelLog> getLoggingList() {
-        return loggingList;
-    }
-
-    public void setLoggingList(HashMap<String, ModelLog> loggingList) {
-        this.loggingList = loggingList;
-    }
-
-    public void addLog(ModelLog log){
-        loggingList.put(log.getEventType(),log);
-    }
+//    public Map<String, ModelLog> getLoggingList() {
+//        return loggingList;
+//    }
+//
+//    public void setLoggingList(HashMap<String, ModelLog> loggingList) {
+//        this.loggingList = loggingList;
+//    }
+//
+//    public void addLog(ModelLog log){
+//        loggingList.put(log.getEventType(),log);
+//    }
 }

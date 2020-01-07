@@ -68,9 +68,9 @@ public class LessonFragment extends Fragment {
                 Log.i("M_LESSON_FRAGMENT", "Button clicked, Next: "+whatsNext );
                 if ((getActivity() != null)) {
                     //save this as the Las lesson to come back to
-                    progressController.setLastLesson(currentTask.getTaskNumber());
+                    progressController.setLastLesson(getContext(),currentTask.getTaskNumber());
                     //Add lesson to finished tasks
-                    progressController.addFinishedTask(currentTask);
+                    progressController.addFinishedTask(getContext(),currentTask);
                     //open a exerciseFragment
                     if( whatsNext == 2) {
                         ((LessonActivity) getActivity()).openNewTask(2);
@@ -156,7 +156,7 @@ public class LessonFragment extends Fragment {
     }
 
     private void setSectionColor() {
-        switch ((int) progressController.getCurrentSection()) {
+        switch ((int) progressController.getCurrentSection(getContext())) {
 
             case 1:
                 background.setBackgroundColor(ContextCompat.getColor(getActivity(),(R.color.section1_color)));

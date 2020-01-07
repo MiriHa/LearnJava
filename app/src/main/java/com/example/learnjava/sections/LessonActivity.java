@@ -452,7 +452,8 @@ public class LessonActivity extends AppCompatActivity {
             int number = Integer.valueOf(tv.getTag().toString());
             //currentTask = taskContent.get(number);
            // if(progressController.checkTasks(taskContent.get(number)) || number <= progressController.getLatestTaskNumber()) {
-            if(progressController.checkTasks(taskContent.get(number)) && number <= progressController.getLatestTaskNumber(context)) {
+          Log.i("M_LESSONACTIVITY","onclick "+ progressController.checkTasks(taskContent.get(number)));
+            if(progressController.checkTasks(taskContent.get(number)) || number <= currentTask.getTaskNumber()) {
                 openTaskProgress(2, number);
             } else {
                 Toast.makeText(context, "Not unlocked yet", Toast.LENGTH_SHORT).show();
@@ -473,7 +474,11 @@ public class LessonActivity extends AppCompatActivity {
             // currentTask = taskContent.get(number);
             //if(progressController.checkTasks(taskContent.get(number)) && number <= progressController.getLatestTaskNumber()) {
             //TODO latest Tasknumber is the number in the lateste section -> useful?? when jumping in old sections all tasks should be unlocked
-            if(progressController.checkTasks(taskContent.get(number))&& number <= progressController.getLatestTaskNumber(context) ) {
+            ModelTask task = taskContent.get(number);
+            int tasknumber = task.getTaskNumber();
+            boolean check = progressController.checkTasks(taskContent.get(number));
+            boolean check2 = number <= currentTask.getTaskNumber();
+            if(check || check2 ) {
                 openTaskProgress(1, number);
             } else {
             Toast.makeText(context, "Not unlocked yet", Toast.LENGTH_SHORT).show();

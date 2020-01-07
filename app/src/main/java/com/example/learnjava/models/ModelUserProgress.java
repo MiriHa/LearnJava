@@ -1,5 +1,7 @@
 package com.example.learnjava.models;
 
+import android.util.Log;
+
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
@@ -120,9 +122,13 @@ public class ModelUserProgress {
      * Methods to check on UserProgress
      */
 
+
     //check if task was already read/exercise was solved
     public boolean checkTasks(ModelFinishedTask aTask){
-        return finishedTasksList.containsValue(aTask);
+        Log.i("M_MODELUSERPROGRESS","checktasks "+aTask.getTaskNumber() + " " + finishedTasksList.containsValue(aTask));
+        String id = aTask.getSectionNumber()+"."+aTask.getTaskNumber();
+        return finishedTasksList.containsKey(id);
+        //return finishedTasksList.containsValue(aTask);
     }
 
     //check if a section is already unlocked

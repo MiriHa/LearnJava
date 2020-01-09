@@ -41,7 +41,6 @@ public class ExerciseViewAnswerFragment extends Fragment {
 
     private LinearLayout exerciseViewHolder;
     private EditText editText;
-    private Button nextButton;
 
 
     public ExerciseViewAnswerFragment() {
@@ -67,11 +66,12 @@ public class ExerciseViewAnswerFragment extends Fragment {
         TextView exerciseText = view.findViewById(R.id.exerciseTextAnswer);
         exerciseText.setText(currentTask.getTaskText());
         editText = view.findViewById(R.id.editTextAnswer);
-        nextButton = view.findViewById(R.id.nextButtonExerciseAnswer);
+        Button nextButton = view.findViewById(R.id.nextButtonExerciseAnswer);
+        final Button skipButton = view.findViewById(R.id.OnlyCheckButtonExerciseAnswer);
 
-        if(progressController.checkTasks(currentTask)) {
+        if(progressController.checkTasks(getContext(), currentTask)) {
             Log.i("M_Exercise_VIEW_ANSWER", "checkExericse and skip");
-            nextButton.setText(R.string.Skip);
+            skipButton.setVisibility(View.VISIBLE);
         }
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +81,12 @@ public class ExerciseViewAnswerFragment extends Fragment {
                 //Hide the Keyboard
                 InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
                 inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(),0);
+            }
+        });
+        skipButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.justOpenNext();
             }
         });
 
@@ -109,11 +115,6 @@ public class ExerciseViewAnswerFragment extends Fragment {
 
     private void checkAnswers() {
         String userInput = editText.getText().toString();
-        if (progressController.checkTasks(currentTask) && userInput.isEmpty()) {
-            Log.i("M_Exercise_VIEW_ANSWER", "checkExericse and skip");
-            mListener.justOpenNext();
-            //TODO listnefor textinput, when input change skip to check
-        } else {
             if (userInput.isEmpty()) {
                 Toast.makeText(getContext(), "Pleas enter an answer", Toast.LENGTH_SHORT).show();
             } else {
@@ -131,7 +132,7 @@ public class ExerciseViewAnswerFragment extends Fragment {
                 }
             }
         }
-    }
+
 
     public void setExerciseCommunication(ExerciseCommunication callback) {
         Log.d("M_EXERCISE_VIEW_ANSWER", " setMlistenere");

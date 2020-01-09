@@ -201,7 +201,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
     @Override
     public void sendAnswerFromExerciseView(boolean answerChecked) {
         if (answerChecked) {
-            progressController.addFinishedTask(getContext(), currentTask);
+            progressController.addFinishedTask(getContext(),currentTask);
             showFeedbackDialogRight();
             Log.i("M_EXERCISE_FRAGMENT", "answer was right");
             progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_RIGHT", "number: " + currentTask.getTaskNumber() + "section: "+currentTask.getSectionNumber()+" taskType: " + currentTask.getExerciseViewType());
@@ -215,6 +215,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
 
     @Override
     public void justOpenNext() {
+        Log.i("M_EXERCISEFRAGMENT","justopen next");
         openNextTask();
     }
 

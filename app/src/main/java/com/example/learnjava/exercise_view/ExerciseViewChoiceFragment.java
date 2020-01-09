@@ -101,15 +101,22 @@ public class ExerciseViewChoiceFragment extends Fragment {
             }
         });
         Button nextButton = view.findViewById(R.id.nextButtonExerciseChoice);
-        if(progressController.checkTasks(currentTask)) {
+        final Button skipButton = view.findViewById(R.id.OnlyCheckButtonExerciseChoice);
+        if(progressController.checkTasks(getContext(), currentTask)) {
             Log.i("M_Exercise_VIEW_CHOICE", "checkExericse and skip");
-            nextButton.setText(R.string.Skip);
+            skipButton.setVisibility(View.VISIBLE);
         }
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i("M_EXERCISE_VIEW_CHOICE", " in ChoiceView");
                 checkAnswers();
+            }
+        });
+        skipButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.justOpenNext();
             }
         });
 
@@ -137,11 +144,6 @@ public class ExerciseViewChoiceFragment extends Fragment {
 
 
     private void checkAnswers() {
-        if (progressController.checkTasks(currentTask) && userAnswer == 0) {
-            Log.i("M_Exercise_VIEW_CHOICE", "checkExericse and skip");
-            mListener.justOpenNext();
-            //TODO listnefor textinput, when input change skip to check
-        } else {
             if (userAnswer == 0) {
                 Toast.makeText(getContext(), "Please choose an answer", Toast.LENGTH_SHORT).show();
             } else {
@@ -157,7 +159,7 @@ public class ExerciseViewChoiceFragment extends Fragment {
                 }
             }
         }
-    }
+
 
     public void setExerciseCommunication(ExerciseCommunication callback) {
         Log.d("M_EXERCISE_VIEW_CHOICE", " setMlistenere");

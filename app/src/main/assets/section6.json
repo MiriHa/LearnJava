@@ -14,7 +14,7 @@
       "taskNumber": 1,
       "sectionNumber": 6,
       "taskText": "Drag and drop from the options below to have a valid Java program.",
-      "taskWhatsNext": 1,
+      "taskWhatsNext": 2,
       "taskType": 2,
       "exerciseViewType": 4,
       "exerciseSolutionStringArray":["int","true","boolean","float","String","void","class"],
@@ -22,14 +22,26 @@
       "exerciseSolutionIntArray": [4,0,3]
     },
     {
-      "taskName": "introdduction2",
-      "taskNumber": 3,
-      "taskText": "Fill in the Blanks to complete this hello World program,",
-      "taskWhatsNext": 1,
+      "taskName" : "CODE",
+      "taskNumber" : 2,
+      "sectionNumber": 6,
+      "taskText" : "Write a Code for a apple class with a public variable apple and its value \"red\"",
+      "taskWhatsNext" : 2,
       "taskType" : 2,
-      "exerciseViewType" : 1,
-      "exerciseSolutionString" : ["static", "main", "args"],
-      "exerciseSolutionInt" : []
+      "exerciseViewType" : 6,
+      "exerciseSolutionString" : "blub",
+      "exerciseContentStringArray": ["write blub"]
+    },
+    {
+      "taskName": "Order",
+      "taskNumber": 3,
+      "sectionNumber": 6,
+      "taskText": "Order these Lines per drag",
+      "taskWhatsNext": 3,
+      "taskType" : 2,
+      "exerciseViewType" : 5,
+      "exerciseSolutionStringArray" : ["TEXT2","TEXT1","TEXT0"],
+      "exerciseContentStringArray" : ["one","two","three"]
     },
     {
       "taskName": "Main Method",

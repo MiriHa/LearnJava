@@ -71,12 +71,10 @@ public class LessonActivity extends AppCompatActivity {
             sectionNumber = (int) b.get("LESSON_NUMBER");
         Log.i("M_LESSON_ACTIVITY", " section opend: " + sectionNumber);
 
-        progressController.updateCurrentSection(this,sectionNumber);
+        progressController.updateCurrentSection(this, sectionNumber);
 
         progressController.loadContent(sectionNumber, this);
         taskContent = progressController.getTaskContent();
-
-        progressController.fetchModelUserProgress(this);
 
         setProgressBar();
 
@@ -86,7 +84,9 @@ public class LessonActivity extends AppCompatActivity {
 
         //open the first lesson Fragment
         openNewTask(0);
-        showCue(sectionNumber,3);
+
+
+        showCue(sectionNumber,4);
 
     }
 
@@ -103,19 +103,25 @@ public class LessonActivity extends AppCompatActivity {
             //open the first Lesson
             case 0:
                 //get the currentTask content
-                setCurrentTask();
-                setProgressBackground();
-                Log.i("M_LESSON_ACTIVITY", "opennewtask: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
-                //progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "First Lesson of a Section");
-                //load a fragment
-                LessonFragment firstlessonFragment = new LessonFragment();
-                firstlessonFragment.setFragmentContentLesson(currentTask);
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .add(R.id.FragmentHolder, firstlessonFragment, "FRAGMENT_LESSON_0")
-                        .addToBackStack("FRAGMENT_LESSON_0")
-                        .commit();
-                Log.d(" M_LESSON_ACTIVITY", " checkProgress 0: loaded progress: " + progressCurrentScreen);
+                if (progressController.getLatestSectionNumber(this) == sectionNumber) {
+                    Log.i("M_LESSONACTIVITY","open latestTask in latest section");
+                    openLatestTask();
+
+                }else {
+                    setCurrentTask();
+                    setProgressBackground();
+                    Log.i("M_LESSON_ACTIVITY", "opennewtask: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
+                    //progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "First Lesson of a Section");
+                    //load a fragment
+                    LessonFragment firstlessonFragment = new LessonFragment();
+                    firstlessonFragment.setFragmentContentLesson(currentTask);
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .add(R.id.FragmentHolder, firstlessonFragment, "FRAGMENT_LESSON_0")
+                            .addToBackStack("FRAGMENT_LESSON_0")
+                            .commit();
+                    Log.d(" M_LESSON_ACTIVITY", " checkProgress 0: loaded progress: " + progressCurrentScreen);
+                }
                 break;
 
             //open the next Lesson
@@ -201,17 +207,58 @@ public class LessonActivity extends AppCompatActivity {
         }
     }
 
+
+    /**
+     * This method opens the latest Task when the user is in the Latest Section
+     */
+    public void openLatestTask(){
+        currentTaskNumber = progressController.getLatestTaskNumber(this);
+        currentTask = taskContent.get(currentTaskNumber);
+        switch (currentTask.getType()){
+            case 1:
+                setProgressBackground();
+                Log.i("M_LESSON_ACTIVITY", "opennewtask: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
+                //progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "First Lesson of a Section");
+                //load a fragment
+                LessonFragment firstlessonFragment = new LessonFragment();
+                firstlessonFragment.setFragmentContentLesson(currentTask);
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.FragmentHolder, firstlessonFragment, "FRAGMENT_LESSON_0")
+                        .addToBackStack("FRAGMENT_LESSON_0")
+                        .commit();
+                Log.d(" M_LESSON_ACTIVITY", " checkProgress 0: loaded progress: " + progressCurrentScreen);
+                break;
+            case 2:
+                setProgressBackground();
+                Log.i("M_LESSON_ACTIVITY", "opennewtask: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
+                //progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "First Lesson of a Section");
+                //load a fragment
+                ExerciseFragment exerciseFragment = new ExerciseFragment();
+                exerciseFragment.setFragmentContentExercise(currentTask);
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.FragmentHolder, exerciseFragment, "FRAGMENT_Exercise_0")
+                        .addToBackStack("FRAGMENT_LESSON_0")
+                        .commit();
+                Log.d(" M_LESSON_ACTIVITY", " checkProgress 0: loaded latestTask " + progressCurrentScreen);
+                break;
+        }
+
+    }
+
+
     /**
      * open the right resumption Cue
      * @param section which is the currentSection
      * @param cue which cue is needed: 1 WORD-CUE, 2: WORD-CLOUD, 3: HISTORY, 4: QUESTIONS
      */
 
-
     public void showCue(int section, int cue) {
         FragmentManager fm = getSupportFragmentManager();
         switch (cue){
             case 1:
+                //TODO latestTaskNumber.getTaskname?
                 WordCueFragment wordCueFragment = WordCueFragment.newIntance(currentTask.getTaskName(),section);
                // wordCueFragment.getDialog().setCanceledOnTouchOutside(false);
                 wordCueFragment.show(fm, "fragment_word_cue");
@@ -229,14 +276,13 @@ public class LessonActivity extends AppCompatActivity {
             case 3:
                 HistoryFragment historyFragment = HistoryFragment.newInstance(section);
                // historyFragment.getDialog().setCanceledOnTouchOutside(false);
-                historyFragment.show(fm, "fragment_cloud_cue");
+                historyFragment.show(fm, "fragment_history_cue");
                 progressController.makeaLog(Calendar.getInstance().getTime(),"OPENED_A_CUE","HistoryCue");
                 Log.i("M_LESSON_ACTIVITY","show History Cue "+ " "+section);
                 break;
             case 4:
-                QuestionsFragment questionsFragment = QuestionsFragment.newInstance("aha","oho");
-                //questionsFragment.getDialog().setCanceledOnTouchOutside(false);
-                questionsFragment.show(fm, "fragment_cloud_cue");
+                QuestionsFragment questionsFragment = QuestionsFragment.newInstance(section);
+                questionsFragment.show(fm, "fragment_question_cue");
                 progressController.makeaLog(Calendar.getInstance().getTime(),"OPENED_A_CUE","questionCue");
                 Log.i("M_LESSON_ACTIVITY","show Question Cue "+ " "+section);
                 break;
@@ -250,10 +296,9 @@ public class LessonActivity extends AppCompatActivity {
     public void updateProgressLastTask() {
 
         //add the finished section to the PorgressCOntrolller when needed
-        if(progressController.getLatestSectionNumber(this) == sectionNumber) {
-            progressController.updateLatestSection(this,sectionNumber + 1);
+            progressController.updateLatestSection(this,sectionNumber);
             Log.i("M_LESSON_ACTIVITY", "updatet LatestSection");
-        }
+
         Log.i("M_LESSON_ACTIVITY", " updateprogress: latestSection updated " + progressController.getLatestSectionNumber(this));
         Log.i("M_LESSON_ACTIVITY", "last task of section is reached");
         //GO Back to the MainActivity
@@ -274,6 +319,11 @@ public class LessonActivity extends AppCompatActivity {
             //TODO progressController.addFinishedTask(currentTask)
             //TODO why is it the same code? here
             progressCurrentScreen =  currentTask.getTaskNumber() + 1;
+            //When in the latest Section update the latest TaskNumber;
+
+
+            progressController.updateLatestTaskNumber(this, progressCurrentScreen, currentSection);
+
             progressController.updateCurrentScreen(this,progressCurrentScreen);
             Log.i("M_LESSON_ACTIVITY", " checkprogress: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
         } else {
@@ -288,19 +338,19 @@ public class LessonActivity extends AppCompatActivity {
      */
     public void setCurrentTask() {
         //Check if it is the latest unlocked section, when yes open the most recentTask
-        int latestSection = (int) progressController.getLatestSectionNumber(this);
-        if (latestSection == sectionNumber) {
-            currentTaskNumber = (int) progressController.getLatestTaskNumber(this);
-            currentTask = taskContent.get((int) currentTaskNumber);
-            progressController.updateLatestTaskNumber(this,currentTaskNumber);
-            Log.i("M_LESSON_ACTIVITY","set recent task in latest Section " + currentTask.getTaskName() + " " + currentTask.getTaskNumber());
-        } else {
+//        int latestSection = (int) progressController.getLatestSectionNumber();
+//        if (progressController.getLatestSectionNumber(this) == sectionNumber) {
             currentTask = taskContent.get(progressCurrentScreen);
             currentTaskNumber = currentTask.getTaskNumber();
-            //Only update latestTaskNumber when in latest Section
-            //progressController.updateLatestTaskNumber(currentTaskNumber);
-            Log.i("M_LESSON_ACTIVITY", "set current task" + currentTask.getTaskName() + "currentTaskNumber: " + currentTask.getTaskNumber());
-        }
+            progressController.updateLatestTaskNumber(this, currentTaskNumber, currentSection);
+            Log.i("M_LESSON_ACTIVITY","set recent task in latest Section " + currentTask.getTaskName() + " " + currentTask.getTaskNumber());
+//        } else {
+//            currentTask = taskContent.get(progressCurrentScreen);
+//            currentTaskNumber = currentTask.getTaskNumber();
+//            //Only update latestTaskNumber when in latest Section
+//            //progressController.updateLatestTaskNumber(currentTaskNumber);
+//            Log.i("M_LESSON_ACTIVITY", "set current task" + currentTask.getTaskName() + "currentTaskNumber: " + currentTask.getTaskNumber());
+//       }
     }
 
     /**
@@ -452,13 +502,14 @@ public class LessonActivity extends AppCompatActivity {
             int number = Integer.valueOf(tv.getTag().toString());
             //currentTask = taskContent.get(number);
            // if(progressController.checkTasks(taskContent.get(number)) || number <= progressController.getLatestTaskNumber()) {
-          Log.i("M_LESSONACTIVITY","onclick "+ progressController.checkTasks(taskContent.get(number)));
-            if(progressController.checkTasks(taskContent.get(number)) || number <= currentTask.getTaskNumber()) {
+            boolean check = progressController.checkTasks(context, taskContent.get(number));
+//            if(progressController.checkTasks(context, taskContent.get(number)) && (number <= progressController.getLatestTaskNumber(context)||sectionNumber <= progressController.getLatestSectionNumber(context))) {
+            if(progressController.checkTasks(context, taskContent.get(number))) {
                 openTaskProgress(2, number);
             } else {
                 Toast.makeText(context, "Not unlocked yet", Toast.LENGTH_SHORT).show();
             }
-            Log.i("M LESSON_ACTIVITY", "on progressBar clicked Exercise number: " + number);
+            Log.i("M LESSON_ACTIVITY", "on progressBar clicked Exercise number: " + number + check);
 
         }
     }
@@ -472,18 +523,13 @@ public class LessonActivity extends AppCompatActivity {
             TextView tv = (TextView) v;
             int number = Integer.valueOf(tv.getTag().toString());
             // currentTask = taskContent.get(number);
-            //if(progressController.checkTasks(taskContent.get(number)) && number <= progressController.getLatestTaskNumber()) {
-            //TODO latest Tasknumber is the number in the lateste section -> useful?? when jumping in old sections all tasks should be unlocked
-            ModelTask task = taskContent.get(number);
-            int tasknumber = task.getTaskNumber();
-            boolean check = progressController.checkTasks(taskContent.get(number));
-            boolean check2 = number <= currentTask.getTaskNumber();
-            if(check || check2 ) {
+            boolean check = progressController.checkTasks(context, taskContent.get(number));
+            if(progressController.checkTasks(context,taskContent.get(number))) {
                 openTaskProgress(1, number);
             } else {
             Toast.makeText(context, "Not unlocked yet", Toast.LENGTH_SHORT).show();
         }
-            Log.i("M_LESSON_ACTIVITY", "on progressBar clicked lesson number: " + number);
+            Log.i("M_LESSON_ACTIVITY", "on progressBar clicked lesson number: " + number +  check);
         }
     }
 

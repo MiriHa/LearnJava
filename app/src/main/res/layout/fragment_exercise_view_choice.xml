@@ -75,6 +75,21 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/OnlyCheckButtonExerciseChoice"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="end"
+            android:layout_margin="6dp"
+            android:visibility="gone"
+            android:text="@string/Skip_Text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/nextButtonExerciseChoice"
+            app:layout_constraintHorizontal_bias="0.98"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contentHolderChoice"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
             android:id="@+id/nextButtonExerciseChoice"
             android:layout_width="70dp"
             android:layout_height="70dp"

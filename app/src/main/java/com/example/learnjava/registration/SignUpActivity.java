@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.learnjava.Controller;
 import com.example.learnjava.MainActivity;
 import com.example.learnjava.R;
+import com.example.learnjava.SharedPrefrencesManager;
 import com.example.learnjava.models.ModelUserProgress;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -81,7 +82,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Log.i("M_SIGNUP_SCTIVITY", "pasword1: " + password + "password2: " + password2);
                 if(password.length() >= 6 || password2.length() >= 6) {
                     if (password.equals(password2)) {
-                        // Utils.saveSharedSetting(SignUpActivity.this, MainActivity.PREF_USER_FIRST_TIME, "false");
+                        // SharedPrefrencesManager.saveSharedSetting(SignUpActivity.this, MainActivity.PREF_USER_FIRST_TIME, "false");
                         Log.i("M_SIGNUP_SCTIVITY", "paswords matching");
                         String userName = userNameInput.getText().toString();
                         String email = userEmailInput.getText().toString();;
@@ -136,16 +137,18 @@ public class SignUpActivity extends AppCompatActivity {
     public void saveUserToFirebase(String username, String email){
         String userId = auth.getCurrentUser().getUid();
         Log.i("M_SIGNUP_ACTIVITY","saveUserToFirebase id: " + userId);
-        final ModelUserProgress user = new ModelUserProgress(userId, username, email);
-        myProgressController.initializeModelUser(this, user);
-        Utils.saveSharedSetting(SignUpActivity.this, MainActivity.PREF_USER_FIRST_TIME, "false");
 
-        ref.child("users").child(userId).setValue(user);
+        myProgressController.initializeModelUser(this, username, email);
+        SharedPrefrencesManager.saveSharedSetting(SignUpActivity.this, MainActivity.PREF_USER_FIRST_TIME, "false");
+
+
+        ref.child("users").child(userId).child("Username").setValue(username);
+        ref.child("users").child(userId).child("Email").setValue(email);
 //                .addOnSuccessListener(this, new OnSuccessListener<Void>() {
 //            @Override
 //            public void onSuccess(Void aVoid) {
 //                Toast.makeText(SignUpActivity.this, getString(R.string.toast_signinSuccessful), Toast.LENGTH_LONG).show();
-//                Utils.saveSharedSetting(SignUpActivity.this, MainActivity.PREF_USER_FIRST_TIME, "false");
+//                SharedPrefrencesManager.saveSharedSetting(SignUpActivity.this, MainActivity.PREF_USER_FIRST_TIME, "false");
 //                Log.i("M_SIGNUP_SCTIVITY","save User to database succesfull");
 //            }
 //        }).addOnFailureListener(this, new OnFailureListener() {
@@ -175,7 +178,7 @@ public class SignUpActivity extends AppCompatActivity {
 //                        @Override
 //                        public void onSuccess(Void aVoid) {
 //                            Toast.makeText(SignUpActivity.this, getString(R.string.toast_signinSuccessful), Toast.LENGTH_LONG).show();
-//                            Utils.saveSharedSetting(SignUpActivity.this, MainActivity.PREF_USER_FIRST_TIME, "false");
+//                            SharedPrefrencesManager.saveSharedSetting(SignUpActivity.this, MainActivity.PREF_USER_FIRST_TIME, "false");
 //                            Log.i("M_SIGNUP_SCTIVITY","signup succsesfull");
 //                        }
 //                    }).addOnFailureListener(SignUpActivity.this, new OnFailureListener() {
@@ -217,7 +220,7 @@ public class SignUpActivity extends AppCompatActivity {
 //        login.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Utils.saveSharedSetting(getActivity(), LogInActivity.PREF_USER_FIRST_TIME, "false");
+//                SharedPrefrencesManager.saveSharedSetting(getActivity(), LogInActivity.PREF_USER_FIRST_TIME, "false");
 //                Intent introIntent = new Intent(getContext(), LogInActivity.class);
 //                startActivity(introIntent);
 //            }
@@ -226,7 +229,7 @@ public class SignUpActivity extends AppCompatActivity {
 //        signin.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Utils.saveSharedSetting(getActivity(), LogInActivity.PREF_USER_FIRST_TIME, "false");
+//                SharedPrefrencesManager.saveSharedSetting(getActivity(), LogInActivity.PREF_USER_FIRST_TIME, "false");
 //                Intent introIntent = new Intent(getContext(), SignUpActivity.class);
 //                startActivity(introIntent);
 //            }

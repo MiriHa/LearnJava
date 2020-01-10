@@ -1,7 +1,5 @@
 package com.example.learnjava.models;
 
-import android.util.Log;
-
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
@@ -16,7 +14,6 @@ import java.util.Map;
  * Each Sections has various tasks either a theory lessons or Exercises.
  */
 
-//@IgnoreExtraProperties
 public class ModelUserProgress {
 
     private String userId;
@@ -42,7 +39,7 @@ public class ModelUserProgress {
     //stores the solved exercises
     //TODO Make this also Integer and give each task a unique number
     //private List<ModelFinishedTask> finishedTasksList = new ArrayList<>();
-    private Map<String, ModelFinishedTask> finishedTasksList = new HashMap<>();
+//    private Map<String, ModelFinishedTask> finishedTasksList = new HashMap<>();
 
 
     //Stores the Logs
@@ -76,6 +73,7 @@ public class ModelUserProgress {
 
 
     public ModelUserProgress(){
+
     }
 
 
@@ -109,27 +107,23 @@ public class ModelUserProgress {
     }
 
     //add a finishedTask bzw exercise so that the user can skip it
-    public void addFinishedTask(ModelFinishedTask task){
-        if(!checkTasks(task)){
-           // finishedTasksList.add(task);
-            String id = task.getSectionNumber()+"."+task.getTaskNumber();
-            finishedTasksList.put(id,task);
-        }
-    }
+//    public void addFinishedTask(ModelFinishedTask task){
+//        if(!checkTasks(task)){
+//           // finishedTasksList.add(task);
+//            String id = task.getSectionNumber()+"."+task.getTaskNumber();
+//           // finishedTasksList.add(task);
+//        }
+//    }
 
 
     /**
      * Methods to check on UserProgress
      */
 
-
-    //check if task was already read/exercise was solved
-    public boolean checkTasks(ModelFinishedTask aTask){
-        Log.i("M_MODELUSERPROGRESS","checktasks "+aTask.getTaskNumber() + " " + finishedTasksList.containsValue(aTask));
-        String id = aTask.getSectionNumber()+"."+aTask.getTaskNumber();
-        return finishedTasksList.containsKey(id);
-        //return finishedTasksList.containsValue(aTask);
-    }
+//    //check if task was already read/exercise was solved
+//   // public boolean checkTasks(ModelFinishedTask aTask){
+//        return finishedTasksList.contains(aTask);
+//    }
 
     //check if a section is already unlocked
     public boolean checkProgressUnlockedSection(Integer sectionNumber){
@@ -179,9 +173,9 @@ public class ModelUserProgress {
 //        return finishedTasksList;
 //    }
 
-    public Map<String, ModelFinishedTask> getFinishedTasksList() {
-        return finishedTasksList;
-    }
+//    public List<ModelFinishedTask> getFinishedTasksList() {
+//        return finishedTasksList;
+//    }
 
 //    public List<ModelTask> getFinishedTasksList(){
 //        return finishedTasksList;
@@ -225,14 +219,14 @@ public class ModelUserProgress {
         this.email = email;
     }
 
-    public void setFinishedTasksList(Map<String, ModelFinishedTask> finishedTasksList) {
-        this.finishedTasksList = finishedTasksList;
-    }
+//    public void setFinishedTasksList(List<ModelFinishedTask> finishedTasksList) {
+//        this.finishedTasksList = finishedTasksList;
+//    }
 
-    /**
-     * Edit the Logging List
-     */
-
+//    /**
+//     * Edit the Logging List _> ausgelaggert in firebase
+//     */
+//
 //    public Map<String, ModelLog> getLoggingList() {
 //        return loggingList;
 //    }

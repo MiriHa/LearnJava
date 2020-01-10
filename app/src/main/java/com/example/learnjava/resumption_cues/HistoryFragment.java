@@ -21,11 +21,14 @@ import android.widget.TextView;
 import com.example.learnjava.Controller;
 import com.example.learnjava.R;
 
+import java.util.Calendar;
+
 /**
  * This ResumtionCueFragment shows your histroy of previous lessons
  */
 public class HistoryFragment extends DialogFragment {
 
+    private Controller progressController;
     private LinearLayout historyHolder;
     private ConstraintLayout background;
 
@@ -48,6 +51,8 @@ public class HistoryFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_history, container, false);
+        progressController = (Controller) getActivity().getApplicationContext();
+
         Button gotit = view.findViewById(R.id.historyButton);
         historyHolder = view.findViewById(R.id.historyHolder);
         background = view.findViewById(R.id.historyBackground);
@@ -58,6 +63,7 @@ public class HistoryFragment extends DialogFragment {
         setHistory(section);
         setBackground(section);
 
+        progressController.makeaLog(Calendar.getInstance().getTime(), "History_CUE", "in section "+ section);
         gotit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

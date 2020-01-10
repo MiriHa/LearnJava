@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.learnjava.MainActivity;
 import com.example.learnjava.R;
+import com.example.learnjava.SharedPrefrencesManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -50,7 +51,7 @@ public class LogInActivity extends AppCompatActivity {
         //Enable Offline Data Cache
         //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
-        isUserFirstTime = Boolean.valueOf(Utils.readSharedSetting(LogInActivity.this, PREF_USER_FIRST_TIME, "true"));
+        isUserFirstTime = Boolean.valueOf(SharedPrefrencesManager.readSharedSetting(LogInActivity.this, PREF_USER_FIRST_TIME, "true"));
         Log.i("M_LogIn_ACTIVITY", "isUserforthefirstTime: " + isUserFirstTime);
 
         Intent intent = getIntent();
@@ -130,6 +131,7 @@ public class LogInActivity extends AppCompatActivity {
                         }
                     } else {
                         // Handle LogIn success
+                        SharedPrefrencesManager.saveSharedSetting(LogInActivity.this, MainActivity.PREF_USER_FIRST_TIME, "false");
                         Intent userInfo = new Intent(LogInActivity.this, MainActivity.class);
                         startActivity(userInfo);
                         finish();

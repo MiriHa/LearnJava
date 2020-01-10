@@ -31,69 +31,44 @@
                 android:textSize="@dimen/TextSize20" />
 
 
-
-            <ListView
-                android:id="@+id/listContentHolder"
+            <com.jmedeisis.draglinearlayout.DragLinearLayout
+                android:id="@+id/contentHolderOrderRow"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent">
 
-<!--            <com.jmedeisis.draglinearlayout.DragLinearLayout-->
-<!--                android:id="@+id/contentRowHolderOrder"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent">-->
 
-<!--                <TextView-->
-<!--                    android:id="@+id/dragView1"-->
-<!--                    android:tag="dragView1"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"/>-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/dragView2"-->
-<!--                    android:tag="dragView2"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"/>-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/dragView3"-->
-<!--                    android:tag="dragView3"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"/>-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/dragView4"-->
-<!--                    android:tag="dragView4"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"/>-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/dragView5"-->
-<!--                    android:tag="dragView5"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"/>-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/dragView6"-->
-<!--                    android:tag="dragView6"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"/>-->
-
-<!--            </com.jmedeisis.draglinearlayout.DragLinearLayout>-->
+            </com.jmedeisis.draglinearlayout.DragLinearLayout>
 
 
         </LinearLayout>
 
         <Button
-            android:id="@+id/nextButtonExerciseAnswer"
+            android:id="@+id/OnlyCheckButtonExerciseOrder"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="end"
             android:layout_margin="6dp"
-            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            android:text="@string/Skip_Text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/nextButtonExerciseOrder"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contentHolderOrder"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/nextButtonExerciseOrder"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="end"
+            android:layout_margin="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contentHolderOrder"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

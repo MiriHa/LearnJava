@@ -52,8 +52,11 @@ dependencies {
 
     implementation 'com.google.gms:google-services:4.3.3'
 
+    implementation 'com.google.android:flexbox:2.0.0'
 
-    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
+
+    implementation 'com.kennycason:kumo-core:1.22'
+    implementation 'net.alhazmy13.wordcloud:library:0.2.0-beta'
 
     implementation 'com.android.support:support-v4:29.0.0'
     implementation 'com.android.support:support-fragment:29.0.0'

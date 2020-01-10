@@ -65,11 +65,15 @@ public class ExerciseViewCodeFragment extends Fragment {
             TextView exerciseText = view.findViewById(R.id.exerciseTextCode);
             exerciseText.setText(currentTask.getTaskText());
             answerEditText = view.findViewById(R.id.CodeTextInput);
-            Button nextButton = view.findViewById(R.id.nextButtonExerciseCode);
+            answerEditText.setText(currentTask.getContentStringArray()[0]);
 
-            if(progressController.checkTasks(currentTask)) {
+            Button nextButton = view.findViewById(R.id.nextButtonExerciseCode);
+            Button skipButton = view.findViewById(R.id.OnlyCheckButtonExerciseCode);
+
+            if(progressController.checkTasks(getContext(),currentTask)) {
                 Log.i("M_Exercise_VIEW_CODE", "checkExericse and skip");
-                nextButton.setText(R.string.Skip);
+                //nextButton.setText(R.string.Skip_Text);
+                skipButton.setVisibility(View.VISIBLE);
             }
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -79,6 +83,12 @@ public class ExerciseViewCodeFragment extends Fragment {
                     //Hide the Keyboard
                     InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
                     inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(),0);
+                }
+            });
+            skipButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mListener.justOpenNext();
                 }
             });
 
@@ -107,18 +117,18 @@ public class ExerciseViewCodeFragment extends Fragment {
 
         private void checkAnswers() {
             String userInput = answerEditText.getText().toString();
-            if (progressController.checkTasks(currentTask) && userInput.isEmpty()) {
-                Log.i("M_Exercise_VIEW_CODE", "checkExericse and skip");
-                mListener.justOpenNext();
-                //TODO listnefor textinput, when input change skip to check
-            } else {
+//            if (progressController.checkTasks(getContext(),currentTask) && userInput.isEmpty()) {
+//                Log.i("M_Exercise_VIEW_CODE", "checkExericse and skip");
+//                mListener.justOpenNext();
+//                //TODO listnefor textinput, when input change skip to check
+//            } else {
                 if (userInput.isEmpty()) {
                     Toast.makeText(getContext(), "Pleas enter an answer", Toast.LENGTH_SHORT).show();
                 } else {
                     String userAnswer = userInput.replaceAll("\\s+","");
                     Log.i("M_EXERCISE_VIEW_CODE", "check answer: " + userInput + " solution: " + currentTask.getSolutionString());
-                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT", "number: " + currentTask.getTaskNumber() + " userInput: " + userInput);
 
+                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT", "number: " + currentTask.getTaskNumber() + " userInput: " + userInput);
                     if (currentTask.getSolutionString().equalsIgnoreCase(userAnswer)) {
                         mListener.sendAnswerFromExerciseView(true);
                         Log.i("M_EXERCISE_VIEW_CODE", " send answer: true");
@@ -129,7 +139,7 @@ public class ExerciseViewCodeFragment extends Fragment {
                     }
                 }
             }
-        }
+//        }
 
         public void setExerciseCommunication(ExerciseCommunication callback) {
             Log.d("M_EXERCISE_VIEW_CODE", " setMlistenere");
@@ -143,7 +153,7 @@ public class ExerciseViewCodeFragment extends Fragment {
 
 
         public void reset(){
-            answerEditText.setText(" ");
+            answerEditText.setText(currentTask.getContentStringArray()[0]);
         }
 
 

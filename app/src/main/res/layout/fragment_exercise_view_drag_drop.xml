@@ -35,22 +35,33 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="vertical"
-                android:paddingHorizontal="6dp"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
                 android:textSize="16sp" />
 
-            <LinearLayout
+<!--            <com.google.android.flexbox.FlexboxLayout-->
+<!--                android:id="@+id/answerHolderDragDrop"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:clickable="true"-->
+<!--                android:orientation="vertical" />-->
+
+            <com.google.android.flexbox.FlexboxLayout
                 android:id="@+id/answerHolderDragDrop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="12dp"
-                android:clickable="true"
-                android:orientation="vertical" />
+                app:flexWrap="wrap"
+                app:alignItems="stretch"
+                app:alignContent="stretch"
+                app:justifyContent="center"
+                app:showDivider="beginning|middle|end"/>
 
         </LinearLayout>
 
         <Button
-            android:id="@+id/resetButton"
+            android:id="@+id/resetButtonDragDrop"
             android:layout_width="100dp"
             android:layout_height="70dp"
             android:layout_margin="6dp"
@@ -59,6 +70,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/OnlyCheckButtonExerciseDragDrop"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="end"
+            android:layout_margin="6dp"
+            android:visibility="gone"
+            android:text="@string/Skip_Text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/nextButtonExerciseDragDrop"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/resetButtonDragDrop"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             app:layout_constraintVertical_bias="1.0" />
 

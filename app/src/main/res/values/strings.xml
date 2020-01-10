@@ -15,10 +15,12 @@
     <string name="Lesson8">Classes and Objects</string>
     <string name="Lesson9">Exceptions and Lists</string>
 
+    <string name="Check_Text">Check</string>
+    <string name="Skip_Text">Skip</string>
+
     <string name="FeedbackRight">Good job, that was right!</string>
     <string name="FeedbackWrong">That was not right.</string>
 
-    <string name="Skip">Skip</string>
     <string name="PopUpText">Hello and Welcome to Learn Java! Please select an Username that you can remember:</string>
 
     //For testing
@@ -27,7 +29,7 @@
 
 
     <!--Code Exercise-->
-    <string name="code_fragment_sample">public class       {\n\n\n\n\n\n\n\n\n\n\n\n}</string>
+    <string name="code_fragment_sample">public class\u0020\u0020\u0020\u0020\u0020\u0020\u0020{\n\n\n\n\n\n\n\n}</string>
     <string name="code_fragment_inputtitle">Code</string>
 
 
@@ -61,7 +63,13 @@
     <string name="wordCue_text">Your last Lesson</string>
 
     <string name="History_Cue_text">Your learned Sections</string>
+
     <string name="Question_Cue_text">Can you answer these?</string>
+    <string name="Question_Button">Check it!</string>
+    <string name="Question_Text">Do you know it?</string>
+    <string name="Question_right">That was right!</string>
+    <string name="Question_wrong">That was not correct.</string>
+
     <string name="Cloud_Cue_text">A Reminder</string>
 
 

@@ -4,15 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.example.learnjava.models.ModelFinishedTask;
-import com.example.learnjava.models.ModelUserProgress;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-
 public class SharedPrefrencesManager {
 
     private static final String PREFERENCES_FILE = "ONBOARDING_SETTINGS";
@@ -38,26 +29,26 @@ public class SharedPrefrencesManager {
     }
 
 
-    public static void saveModelToProgress(Context ctx, ModelUserProgress progress){
-        Log.i("M_UTILS","save progress");
-        SharedPreferences sharedPref = ctx.getSharedPreferences(PROGRESS_FILE, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-
-        Gson gson = new Gson();
-        String json = gson.toJson(progress);
-        editor.putString("MY_PROGRESS", json);
-        editor.apply();
-    }
-
-    public static ModelUserProgress readProgress(Context ctx){
-        Log.i("M_UTILS","read progress");
-        SharedPreferences sharedPref = ctx.getSharedPreferences(PROGRESS_FILE, Context.MODE_PRIVATE);
-
-        Gson gson = new Gson();
-        String json = sharedPref.getString("MY_PROGRESS", "");
-
-        return gson.fromJson(json, ModelUserProgress.class);
-    }
+//    public static void saveModelToProgress(Context ctx, ModelUserProgress progress){
+//        Log.i("M_UTILS","save progress");
+//        SharedPreferences sharedPref = ctx.getSharedPreferences(PROGRESS_FILE, Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPref.edit();
+//
+//        Gson gson = new Gson();
+//        String json = gson.toJson(progress);
+//        editor.putString("MY_PROGRESS", json);
+//        editor.apply();
+//    }
+//
+//    public static ModelUserProgress readProgress(Context ctx){
+//        Log.i("M_UTILS","read progress");
+//        SharedPreferences sharedPref = ctx.getSharedPreferences(PROGRESS_FILE, Context.MODE_PRIVATE);
+//
+//        Gson gson = new Gson();
+//        String json = sharedPref.getString("MY_PROGRESS", "");
+//
+//        return gson.fromJson(json, ModelUserProgress.class);
+//    }
 
     public static void deleteProgress(Context ctx, String settingName) {
         SharedPreferences sharedPref = ctx.getSharedPreferences(PROGRESS_FILE, Context.MODE_PRIVATE);
@@ -175,50 +166,7 @@ public class SharedPrefrencesManager {
         return sharedPref.getInt("LAST_LESSON_NUMBER", 0);
     }
 
-    public static void savefinishedTasks(Context ctx, List<ModelFinishedTask> finishedTaskList){
-        SharedPreferences sharedPref = ctx.getSharedPreferences(PROGRESS_FILE, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
 
-        Gson gson = new Gson();
-        String jsonFinishedTasks = gson.toJson(finishedTaskList);
-        editor.putString("FINISHED_TASKS", jsonFinishedTasks);
-        editor.apply();
-        Log.i("M_SHARED_PREFERENCES","savefinishedTAsks " + jsonFinishedTasks);
-    }
-
-    public static void addfinishedTask(Context ctx, ModelFinishedTask finishedTask){
-        SharedPreferences sharedPref = ctx.getSharedPreferences(PROGRESS_FILE, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-
-        List<ModelFinishedTask> task = readfinishedTasks(ctx);
-        task.add(finishedTask);
-
-        Gson gson = new Gson();
-        String jsonFinishedTasks = gson.toJson(task);
-        editor.putString("FINISHED_TASKS", jsonFinishedTasks);
-        editor.apply();
-        Log.i("M_SHARED_PREFERENCES","addfinishedTAsk " + finishedTask.getTaskName());
-    }
-
-
-    public static List<ModelFinishedTask> readfinishedTasks(Context ctx){
-        //TODO doeasn't give a list only the String in a list????
-        SharedPreferences sharedPref = ctx.getSharedPreferences(PROGRESS_FILE, Context.MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = sharedPref.getString("FINISHED_TASKS", "");
-
-        Type type = new TypeToken<List<ModelFinishedTask>>() {}.getType();
-        List<ModelFinishedTask> arrayList = gson.fromJson(json, type);
-
-        Log.i("M_SHARED_PREFERENCES","readFinishedTAsks" + arrayList);
-       // return gson.fromJson(json, type);
-        return arrayList;
-    }
-
-    public static void deleteFinisheshTasks(Context ctx) {
-        SharedPreferences sharedPref = ctx.getSharedPreferences(PROGRESS_FILE, Context.MODE_PRIVATE);
-        sharedPref.edit().remove("FINISHED_TASKS").apply();
-    }
 
 
 

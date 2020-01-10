@@ -44,7 +44,7 @@
       "taskName": "Method Parameters",
       "taskNumber": 4,
       "sectionNumber": 5,
-      "taskText": "You can also create a method that takes some data, called <b>parameters,</b> along with it when you call it. Write parameters within the method's parentheses.<br>For example, we can modify our <b>sayHello()</b> method to take and output a <b>String</b> parameter.@class MyClass {<br><br>@ensp;static void sayHello(<b>String name</b>) {<br>@ensp;@ensp;System.out.println(\"Hello \" + <b>name</b>);<br>@ensp;}<br><br>@ensp;public static void main(String[ ] args) {<br>@ensp;@ensp;sayHello(\"David\");<br>@ensp;@ensp;sayHello(\"Amy\");<br>@ensp;}<br><br>}<br>// Hello David<br>// Hello Amy@The method above takes a String called <b>name</b> as a parameter, which is used in the method's body. Then, when calling the method, we pass the parameter's value inside the parentheses.Methods can take multiple, comma-separated parameters.@<b>!</b>The advantages of using methods instead of simple statements include the following:<br><b>- code reuse: </b>You can write a method once, and use it multiple times, without having to rewrite the code each time.<br><b>-parameters:</b> Based on the parameters passed in, methods can perform various actions.",
+      "taskText": "You can also create a method that takes some data, called <b>parameters,</b> along with it when you call it. Write parameters within the method's parentheses.<br>For example, we can modify our <b>sayHello()</b> method to take and output a <b>String</b> parameter.@class MyClass {<br><br>&ensp;static void sayHello(<b>String name</b>) {<br>&ensp;&ensp;System.out.println(\"Hello \" + <b>name</b>);<br>&ensp;}<br><br>&ensp;public static void main(String[ ] args) {<br>&ensp;&ensp;sayHello(\"David\");<br>&ensp;&ensp;sayHello(\"Amy\");<br>&ensp;}<br><br>}<br>// Hello David<br>// Hello Amy@The method above takes a String called <b>name</b> as a parameter, which is used in the method's body. Then, when calling the method, we pass the parameter's value inside the parentheses.Methods can take multiple, comma-separated parameters.@<b>!</b>The advantages of using methods instead of simple statements include the following:<br><b>- code reuse: </b>You can write a method once, and use it multiple times, without having to rewrite the code each time.<br><b>-parameters:</b> Based on the parameters passed in, methods can perform various actions.",
       "taskWhatsNext": 2,
       "taskType" : 1,
       "lessonKeyWords" : ["method","paramters","input","value"]
@@ -57,7 +57,7 @@
       "taskWhatsNext": 3,
       "taskType": 2,
       "exerciseViewType": 1,
-      "exerciseContentString": "16"
+      "exerciseSolutionString": "16"
     }
 
   ]

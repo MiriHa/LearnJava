@@ -1,10 +1,12 @@
 package com.example.learnjava;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.util.Log;
 
 import com.example.learnjava.models.ModelExercise;
 import com.example.learnjava.models.ModelLesson;
+import com.example.learnjava.models.ModelQuestion;
 import com.example.learnjava.models.ModelTask;
 import com.google.gson.JsonArray;
 
@@ -115,13 +117,13 @@ public class ReadJson {
                         }
                         //Type: Order -> int[]
                         else if(viewType_value == 5){
-                            JSONArray solutionIntArray = taskObject.getJSONArray("exerciseSolutionIntArray");
-                            int[] solutionIntArray_value = toIntArray(solutionIntArray);
+                            JSONArray solutionStringArray = taskObject.getJSONArray("exerciseSolutionStringArray");
+                            String[] solutionStringArray_value = toStringArray(solutionStringArray);
                             JSONArray contentStringArray = taskObject.getJSONArray("exerciseContentStringArray");
                             String[] contentStringArray_value = toStringArray(contentStringArray);
 
                             //Add values in ArrayList
-                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,section_number_value,null, solutionIntArray_value, next_value, viewType_value,0,"", contentStringArray_value);
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,section_number_value,solutionStringArray_value, null, next_value, viewType_value,0,"", contentStringArray_value);
                             taskList.add(newExercise);
                         }
                         //Type: Code -> String[]
@@ -130,8 +132,11 @@ public class ReadJson {
 //                            String[] solutionStringArray_value = toStringArray(solutionStringArray);
                             String solutionString_value = taskObject.getString("exerciseSolutionString");
 
+                            JSONArray contentStringArray = taskObject.getJSONArray("exerciseContentStringArray");
+                            String[] contentStringArray_value = toStringArray(contentStringArray);
+
                             //Add values in ArrayList
-                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,section_number_value,null, null, next_value, viewType_value,0,solutionString_value, null);
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,section_number_value,null, null, next_value, viewType_value,0,solutionString_value, contentStringArray_value);
                             taskList.add(newExercise);
 
                         }
@@ -164,6 +169,46 @@ public class ReadJson {
         return taskList;
 
     }
+
+    /**
+     * Read the Questions for the cue storead in a json file
+     * @param activity in what context
+     * @param sectionWhat section1 or section2 etc for reading the file needed
+     * @return get all questions for a section
+     */
+    public ArrayList<ModelQuestion> readQuestions(Context activity, String sectionWhat){
+
+        ArrayList<ModelQuestion> questionList = new ArrayList<>();
+
+        try {
+            JSONObject obj = new JSONObject(loadJSONFromAsset(activity, "questionsCue"));
+            JSONArray questionArray = obj.getJSONArray(sectionWhat);
+
+            for(int i =0; i<questionArray.length();i++){
+
+                JSONObject taskObject = questionArray.getJSONObject(i);
+
+                //Read Json-values
+                int questionNumber_value = taskObject.getInt("questionNumber");
+                int answerInt_value = taskObject.getInt("questionAnswerInt");
+                String question_value = taskObject.getString("question");
+
+                JSONArray solutionStringArray = taskObject.getJSONArray("questionAnswerArray");
+                String[] questionAnswerArray_value = toStringArray(solutionStringArray);
+
+                ModelQuestion question = new ModelQuestion(questionNumber_value, answerInt_value, question_value, questionAnswerArray_value);
+                questionList.add(question);
+
+            }
+
+
+        } catch (JSONException e) {
+        e.printStackTrace();
+    }
+
+        return questionList;
+
+        }
 
     private static String[] toStringArray(JSONArray array) {
         if (array == null)

@@ -249,47 +249,6 @@ public class LessonActivity extends AppCompatActivity {
     }
 
 
-    /**
-     * open the right resumption Cue
-     * @param section which is the currentSection
-     * @param cue which cue is needed: 1 WORD-CUE, 2: WORD-CLOUD, 3: HISTORY, 4: QUESTIONS
-     */
-
-    public void showCue(int section, int cue) {
-        FragmentManager fm = getSupportFragmentManager();
-        switch (cue){
-            case 1:
-                //TODO latestTaskNumber.getTaskname?
-                WordCueFragment wordCueFragment = WordCueFragment.newIntance(section);
-               // wordCueFragment.getDialog().setCanceledOnTouchOutside(false);
-                wordCueFragment.show(fm, "fragment_word_cue");
-                //TODO log what before that cue was
-                progressController.makeaLog(Calendar.getInstance().getTime(),"OPENED_A_CUE","WordCue");
-                Log.i("M_LESSON_ACTIVITY","show Word Cue " + currentTask.getTaskName() + " "+section);
-                break;
-            case 2:
-                WordCloudFragment wordCloudFragment = WordCloudFragment.newInstance("bla","blub00");
-               // wordCloudFragment.getDialog().setCanceledOnTouchOutside(false);
-                wordCloudFragment.show(fm, "fragment_cloud_cue");
-                progressController.makeaLog(Calendar.getInstance().getTime(),"OPENED_A_CUE","CloudCue");
-                Log.i("M_LESSON_ACTIVITY","show Word Cloud Cue "+ " "+section);
-                break;
-            case 3:
-                HistoryFragment historyFragment = HistoryFragment.newInstance(section);
-               // historyFragment.getDialog().setCanceledOnTouchOutside(false);
-                historyFragment.show(fm, "fragment_history_cue");
-                progressController.makeaLog(Calendar.getInstance().getTime(),"OPENED_A_CUE","HistoryCue");
-                Log.i("M_LESSON_ACTIVITY","show History Cue "+ " "+section);
-                break;
-            case 4:
-                QuestionsFragment questionsFragment = QuestionsFragment.newInstance(section);
-                questionsFragment.show(fm, "fragment_question_cue");
-                progressController.makeaLog(Calendar.getInstance().getTime(),"OPENED_A_CUE","questionCue");
-                Log.i("M_LESSON_ACTIVITY","show Question Cue "+ " "+section);
-                break;
-
-        }
-    }
 
     /**
      * Update the Progress when the end of a Section is reached, unlock next Section and go to MainActivity
@@ -547,6 +506,8 @@ public class LessonActivity extends AppCompatActivity {
         currentTask = taskContent.get(progressCurrentScreen);
         currentTaskNumber = currentTask.getTaskNumber();
 
+        progressController.updateCurrentScreen(this, progressCurrentScreen);
+
         setProgressBackground();
             switch (tasktype) {
 
@@ -596,8 +557,22 @@ public class LessonActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        SharedPrefrencesManager.setTrigger(this, true);
+        SharedPrefrencesManager.setTrigger(this, true, 1);
         Log.i("M_TRIGGER_CUES","LessonActivity: onRestart, set Cue Trigger true");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        progressController.showCue(this, sectionNumber, getSupportFragmentManager());
+        Log.i("M_TRIGGER_CUES","LessonActivity: onStart, showCue");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        SharedPrefrencesManager.setTrigger(this, true, 1);
+//        Log.i("M_TRIGGER_CUES","LessonActivity: onResume, set Cue Trigger true");
     }
 
     @Override
@@ -606,14 +581,13 @@ public class LessonActivity extends AppCompatActivity {
 //        SharedPrefrencesManager.setTrigger(this, true);
 //        Log.i("M_TRIGGER_CUES","LessonActivity: onStop, set Cue Trigger true");
     }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        progressController.showCue(this, sectionNumber, 3, getSupportFragmentManager());
-        Log.i("M_TRIGGER_CUES","LessonActivity: onStart, set Cue Trigger true");
+
+
+    public ArrayList<ModelTask> getTaskContent() {
+        return taskContent;
     }
 
-
-
-
+    public int getCurrentTaskNumber(){
+        return currentTaskNumber;
+    }
 }

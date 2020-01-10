@@ -16,10 +16,15 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.learnjava.Controller;
 import com.example.learnjava.R;
+import com.example.learnjava.SharedPrefrencesManager;
+import com.example.learnjava.models.ModelTask;
+import com.example.learnjava.sections.LessonActivity;
 
 public class WordCueFragment extends DialogFragment {
 
+    Controller progressController;
     private TextView cueText;
     ConstraintLayout background;
     private Button button;
@@ -46,6 +51,8 @@ public class WordCueFragment extends DialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        progressController = (Controller)getActivity().getApplicationContext();
+
         cueText = view.findViewById(R.id.wordCueText);
         background = view.findViewById(R.id.wordCueBackground);
         button = view.findViewById(R.id.wordCueButton);
@@ -54,7 +61,17 @@ public class WordCueFragment extends DialogFragment {
 
         //String word = getArguments().getString("word", "Cue Word");
         //TODO make it synammicly
-        cueText.setText("A LESSON");
+
+        int lessonNumber = SharedPrefrencesManager.readCurrentScreen(getContext());
+        if (!(lessonNumber == 0))
+            lessonNumber -= 1;
+
+        //TODO make sure the right section is loaded
+        String lastTaskName = progressController.getTaskContent().get(lessonNumber).getTaskName();
+        Log.i("M_WORD_CUE","lessonNumber: "+lessonNumber+" lastTaskName "+lastTaskName);
+
+        cueText.setText(lastTaskName);
+
         int section = getArguments().getInt("section", 1);
         setBackground(section);
 

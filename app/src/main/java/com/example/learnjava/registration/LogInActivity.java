@@ -48,7 +48,7 @@ public class LogInActivity extends AppCompatActivity {
         logInSubmit = findViewById(R.id.login_submit);
         toSignUp = findViewById(R.id.login_signUp);
 
-        //Enable Offline Data Cache
+        //Enable Offline Data Cache -> maye in iniziale database only when app new installed it will work?
         //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
         isUserFirstTime = Boolean.valueOf(SharedPrefrencesManager.readSharedSetting(LogInActivity.this, PREF_USER_FIRST_TIME, "true"));
@@ -145,17 +145,6 @@ public class LogInActivity extends AppCompatActivity {
             });
         }
 
-//        FirebaseAuth.AuthStateListener authStateListener = new FirebaseAuth.AuthStateListener() {
-//            @Override
-//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-//                if (firebaseUser != null) {
-//                    Intent intent = new Intent(LogInActivity.this, MainActivity.class);
-//                    startActivity(intent);
-//                    finish();
-//                }
-//            }
-//        };
 
         @Override
         protected void onStart () {

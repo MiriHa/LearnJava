@@ -53,11 +53,11 @@ public class Controller extends android.app.Application {
         auth = FirebaseAuth.getInstance();
         ref = FirebaseDatabase.getInstance().getReference();
         userId = auth.getCurrentUser().getUid();
-      //  List<ModelFinishedTask> tasks = new ArrayList<>();
 
         SharedPrefrencesManager.saveUserName(con, username);
         SharedPrefrencesManager.saveEMail(con, email);
         SharedPrefrencesManager.saveLatestSectionNumber(con, 1);
+        SharedPrefrencesManager.setTrigger(con, false, 0);
 
         Log.i("M_CONTROLLER","InstanzializeModelUserProgress: " + userId);
 
@@ -228,6 +228,17 @@ public class Controller extends android.app.Application {
         return taskContent;
     }
 
+    public ArrayList<ModelTask> getOnlyLessons(){
+        ArrayList<ModelTask> lessonNames = new ArrayList<>();
+        for(int i=0; i<taskContent.size(); i++){
+            if(taskContent.get(i).getType()==1){
+                lessonNames.add(taskContent.get(i));
+            }
+        }
+
+        return lessonNames;
+    }
+
     public ArrayList<ModelQuestion> getQuestions(Context con, String sectionWhat){
 
         return readJson.readQuestions(con, sectionWhat);
@@ -241,12 +252,10 @@ public class Controller extends android.app.Application {
      */
     public void showCue(Context con, int section, FragmentManager fm) {
         if(SharedPrefrencesManager.readTrigger(con)) {
-            SharedPrefrencesManager.setTrigger(con, false, 0);
-            Log.i("M_TRIGGER_CUES", "set Trigger in showCue: false");
 
             //0: false, 1 screen was dark, 2 app has restarted
             int why = SharedPrefrencesManager.readTriggerWhy(con);
-            // when in later sections show Questions else show Word
+            // determite which cue should be shown:
             int whichCue;
             if(why == 1) {
                 if (section <= 4)
@@ -256,12 +265,18 @@ public class Controller extends android.app.Application {
             }
             else if(why == 2){
                 if (section <= 4)
-                    whichCue = 2;
+                    //TODO EGtl 2
+                   // whichCue = 2;
+                    whichCue = 4;
                 else
                     whichCue = 3;
             }else {
                 whichCue = 0;
             }
+            Log.i("M_TRIGGER_CUES", "which cue: " +whichCue + " why: "+why);
+
+            SharedPrefrencesManager.setTrigger(con, false, 0);
+            Log.i("M_TRIGGER_CUES", "set Trigger in showCue: false");
 
             switch (whichCue) {
                 case 0:

@@ -306,11 +306,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onStop();
     }
 
+
     @Override
     protected void onRestart() {
         super.onRestart();
-//        SharedPrefrencesManager.setTrigger(this, true);
-//        Log.i("M_TRIGGER_CUES","MainActivity: onRestart, set Cue Trigger true");
+        SharedPrefrencesManager.setTrigger(this, true, 1);
+        Log.i("M_TRIGGER_CUES","MainActivity: onRestart, set Cue Trigger true");
     }
 
 

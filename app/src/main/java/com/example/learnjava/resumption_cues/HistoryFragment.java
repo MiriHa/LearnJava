@@ -1,12 +1,9 @@
 package com.example.learnjava.resumption_cues;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.util.TypedValue;
@@ -20,6 +17,8 @@ import android.widget.TextView;
 
 import com.example.learnjava.Controller;
 import com.example.learnjava.R;
+import com.example.learnjava.SharedPrefrencesManager;
+import com.example.learnjava.models.ModelTask;
 
 import java.util.Calendar;
 
@@ -63,7 +62,9 @@ public class HistoryFragment extends DialogFragment {
         setHistory(section);
         setBackground(section);
 
-        progressController.makeaLog(Calendar.getInstance().getTime(), "History_CUE", "in section "+ section);
+        //ArrayList<ModelTask> tasklist = progressController.getTaskContent();
+
+        progressController.makeaLog(Calendar.getInstance().getTime(), "History_CUE", "in section " + section);
         gotit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,56 +78,59 @@ public class HistoryFragment extends DialogFragment {
     private void setHistory(int section) {
         LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        //TODO maybe not show the current section only the from before
-        for (int i = 1; i <= section; i++) {
+        if (SharedPrefrencesManager.readCurrentSection(getContext()) == SharedPrefrencesManager.readLatestSectionNumber(getContext())) {
+            //Give overview over the last lessons
+            int currenTaskNumber = SharedPrefrencesManager.readCurrentScreen(getContext());
+            //TODO maybe not show the current section only the from before
 
-            TextView textView = new TextView(getContext());
-            textView.setLayoutParams(mParams);
-            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-            textView.setGravity(View.TEXT_ALIGNMENT_CENTER);
+            for (int i = 0; i <= currenTaskNumber; i++) {
 
-            switch (i) {
-                case 1:
-                    textView.setText(getString(R.string.Lesson1));
-                    break;
-                case 2:
-                    textView.setText(getString(R.string.Lesson2));
-                    break;
-                case 3:
-                    textView.setText(getString(R.string.Lesson3));
-                    break;
-                case 4:
-                    textView.setText(getString(R.string.Lesson4));
-                    break;
-                case 5:
-                    textView.setText(getString(R.string.Lesson5));
-                    break;
-                case 6:
-                    textView.setText(getString(R.string.Lesson6));
-                    break;
-                case 7:
-                    textView.setText(getString(R.string.Lesson7));
-                    break;
-                case 8:
-                    textView.setText(getString(R.string.Lesson8));
-                    break;
-                case 9:
-                    textView.setText(getString(R.string.Lesson9));
-                    break;
+                ModelTask currentLesson = progressController.getOnlyLessons().get(i);
+
+                if(currentLesson.getTaskNumber() <= currenTaskNumber) {
+                    TextView textView = new TextView(getContext());
+                    textView.setLayoutParams(mParams);
+                    textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+                    textView.setGravity(View.TEXT_ALIGNMENT_CENTER);
+
+                    textView.setText(currentLesson.getTaskName());
+
+
+                    historyHolder.addView(textView);
+
+                    if (!(i == currenTaskNumber)) {
+                        ImageView imageView = new ImageView(getContext());
+                        imageView.setLayoutParams(mParams);
+                        imageView.setImageResource(R.drawable.ic_arrow_drop_down_black);
+                        historyHolder.addView(imageView);
+                    }
+                }
+
             }
+        } else {
+            //give overview over the whole Section
+            //TODO statt tascontetn lesson Names
+            int lessons = progressController.getOnlyLessons().size();
+            for (int i = 0; i <= lessons; i++) {
 
-            historyHolder.addView(textView);
+                TextView textView = new TextView(getContext());
+                textView.setLayoutParams(mParams);
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+                textView.setGravity(View.TEXT_ALIGNMENT_CENTER);
 
-            if(!(i==section)) {
-                ImageView imageView = new ImageView(getContext());
-                imageView.setLayoutParams(mParams);
-                imageView.setImageResource(R.drawable.ic_arrow_drop_down_black);
-                historyHolder.addView(imageView);
+                textView.setText(progressController.getOnlyLessons().get(i).getTaskName());
+
+                historyHolder.addView(textView);
+
+                if (!(i == lessons)) {
+                    ImageView imageView = new ImageView(getContext());
+                    imageView.setLayoutParams(mParams);
+                    imageView.setImageResource(R.drawable.ic_arrow_drop_down_black);
+                    historyHolder.addView(imageView);
+                }
             }
 
         }
-
-
     }
 
     private void setBackground(int section) {

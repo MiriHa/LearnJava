@@ -55,7 +55,7 @@ public class LogInActivity extends AppCompatActivity {
         Log.i("M_LogIn_ACTIVITY", "isUserforthefirstTime: " + isUserFirstTime);
 
         if(!isUserFirstTime) {
-            SharedPrefrencesManager.setTrigger(this, true);
+            SharedPrefrencesManager.setTrigger(this, true, 2);
             Log.i("M_TRIGGER_CUES", "LogInActivity: onCreate, set Cue Trigger true");
         }
 
@@ -161,7 +161,7 @@ public class LogInActivity extends AppCompatActivity {
         protected void onStart () {
             super.onStart();
             if(!isUserFirstTime)
-                SharedPrefrencesManager.setTrigger(this, true);
+                SharedPrefrencesManager.setTrigger(this, true, 2);
         }
 
         @Override

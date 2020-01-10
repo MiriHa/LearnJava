@@ -54,6 +54,11 @@ public class LogInActivity extends AppCompatActivity {
         isUserFirstTime = Boolean.valueOf(SharedPrefrencesManager.readSharedSetting(LogInActivity.this, PREF_USER_FIRST_TIME, "true"));
         Log.i("M_LogIn_ACTIVITY", "isUserforthefirstTime: " + isUserFirstTime);
 
+        if(!isUserFirstTime) {
+            SharedPrefrencesManager.setTrigger(this, true);
+            Log.i("M_TRIGGER_CUES", "LogInActivity: onCreate, set Cue Trigger true");
+        }
+
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
         if (b != null)
@@ -155,8 +160,8 @@ public class LogInActivity extends AppCompatActivity {
         @Override
         protected void onStart () {
             super.onStart();
-//            if(!isUserFirstTime)
-//                auth.addAuthStateListener(authStateListener);
+            if(!isUserFirstTime)
+                SharedPrefrencesManager.setTrigger(this, true);
         }
 
         @Override

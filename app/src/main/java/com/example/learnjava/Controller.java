@@ -1,11 +1,18 @@
 package com.example.learnjava;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
+
+import androidx.fragment.app.FragmentManager;
 
 import com.example.learnjava.models.ModelLog;
 import com.example.learnjava.models.ModelQuestion;
 import com.example.learnjava.models.ModelTask;
+import com.example.learnjava.resumption_cues.HistoryFragment;
+import com.example.learnjava.resumption_cues.QuestionsFragment;
+import com.example.learnjava.resumption_cues.WordCloudFragment;
+import com.example.learnjava.resumption_cues.WordCueFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -13,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -223,6 +231,76 @@ public class Controller extends android.app.Application {
     public ArrayList<ModelQuestion> getQuestions(Context con, String sectionWhat){
 
         return readJson.readQuestions(con, sectionWhat);
+    }
+
+
+    /**
+     * open the right resumption Cue
+     * @param section which is the currentSection
+     * which cue is needed: 1 WORD-CUE, 2: WORD-CLOUD, 3: HISTORY, 4: QUESTIONS
+     */
+    public void showCue(Context con, int section, FragmentManager fm) {
+        if(SharedPrefrencesManager.readTrigger(con)) {
+            SharedPrefrencesManager.setTrigger(con, false, 0);
+            Log.i("M_TRIGGER_CUES", "set Trigger in showCue: false");
+
+            //0: false, 1 screen was dark, 2 app has restarted
+            int why = SharedPrefrencesManager.readTriggerWhy(con);
+            // when in later sections show Questions else show Word
+            int whichCue;
+            if(why == 1) {
+                if (section <= 4)
+                    whichCue = 1;
+                else
+                    whichCue = 4;
+            }
+            else if(why == 2){
+                if (section <= 4)
+                    whichCue = 2;
+                else
+                    whichCue = 3;
+            }else {
+                whichCue = 0;
+            }
+
+            switch (whichCue) {
+                case 0:
+                    Log.i("M_TRIGGER_CUES","Trigger WHy was 0");
+                    break;
+                case 1:
+                    //TODO latestTaskNumber.getTaskname?
+                    WordCueFragment wordCueFragment = WordCueFragment.newIntance(section);
+                    // wordCueFragment.getDialog().setCanceledOnTouchOutside(false);
+                    wordCueFragment.show(fm, "fragment_word_cue");
+                    //TODO log what before that cue was
+                    makeaLog(Calendar.getInstance().getTime(), "OPENED_A_CUE", "WordCue");
+                    Log.i("M_TRIGGER_CUES", "show Word Cue " + section);
+                    break;
+                case 2:
+                    WordCloudFragment wordCloudFragment = WordCloudFragment.newInstance("bla", "blub00");
+                    // wordCloudFragment.getDialog().setCanceledOnTouchOutside(false);
+                    wordCloudFragment.show(fm, "fragment_cloud_cue");
+                    makeaLog(Calendar.getInstance().getTime(), "OPENED_A_CUE", "CloudCue");
+                    Log.i("M_TRIGGER_CUES", "show Word Cloud Cue " + " " + section);
+                    break;
+                case 3:
+                    HistoryFragment historyFragment = HistoryFragment.newInstance(section);
+                    // historyFragment.getDialog().setCanceledOnTouchOutside(false);
+                    historyFragment.show(fm, "fragment_history_cue");
+                    makeaLog(Calendar.getInstance().getTime(), "OPENED_A_CUE", "HistoryCue");
+                    Log.i("M_TRIGGER_CUES", "show History Cue " + " " + section);
+                    break;
+                case 4:
+                    QuestionsFragment questionsFragment = QuestionsFragment.newInstance(section);
+                    questionsFragment.show(fm, "fragment_question_cue");
+                    makeaLog(Calendar.getInstance().getTime(), "OPENED_A_CUE", "questionCue");
+                    Log.i("M_TRIGGER_CUES", "show Question Cue " + " " + section);
+                    break;
+
+            }
+        }else{
+            Log.i("M_TRIGGER_CUES", "show no Cue");
+        }
     }
 
 

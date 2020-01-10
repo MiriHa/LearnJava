@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.learnjava.Controller;
 import com.example.learnjava.MainActivity;
 import com.example.learnjava.R;
+import com.example.learnjava.SharedPrefrencesManager;
 import com.example.learnjava.models.ModelTask;
 import com.example.learnjava.resumption_cues.HistoryFragment;
 import com.example.learnjava.resumption_cues.QuestionsFragment;
@@ -86,7 +87,7 @@ public class LessonActivity extends AppCompatActivity {
         openNewTask(0);
 
 
-        showCue(sectionNumber,4);
+        //progressController.showCue(this,sectionNumber,4, getSupportFragmentManager());
 
     }
 
@@ -259,7 +260,7 @@ public class LessonActivity extends AppCompatActivity {
         switch (cue){
             case 1:
                 //TODO latestTaskNumber.getTaskname?
-                WordCueFragment wordCueFragment = WordCueFragment.newIntance(currentTask.getTaskName(),section);
+                WordCueFragment wordCueFragment = WordCueFragment.newIntance(section);
                // wordCueFragment.getDialog().setCanceledOnTouchOutside(false);
                 wordCueFragment.show(fm, "fragment_word_cue");
                 //TODO log what before that cue was
@@ -589,6 +590,29 @@ public class LessonActivity extends AppCompatActivity {
                 //open the last Lesson
             }
     }
+
+
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        SharedPrefrencesManager.setTrigger(this, true);
+        Log.i("M_TRIGGER_CUES","LessonActivity: onRestart, set Cue Trigger true");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+//        SharedPrefrencesManager.setTrigger(this, true);
+//        Log.i("M_TRIGGER_CUES","LessonActivity: onStop, set Cue Trigger true");
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        progressController.showCue(this, sectionNumber, 3, getSupportFragmentManager());
+        Log.i("M_TRIGGER_CUES","LessonActivity: onStart, set Cue Trigger true");
+    }
+
 
 
 

@@ -8,7 +8,12 @@ public class SharedPrefrencesManager {
 
     private static final String PREFERENCES_FILE = "ONBOARDING_SETTINGS";
     private static final String PROGRESS_FILE = "USER_PROGRESS_SAVE";
+    private static final String CUES_FILE = "CUES_SAVE";
 
+
+    /**
+     * Manage the User for the first time variable
+     */
     public static String readSharedSetting(Context ctx, String settingName, String defaultValue) {
         Log.i("M_UTILS","readSharedSetting user for the first time");
         SharedPreferences sharedPref = ctx.getSharedPreferences(PREFERENCES_FILE, Context.MODE_PRIVATE);
@@ -29,34 +34,40 @@ public class SharedPrefrencesManager {
     }
 
 
-//    public static void saveModelToProgress(Context ctx, ModelUserProgress progress){
-//        Log.i("M_UTILS","save progress");
-//        SharedPreferences sharedPref = ctx.getSharedPreferences(PROGRESS_FILE, Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sharedPref.edit();
-//
-//        Gson gson = new Gson();
-//        String json = gson.toJson(progress);
-//        editor.putString("MY_PROGRESS", json);
-//        editor.apply();
-//    }
-//
-//    public static ModelUserProgress readProgress(Context ctx){
-//        Log.i("M_UTILS","read progress");
-//        SharedPreferences sharedPref = ctx.getSharedPreferences(PROGRESS_FILE, Context.MODE_PRIVATE);
-//
-//        Gson gson = new Gson();
-//        String json = sharedPref.getString("MY_PROGRESS", "");
-//
-//        return gson.fromJson(json, ModelUserProgress.class);
-//    }
+    /**
+     * Manage the Resumption Cues
+     */
 
-    public static void deleteProgress(Context ctx, String settingName) {
-        SharedPreferences sharedPref = ctx.getSharedPreferences(PROGRESS_FILE, Context.MODE_PRIVATE);
-        sharedPref.edit().clear().apply();
+    public static void setTrigger(Context ctx, boolean trigger, int why){
+        SharedPreferences sharedPref = ctx.getSharedPreferences(CUES_FILE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        editor.putBoolean("TRIGGER", trigger);
+        //0: trigger set false, 1: screen has gone dark, 2 app is restartet
+        editor.putInt("WHY",why);
+        editor.apply();
+        Log.i("M_SHARED_PREFERENCES","setTrigger " + trigger);
+
+    }
+
+    public static boolean readTrigger(Context ctx){
+        SharedPreferences sharedPref = ctx.getSharedPreferences(CUES_FILE, Context.MODE_PRIVATE);
+        Log.i("M_SHARED_PREFERENCES","readUserName");
+        return sharedPref.getBoolean("TRIGGER", false);
+    }
+
+    public static int readTriggerWhy(Context ctx){
+        SharedPreferences sharedPref = ctx.getSharedPreferences(CUES_FILE, Context.MODE_PRIVATE);
+        Log.i("M_SHARED_PREFERENCES","readUserName");
+        return sharedPref.getInt("WHY", 1);
     }
 
 
 
+
+    /**
+     * Save and Read the User Progress
+     */
 
     public static void saveUserName(Context ctx, String userName){
         SharedPreferences sharedPref = ctx.getSharedPreferences(PROGRESS_FILE, Context.MODE_PRIVATE);

@@ -29,10 +29,10 @@ public class WordCueFragment extends DialogFragment {
     public WordCueFragment() {
     }
 
-    public static WordCueFragment newIntance(String word, int section) {
+
+    public static WordCueFragment newIntance(int section) {
         WordCueFragment frag = new WordCueFragment();
         Bundle args = new Bundle();
-        args.putString("word", word);
         args.putInt("section", section);
         frag.setArguments(args);
         return frag;
@@ -52,8 +52,9 @@ public class WordCueFragment extends DialogFragment {
 
         getDialog().setCanceledOnTouchOutside(false);
 
-        String word = getArguments().getString("word", "Cue Word");
-        cueText.setText(word);
+        //String word = getArguments().getString("word", "Cue Word");
+        //TODO make it synammicly
+        cueText.setText("A LESSON");
         int section = getArguments().getInt("section", 1);
         setBackground(section);
 

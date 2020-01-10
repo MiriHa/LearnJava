@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void showCueWord(String text, int section) {
         FragmentManager fm = getSupportFragmentManager();
-        WordCueFragment wordCueFragment = WordCueFragment.newIntance(text,section);
+        WordCueFragment wordCueFragment = WordCueFragment.newIntance(section);
         wordCueFragment.show(fm, "fragment_word_cue");
     }
 
@@ -298,19 +298,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
-//        if(!isUserFirstTime) {
-////            auth.addAuthStateListener(authStateListener);
-////            Log.i("M_MAIN_ACTIVITY","on start  add AuthListener");
-//        }
+
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-//        if(!isUserFirstTime) {
-//            auth.removeAuthStateListener(authStateListener);
-//            Log.i("M_MAIN_ACTIVITY","on stop remove AuthListener");
-//        }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+//        SharedPrefrencesManager.setTrigger(this, true);
+//        Log.i("M_TRIGGER_CUES","MainActivity: onRestart, set Cue Trigger true");
     }
 
 

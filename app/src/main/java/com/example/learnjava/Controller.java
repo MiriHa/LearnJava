@@ -4,18 +4,24 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.learnjava.models.ModelLog;
 import com.example.learnjava.models.ModelQuestion;
 import com.example.learnjava.models.ModelTask;
+import com.example.learnjava.models.ModelUserProgress;
 import com.example.learnjava.resumption_cues.HistoryFragment;
 import com.example.learnjava.resumption_cues.QuestionsFragment;
 import com.example.learnjava.resumption_cues.WordCloudFragment;
 import com.example.learnjava.resumption_cues.WordCueFragment;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -25,6 +31,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
+
+import static rx.internal.operators.NotificationLite.getValue;
 
 public class Controller extends android.app.Application {
 
@@ -64,8 +72,8 @@ public class Controller extends android.app.Application {
 
     }
 
-    public void fetchModelUserProgress() {
-        Log.i("M_CONTROLLER","fetchModelUserProgress1 ");
+    public void setFirebase() {
+        Log.i("M_CONTROLLER","setFirebase");
         auth = FirebaseAuth.getInstance();
         ref = FirebaseDatabase.getInstance().getReference();
         userId = auth.getCurrentUser().getUid();
@@ -86,10 +94,39 @@ public class Controller extends android.app.Application {
 //
 //                @Override
 //                public void onCancelled(@NonNull DatabaseError databaseError) {
-//                    Log.i("M_CONTROLLER","fetchModelUserProgress cancelled");
+//                    Log.i("M_CONTROLLER","setFirebase cancelled");
 //
 //                }
 //            });
+    }
+
+    public void fetchProgressFromFireBase(final Context con){
+        Log.i("M_CONTROLLER","fetchProgressfromFirebase");
+        auth = FirebaseAuth.getInstance();
+        ref = FirebaseDatabase.getInstance().getReference();
+        userId = auth.getCurrentUser().getUid();
+
+        FirebaseUser firebaseUser = auth.getCurrentUser();
+            DatabaseReference currentReference = ref.child("users").child(firebaseUser.getUid());
+            currentReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.getValue() != null){
+                        Integer latestSectionNumber = dataSnapshot.child("latestSectionNumber").getValue(Integer.class);
+                        Integer latestTaskNumber = dataSnapshot.child("latestTaskNumber").getValue(Integer.class);
+                       SharedPrefrencesManager.saveLatestSectionNumber(con, latestSectionNumber);
+                       SharedPrefrencesManager.savelatestTaskNumber(con, latestTaskNumber);
+                       Log.i("M_CONTROLLER","fetchProgressFromFireBase: section :"+ latestSectionNumber+ " latestTAsk: "+latestTaskNumber);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Log.i("M_CONTROLLER","fetchProgressFromFireBase cancelled");
+
+                }
+            });
+
     }
 
     /**
@@ -106,9 +143,9 @@ public class Controller extends android.app.Application {
         int latestSection = SharedPrefrencesManager.readLatestSectionNumber(con);
         int latestTask = SharedPrefrencesManager.readLatestTaskNumber(con);
 
-        Log.i("M_CONTROLLER","checkTasks " + "task: " + aTask.getTaskNumber() + " section: " +aTask.getSectionNumber());
+        Log.i("M_CONTROLLER","checkTasks " + "task: " + aTask.getTaskNumber() + " latest task: "+latestTask+" section: " +aTask.getSectionNumber() + " latestSection "+latestSection);
 
-        if(aTask.getSectionNumber() == latestSection && aTask.getTaskNumber() <= latestTask){
+        if(aTask.getSectionNumber() == latestSection && aTask.getTaskNumber() < latestTask){
             return true;
         }
         else return aTask.getSectionNumber() < latestSection;
@@ -149,9 +186,10 @@ public class Controller extends android.app.Application {
     }
 
     public void updateLatestTaskNumber(Context con, int number, int currentSection) {
-        Log.i("M_CONTROLLER", "updateLatesTaskNumber " + number);
+        Log.i("M_CONTROLLER", "updateLatesTaskNumber not in latestSection");
         //modelUserProgress.updateLatestTaskNumber(number);
         if(currentSection == SharedPrefrencesManager.readLatestSectionNumber(this)){
+            Log.i("M_CONTROLLER", "updateLatesTaskNumber " + number+" currentSection: "+currentSection+" latestSection: "+SharedPrefrencesManager.readLatestSectionNumber(this));
             SharedPrefrencesManager.savelatestTaskNumber(con, number);
             ref.child("users").child(userId).child("latestTaskNumber").setValue((long) number);
         }

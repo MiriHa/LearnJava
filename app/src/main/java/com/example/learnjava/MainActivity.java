@@ -69,14 +69,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         context = getApplicationContext();
         myProgressController = (Controller) getApplicationContext();
-        myProgressController.fetchModelUserProgress();
+
+        myProgressController.setFirebase();
 
         //check if the app is opend for the first time
         auth = FirebaseAuth.getInstance();
         ref = FirebaseDatabase.getInstance().getReference();
         currentuserID = auth.getCurrentUser().getUid();
 
-        //myProgressController.fetchModelUserProgress();
+        //myProgressController.setFirebase();
         Log.i("M_MAIN_ACTIVITY", "set Refrences and Controller");
         myProgressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_MAIN_ACTIVITY", "set Refrences and Content");
 
@@ -173,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     public void checkIfSolved(LinearLayout section, Integer number) {
         // Date currentTime = Calendar.getInstance().getTime();
-       // myProgressController.fetchModelUserProgress();
+       // myProgressController.setFirebase();
 
         Log.i("M_MAIN_ACTIVITY", "checkIfSOlved " + String.valueOf(myProgressController.getLatestSectionNumber(this)) + " " + number);
         if (number == 1) {

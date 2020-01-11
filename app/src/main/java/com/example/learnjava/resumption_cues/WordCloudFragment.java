@@ -80,6 +80,7 @@ public class WordCloudFragment extends DialogFragment {
 
         List<WordCloud> list = new ArrayList<>();
         Random random = new Random();
+        //TODO überarbeiten das nur bestimmte viele wörte in wordcloud kommen? jetzt alle
         for (String s : keywords) {
             list.add(new WordCloud(s, random.nextInt(keywords.size())));
         }
@@ -89,7 +90,7 @@ public class WordCloudFragment extends DialogFragment {
         wordCloud.setColors(ColorTemplate.MATERIAL_COLORS);
         wordCloud.setScale(50, 15);
 //        wordCloud.setColors(new int[] {Color.BLUE, Color.GRAY, Color.GREEN, Color.CYAN });
-        wordCloud.notifyDataSetChanged();
+       // wordCloud.notifyDataSetChanged();
 
 
         //set the ButtonFunction
@@ -111,6 +112,7 @@ public class WordCloudFragment extends DialogFragment {
         if(section == SharedPrefrencesManager.readLatestSectionNumber(getContext())){
             int currenTaskNumber = SharedPrefrencesManager.readCurrentScreen(getContext());
 
+            Log.i("M_WORD_CLOUD","getKeywords. currentTaskNumber: "+currenTaskNumber);
             for(int i =0; i<=currenTaskNumber; i++){
 
                 ModelTask currentLesson = lessons.get(i);

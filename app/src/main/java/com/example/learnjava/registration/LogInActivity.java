@@ -3,6 +3,7 @@ package com.example.learnjava.registration;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.learnjava.Controller;
 import com.example.learnjava.MainActivity;
 import com.example.learnjava.R;
 import com.example.learnjava.SharedPrefrencesManager;
@@ -30,6 +32,9 @@ public class LogInActivity extends AppCompatActivity {
     FirebaseAuth auth;
     DatabaseReference ref;
 
+    Controller progressController;
+    Context context = this;
+
     EditText userNameInput, userPasswordInput;
     Button logInSubmit;
     TextView toSignUp;
@@ -42,6 +47,7 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        progressController = (Controller) getApplicationContext();
 
         userNameInput = findViewById(R.id.login_email);
         userPasswordInput = findViewById(R.id.login_password);
@@ -136,6 +142,7 @@ public class LogInActivity extends AppCompatActivity {
                         }
                     } else {
                         // Handle LogIn success
+                        progressController.fetchProgressFromFireBase(context);
                         SharedPrefrencesManager.saveSharedSetting(LogInActivity.this, MainActivity.PREF_USER_FIRST_TIME, "false");
                         Intent userInfo = new Intent(LogInActivity.this, MainActivity.class);
                         startActivity(userInfo);
@@ -151,6 +158,21 @@ public class LogInActivity extends AppCompatActivity {
             super.onStart();
             if(!isUserFirstTime)
                 SharedPrefrencesManager.setTrigger(this, true, 2);
+//            if (isUserFirstTime) {
+//                signUp();
+//                Log.i("M_LOGIN_ACTIVITY", "SignUP");
+//            }
+//            else{
+//                    SharedPrefrencesManager.setTrigger(this, true, 2);
+//                    auth = FirebaseAuth.getInstance();
+//                    ref = FirebaseDatabase.getInstance().getReference();
+//
+//                    // If user is already logged in, get to HomeScreen
+//                    if (auth.getCurrentUser() != null) {
+//                        Log.i("M_LOGIN_ACTIVITY", " got to main, currentUSer: " + auth.getCurrentUser().toString());
+//                        startActivity(new Intent(LogInActivity.this, MainActivity.class));
+//                    }
+//                }
         }
 
         @Override

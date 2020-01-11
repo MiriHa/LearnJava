@@ -40,7 +40,6 @@ public class LessonActivity extends AppCompatActivity {
     ModelTask currentTask;
     int currentTaskNumber;
 
-    int currentSection;
     Context context;
 
     LinearLayout progressHolder;
@@ -256,10 +255,11 @@ public class LessonActivity extends AppCompatActivity {
     public void updateProgressLastTask() {
 
         //add the finished section to the PorgressCOntrolller when needed
-            progressController.updateLatestSection(this,sectionNumber);
-            Log.i("M_LESSON_ACTIVITY", "updatet LatestSection");
+        progressController.updateLatestTaskNumber(this, 0, sectionNumber);
+        progressController.updateLatestSection(this,sectionNumber);
+        Log.i("M_LESSON_ACTIVITY", "updatet LatestSection");
 
-        Log.i("M_LESSON_ACTIVITY", " updateprogress: latestSection updated " + progressController.getLatestSectionNumber(this));
+       // Log.i("M_LESSON_ACTIVITY", " updateprogress: latestSection updated " + progressController.getLatestSectionNumber(this));
         Log.i("M_LESSON_ACTIVITY", "last task of section is reached");
         //GO Back to the MainActivity
         Intent intent = new Intent(LessonActivity.this, MainActivity.class);
@@ -274,23 +274,26 @@ public class LessonActivity extends AppCompatActivity {
      * Check if the current Progress matches the TaskNumbers
      */
     private void checkProgress() {
-        Log.i("M CheckProgress", " currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
-        if (progressCurrentScreen == currentTask.getTaskNumber()) {
+        Log.i("M_CheckProgress", " currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
+//        if (progressCurrentScreen == currentTask.getTaskNumber()) {
             //TODO progressController.addFinishedTask(currentTask)
             //TODO why is it the same code? here
             progressCurrentScreen =  currentTask.getTaskNumber() + 1;
             //When in the latest Section update the latest TaskNumber;
 
 
-            progressController.updateLatestTaskNumber(this, progressCurrentScreen, currentSection);
+            progressController.updateLatestTaskNumber(this, progressCurrentScreen, sectionNumber);
 
             progressController.updateCurrentScreen(this,progressCurrentScreen);
             Log.i("M_LESSON_ACTIVITY", " checkprogress: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
-        } else {
-            progressCurrentScreen =  currentTask.getTaskNumber() + 1;
-            progressController.updateCurrentScreen(this,progressCurrentScreen);
-            Log.i("M_LESSON_ACTIVITY", " checkProgress else: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
-        }
+//        } else {
+//            progressCurrentScreen =  currentTask.getTaskNumber() + 1;
+//
+//            //egtl nur in if???
+//            progressController.updateLatestTaskNumber(this, progressCurrentScreen, sectionNumber);
+//            progressController.updateCurrentScreen(this,progressCurrentScreen);
+//            Log.i("M_LESSON_ACTIVITY", " checkProgress else: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
+//        }
     }
 
     /**
@@ -302,7 +305,7 @@ public class LessonActivity extends AppCompatActivity {
 //        if (progressController.getLatestSectionNumber(this) == sectionNumber) {
             currentTask = taskContent.get(progressCurrentScreen);
             currentTaskNumber = currentTask.getTaskNumber();
-            progressController.updateLatestTaskNumber(this, currentTaskNumber, currentSection);
+            progressController.updateLatestTaskNumber(this, currentTaskNumber, sectionNumber);
             Log.i("M_LESSON_ACTIVITY","set recent task in latest Section " + currentTask.getTaskName() + " " + currentTask.getTaskNumber());
 //        } else {
 //            currentTask = taskContent.get(progressCurrentScreen);
@@ -412,7 +415,7 @@ public class LessonActivity extends AppCompatActivity {
         for (int i = 0; i < taskContent.size(); i++) {
 //            String tagOld = "PROGRESS_FIELD_" + i;
             String tagOld = String.valueOf(i);
-            Log.i("M_LESSON_ACTIVITY", "latesTasknumber: " + progressController.getLatestTaskNumber(this) + " updateProgressBackground");
+            Log.i("M_LESSON_ACTIVITY", "setProgressBackground");
             TextView textViewOld = progressHolder.findViewWithTag(tagOld);
             textViewOld.setBackgroundResource(R.drawable.border);
         }

@@ -463,16 +463,12 @@ public class LessonActivity extends AppCompatActivity {
         public void onClick(View v) {
             TextView tv = (TextView) v;
             int number = Integer.valueOf(tv.getTag().toString());
-            //currentTask = taskContent.get(number);
-           // if(progressController.checkTasks(taskContent.get(number)) || number <= progressController.getLatestTaskNumber()) {
-            boolean check = progressController.checkTasks(context, taskContent.get(number));
-//            if(progressController.checkTasks(context, taskContent.get(number)) && (number <= progressController.getLatestTaskNumber(context)||sectionNumber <= progressController.getLatestSectionNumber(context))) {
-            if(progressController.checkTasks(context, taskContent.get(number))) {
+            if(checkTasksforProgressBar(taskContent.get(number))) {
                 openTaskProgress(2, number);
             } else {
                 Toast.makeText(context, "Not unlocked yet", Toast.LENGTH_SHORT).show();
             }
-            Log.i("M LESSON_ACTIVITY", "on progressBar clicked Exercise number: " + number + check);
+            Log.i("M LESSON_ACTIVITY", "on progressBar clicked Exercise number: " + number);
 
         }
     }
@@ -485,15 +481,23 @@ public class LessonActivity extends AppCompatActivity {
         public void onClick(View v) {
             TextView tv = (TextView) v;
             int number = Integer.valueOf(tv.getTag().toString());
-            // currentTask = taskContent.get(number);
-            boolean check = progressController.checkTasks(context, taskContent.get(number));
-            if(progressController.checkTasks(context,taskContent.get(number))) {
+            if(checkTasksforProgressBar(taskContent.get(number))) {
                 openTaskProgress(1, number);
             } else {
             Toast.makeText(context, "Not unlocked yet", Toast.LENGTH_SHORT).show();
         }
-            Log.i("M_LESSON_ACTIVITY", "on progressBar clicked lesson number: " + number +  check);
+            Log.i("M_LESSON_ACTIVITY", "on progressBar clicked lesson number: " + number);
         }
+    }
+
+    private boolean checkTasksforProgressBar(ModelTask aTask){
+        int latestSection = SharedPrefrencesManager.readLatestSectionNumber(context);
+        int latestTask = SharedPrefrencesManager.readLatestTaskNumber(context);
+
+        if(aTask.getSectionNumber() == latestSection && aTask.getTaskNumber() <= latestTask){
+            return true;
+        }
+        else return aTask.getSectionNumber() < latestSection;
     }
 
 

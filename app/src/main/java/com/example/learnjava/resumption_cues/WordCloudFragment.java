@@ -90,7 +90,7 @@ public class WordCloudFragment extends DialogFragment {
         wordCloud.setColors(ColorTemplate.MATERIAL_COLORS);
         wordCloud.setScale(50, 15);
 //        wordCloud.setColors(new int[] {Color.BLUE, Color.GRAY, Color.GREEN, Color.CYAN });
-       // wordCloud.notifyDataSetChanged();
+        wordCloud.notifyDataSetChanged();
 
 
         //set the ButtonFunction

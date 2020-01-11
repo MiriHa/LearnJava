@@ -233,6 +233,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         builder.setView(dialogView);
 
         final AlertDialog rightFeedbackDialog = builder.create();
+        rightFeedbackDialog.setCanceledOnTouchOutside(false);
         rightFeedbackDialog.show();
 
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -255,9 +256,10 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         //  AlertDialog builder = new AlertDialog.Builder(getContext()).create();
         builder.setView(dialogView);
-        final AlertDialog feedbackDialog = builder.create();
+        final AlertDialog wrongfeedbackDialog = builder.create();
+        wrongfeedbackDialog.setCanceledOnTouchOutside(false);
         //  feedbackDialog.getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.transparent)));
-        feedbackDialog.show();
+        wrongfeedbackDialog.show();
 
         tryagainButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -265,7 +267,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
                // ((LessonActivity) getActivity()).openNewTask(4);
                 //TODO reset the layout
                 reset();
-                feedbackDialog.dismiss();
+                wrongfeedbackDialog.dismiss();
                 progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_WRONG_TRY_AGAIN", "number: " + currentTask.getTaskNumber() + " taskType: " + currentTask.getExerciseViewType());
 
 
@@ -275,7 +277,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
             @Override
             public void onClick(View v) {
                 ((LessonActivity) getActivity()).openNewTask(3);
-                feedbackDialog.dismiss();
+                wrongfeedbackDialog.dismiss();
                 progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_WRONG_SEE_LESSON", "number: " + currentTask.getTaskNumber() + " taskType: " + currentTask.getExerciseViewType());
             }
         });

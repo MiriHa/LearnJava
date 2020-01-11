@@ -29,6 +29,9 @@ import java.util.Random;
 
 import static com.example.learnjava.R.color.Green;
 
+/**
+ * This is the resumption cue Question: number 4
+ */
 public class QuestionsFragment extends DialogFragment {
 
 

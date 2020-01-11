@@ -1,13 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:minWidth="1000dp"
+    android:minHeight="1000dp"
     tools:context=".resumption_cues.WordCloudFragment">
 
-<net.alhazmy13.wordcloud.WordCloudView
-    android:id="@+id/WordcloudView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/wordCloudCueBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minWidth="1000dp"
+        android:minHeight="1000dp">
 
-</FrameLayout>
+
+        <net.alhazmy13.wordcloud.WordCloudView
+            android:id="@+id/WordcloudView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:background="@drawable/rounded_corners"
+            app:layout_constraintBottom_toTopOf="@+id/WordCloudButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/WordCloudButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_altert_green"
+            android:text="@string/Cue_Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/WordcloudView"
+            app:layout_constraintVertical_bias="0.93" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

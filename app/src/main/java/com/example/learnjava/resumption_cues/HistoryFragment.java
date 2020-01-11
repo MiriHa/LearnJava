@@ -23,7 +23,7 @@ import com.example.learnjava.models.ModelTask;
 import java.util.Calendar;
 
 /**
- * This ResumtionCueFragment shows your histroy of previous lessons
+ * This Resumtion Cue histroy of previous lessons: number 3
  */
 public class HistoryFragment extends DialogFragment {
 

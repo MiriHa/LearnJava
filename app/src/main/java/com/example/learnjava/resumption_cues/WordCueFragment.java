@@ -22,6 +22,9 @@ import com.example.learnjava.SharedPrefrencesManager;
 import com.example.learnjava.models.ModelTask;
 import com.example.learnjava.sections.LessonActivity;
 
+/**
+ * This is the resumption Cue lastLesson: number 1
+ */
 public class WordCueFragment extends DialogFragment {
 
     Controller progressController;

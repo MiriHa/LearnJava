@@ -265,9 +265,7 @@ public class Controller extends android.app.Application {
             }
             else if(why == 2){
                 if (section <= 4)
-                    //TODO EGtl 2
-                   // whichCue = 2;
-                    whichCue = 4;
+                    whichCue = 2;
                 else
                     whichCue = 3;
             }else {
@@ -292,7 +290,7 @@ public class Controller extends android.app.Application {
                     Log.i("M_TRIGGER_CUES", "show Word Cue " + section);
                     break;
                 case 2:
-                    WordCloudFragment wordCloudFragment = WordCloudFragment.newInstance("bla", "blub00");
+                    WordCloudFragment wordCloudFragment = WordCloudFragment.newInstance(section);
                     // wordCloudFragment.getDialog().setCanceledOnTouchOutside(false);
                     wordCloudFragment.show(fm, "fragment_cloud_cue");
                     makeaLog(Calendar.getInstance().getTime(), "OPENED_A_CUE", "CloudCue");

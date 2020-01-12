@@ -25,18 +25,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
-            <TextView
-                android:id="@+id/exerciseTextAnswer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/shortString"
-                android:textSize="@dimen/TextSize20" />
-
+<!--            <TextView-->
+<!--                android:id="@+id/exerciseTextAnswer"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/shortString"-->
+<!--                android:textSize="@dimen/TextSize20" />-->
 
             <LinearLayout
+                android:id="@+id/answerTextHolder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical"/>
+
 
                 <EditText
                     android:id="@+id/editTextAnswer"
@@ -49,8 +50,6 @@
                     android:autofillHints="answer"
                     android:inputType="text"
                     android:textSize="@dimen/TextSize20" />
-
-            </LinearLayout>
 
         </LinearLayout>
 

@@ -26,15 +26,24 @@
       "taskNumber" : 2,
       "sectionNumber": 6,
       "taskText" : "Write a Code for a apple class with a public variable apple and its value \"red\"",
-      "taskWhatsNext" : 2,
+      "taskWhatsNext" : 1,
       "taskType" : 2,
       "exerciseViewType" : 6,
       "exerciseSolutionString" : "blub",
       "exerciseContentStringArray": ["write blub"]
     },
     {
-      "taskName": "Order",
+      "taskName": "else if Statement",
       "taskNumber": 3,
+      "sectionNumber": 6,
+      "taskText" : "Instead of using nested <b>if-else</b> statements, you can use the<b> else if</b> statement to check multiple conditions.<br><b>For example: </b>@$picturecode1@The code will check the condition to evaluate to true and execute the statements inside that block.@<b>! You can include as many <b>else if</b> statements as you need.</b>",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
+    },
+    {
+      "taskName": "Order",
+      "taskNumber": 4,
       "sectionNumber": 6,
       "taskText": "Order these Lines per drag",
       "taskWhatsNext": 3,
@@ -42,14 +51,6 @@
       "exerciseViewType" : 5,
       "exerciseSolutionStringArray" : ["TEXT2","TEXT1","TEXT0"],
       "exerciseContentStringArray" : ["one","two","three"]
-    },
-    {
-      "taskName": "Main Method",
-      "taskNumber": 4,
-      "taskText" : " THis is an indrocution to the main method ahahaaaa",
-      "taskWhatsNext" : 2,
-      "taskType" : 1,
-      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
     },
     {
       "taskName": "Main Method2",

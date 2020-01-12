@@ -4,7 +4,7 @@
       "taskName" : "Primitive Operators",
       "taskNumber" : 0,
       "sectionNumber": 4,
-      "taskText" : "Java provides a rich set of <b>operators</b> to use in manipulating variables. A value used on either side of an operator is called an <b>operand</b>.<br>For example, in the expression below, the numbers 6 and 3 are operands of the plus operator:@int x = 6 + 3;@it can also be used to add together a variable and a value, or a variable and another variable:@int sum1 = 100 + 50;<br>&ensp;&ensp;// 150 (100 + 50)@int sum2 = sum1 + 250;<br>&ensp;&ensp;// 400 (150 + 250)@int sum3 = sum2 + sum2;<br>&ensp;&ensp;// 800 (400 + 40)",
+      "taskText" : "Java provides a rich set of <b>operators</b> to use in manipulating variables. A value used on either side of an operator is called an <b>operand</b>.<br>For example, in the expression below, the numbers 6 and 3 are operands of the plus operator:@_picturecode4_0_1@it can also be used to add together a variable and a value, or a variable and another variable:@_picturecode4_0_2",
       "taskWhatsNext" : 1,
       "taskType" : 1,
       "lessonKeyWords" : ["Operators", "manipulate variables", "operand", "addition"]
@@ -44,7 +44,7 @@
       "taskName": "Modulo",
       "taskNumber": 4,
       "sectionNumber": 4,
-      "taskText": "The <b>modulo</b> (or remainder) math operation performs an integer division of one value by another, and returns the remainder of that division. <br>The operator for the modulo operation is the percentage (%) character.<br>Example:@int value = 23;<br>int res = value % 6; // res is 5@<b>!</b>Dividing 23 by 6 returns a quotient of 3, with a remainder of 5. Thus, the value of 5 is assigned to the <b>res</b> variable.",
+      "taskText": "The <b>modulo</b> (or remainder) math operation performs an integer division of one value by another, and returns the remainder of that division. <br>The operator for the modulo operation is the percentage (%) character.<br>Example:@_picturecode4_4@<b>! </b>Dividing 23 by 6 returns a quotient of 3, with a remainder of 5. Thus, the value of 5 is assigned to the <b>res</b> variable.",
       "taskWhatsNext": 2,
       "taskType" : 1,
       "lessonKeyWords" : ["modulo", "operation", "division","remainder"]
@@ -53,7 +53,7 @@
       "taskName": "Modulo",
       "taskNumber": 5,
       "sectionNumber": 4,
-      "taskText": "What value is stored in the result variable?\n\nint x = 8, y = 5;\nint result = x % y;",
+      "taskText": "What value is stored in the result variable?@_picturecode4_5",
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 1,
@@ -63,7 +63,7 @@
       "taskName": "Increment Operators",
       "taskNumber": 6,
       "sectionNumber": 4,
-      "taskText": "An <b>increment</b> or <b>decrement</b> operator provides a more convenient and compact way to increase or decrease the value of a variable by <b>one</b>. <br>For example, the statement <b>x=x+1;</b> can be simplified to <b>++x; </b>@<b>++ increment</b><br>&ensp;increases the value by one@<b>-- decrement</b><br>&ensp;decreases the value by one<br><br>Example:@&ensp;&ensp;int test = 5;<br>&ensp;&ensp;++test; // test is now 6@&ensp;&ensp;int test = 5;<br>&ensp;&ensp;--test; // test is now 4",
+      "taskText": "An <b>increment</b> or <b>decrement</b> operator provides a more convenient and compact way to increase or decrease the value of a variable by <b>one</b>. <br>For example, the statement <b>x=x+1;</b> can be simplified to <b>++x; </b>@<b>++ increment</b><br>&ensp;increases the value by one@<b>-- decrement</b><br>&ensp;decreases the value by one<br><br>Example:@_picturecode4_6",
       "taskWhatsNext": 2,
       "taskType" : 1,
       "lessonKeyWords" : ["increment", "decrement", "operators","++","--"]
@@ -83,7 +83,7 @@
       "taskName": "Prefix and Postfix",
       "taskNumber": 8,
       "sectionNumber": 4,
-      "taskText": "Two forms,<b> prefix and postfix</b>, may be used with both the increment and decrement operators. With prefix form, the operator appears before the operand, while in postfix form, the operator appears after the operand. Below is an explanation of how the two forms work:<br><br><b>Prefix:</b> Increments the variable's value and uses the new value in the expression. <br>Example:@&ensp;&ensp;int x = 34;<br>&ensp;&ensp;int y = ++x; // y is 35@The value of x is first incremented to 35, and is then assigned to y, so the values of both x and y are now 35.<br><br><b>Postfix:</b> The variable's value is first used in the expression and is then increased. <br>Example:@&ensp;&ensp;int x = 34;<br>&ensp;&ensp;int y = x++; // y is 34",
+      "taskText": "Two forms,<b> prefix and postfix</b>, may be used with both the increment and decrement operators. With prefix form, the operator appears before the operand, while in postfix form, the operator appears after the operand. Below is an explanation of how the two forms work:<br><br><b>Prefix:</b> Increments the variable's value and uses the new value in the expression. <br>Example:@_picturecode4_8_1@The value of x is first incremented to 35, and is then assigned to y, so the values of both x and y are now 35.<br><br><b>Postfix:</b> The variable's value is first used in the expression and is then increased. <br>Example:@_picturecode4_8_2",
       "taskWhatsNext": 2,
       "taskType" : 1,
       "lessonKeyWords" : ["prefix", "postfix", "after operand","x++","--x"]
@@ -92,7 +92,7 @@
       "taskName": "Prefix and Postfix",
       "taskNumber": 9,
       "sectionNumber": 4,
-      "taskText": "What is the output of the following code?\n     int x = 14;\n    System.out.println(x++);",
+      "taskText": "What is the output of the following code?@_picturecode4_9",
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 1,
@@ -122,7 +122,7 @@
       "taskName": "Java Logical Operators",
       "taskNumber": 12,
       "sectionNumber": 4,
-      "taskText": "Logical operators are used to determine the logic between variables or values:@<b>&&&ensp;Logical and</b><br>&ensp;Returns true if both statements are true<br>&ensp;Example: x < 5 && x < 10@<b>||&ensp;Logical or</b><br>&ensp;Returns true if one of the statements is true<br>&ensp;Example: x < 5 || x < 4@<b<>!&ensp; Logical not</b><br>&ensp;Reverse the result, returns false if the result is true<br>&ensp;Example: !(x < 5 && x < 10)",
+      "taskText": "Logical operators are used to determine the logic between variables or values:@<b>&&&ensp;Logical and</b><br>&ensp;Returns true if both statements are true<br>&ensp;Example: 2 < 5 && 2 < 10 -> true @<b>||&ensp;Logical or</b><br>&ensp;Returns true if one of the statements is true<br>&ensp;Example: 2 < 5 || 2 > 4 -> true@<b<>!&ensp; Logical not</b><br>&ensp;Reverse the result, returns false if the result is true<br>&ensp;Example: !(2 < 5 && 2 < 10)-> false",
       "taskWhatsNext": 2,
       "taskType" : 1,
       "lessonKeyWords" : ["Logical", "operator", "and","or"]
@@ -131,11 +131,11 @@
       "taskName": "Logical Operators",
       "taskNumber": 13,
       "sectionNumber": 4,
-      "taskText": "What ist the output of these code snippets?\n\nint var1 = 6;\nint var2 = 10;\n",
+      "taskText": "What ist the output of these code snippets?\n\n  int var1 = 6;\n  int var2 = 10;",
       "taskWhatsNext": 3,
       "taskType": 2,
       "exerciseViewType": 3,
-      "exerciseContentStringArray": ["System.out.println(var1 > 3 || var2 <= 8);","#","System.out.println(var1 > 3 && var2 <= 8);","#","System.out.println( !(var1 == 6 && var2 <= 10) );","#"],
+      "exerciseContentStringArray": ["System.out.println(\n  var1 > 3 || var2 <= 8\n);","#","System.out.println(\n  var1 > 3 && var2 <= 8\n);","#","System.out.println(\n  !(var1 == 6 && var2 <= 10)\n);","#"],
       "exerciseSolutionStringArray": ["true","false","true"]
     }
   ]

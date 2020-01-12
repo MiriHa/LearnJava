@@ -81,6 +81,8 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
 
         contentHolder = view.findViewById(R.id.contentHolderDragDrop);
         answerHolder = view.findViewById(R.id.answerHolderDragDrop);
+        answerHolder.setOnDragListener(this);
+
         answerArray = currentTask.getSolutionStringArray();
 
         Collections.addAll(answerArrayRandom, answerArray);
@@ -526,7 +528,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                 view.setVisibility(View.VISIBLE);
                 //remove drag listener
                 //TODO maybe add later that it can be dragged elsewhere????
-                view.setOnDragListener(null);
+                //view.setOnDragListener(null);
                 view.setTypeface(Typeface.DEFAULT_BOLD);
 
                 break;

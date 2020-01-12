@@ -1,17 +1,22 @@
 package com.example.learnjava.exercise_view;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Html;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,8 +44,9 @@ public class ExerciseViewAnswerFragment extends Fragment {
     private ModelTask currentTask;
     private Controller progressController;
 
-    private LinearLayout exerciseViewHolder;
+    private LinearLayout textHolder;
     private EditText editText;
+    private TextView exerciseText;
 
 
     public ExerciseViewAnswerFragment() {
@@ -62,9 +68,10 @@ public class ExerciseViewAnswerFragment extends Fragment {
         //get the currentTask
         receiveCurrentTask();
 
-        exerciseViewHolder = view.findViewById(R.id.contentHolderAnswer);
-        TextView exerciseText = view.findViewById(R.id.exerciseTextAnswer);
-        exerciseText.setText(currentTask.getTaskText());
+        textHolder = view.findViewById(R.id.answerTextHolder);
+        //exerciseText = view.findViewById(R.id.exerciseTextAnswer);
+        setText();
+
         editText = view.findViewById(R.id.editTextAnswer);
         Button nextButton = view.findViewById(R.id.nextButtonExerciseAnswer);
         final Button skipButton = view.findViewById(R.id.OnlyCheckButtonExerciseAnswer);
@@ -139,6 +146,47 @@ public class ExerciseViewAnswerFragment extends Fragment {
         this.mListener = callback;
     }
 
+    private void setText() {
+        String[] splitString = currentTask.getTaskText().split("@");
+
+        for (String element : splitString) {
+
+            LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams mParamsFit = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+            if (String.valueOf(element.charAt(0)).equals("_")) {
+
+                String uri = "@drawable/" + element;  // where myresource (without the extension) is the file
+                String name = getActivity().getPackageName();
+
+                int imageResource = getResources().getIdentifier(uri, null, getActivity().getPackageName());
+
+                Drawable res = getResources().getDrawable(imageResource);
+
+                ImageView imageView = new ImageView(getContext());
+                imageView.setLayoutParams(mParamsFit);
+                imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                imageView.setClickable(false);
+                imageView.setBackgroundColor(getResources().getColor(R.color.grey));
+                imageView.setAdjustViewBounds(true);
+                imageView.setImageDrawable(res);
+                textHolder.addView(imageView);
+
+            } else {
+
+                TextView myTextView = new TextView(getContext());
+                myTextView.setLayoutParams(mParams);
+                myTextView.setText(Html.fromHtml(element));
+                myTextView.setPadding(10, 6, 10, 6);
+                //TODO find a better way or see if its in packages
+                //  myTextView.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+                myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+
+                textHolder.addView(myTextView);
+//                }
+            }
+        }
+    }
 
     private void receiveCurrentTask() {
         this.currentTask = mListener.sendCurrentTask();

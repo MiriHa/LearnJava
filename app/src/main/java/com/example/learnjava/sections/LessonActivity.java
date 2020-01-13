@@ -589,6 +589,13 @@ public class LessonActivity extends AppCompatActivity {
 //        Log.i("M_TRIGGER_CUES","LessonActivity: onStop, set Cue Trigger true");
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        SharedPrefrencesManager.setTrigger(this, true);
+//        Log.i("M_TRIGGER_CUES","LessonActivity: onStop, set Cue Trigger true");
+    }
+
 
     public ArrayList<ModelTask> getTaskContent() {
         return taskContent;

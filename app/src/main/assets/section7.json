@@ -1,41 +1,107 @@
 {
   "tasks": [
     {
-      "taskName" : "Tutorial",
+      "taskName" : "Arrays",
       "taskNumber" : 0,
       "sectionNumber": 7,
-      "taskText" : "How to Use this app. Hello! This learning App will present you different Lessons to help you learn java. Here will be presented a lesson with theory that you need to read and understand and follwing this there will be an exercise to check our nearly learned knowledge",
+      "taskText" : "An<b> array</b> is a collection of variables of the same type. <br>When you need to store a list of values, such as numbers, you can store them in an array, instead of declaring separate variables for each number.@To declare an array, you need to define the type of the elements with <b>square brackets.</b><br>For example, to declare an array of integers:@&ensp;<b> int[ ] arr;</b>@The name of the array is <b>arr</b>. The type of elements it will hold is <b>int.</b><br><br>Now, you need to define the array's capacity, or the number of elements it will hold. To accomplish this, use the keyword <b>new.</b>@&ensp;int[ ] arr = <b>new</b> int[5];@The code above declares an array of 5 integers.<br>In an array, the elements are ordered and each has a specific and constant position, which is called an <b>index.</b><br><br>To reference elements in an array, type the name of the array followed by the index position within a pair of square brackets.<br>Example:@&ensp;<b> arr[2]</b> = 42;@This assigns a value of 42 to the element with 2 as its index.@<b>! </b>Note that elements in the array are identified with <b>zero-based</b> index numbers, meaning that the first element's index is 0 rather than one. So, the maximum index of the array int[5] is 4.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
-      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
+      "lessonKeyWords" : ["array","collection of variables","store","int[]","String[]"]
     },
     {
       "taskType" : 2,
-      "taskName" : "CODE",
+      "taskName" : "Arrays",
       "taskNumber" : 1,
       "sectionNumber": 7,
-      "taskText" : "Write a Code for a apple class with a public variable appel and its value \"red\"",
+      "taskText" : "In Java, an array starts counting from...",
+      "taskWhatsNext" : 1,
+      "exerciseViewType" : 2,
+      "exerciseSolutionStringArray" : ["0","2","1","-1"],
+      "exerciseSolutionInt": 1
+    },
+    {
+      "taskName" : "Initializing Arrays",
+      "taskNumber" : 2,
+      "sectionNumber": 7,
+      "taskText" : "Java provides a shortcut for instantiating arrays of primitive types and strings. If you already know what values to insert into the array, you can use an <b>array literal. </b><br>Example of an array literal:@_picturecode7_2@Place the values in a <b>comma-separated</b> list, enclosed in curly braces. The code above automatically initializes an array containing 4 elements, and stores the provided values.@<b>! </b>Sometimes you might see the square brackets placed after the array name, which also works, but the preferred way is to place the brackets after the array's data type.",
       "taskWhatsNext" : 2,
-      "exerciseViewType" : 6,
-      "exerciseSolutionString" : "publicclassAppel{publicStringappel=\"red\";}"
+      "taskType" : 1,
+      "lessonKeyWords" : ["array","instantiate","primitive types","initialize"]
     },
     {
       "taskType" : 2,
-      "taskName" : "ORDER",
-      "taskNumber" : 2,
+      "taskName" : "Initializing Arrays",
+      "taskNumber" : 3,
       "sectionNumber": 7,
-      "taskText" : "Order the line to make a correct java code",
+      "taskText" : "What is the output of this code?@_picturecode7_3",
       "taskWhatsNext" : 1,
-      "exerciseViewType" : 5,
-      "exerciseContentStringArray" : ["This is Line 1","This is line 2","this is line 3", "this is a very long line 4. verrry long. lonng.loooong- so looooong"],
-      "exerciseSolutionIntArray" : [1,2,3,4]
+      "exerciseViewType" : 1,
+      "exerciseSolutionString" : "9"
+
     },
     {
-      "taskName": "Introduction",
-      "taskNumber": 2,
-      "taskText" : " THis is an indrocution TExt blabla",
-      "taskWhatsNext" : 3,
+      "taskName": "Array Length",
+      "taskNumber": 4,
+      "sectionNumber": 7,
+      "taskText" : "You can access the length of an array (the number of elements it stores) via its <b>length</b> property. <br>Example:@_picturecode7_4@<b>! </b>Don't forget that in arrays, indexes start from <b>0</b>. So, in the example above, the last index is 4.",
+      "taskWhatsNext" : 2,
       "taskType" : 1,
-      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
+      "lessonKeyWords" : ["length", "first index 0"]
+    },
+    {
+      "taskType" : 2,
+      "taskName" : "Initializing Arrays",
+      "taskNumber" : 5,
+      "sectionNumber": 7,
+      "taskText" : "Fill in the blanks to retrieve the number of elements in an array called \"test\".",
+      "taskWhatsNext" : 1,
+      "exerciseViewType" : 3,
+      "exerciseContentStringArray" : ["test.@#"],
+      "exerciseSolutionStringArray": ["length"]
+
+    },
+    {
+      "taskName": "Using Arrays",
+      "taskNumber": 6,
+      "sectionNumber": 7,
+      "taskText" : "Now that we know how to set and get array elements, we can calculate the sum of all elements in an array by using loops.<br>The <b>for</b> loop is the most used loop when working with arrays, as we can use the<b> length</b> of the array to determine how many times to run the loop. @_picturecode7_6@In the code above, we declared a variable <b>sum</b> to store the result and assigned it 0.Then we used a for loop to iterate through the array, and added each element's value to the variable.<br>The condition of the <b>for</b> loop is x<myArr.length, as the last element's index is<b> myArr.length-1.</b>",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["calculating sun","arrays","iterate over arrays"]
+    },
+    {
+      "taskType" : 2,
+      "taskName" : "Using Arrays",
+      "taskNumber" : 7,
+      "sectionNumber": 7,
+      "taskText" : "Drag and drop the answers to calculate the sum of myArray's elements using the for loop, and print it to the screen. myArray is an array of doubles, containing 4 elements.",
+      "taskWhatsNext" : 2,
+      "exerciseViewType" : 4,
+      "exerciseContentStringArray" : ["double sum = 0.0;","for (int x = 0; x < 4; x@#@) {","  sum += myArray[x];","}","System.out.println(@#@);"],
+      "exerciseSolutionStringArray": ["length","++","--","int[]","sum", "while","x"],
+      "exerciseSolutionIntArray" : [1,4]
+    },
+    {
+      "taskType" : 2,
+      "taskName" : "Arrays",
+      "taskNumber" : 8,
+      "sectionNumber": 7,
+      "taskText" : "What is the output of this code?@_picturecode7_8",
+      "taskWhatsNext" : 2,
+      "exerciseViewType" : 1,
+      "exerciseSolutionString" : "2"
+
+    },
+    {
+      "taskType" : 2,
+      "taskName" : "Arrays",
+      "taskNumber" : 9,
+      "sectionNumber": 7,
+      "taskText" : "What is the output of this code?@_picturecode7_9",
+      "taskWhatsNext" : 3,
+      "exerciseViewType" : 1,
+      "exerciseSolutionString" : "17"
     }
+  ]
 }

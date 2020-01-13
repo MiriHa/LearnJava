@@ -48,12 +48,9 @@ public class WordCueFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_word_cue, container);
-    }
+        SharedPrefrencesManager.saveSharedSetting(getContext(), "CUE_OPEN","true");
+        View view = inflater.inflate(R.layout.fragment_word_cue, container);
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
         progressController = (Controller)getActivity().getApplicationContext();
 
         cueText = view.findViewById(R.id.wordCueText);
@@ -84,6 +81,13 @@ public class WordCueFragment extends DialogFragment {
                 dismiss();
             }
         });
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
     }
 
 
@@ -124,5 +128,12 @@ public class WordCueFragment extends DialogFragment {
                 break;
         }
 
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        SharedPrefrencesManager.saveSharedSetting(getContext(), "CUE_OPEN","false");
     }
 }

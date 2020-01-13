@@ -63,6 +63,7 @@ public class WordCloudFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        SharedPrefrencesManager.saveSharedSetting(getContext(), "CUE_OPEN","true");
         View view = inflater.inflate(R.layout.fragment_word_cloud, container, false);
 
         //set importent data
@@ -164,6 +165,13 @@ public class WordCloudFragment extends DialogFragment {
                 break;
         }
 
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        SharedPrefrencesManager.saveSharedSetting(getContext(), "CUE_OPEN","false");
     }
 
 }

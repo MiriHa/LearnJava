@@ -20,6 +20,7 @@ import com.example.learnjava.R;
 import com.example.learnjava.SharedPrefrencesManager;
 import com.example.learnjava.models.ModelTask;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -49,6 +50,7 @@ public class HistoryFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        SharedPrefrencesManager.saveSharedSetting(getContext(), "CUE_OPEN","true");
         View view = inflater.inflate(R.layout.fragment_history, container, false);
         progressController = (Controller) getActivity().getApplicationContext();
 
@@ -82,18 +84,19 @@ public class HistoryFragment extends DialogFragment {
             //Give overview over the last lessons
             int currenTaskNumber = SharedPrefrencesManager.readCurrentScreen(getContext());
             //TODO maybe not show the current section only the from before
+            ArrayList<ModelTask> lessons = progressController.getTaskContent();
 
             for (int i = 0; i <= currenTaskNumber; i++) {
 
-                ModelTask currentLesson = progressController.getOnlyLessons().get(i);
+                ModelTask currentTask = lessons.get(i);
 
-                if(currentLesson.getTaskNumber() <= currenTaskNumber) {
+                if(currentTask.getTaskNumber() <= currenTaskNumber && currentTask.getType() == 1) {
                     TextView textView = new TextView(getContext());
                     textView.setLayoutParams(mParams);
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
                     textView.setGravity(View.TEXT_ALIGNMENT_CENTER);
 
-                    textView.setText(currentLesson.getTaskName());
+                    textView.setText(currentTask.getTaskName());
 
 
                     historyHolder.addView(textView);
@@ -110,7 +113,8 @@ public class HistoryFragment extends DialogFragment {
         } else {
             //give overview over the whole Section
             //TODO statt tascontetn lesson Names
-            int lessons = progressController.getOnlyLessons().size();
+            ArrayList<ModelTask> onlyLessonTasks = progressController.getOnlyLessons();
+            int lessons = onlyLessonTasks.size();
             for (int i = 0; i <= lessons; i++) {
 
                 TextView textView = new TextView(getContext());
@@ -118,7 +122,7 @@ public class HistoryFragment extends DialogFragment {
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
                 textView.setGravity(View.TEXT_ALIGNMENT_CENTER);
 
-                textView.setText(progressController.getOnlyLessons().get(i).getTaskName());
+                textView.setText(onlyLessonTasks.get(i).getTaskName());
 
                 historyHolder.addView(textView);
 
@@ -170,6 +174,13 @@ public class HistoryFragment extends DialogFragment {
                 break;
         }
 
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        SharedPrefrencesManager.saveSharedSetting(getContext(), "CUE_OPEN","false");
     }
 
 

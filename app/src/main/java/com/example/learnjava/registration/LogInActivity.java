@@ -48,10 +48,16 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //Enable Offline Data Cache -> maye in iniziale database only when app new installed it will work?
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        if(Boolean.valueOf(SharedPrefrencesManager.readSharedSetting(this, "PERSISTENCE_ENABLED","true"))) {
+            //Enable Offline Data Cache -> maye in iniziale database only when app new installed it will work?
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+            Log.i("M_LOGIN_ACTIVITY","setPersistence Enabled");
+            SharedPrefrencesManager.saveSharedSetting(this, "PERSISTENCE_ENABLED", "false");
+
+        }
 
         progressController = (Controller) getApplicationContext();
+
 
         userNameInput = findViewById(R.id.login_email);
         userPasswordInput = findViewById(R.id.login_password);

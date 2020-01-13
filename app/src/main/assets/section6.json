@@ -1,85 +1,224 @@
 {
   "tasks": [
     {
-      "taskName" : "Tutorial",
+      "taskName" : "Decision Making",
       "taskNumber" : 0,
       "sectionNumber": 6,
-      "taskText" : "How to Use this app. Hello! This learning App will present you different Lessons to help you learn java. Here will be presented a lesson with theory that you need to read and understand and follwing this there will be an exercise to check our nearly learned knowledge",
+      "taskText" : "<b>Conditional statements</b>are used to perform different actions based on different conditions. The <b>if statement</b> is one of the most frequently used conditional statements.If the <b>if</b> statement's condition expression evaluates to true, the block of code inside the <b>if</b> statement is executed. If the expression is found to be false, the first set of code after the end of the <b>if</b> statement (after the closing curly brace) is executed.<b>Syntax:</b>@_picturecode6_0_1@Any of the comparison operators may be used to form the condition<br>&ensp;< less than<br>&ensp;> greater than<br>&ensp;!= not equal to<br>&ensp;== equal to<br>&ensp;<= less than or equal to<br>&ensp;>= greater than or equal to<br><br><b>For example: </b>@_picturecode6_0_2@<b>! </b>Remember that you need to use two equal signs (==) to test for equality, since a single equal sign is the assignment operator.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
-      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
+      "lessonKeyWords" : ["conditional","statements","if","true","false"]
     },
     {
-      "taskName": "Variables",
+      "taskName": "Decision Making",
       "taskNumber": 1,
       "sectionNumber": 6,
-      "taskText": "Drag and drop from the options below to have a valid Java program.",
-      "taskWhatsNext": 2,
+      "taskText": "Fill in the Blanks to print Yeah!",
+      "taskWhatsNext": 1,
       "taskType": 2,
-      "exerciseViewType": 4,
-      "exerciseSolutionStringArray":["int","true","boolean","float","String","void","class"],
-      "exerciseContentStringArray":["class Person{"," public static void main(String[ ]args){","  @#@name = \"John\";","  @#@age = 24;","  @#@height = 189,87;"," }","}"],
-      "exerciseSolutionIntArray": [4,0,3]
+      "exerciseViewType": 3,
+      "exerciseSolutionStringArray":["if","main"],
+      "exerciseContentStringArray": ["int x = 5;","#@( x == 5 ) {","  System.@#@.println(\"Yeah\");","}"]
     },
     {
-      "taskName" : "CODE",
+      "taskName" : "if...else Statements",
       "taskNumber" : 2,
       "sectionNumber": 6,
-      "taskText" : "Write a Code for a apple class with a public variable apple and its value \"red\"",
-      "taskWhatsNext" : 1,
-      "taskType" : 2,
-      "exerciseViewType" : 6,
-      "exerciseSolutionString" : "blub",
-      "exerciseContentStringArray": ["write blub"]
+      "taskText" : "An<b> if</b> statement can be followed by an optional <b>else</b> statement, which executes when the condition evaluates to false. <br><b>For example:</b>@_picturecode6_2@<b>! </b>As age equals 30, the condition in the <b>if</b> statement evaluates to false and the <b>else</b> statement is executed.",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["if...else","statement","if", "condition"]
     },
     {
-      "taskName": "else if Statement",
+      "taskName": "if...else",
       "taskNumber": 3,
       "sectionNumber": 6,
-      "taskText" : "Instead of using nested <b>if-else</b> statements, you can use the<b> else if</b> statement to check multiple conditions.<br><b>For example: </b>@$picturecode1@The code will check the condition to evaluate to true and execute the statements inside that block.@<b>! You can include as many <b>else if</b> statements as you need.</b>",
+      "taskText": "Fill in the blanks to print the greater number: ",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 3,
+      "exerciseSolutionStringArray": ["if","x","else"],
+      "exerciseContentStringArray": ["int x = 10;  int y = 5;","#@( x > y ) {","   System.out.println(@#@);}","#@{","   System.out.println(y);","}"]
+    },
+    {
+      "taskName" : "Nested if Statements",
+      "taskNumber" : 4,
+      "sectionNumber": 6,
+      "taskText" : "You can use one <b>if-else</b> statement inside another <b>if or else</b> statement.<br><b>For example:</b> @_picturecode6_4@<b>! </b>You can nest as many <b>if-else</b> statements as you want.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
-      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
+      "lessonKeyWords" : ["if","nested","as many as you want"]
     },
     {
-      "taskName": "Order",
-      "taskNumber": 4,
-      "sectionNumber": 6,
-      "taskText": "Order these Lines per drag",
-      "taskWhatsNext": 3,
-      "taskType" : 2,
-      "exerciseViewType" : 5,
-      "exerciseSolutionStringArray" : ["TEXT2","TEXT1","TEXT0"],
-      "exerciseContentStringArray" : ["one","two","three"]
-    },
-    {
-      "taskName": "Main Method2",
+      "taskName": "Nested if Statements",
       "taskNumber": 5,
-      "taskText": "Do a thing",
+      "sectionNumber": 6,
+      "taskText": "Fill in the blanks to print the greater number: ",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 3,
+      "exerciseSolutionStringArray": ["if","out"],
+      "exerciseContentStringArray": ["int x = 37;","if (x > 22) {","  @#@(x > 31) {","  System.@#@.println(\"it works!\");","  }","}"]
+    },
+    {
+      "taskName" : "else if Statement",
+      "taskNumber" : 6,
+      "sectionNumber": 6,
+      "taskText" : "Instead of using nested <b>if-else</b> statements, you can use the<b> else if</b> statement to check multiple conditions.<br><b>For example: </b>@_picturecode6_6@The code will check the condition to evaluate to true and execute the statements inside that block.@<b>! </b>You can include as many <b>else if</b> statements as you need.",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["else if","multiple conditions"]
+    },
+    {
+      "taskName": "else if",
+      "taskNumber": 7,
+      "sectionNumber": 6,
+      "taskText": "An if statement can contain how many else if statements?",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 2,
+      "exerciseSolutionInt": 1,
+      "exerciseSolutionStringArray": ["As many as you want", "Only two", "None ","You have to determine it beforehand"]
+    },
+    {
+      "taskName" : "Logical Operators",
+      "taskNumber" : 8,
+      "sectionNumber": 6,
+      "taskText" : "Logical operators are used to combine multiple conditions.<br><br>Let's say you wanted your program to output \"Welcome!\" only when the variable <b>age</b> is greater than 18 and the variable money is greater than 500. <br>One way to accomplish this is to use nested <b>if</b> statements:@_picturecode6_8_1@However, using the <b>AND</b> logical operator (<b>&&</b>) is a better way:@_picturecode6_8_2@<b>! </b>If both operands of the AND operator are true, then the condition becomes true.",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["Logical","Operators","&&","nested if", "AND"]
+    },
+    {
+      "taskName": "Logical Operators",
+      "taskNumber": 9,
+      "sectionNumber": 6,
+      "taskText": "Fill in the blank to test both conditions in the following if statement.",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 3,
+      "exerciseSolutionStringArray": ["&&"],
+      "exerciseContentStringArray": ["int age = 23;","int money = 4000;","if (age > 21@#@ money > 500) {","   System.out.println(\"Welcome\");","}"]
+    },
+    {
+      "taskName" : "OR operator",
+      "taskNumber" : 10,
+      "sectionNumber": 6,
+      "taskText" : "The <b>OR</b> operator (||) checks if any one of the conditions is true. The condition becomes true, if any one of the operands evaluates to true.<br><b>For example: </b>@_picturecode6_10@The code above will print \"Welcome!\" if age is greater than 18 <b>or</b> if money is greater than 500.",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["Logical","OR","||","nested if"]
+    },
+    {
+      "taskName": "Nested if Statements",
+      "taskNumber": 11,
+      "sectionNumber": 6,
+      "taskText": "What is the output of the following code?@_picturecode6_11",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 1,
+      "exerciseSolutionString": "11"
+    },
+    {
+      "taskName" : "The switch Statement",
+      "taskNumber" : 12,
+      "sectionNumber": 6,
+      "taskText" : "A <b>switch</b> statement tests a variable for equality against a list of values. Each value is called a <b>case</b>, and the variable being switched on is checked for each case.<br>Syntax:@_picturecode6_12_1@- When the variable being switched on is equal to a <b>case</b>, the statements following that <b>case</b> will execute until a <b>break</b> statement is reached.<br><br>- When a <b>break</b> statement is reached, the <b>switch</b> terminates, and the flow of control jumps to the next line after the <b>switch</b> statement.<br><br>- Not every <b>case</b> needs to contain a <b>break</b>. If no <b>break</b> appears, the flow of control will fall through to subsequent cases until a <b>break</b> is reached.<br><br>The example below tests<b> day</b> against a set of values and prints a corresponding message.@_picturecode6_12_1@<b>! </b>You can have any number of <b>case</b> statements within a <b>switch</b>. Each <b>case</b> is followed by the comparison value and a colon.",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["switch","case","statement","break"]
+    },
+    {
+      "taskName": "The switch Statment",
+      "taskNumber": 13,
+      "sectionNumber": 6,
+      "taskText": "Fill in the blanks to test the variable's value using the switch statement.",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 3,
+      "exerciseSolutionStringArray": ["switch","x","break;","case"],
+      "exerciseContentStringArray": ["int x = 10;","#@(@#@) {","  case 10:","    System.out.println(\"A\");","    @#@","    @#@ 20:","    System.out.println(\"B\");","    break; ","}"]
+    },
+    {
+      "taskName" : "While Loops",
+      "taskNumber" : 14,
+      "sectionNumber": 6,
+      "taskText" : "A <b>loop</b> statement allows to repeatedly execute a statement or group of statements.<br><br>A <b>while</b> loop statement repeatedly executes a target statement as long as a given condition is true.<br>Example:@_picturecode6_14@The <b>while</b> loops check for the condition x > 0. If it evaluates to true, it executes the statements within its body. Then it checks for the statement again and repeats.@<b>! </b>Notice the statement x--. This decrements x each time the loop runs, and makes the loop stop when x reaches 0. Without the statement, the loop would run forever.",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["while","loop","check condition"]
+    },
+    {
+      "taskName": "While Loops",
+      "taskNumber": 15,
+      "sectionNumber": 6,
+      "taskText": "Rearrange the code to produce a valid finite loop which prints a text to the screen in the loop.",
       "taskWhatsNext": 1,
       "taskType" : 2,
-      "exerciseViewType" : 2,
-      "exerciseSolutionString" : [],
-      "exerciseSolutionInt" : [1,2,3]
+      "exerciseViewType" : 5,
+      "exerciseSolutionStringArray" : ["TEXT1","TEXT3","TEXT2","TEXT0"],
+      "exerciseContentStringArray" : ["x++; } ","int x = 12; ","  System.out.println(\"Helli\"); ","while (x < 100) { "]
     },
     {
-      "taskName": "Main Method3",
-      "taskNumber": 6,
-      "taskText" : " THis is an indrocution to the main method ahahaaaablub",
+      "taskName" : "While Loops",
+      "taskNumber" : 16,
+      "sectionNumber": 6,
+      "taskText" : "When the expression is tested and the result is false, the loop body is skipped and the first statement after the while loop is executed.<br>Example: @_picturecode6_16@<b>! </b>Notice that the last print method is out of the while scope.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
-      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
+      "lessonKeyWords" : ["While","false","result"]
     },
     {
-      "taskName": "Main Method4",
-      "taskNumber": 7,
-      "taskText": "Do a thing yes",
+      "taskName": "While Loops",
+      "taskNumber": 17,
+      "sectionNumber": 6,
+      "taskText": "How many times will the following loop work?@_picturecode6_17",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 1,
+      "exerciseSolutionString": "5"
+    },
+    {
+      "taskName" : "for Loops",
+      "taskNumber" : 18,
+      "sectionNumber": 6,
+      "taskText" : "Another loop structure is the <b>for</b> loop. A for loop allows you to efficiently write a loop that needs to execute a specific number of times. <br>Syntax: @_picturecode6_18_1@<b>Initialization:</b> Expression executes only once during the beginning of loop<br><b>Condition:</b> Is evaluated each time the loop iterates. The loop executes the statement repeatedly, until this condition returns false.<br><b>Increment/Decrement:</b> Executes after each iteration of the loop.<br><br>The following example prints the numbers 1 through 5.@_picturecode6_18_2@This initializes x to the value 1, and repeatedly prints the value of x, until the condition x<=5 becomes false. On each iteration, the statement x++ is executed, incrementing x by one.@<b>! </b>Notice the semicolon (;) after initialization and condition in the syntax.",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["for","loop","iteration","until false", "increment/decrement"]
+    },
+    {
+      "taskName": "for Loop",
+      "taskNumber": 19,
+      "sectionNumber": 6,
+      "taskText": "Drag and drop from the options below to print \"Great!\" 10 times:",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 4,
+      "exerciseSolutionStringArray":["i+1","10","for","i","i--","i++","Great!"],
+      "exerciseContentStringArray": ["#@ (int i = 0; i < 10;@#@ ) {","   System.out.println(\"@#@\");","}"],
+      "exerciseSolutionIntArray": [2,5,6]
+    },
+    {
+      "taskName" : "for Loops",
+      "taskNumber" : 20,
+      "sectionNumber": 6,
+      "taskText" : "You can have any type of condition and any type of increment statements in the for loop.<br>The example below prints only the even values between 0 and 10: @_picturecode6_20@A <b>for</b> loop is best when the starting and ending numbers are known.",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["for","condition"]
+    },
+    {
+      "taskName": "for Loops",
+      "taskNumber": 21,
+      "sectionNumber": 6,
+      "taskText": "How many times will the following loop run?@_picturecode6_21",
       "taskWhatsNext": 3,
-      "taskType" : 2,
-      "exerciseViewType" : 3,
-      "exerciseSolutionString" : [],
-      "exerciseSolutionInt" : [1,2,3]
+      "taskType": 2,
+      "exerciseViewType": 1,
+      "exerciseSolutionString": "2"
     }
+
   ]
 
 }

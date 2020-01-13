@@ -85,7 +85,7 @@
       "taskName": "Displaying Variables",
       "taskNumber": 8,
       "sectionNumber": 3,
-      "taskText" : "The println() method is often used to <b>display variables</b>. To combine both text and a variable, use the <b>+</b> character:@String name = \"John\";<br>   System.out.println(\"Hello \" + name);@You can also use the + character to add a variable to another variable:@     String firstName = \"John \";<br>     String lastName = \"Doe\";<br>     String fullName = firstName + lastName;<br>     System.out.println(fullName);@! For numeric values, the + character works as a mathematical operator<br>   int x = 5, y = 6;<br>   System.out.println(x + y);<br>   // Print the value of x + y",
+      "taskText" : "The println() method is often used to <b>display variables</b>. To combine both text and a variable, use the <b>+</b> character:@_picturecode3_8_1@You can also use the + character to add a variable to another variable:@_picturecode3_8_2@! For numeric values, the + character works as a mathematical operator<br>@_picturecode3_8_3",
       "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["variables","displaying","+","println"]
@@ -94,7 +94,7 @@
       "taskName": "Displaying Variables",
       "taskNumber": 9,
       "sectionNumber": 3,
-      "taskText" : "What is the Output of this Code?\n\nclass Person{\n  public static void main (String[]args){\n    String name = “John”;\n         int age = 30;\n         String lastname = “Smith”;\n         Sytem.out.println(\n“name ”:  + name + \"  \" +lastname \n+ “, age:  ” + age);\n     }\n}",
+      "taskText" : "What is the Output of this Code?@_picturecode3_9",
       "taskWhatsNext" : 3,
       "taskType" : 2,
       "exerciseViewType": 1,

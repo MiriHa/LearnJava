@@ -258,7 +258,6 @@ public class Controller extends android.app.Application {
         String sectionFile = "section" + sectionNumber;
         taskContent = readJson.readTask(sectionFile, context);
         Log.i("loadContent", " section" + sectionNumber);
-        Log.i("M updateUserProgress", "loadContent");
     }
 
     public ArrayList<ModelTask> getTaskContent() {
@@ -289,7 +288,7 @@ public class Controller extends android.app.Application {
      * which cue is needed: 1 WORD-CUE, 2: WORD-CLOUD, 3: HISTORY, 4: QUESTIONS
      */
     public void showCue(Context con, int section, FragmentManager fm) {
-        if(SharedPrefrencesManager.readTrigger(con)) {
+        if(SharedPrefrencesManager.readTrigger(con) && !(Boolean.valueOf(SharedPrefrencesManager.readSharedSetting(con, "CUE_OPEN","false")))) {
 
             //0: false, 1 screen was dark, 2 app has restarted
             int why = SharedPrefrencesManager.readTriggerWhy(con);

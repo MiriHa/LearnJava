@@ -1,57 +1,85 @@
 {
   "tasks": [
     {
-      "taskName" : "Primitive Operator",
+      "taskName" : "Tutorial",
       "taskNumber" : 0,
-      "sectionNumber": 9,
-      "taskText" : "Java provides a rich set of <b>operators</b> to use in manipulating variables. A value used on either side of an operator is called an <b>operand</b>.<br>For example, in the expression below, the numbers 6 and 3 are operands of the plus operator:@int x = 6 + 3;@it can also be used to add together a variable and a value, or a variable and another variable:\n@int sum1 = 100 + 50;&ensp;&ensp;// 150 (100 + 50)@int sum2 = sum1 + 250;&ensp;&ensp;// 400 (150 + 250)@int sum3 = sum2 + sum2;&ensp;&ensp;// 800 (400 + 40",
-      "taskWhatsNext" : 1,
+      "sectionNumber": 6,
+      "taskText" : "How to Use this app. Hello! This learning App will present you different Lessons to help you learn java. Here will be presented a lesson with theory that you need to read and understand and follwing this there will be an exercise to check our nearly learned knowledge",
+      "taskWhatsNext" : 2,
       "taskType" : 1,
-      "lessonKeyWords" : ["Operators", "manipulate variables", "operand", "addition"]
+      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
     },
     {
-      "taskName": "Examples For Operators",
+      "taskName": "Variables",
       "taskNumber": 1,
-      "sectionNumber": 9,
-      "taskText": "Java arithmetic operators:@<b>+ addition</b><br>&ensp;adds two values together@<b>- subtraction</b><br>&ensp;subtracts a value from another@<b>*multiplication</b><br>&ensp;multiplies two values@<b>/ division</b><br>&ensp;divides one value from another@<b>%modulo</b><br>&ensp;returns the division remainder@<b>!</b>Arithmetic operators are used in mathematical expressions in the same way that they are used in algebraic equations.",
+      "sectionNumber": 6,
+      "taskText": "Drag and drop from the options below to have a valid Java program.",
       "taskWhatsNext": 2,
-      "taskType" : 1,
-      "lessonKeyWords" : ["Addition", "Subtraction", "Multiplication","Division","Modulo","+","-","/","*"]
+      "taskType": 2,
+      "exerciseViewType": 4,
+      "exerciseSolutionStringArray":["int","true","boolean","float","String","void","class"],
+      "exerciseContentStringArray":["class Person{"," public static void main(String[ ]args){","  @#@name = \"John\";","  @#@age = 24;","  @#@height = 189,87;"," }","}"],
+      "exerciseSolutionIntArray": [4,0,3]
     },
     {
-      "taskName": "Operators",
-      "taskNumber": 2,
-      "sectionNumber": 9,
-      "taskText": "Fill in the Blanks to print the sum of the two variables:",
-      "taskWhatsNext": 2,
+      "taskName" : "CODE",
+      "taskNumber" : 2,
+      "sectionNumber": 6,
+      "taskText" : "Write a Code for a apple class with a public variable apple and its value \"red\"",
+      "taskWhatsNext" : 1,
       "taskType" : 2,
-      "exerciseViewType" : 3,
-      "exerciseContentStringArray" : ["int x =2;","int y = 4;","int result = @#@;","System.out.println(@#@);"],
-      "exerciseSolutionStringArray": ["x+y","result"]
+      "exerciseViewType" : 6,
+      "exerciseSolutionString" : "blub",
+      "exerciseContentStringArray": ["write blub"]
     },
     {
-      "taskName": "Operators",
+      "taskName": "else if Statement",
       "taskNumber": 3,
-      "sectionNumber": 9,
-      "taskText": "Complete this Code that it's result is 20:",
-      "taskWhatsNext": 1,
-      "taskType" : 2,
-      "exerciseViewType" : 3,
-      "exerciseContentStringArray" : ["int x = 5;","int y = 4;","#@ result = @#@;","System.out.println(@#@);"],
-      "exerciseSolutionStringArray": ["x*y","int","result"]
+      "sectionNumber": 6,
+      "taskText" : "Instead of using nested <b>if-else</b> statements, you can use the<b> else if</b> statement to check multiple conditions.<br><b>For example: </b>@$picturecode1@The code will check the condition to evaluate to true and execute the statements inside that block.@<b>! You can include as many <b>else if</b> statements as you need.</b>",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
     },
     {
-      "taskName": "Java",
+      "taskName": "Order",
       "taskNumber": 4,
-      "sectionNumber": 9,
-      "taskText": "Which one of the following statements is true?",
+      "sectionNumber": 6,
+      "taskText": "Order these Lines per drag",
       "taskWhatsNext": 3,
       "taskType" : 2,
+      "exerciseViewType" : 5,
+      "exerciseSolutionStringArray" : ["TEXT2","TEXT1","TEXT0"],
+      "exerciseContentStringArray" : ["one","two","three"]
+    },
+    {
+      "taskName": "Main Method2",
+      "taskNumber": 5,
+      "taskText": "Do a thing",
+      "taskWhatsNext": 1,
+      "taskType" : 2,
       "exerciseViewType" : 2,
-      "exerciseSolutionStringArray" : ["Java is used only in Nasa's space related applications", "Java is used only in web and mobile applications","Java has a huge developer community"],
-      "exerciseSolutionInt": 3
+      "exerciseSolutionString" : [],
+      "exerciseSolutionInt" : [1,2,3]
+    },
+    {
+      "taskName": "Main Method3",
+      "taskNumber": 6,
+      "taskText" : " THis is an indrocution to the main method ahahaaaablub",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["word1", "word2", "word3", "word4"]
+    },
+    {
+      "taskName": "Main Method4",
+      "taskNumber": 7,
+      "taskText": "Do a thing yes",
+      "taskWhatsNext": 3,
+      "taskType" : 2,
+      "exerciseViewType" : 3,
+      "exerciseSolutionString" : [],
+      "exerciseSolutionInt" : [1,2,3]
     }
-
   ]
 
 }

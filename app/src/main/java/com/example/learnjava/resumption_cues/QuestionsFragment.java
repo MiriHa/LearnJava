@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.learnjava.Controller;
 import com.example.learnjava.R;
 import com.example.learnjava.ReadJson;
+import com.example.learnjava.SharedPrefrencesManager;
 import com.example.learnjava.models.ModelQuestion;
 
 import java.util.ArrayList;
@@ -67,6 +68,7 @@ public class QuestionsFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        SharedPrefrencesManager.saveSharedSetting(getContext(), "CUE_OPEN","true");
         View view = inflater.inflate(R.layout.fragment_questions, container, false);
         progressController = (Controller) getActivity().getApplicationContext();
 
@@ -240,5 +242,16 @@ public class QuestionsFragment extends DialogFragment {
         }
 
 
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        SharedPrefrencesManager.saveSharedSetting(getContext(), "CUE_OPEN","false");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }

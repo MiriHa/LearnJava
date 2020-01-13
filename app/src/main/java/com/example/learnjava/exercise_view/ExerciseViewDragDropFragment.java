@@ -81,7 +81,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
 
         contentHolder = view.findViewById(R.id.contentHolderDragDrop);
         answerHolder = view.findViewById(R.id.answerHolderDragDrop);
-        answerHolder.setOnDragListener(this);
+        //answerHolder.setOnDragListener(this);
 
         answerArray = currentTask.getSolutionStringArray();
 
@@ -172,7 +172,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
 
                     TextView textView1 = new TextView((getContext()));
                     textView1.setLayoutParams(mParamsWrap);
-                    textView1.setText("___________");
+                    textView1.setText("______");
                    // textView1.setPadding(4, 12, 4, 12);
                     textView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 
@@ -371,7 +371,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
 
                 TextView textView1 = new TextView((getContext()));
                 textView1.setLayoutParams(mParamsWrap);
-                textView1.setText("___________");
+                textView1.setText("______");
                 // textView1.setPadding(4, 12, 4, 12);
                 textView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 

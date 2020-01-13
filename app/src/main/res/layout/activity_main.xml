@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="3dp"
-        android:autoSizeTextType="uniform"
+        app:autoSizeTextType="uniform"
         android:gravity="center"
         android:padding="13dp"
         android:text="@string/welcome"
@@ -62,7 +62,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeTextType="uniform"
+                    android:gravity="center"
+                    app:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:text="@string/Lesson1" />
 
@@ -91,7 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeTextType="uniform"
+                    app:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
                     android:text="@string/Lesson2" />
@@ -120,7 +121,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeTextType="uniform"
+                    app:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
                     android:text="@string/Lesson3" />
@@ -149,7 +150,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeTextType="uniform"
+                    app:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
                     android:text="@string/Lesson4" />
@@ -177,7 +178,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeTextType="uniform"
+                    app:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
                     android:text="@string/Lesson5" />
@@ -206,7 +207,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeTextType="uniform"
+                    app:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
                     android:text="@string/Lesson6" />
@@ -235,7 +236,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeTextType="uniform"
+                    app:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
                     android:text="@string/Lesson7" />
@@ -264,7 +265,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeTextType="uniform"
+                    app:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
                     android:text="@string/Lesson8" />
@@ -293,7 +294,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:autoSizeTextType="uniform"
+                    app:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
                     android:text="@string/Lesson9" />

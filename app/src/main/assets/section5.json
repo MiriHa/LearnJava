@@ -54,12 +54,58 @@
       "taskNumber": 5,
       "sectionNumber": 5,
       "taskText": "What is the output result from this code?@_picturecode5_5",
-      "taskWhatsNext": 3,
+      "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 1,
       "exerciseSolutionString": "16"
+    },
+    {
+      "taskName": "The Return Type",
+      "taskNumber": 6,
+      "sectionNumber": 5,
+      "taskText": "The <b>return</b> keyword can be used in methods to return a value.<br>For example, we could define a method named <b>sum</b> that returns the sum of its two parameters.@_picturecode5_6@Notice that in the method definition, we defined the </b>return type</b> before we defined the method name. For our sum method, it is <b>int</b>, as it takes two parameters of the type <b>int</b> and returns their sum, which is also an int. Now, we can use the method in our main.@_picturecode5_6_2@As the method returns a value, we can assign it to a variable. When you do not need to return any value from your method, use the keyword <b>void.</b>@<b>! </b>Notice the <b>void</b> keyword in the definition of the main method - this means that main does not return anything.",
+      "taskWhatsNext": 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["method","return type","void"]
+    },
+    {
+      "taskName": "Method Parameters",
+      "taskNumber": 7,
+      "sectionNumber": 5,
+      "taskText": "If you do not want your method to return anything, you should use the keyword:",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 1,
+      "exerciseSolutionString": "void"
+    },
+    {
+      "taskName": "The Return Type",
+      "taskNumber": 8,
+      "sectionNumber": 5,
+      "taskText": "Take a look at the same code from our previous lesson with explaining comments, so you can better understand how it works:@_picturecode5_8@Having gained knowledge of method return types and parameters, let's take another look at the definition of the main method. <br><br> public static <b>void</b> main(String[ ] args)<br><br>This definition indicates that the <b>main</b> method takes an array of Strings as its parameters, and does not return a value.",
+      "taskWhatsNext": 1,
+      "taskType" : 1,
+      "lessonKeyWords" : ["method","return type","main method"]
+    },
+    {
+      "taskName": "The Return Type",
+      "taskNumber": 9,
+      "sectionNumber": 5,
+      "taskText": "Let's create a method that takes two parameters of type <b>int</b> and returns the greater one, then call it in <b>main</b>: @_picturecode5_9@A method can have one type of parameter (or parameters) and return another, different type. For example, it can take two doubles and return an int.",
+      "taskWhatsNext": 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["method","return type","create"]
+    },
+    {
+      "taskName": "Method Parameters",
+      "taskNumber": 10,
+      "sectionNumber": 5,
+      "taskText": "What output results from this code?@_picturecode5_10",
+      "taskWhatsNext": 3,
+      "taskType": 2,
+      "exerciseViewType": 1,
+      "exerciseSolutionString": "30"
     }
-
   ]
 
 }

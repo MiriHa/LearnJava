@@ -76,7 +76,7 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 1,
-      "exerciseSolutionString": "void"
+      "exerciseSolutionStringArray": ["void"]
     },
     {
       "taskName": "The Return Type",
@@ -104,7 +104,7 @@
       "taskWhatsNext": 3,
       "taskType": 2,
       "exerciseViewType": 1,
-      "exerciseSolutionString": "30"
+      "exerciseSolutionStringArray": ["30","thirty"]
     }
   ]
 

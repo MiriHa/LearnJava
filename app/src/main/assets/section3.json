@@ -17,7 +17,7 @@
       "taskWhatsNext" : 2,
       "taskType" : 2,
       "exerciseViewType": 1,
-      "exerciseSolutionString": "String"
+      "exerciseSolutionStringArray": ["String"]
     },
     {
       "taskName": "Different Data Types",
@@ -58,7 +58,7 @@
       "taskWhatsNext" : 1,
       "taskType" : 2,
       "exerciseViewType": 1,
-      "exerciseSolutionString": "StringcityName=\"munich\""
+      "exerciseSolutionStringArray": ["StringcityName=\"munich\""]
     },
     {
       "taskName": "Variables",
@@ -98,7 +98,7 @@
       "taskWhatsNext" : 3,
       "taskType" : 2,
       "exerciseViewType": 1,
-      "exerciseSolutionString": "name:JohnSmith,age:30"
+      "exerciseSolutionStringArray": ["name:John,age:30"]
     }
   ]
 

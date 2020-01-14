@@ -127,8 +127,7 @@ public class ExerciseViewAnswerFragment extends Fragment {
                 String userAnswer = userInput.replaceAll("\\s+","");
                 Log.i("M_EXERCISE_VIEW_ANSWER", "check answer: " + userInput + " solution: " + currentTask.getSolutionString());
                 progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_FRAGMENT", "number: " + currentTask.getTaskNumber() + " userInput: " + userInput);
-                //TODO ingore case? when code answer not?  -> in code view fragment?
-                if (currentTask.getSolutionString().equalsIgnoreCase(userAnswer)) {
+                if (progressController.checkArrays(currentTask.getSolutionStringArray(),userAnswer)) {
                     mListener.sendAnswerFromExerciseView(true);
                     Log.i("M_EXERCISE_VIEW_ANSWER", " send answer: true");
                 } else {
@@ -136,6 +135,14 @@ public class ExerciseViewAnswerFragment extends Fragment {
                     mListener.sendAnswerFromExerciseView(false);
                     Log.i("M_EXERCISE_VIEW_ANSWER", "send answer: false");
                 }
+//                if (currentTask.getSolutionString().equalsIgnoreCase(userAnswer)) {
+//                    mListener.sendAnswerFromExerciseView(true);
+//                    Log.i("M_EXERCISE_VIEW_ANSWER", " send answer: true");
+//                } else {
+//                    Log.i("M ANSWER", " was wrong");
+//                    mListener.sendAnswerFromExerciseView(false);
+//                    Log.i("M_EXERCISE_VIEW_ANSWER", "send answer: false");
+//                }
             }
         }
 

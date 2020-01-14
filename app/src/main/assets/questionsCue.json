@@ -110,108 +110,404 @@
   "section5": [
     {
       "questionNumber" : 0,
-      "questionAnswerInt": 1,
-      "question": "what is Green?",
-      "questionAnswerArray": ["tree", "tomato","bear"]
+      "questionAnswerInt": 2,
+      "question": "What does a method do?",
+      "questionAnswerArray": ["it stores values","it performs an operation","it declares a class"]
     },
     {
       "questionNumber" : 1,
       "questionAnswerInt": 2,
-      "question": "what is Blue?",
-      "questionAnswerArray": ["tree", "Sea","bear"]
+      "question": "What ist the correct way for calling a method called sayHi?",
+      "questionAnswerArray": ["sayHi()","sayHi.call","sayHi{}"]
     },
     {
       "questionNumber" : 2,
-      "questionAnswerInt": 2,
-      "question": "what is REd?",
-      "questionAnswerArray": ["tree", "tomato","bear"]
+      "questionAnswerInt": 3,
+        "question": "How many times can you call a method?",
+      "questionAnswerArray": ["one","only two","as many as you want"]
     },
     {
       "questionNumber" : 3,
       "questionAnswerInt": 3,
-      "question": "what is yellow?",
-      "questionAnswerArray": ["tree", "tomato","banana"]
+      "question": "How many lines can a method have?",
+      "questionAnswerArray": ["one","only two","as many as you want"]
+    },
+	 {
+      "questionNumber" : 4,
+      "questionAnswerInt": 2,
+      "question": "Where is the String parameter of the method sayHi correctly placed?",
+      "questionAnswerArray": ["sayHi String name()","sayHi(String name)","String name sayHi()"]
+    },
+    {
+      "questionNumber" : 5,
+      "questionAnswerInt": 3,
+       "question": "What is the parameter of a method?",
+      "questionAnswerArray": ["the outputType of a method","the name of a method","an input for a method"]
+    },
+    {
+      "questionNumber" : 6,
+      "questionAnswerInt": 2,
+      "question": "For what is the \"return\" keyword used?",
+      "questionAnswerArray": ["to instantly go back to the main method","to return an value at the end of a method","to ignore the line"]
+    },
+	 {
+      "questionNumber" : 7,
+      "questionAnswerInt": 1,
+      "question": "What keyword would you use, if you do not want your method to return anything?",
+      "questionAnswerArray": ["void","empty","none"]
+    },
+    {
+      "questionNumber" : 8,
+      "questionAnswerInt": 3,
+        "question": "What does the \n\"public static void main(String[] args)\"\nmethod return?",
+      "questionAnswerArray": ["An int value","A String value","nothing"]
+    },
+    {
+      "questionNumber" : 9,
+      "questionAnswerInt": 3,
+      "question": "How many parameters can a method have? ",
+      "questionAnswerArray": ["one","only two","as many as you want"]
+    },
+	 {
+      "questionNumber" : 10,
+      "questionAnswerInt": 1,
+      "question": "What is the return type of this method: \nint whatValue(String name, double height)",
+      "questionAnswerArray": ["int","String","double"]
     }
 
   ],
   "section6": [
     {
       "questionNumber" : 0,
-      "questionAnswerInt": 1,
-      "question": "what is Green?",
-      "questionAnswerArray": ["tree", "tomato","bear"]
+      "questionAnswerInt": 3,
+      "question": "On what are different conditional actions based on?",
+      "questionAnswerArray": ["on different actions","on different data types","on different conditions"]
     },
     {
       "questionNumber" : 1,
-      "questionAnswerInt": 2,
-      "question": "what is Blue?",
-      "questionAnswerArray": ["tree", "Sea","bear"]
+      "questionAnswerInt": 1,
+      "question": "What is a conditional Statement in java?",
+      "questionAnswerArray": ["if","when","other"]
     },
     {
       "questionNumber" : 2,
-      "questionAnswerInt": 2,
-      "question": "what is REd?",
-      "questionAnswerArray": ["tree", "tomato","bear"]
+      "questionAnswerInt": 1,
+       "question": "When executes the optional statement in an conditional Statement?",
+      "questionAnswerArray": ["when all previous conditions are evaluated to false","when all previous conditions are evaluated to true","when you call the statement"]
     },
     {
       "questionNumber" : 3,
+      "questionAnswerInt": 2,
+      "question": "What is a conditional Statement in Java?",
+      "questionAnswerArray": ["when...else","if...else","if..other" ]
+    },
+	 {
+      "questionNumber" : 4,
       "questionAnswerInt": 3,
-      "question": "what is yellow?",
-      "questionAnswerArray": ["tree", "tomato","banana"]
+	  "question": "How many if statements can you place in other if statements?",
+      "questionAnswerArray": ["one","only two","as many as you want"]
+     
+    },
+    {
+      "questionNumber" : 5,
+      "questionAnswerInt": 2,
+	  "question": "What conditional statement executes? \n if(5 < 2){...}\n else{...}",
+      "questionAnswerArray": ["if","else","none of them"]
+     
+    },
+    {
+      "questionNumber" : 6,
+      "questionAnswerInt": 3,
+       "question": "What conditional statement can you use to check multiple conditions?",
+      "questionAnswerArray": ["other","and if","else if"]
+    },
+	 {
+      "questionNumber" : 7,
+      "questionAnswerInt": 3,
+       "question": "One if statement can contain how many else if statements?",
+      "questionAnswerArray": ["one","only two","as many as you want"]
+    },
+    {
+      "questionNumber" : 8,
+      "questionAnswerInt": 1,
+        "question": "For what can logical operators be used?",
+      "questionAnswerArray": ["to combine multiple conditions","to save multiple conditions","to seperate multiple conditions"]
+    },
+    {
+      "questionNumber" : 9,
+      "questionAnswerInt": 3,
+      "question": "Which operator can replace a nested if statement?",
+      "questionAnswerArray": ["%% - MODULO","// - IF","&& - AND" ]
+    },
+	 {
+      "questionNumber" : 10,
+      "questionAnswerInt": 1,
+      "question": "Which operator can replace a nested if statement?",
+      "questionAnswerArray": ["|| - OR", "$$ - WHEN","§§ - GET"]
+    },
+	 {
+      "questionNumber" : 11,
+      "questionAnswerInt": 1,
+      "question": "What does the OR (||) operator check?",
+      "questionAnswerArray": ["if any of the conditions are true","if one of the conditions is true","if one of the conditions is false"]
+    },
+    {
+      "questionNumber" : 12,
+      "questionAnswerInt": 2,
+      "question": "What does the Switch Statement doe?",
+      "questionAnswerArray": ["it test a variable for true or false","it tests a variable for equality against a list of values","it tests one condition"]
+    },
+    {
+      "questionNumber" : 13,
+      "questionAnswerInt": 1,
+       "question": "What is the keyword in a switch statement?",
+      "questionAnswerArray": ["case","con","check"]
+    },
+    {
+      "questionNumber" : 14,
+      "questionAnswerInt": 3,
+      "question": "What does the while loop do?",
+      "questionAnswerArray": ["execute a statement once","executes only one method multiple times","execute a statement repeatedly until condition is false"]
+    },
+	 {
+      "questionNumber" : 15,
+      "questionAnswerInt": 2,
+      "question": "What is a valid while loop?",
+      "questionAnswerArray": ["While true","while(x < y)","(y > x)while"]
+    },
+    {
+      "questionNumber" : 16,
+      "questionAnswerInt": 1,
+      "question": "What happends when the condition of a while loop evaluates false?",
+      "questionAnswerArray": ["the while loop is skipped","the while loop executes only one time","the while loop executes infinitely"]
+    },
+    {
+      "questionNumber" : 17,
+      "questionAnswerInt": 1,
+      "question": "How many conditions can a while loop have?",
+      "questionAnswerArray": ["one","only two","as many as you want"]
+    },
+	 {
+      "questionNumber" : 18,
+      "questionAnswerInt": 2,
+       "question": "How many times executes a for loop?",
+      "questionAnswerArray": ["one","10 times","a specific number of time"]
+    },
+    {
+      "questionNumber" : 19,
+      "questionAnswerInt": 3,
+        "question": "What is a valid for loop?",
+      "questionAnswerArray": ["for(int x=2; x<=5)","for(int x=2; x+1; x++)","for(int x=2; x<=5; x++)"]
+    },
+    {
+      "questionNumber" : 20,
+      "questionAnswerInt": 1,
+      "question": "What type of condition do you need in a for loop?",
+      "questionAnswerArray": ["any type of condition","a single type condition","a compound type condition"]
+    },
+	 {
+      "questionNumber" : 21,
+      "questionAnswerInt": 3,
+      "question": "How often is the condition of a for loop evaluated?",
+      "questionAnswerArray": ["one time at the beginning","three times","each time the loop iterates"]
     }
 
   ],
   "section7": [
     {
       "questionNumber" : 0,
-      "questionAnswerInt": 1,
-      "question": "what is Green?",
-      "questionAnswerArray": ["tree", "tomato","bear"]
+      "questionAnswerInt": 2,
+      "question": "What is an array?",
+      "questionAnswerArray": ["a collection of Methods with the same return type"," a collection of variables of the same type", "a collection of data types with the same type"]
     },
     {
       "questionNumber" : 1,
-      "questionAnswerInt": 2,
-      "question": "what is Blue?",
-      "questionAnswerArray": ["tree", "Sea","bear"]
+      "questionAnswerInt": 1,
+      "question": "In Java an array starts counting from...",
+      "questionAnswerArray": ["0","1","2"]
     },
     {
       "questionNumber" : 2,
-      "questionAnswerInt": 2,
-      "question": "what is REd?",
-      "questionAnswerArray": ["tree", "tomato","bear"]
+      "questionAnswerInt": 3,
+        "question": "What is a valid array called arr?",
+      "questionAnswerArray": ["[]int arr","int[Array] = arr","int[] arr"]
     },
     {
       "questionNumber" : 3,
+      "questionAnswerInt": 2,
+      "question": "How many values can an array contain?",
+      "questionAnswerArray": ["at the most 100"," as many as you want,but you have to determine it beforehand","only 10"]
+    },
+	 {
+      "questionNumber" : 4,
+      "questionAnswerInt": 1,
+      "question": "With what keyword can you caount the number of elements in an array?",
+      "questionAnswerArray": ["length","size","quantity"]
+    },
+    {
+      "questionNumber" : 5,
+      "questionAnswerInt": 2,
+        "question": "What data types can you use for an array?",
+      "questionAnswerArray": ["primitive data types","primitive data types and strings","only String"]
+    },
+    {
+      "questionNumber" : 6,
       "questionAnswerInt": 3,
-      "question": "what is yellow?",
-      "questionAnswerArray": ["tree", "tomato","banana"]
+      "question": "What would you use to calculate the sum of an int array?",
+      "questionAnswerArray": ["conditional statements","simple methods","for loops"]
+    },
+	 {
+      "questionNumber" : 7,
+      "questionAnswerInt": 1,
+      "question": "How would you get the length of this array?\n int[] arr = {1,2,3,4,5}",
+      "questionAnswerArray": ["arr.length","length.arr","int[].length"]
+    },
+    {
+      "questionNumber" : 8,
+      "questionAnswerInt": 3,
+        "question": "For what can you  not use for loops when working with arrays?",
+      "questionAnswerArray": ["to calculate the sum of the array","to iterate over the array","to create an array"]
+    },
+    {
+      "questionNumber" : 9,
+      "questionAnswerInt": 3,
+      "question": "How many arrays can you create in your code?",
+      "questionAnswerArray": ["one","only five","as many as you want"]
     }
 
   ],
   "section8": [
     {
       "questionNumber" : 0,
-      "questionAnswerInt": 1,
-      "question": "what is Green?",
-      "questionAnswerArray": ["tree", "tomato","bear"]
+      "questionAnswerInt": 2,
+      "question": "For what does the shortcut OOP stand?",
+      "questionAnswerArray": ["Organized Object Program","Object Oriented Programming","One Object Pattern"]
     },
     {
       "questionNumber" : 1,
-      "questionAnswerInt": 2,
-      "question": "what is Blue?",
-      "questionAnswerArray": ["tree", "Sea","bear"]
+      "questionAnswerInt": 1,
+      "question": "What does a class define?",
+      "questionAnswerArray": ["attributes and behaviour of an object","behaviour and values of an object","values and attributes of an object"]
     },
     {
       "questionNumber" : 2,
-      "questionAnswerInt": 2,
-      "question": "what is REd?",
-      "questionAnswerArray": ["tree", "tomato","bear"]
+      "questionAnswerInt": 3,
+      "question": "How many objects can you create from a class?",
+      "questionAnswerArray": ["one","only two","as many as you want"]
     },
     {
       "questionNumber" : 3,
       "questionAnswerInt": 3,
-      "question": "what is yellow?",
-      "questionAnswerArray": ["tree", "tomato","banana"]
+      "question": "What is the right way to initialize a class Tree?",
+      "questionAnswerArray": ["new class(Tree){..}","class(Object Tree){..}","class Tree{..}"]
+    },
+	 {
+      "questionNumber" : 4,
+      "questionAnswerInt": 3,
+      "question": "Classes can not contain:",
+      "questionAnswerArray": ["attributes","methods","Apples"]
+    },
+    {
+      "questionNumber" : 5,
+      "questionAnswerInt": 2,
+        "question": "How can you call a method from an obejct?",
+      "questionAnswerArray": ["methodname.obejctname","obejctname.methodname","classname.objectname"]
+    },
+    {
+      "questionNumber" : 6,
+      "questionAnswerInt": 1,
+      "question": "How can you create an object from a class Apple?",
+      "questionAnswerArray": ["Apple myApple = new Apple();","new Apple = myApple;","Apple new = Apple();"]
+    },
+	 {
+      "questionNumber" : 7,
+      "questionAnswerInt": 1,
+      "question": "What are attributes of a class?",
+      "questionAnswerArray": ["variables within a class","methods within a class","data types within a class"]
+    },
+    {
+      "questionNumber" : 8,
+      "questionAnswerInt": 3,
+        "question": "What is a attribute from the class Vehicle?",
+      "questionAnswerArray": ["void drive(){..}","int speed(){..}","int speed;"]
+    },
+    {
+      "questionNumber" : 9,
+      "questionAnswerInt": 1,
+      "question": "Can you create multiple objects if of a class?",
+      "questionAnswerArray": ["yes","no","depends on the class"]
+    },
+	 {
+      "questionNumber" : 10,
+      "questionAnswerInt": 1,
+      "question": "Do all objects from one class need to have the same name?",
+      "questionAnswerArray": ["yes","no","only if created in the same class"]
+    },
+	 {
+      "questionNumber" : 11,
+      "questionAnswerInt": 2,
+      "question": "For what is an access modifier used?",
+      "questionAnswerArray": ["for making all attributes invisible","for setting the level of access","for defining different methods"]
+    },
+    {
+      "questionNumber" : 12,
+      "questionAnswerInt": 2,
+      "question": "Which of the following is no valid access modifiers?",
+      "questionAnswerArray": ["public","hidden","protected"]
+    },
+    {
+      "questionNumber" : 13,
+      "questionAnswerInt": 3,
+        "question": "For what are Getters and Setters used?",
+      "questionAnswerArray": ["for easier access to the data in your class","to get and set your methods from outside of the class","to protect the data in your classes"]
+    },
+    {
+      "questionNumber" : 14,
+      "questionAnswerInt": 3,
+      "question": "How many Getters and Setter do you usually need?",
+      "questionAnswerArray": ["for each value only one of them", "only one getter and one setter in each class","for each value both of them"]
+    },
+	 {
+      "questionNumber" : 15,
+      "questionAnswerInt": 1,
+      "question": "What would be the name of the Getter for the variable \n int age = 30;?",
+      "questionAnswerArray": ["getAge","fetchAge","initAge"]
+    },
+    {
+      "questionNumber" : 16,
+      "questionAnswerInt": 2,
+      "question": "What would be the name of the Setter for the variable \n int age = 30;?",
+      "questionAnswerArray": ["initAge","setAge","chooseAge"]
+    },
+    {
+      "questionNumber" : 17,
+      "questionAnswerInt": 3,
+      "question": "When is the class constructor called?",
+      "questionAnswerArray": ["when a method of the class is called","when a attribute of the class is used","when an object of this class is created"]
+    },
+	 {
+      "questionNumber" : 18,
+      "questionAnswerInt": 1,
+      "question": "For what can a constructor be used?",
+      "questionAnswerArray": ["to provide initial values for object attribute","to call method directly when creating an object","for getting an attribute from an object"]
+    },
+    {
+      "questionNumber" : 19,
+      "questionAnswerInt": 2,
+        "question": "What is a valid constructor for the class Apple?",
+      "questionAnswerArray": ["initApple()","Apple()","Constructor(Apple)"]
+    },
+    {
+      "questionNumber" : 20,
+      "questionAnswerInt": 3,
+      "question": "How many constructors can a class have?",
+      "questionAnswerArray": ["one","only two with different parameters","as many as you want as long as they have different parameters"]
+    },
+	 {
+      "questionNumber" : 21,
+      "questionAnswerInt": 1,
+      "question": "What is no Constructor of the class Person?",
+      "questionAnswerArray": ["Person(getAge())","Person()","Person(String name)"]
     }
 
   ],

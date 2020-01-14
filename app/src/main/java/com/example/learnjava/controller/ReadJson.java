@@ -69,10 +69,11 @@ public class ReadJson {
 
                         //Type: Answer String
                         if(viewType_value == 1){
-                            String solutionString_value = taskObject.getString("exerciseSolutionString");
+                            JSONArray solutionStringArray = taskObject.getJSONArray("exerciseSolutionStringArray");
+                            String[] solutionStringArray_value = toStringArray(solutionStringArray);
 
                             //Add values in ArrayList
-                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,section_number_value, null, null, next_value, viewType_value,0,solutionString_value, null);
+                            ModelTask newExercise = new ModelExercise(name_value,text_value,number_value,section_number_value, solutionStringArray_value, null, next_value, viewType_value,0, null, null);
                             taskList.add(newExercise);
                         }
                         //Type: Answer Choice -> int

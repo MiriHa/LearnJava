@@ -26,8 +26,8 @@
       "taskWhatsNext": 2,
       "taskType" : 2,
       "exerciseViewType" : 3,
-      "exerciseContentStringArray" : ["int x = 2;","int y = 4;","int result = @#@;","System.out.println(@#@);"],
-      "exerciseSolutionStringArray": ["x+y","result"]
+      "exerciseContentStringArray" : ["int x = 2;","int y = 4;","int result = x@#@;","System.out.println(@#@);"],
+      "exerciseSolutionStringArray": ["+y","result"]
     },
     {
       "taskName": "Operators",
@@ -37,8 +37,8 @@
       "taskWhatsNext": 1,
       "taskType" : 2,
       "exerciseViewType" : 3,
-      "exerciseContentStringArray" : ["int x = 5;","int y = 4;","#@ result = @#@;","System.out.println(@#@);"],
-      "exerciseSolutionStringArray": ["int","x*y","result"]
+      "exerciseContentStringArray" : ["int x = 5;","int y = 4;","#@ result = x@#@;","System.out.println(@#@);"],
+      "exerciseSolutionStringArray": ["int","*y","result"]
     },
     {
       "taskName": "Modulo",
@@ -57,7 +57,7 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 1,
-      "exerciseSolutionString": "3"
+      "exerciseSolutionStringArray": ["3","three"]
     },
     {
       "taskName": "Increment Operators",
@@ -96,7 +96,7 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 1,
-      "exerciseSolutionString": "14"
+      "exerciseSolutionStringArray": ["14","fourteen"]
     },
     {
       "taskName": "Java Comparison Operators",

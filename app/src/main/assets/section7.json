@@ -37,7 +37,7 @@
       "taskText" : "What is the output of this code?@_picturecode7_3",
       "taskWhatsNext" : 1,
       "exerciseViewType" : 1,
-      "exerciseSolutionString" : "9"
+      "exerciseSolutionStringArray" : ["9","nine"]
 
     },
     {
@@ -90,7 +90,7 @@
       "taskText" : "What is the output of this code?@_picturecode7_8",
       "taskWhatsNext" : 2,
       "exerciseViewType" : 1,
-      "exerciseSolutionString" : "2"
+      "exerciseSolutionStringArray" : ["2","two"]
 
     },
     {
@@ -101,7 +101,7 @@
       "taskText" : "What is the output of this code?@_picturecode7_9",
       "taskWhatsNext" : 3,
       "exerciseViewType" : 1,
-      "exerciseSolutionString" : "17"
+      "exerciseSolutionStringArray" : ["17","seventeen"]
     }
   ]
 }

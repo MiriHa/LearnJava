@@ -24,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -274,6 +275,20 @@ public class Controller extends android.app.Application {
     public ArrayList<ModelQuestion> getQuestions(Context con, String sectionWhat){
 
         return readJson.readQuestions(con, sectionWhat);
+
+    }
+
+    public boolean checkArrays(String[] arr, String targetValue) {
+        for(String s: arr){
+            if(s.equalsIgnoreCase(targetValue))
+                return true;
+        }
+        return false;
+    }
+
+    public boolean checkArrayinArray(String[] outer, String[] inner) {
+
+        return Arrays.asList(outer).containsAll(Arrays.asList(inner));
     }
 
 

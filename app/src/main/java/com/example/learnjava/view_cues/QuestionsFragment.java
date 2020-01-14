@@ -1,5 +1,7 @@
 package com.example.learnjava.view_cues;
 
+import android.content.SharedPreferences;
+import android.media.midi.MidiOutputPort;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -78,12 +80,25 @@ public class QuestionsFragment extends DialogFragment {
         ArrayList<ModelQuestion> sectionQuestions = progressController.getQuestions(getActivity(), sectionString);
 
         Random random = new Random();
+        int randomInt;
         //maybe add to random nummer +
-        int randomInt = random.nextInt(sectionQuestions.size());
+        int latestTaskNumber = SharedPrefrencesManager.readLatestSectionNumber(getContext());
+        if(sectionWhat == latestTaskNumber){
+            int currentQuestionSize = 0;
+            for (int i=0;i<sectionQuestions.size();i++){
+                ModelQuestion currentQuestion = sectionQuestions.get(i);
+               if(currentQuestion.getNumber() <= latestTaskNumber)
+                   currentQuestionSize += 1 ;
+            }
+            randomInt = random.nextInt(currentQuestionSize);
+        }else {
+            randomInt = random.nextInt(sectionQuestions.size());
+        }
         //int randomInt = random.;
         Log.i("M_QUESTION_CUE"," randomInt "+randomInt);
         currentQuestion = sectionQuestions.get(randomInt);
 
+        //TODO only questions to latest task when in latest section??
 
         bigText = view.findViewById(R.id.questionBigText);
         rightAnswer = view.findViewById(R.id.questionRightAnswer);

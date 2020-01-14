@@ -17,7 +17,7 @@
       "taskWhatsNext": 1,
       "taskType" : 2,
       "exerciseViewType" : 1,
-      "exerciseSolutionString": "main"
+      "exerciseSolutionStringArray": ["main"]
     },
     {
       "taskType": 1,
@@ -76,7 +76,7 @@
       "taskWhatsNext": 1,
       "taskType" : 2,
       "exerciseViewType" : 3,
-      "exerciseContentStringArray" : ["#@Apples {","    public static void@#@(String[ ]args) {","    System.out.println(\"Hello, World!\")@#","   }","}"],
+      "exerciseContentStringArray" : ["#@Apples {","public static void@#@(String[ ]args)","{"," System.out.println(","  \"Hello, World!\")@#","}", "}"],
       "exerciseSolutionStringArray" : ["class","main",";"]
     },
     {

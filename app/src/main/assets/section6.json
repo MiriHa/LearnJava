@@ -117,7 +117,7 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 1,
-      "exerciseSolutionString": "11"
+      "exerciseSolutionStringArray": ["11","eleven"]
     },
     {
       "taskName" : "The switch Statement",
@@ -176,7 +176,7 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 1,
-      "exerciseSolutionString": "5"
+      "exerciseSolutionStringArray": ["5","five"]
     },
     {
       "taskName" : "for Loops",
@@ -216,7 +216,7 @@
       "taskWhatsNext": 3,
       "taskType": 2,
       "exerciseViewType": 1,
-      "exerciseSolutionString": "2"
+      "exerciseSolutionStringArray": ["2","two"]
     }
 
   ]

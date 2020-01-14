@@ -4,42 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".sections.ExerciseFragment">
+    tools:context=".view_sections.ExerciseFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/LessonHolder"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/lessonType"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="8dp"
-            android:autoSizeTextType="uniform"
-            android:gravity="start"
-            android:text="@string/lesson"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <TextView-->
+<!--            android:id="@+id/lessonType"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:autoSizeTextType="uniform"-->
+<!--            android:gravity="start"-->
+<!--            android:text="@string/lesson"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <TextView
             android:id="@+id/lessonName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="@dimen/PaddingSide"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:paddingStart="16dp"
-            android:paddingEnd="@dimen/PaddingSide"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/scrollViewLes"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lessonType"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ScrollView
             android:id="@+id/scrollViewLes"
@@ -48,7 +46,10 @@
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
             android:background="@drawable/rounded_corners"
-            android:layout_margin="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="3dp"
             app:layout_constraintBottom_toTopOf="@+id/nextButtonLessonFrag"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

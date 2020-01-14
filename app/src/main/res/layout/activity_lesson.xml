@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".sections.LessonActivity">
+    tools:context=".view_sections.LessonActivity">
 
     <HorizontalScrollView
         android:id="@+id/progressScroll"

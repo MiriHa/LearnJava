@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:minWidth="1000dp"
     android:minHeight="1000dp"
-    tools:context=".resumption_cues.WordCloudFragment">
+    tools:context=".view_cues.WordCloudFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/wordCloudCueBackground"

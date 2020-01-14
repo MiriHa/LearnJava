@@ -44,7 +44,7 @@
       "taskName": "Array Length",
       "taskNumber": 4,
       "sectionNumber": 7,
-      "taskText" : "You can access the length of an array (the number of elements it stores) via its <b>length</b> property. <br>Example:@_picturecode7_4@<b>! </b>Don't forget that in arrays, indexes start from <b>0</b>. So, in the example above, the last index is 4.",
+      "taskText" : "You can access the length of an array (the number of elements it stores) via its <b>length</b> property. <br>Example:@_picturecode7_4@<br><b>! </b>Don't forget that in arrays, indexes start from <b>0</b>. So, in the example above, the last index is 4.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["length", "first index 0"]

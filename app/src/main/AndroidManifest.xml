@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".Controller"
+        android:name=".controller.Controller"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,9 +13,9 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".registration.ForgotPasswortActivity"/>
-        <activity android:name=".registration.SignUpActivity" />
-        <activity android:name=".registration.LogInActivity" >
+        <activity android:name=".view_registration.ForgotPasswortActivity"/>
+        <activity android:name=".view_registration.SignUpActivity" />
+        <activity android:name=".view_registration.LogInActivity" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
@@ -23,11 +23,11 @@
         </intent-filter>
         </activity>
         <activity
-            android:name=".sections.LessonActivity"
+            android:name=".view_sections.LessonActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysVisible" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view_sections.MainActivity"
             android:screenOrientation="portrait">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".exercise_view.ExerciseViewChoiceFragment">
+    tools:context=".view_exercises.ExerciseViewChoiceFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,12 +14,12 @@
             android:id="@+id/contentHolderChoice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_margin="6dp"
+            android:layout_marginStart="6dp"
             android:layout_marginEnd="9dp"
-            android:orientation="vertical"
             android:background="@drawable/rounded_corners"
-            app:layout_constraintBottom_toTopOf="@+id/nextButtonExerciseChoice"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -80,11 +80,11 @@
             android:layout_height="70dp"
             android:layout_gravity="end"
             android:layout_margin="6dp"
-            android:visibility="gone"
             android:text="@string/Skip_Text"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/nextButtonExerciseChoice"
-            app:layout_constraintHorizontal_bias="0.98"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/contentHolderChoice"
             app:layout_constraintVertical_bias="1.0" />
@@ -96,9 +96,11 @@
             android:layout_gravity="end"
             android:layout_margin="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/OnlyCheckButtonExerciseChoice"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contentHolderChoice"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

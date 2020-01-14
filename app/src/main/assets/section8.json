@@ -1,223 +1,227 @@
 {
   "tasks": [
     {
-      "taskName" : "Decision Making",
+      "taskName" : "Object Oriented Programming",
       "taskNumber" : 0,
-      "sectionNumber": 6,
-      "taskText" : "<b>Conditional statements/b>are used to perform different actions based on different conditions. The <b>if statement</b> is one of the most frequently used conditional statements.If the <b>if</b> statement's condition expression evaluates to true, the block of code inside the <b>if</b> statement is executed. If the expression is found to be false, the first set of code after the end of the <b>if</b> statement (after the closing curly brace) is executed.<b>Syntax:</b>@_picturecode6_0_1@Any of the comparison operators may be used to form the condition<br>&ensp;< less than<br>&ensp;> greater than<br>&ensp;!= not equal to<br>&ensp;== equal to<br>&ensp;<= less than or equal to<br>&ensp;>= greater than or equal to<br><br><b>For example: </b>@_picturecode6_0_2@<b>! </b>Remember that you need to use two equal signs (==) to test for equality, since a single equal sign is the assignment operator.",
-      "taskWhatsNext" : 2,
+      "sectionNumber": 8,
+      "taskText" : "Java uses <b>O</b>bject-<b>O</b>riented <b>P</b>rogramming (OOP), a programming style that is intended to make thinking about programming closer to thinking about the real world. In OOP, each object is an independent unit with a <b>unique identity</b>, just as objects in the real world are. An apple is an object; so is a mug. Each has its unique <b>identity</b>. It's possible to have two mugs that look identical, but they are still separate, unique objects. Objects also have <b>characteristics</b>, which are used to describe them. @For example, a car can be red or blue, a mug can be full or empty, and so on. These characteristics are also called <b>attributes</b>. An attribute describes the current state of an object. In the real world, each object behaves in its own way. The car moves, the phone rings, and so on.The same applies to objects:<b> behavior</b> is specific to the object's type.<br><br>In summary, in object oriented programming, each object has three dimensions: <b>identity, attributes, and behavior.</b> Attributes describe the object's current state, and what the object is capable of doing is demonstrated through the object's behavior.",
+      "taskWhatsNext" : 1,
       "taskType" : 1,
-      "lessonKeyWords" : ["conditional","statements","if","true","false"]
+      "lessonKeyWords" : ["object orientated","programming","object","unique"]
     },
     {
-      "taskName": "Decision Making",
+      "taskName": "Classes",
       "taskNumber": 1,
-      "sectionNumber": 6,
-      "taskText": "Fill in the Blanks to print Yeah!",
-      "taskWhatsNext": 1,
-      "taskType": 2,
-      "exerciseViewType": 3,
-      "exerciseSolutionStringArray":["int","true","boolean","float","String","void","class"],
-      "exerciseContentStringArray": ["int x = 5;","#@( x == 5 ) {","  System.@#@.println(\"Yeah\");","}"]
+      "sectionNumber": 8,
+      "taskText": "A <b>class</b> describes what the object will be, but is separate from the object itself. <br>In other words, classes can be described as blueprints, descriptions, or definitions for an object. You can use the same class as a blueprint for creating multiple objects. The first step is to define the class, which then becomes a blueprint for object creation.Each class has a name, and each is used to define<b> attributes</b> and <b>behavior</b>. Some examples of attributes and behavior:@_picture8_1@In other words, an object is an instance of a class.",
+      "taskWhatsNext": 2,
+      "taskType": 1,
+      "lessonKeyWords": ["classes","blueprint","name","attributes","behaviour"]
     },
     {
-      "taskName" : "if...else Statements",
-      "taskNumber" : 2,
-      "sectionNumber": 6,
-      "taskText" : "An<b> if</b> statement can be followed by an optional <b>else</b> statement, which executes when the condition evaluates to false. <br><b>For example:</b>@_picturecode6_2@<b>! </b>As age equals 30, the condition in the <b>if</b> statement evaluates to false and the <b>else</b> statement is executed.",
-      "taskWhatsNext" : 2,
-      "taskType" : 1,
-      "lessonKeyWords" : ["if...else","statement","if", "condition"]
-    },
-    {
-      "taskName": "if...else",
-      "taskNumber": 3,
-      "sectionNumber": 6,
-      "taskText": "Fill in the blanks to print the greater number: ",
-      "taskWhatsNext": 1,
-      "taskType": 2,
-      "exerciseViewType": 3,
-      "exerciseSolutionStringArray": ["if","x","else"],
-      "exerciseContentStringArray": ["int x = 10;  int y = 5;","#@( x > y ) {","   System.out.println(@#@);}","#@{","   System.out.println(y);","}"]
-    },
-    {
-      "taskName" : "Nested if Statements",
-      "taskNumber" : 4,
-      "sectionNumber": 6,
-      "taskText" : "You can use one <b>if-else</b> statement inside another <b>if or else</b> statement.<br><b>For example:</b> @_picturecode6_4@<b>! </b>You can nest as many <b>if-else</b> statements as you want.",
-      "taskWhatsNext" : 2,
-      "taskType" : 1,
-      "lessonKeyWords" : ["if","nested","as many as you want"]
-    },
-    {
-      "taskName": "Nested if Statements",
-      "taskNumber": 5,
-      "sectionNumber": 6,
-      "taskText": "Fill in the blanks to print the greater number: ",
-      "taskWhatsNext": 1,
-      "taskType": 2,
-      "exerciseViewType": 3,
-      "exerciseSolutionStringArray": ["if","out"],
-      "exerciseContentStringArray": ["int x = 37;","if (x > 22) {","  @#@(x > 31) {","  System.@#@.println(\"it works!\");","  }","}"]
-    },
-    {
-      "taskName" : "else if Statement",
-      "taskNumber" : 6,
-      "sectionNumber": 6,
-      "taskText" : "Instead of using nested <b>if-else</b> statements, you can use the<b> else if</b> statement to check multiple conditions.<br><b>For example: </b>@_picturecode6_6@The code will check the condition to evaluate to true and execute the statements inside that block.@<b>! </b>You can include as many <b>else if</b> statements as you need.",
-      "taskWhatsNext" : 2,
-      "taskType" : 1,
-      "lessonKeyWords" : ["else if","multiple conditions"]
-    },
-    {
-      "taskName": "else if",
-      "taskNumber": 7,
-      "sectionNumber": 6,
-      "taskText": "An if statement can contain how many else if statements?",
+      "taskName": "Classes",
+      "taskNumber": 2,
+      "sectionNumber": 8,
+      "taskText": "A class defines: ",
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 2,
-      "exerciseSolutionInt": 1,
-      "exerciseSolutionStringArray": ["As many as you want", "Only two", "None ","You have to determine it beforehand"]
+      "exerciseSolutionStringArray": ["values and apples","attributes and behaviour","behaviour and values","values and attributes"],
+      "exerciseSolutionInt" : 2
     },
     {
-      "taskName" : "Logical Operators",
-      "taskNumber" : 8,
-      "sectionNumber": 6,
-      "taskText" : "Logical operators are used to combine multiple conditions.<br><br>Let's say you wanted your program to output \"Welcome!\" only when the variable <b>age</b> is greater than 18 and the variable money is greater than 500. <br>One way to accomplish this is to use nested <b>if</b> statements:@_picturecode6_8_1@However, using the <b>AND</b> logical operator (<b>&&</b>) is a better way:@_picturecode6_8_2@<b>! </b>If both operands of the AND operator are true, then the condition becomes true.",
+      "taskName" : "Creating Classes",
+      "taskNumber" : 3,
+      "sectionNumber": 8,
+      "taskText" : "In order to create your own custom objects, you must first create the corresponding classes. This is accomplished by right clicking on the src folder in Eclipse or your Editor and selecting Create->New->Class. Give your class a name and click <b>Finish</b> to add the new class to your project: @_picture8_3@As you can see, Eclipse has already added the initial code for the class.<br>Now lets create a simple method in our new class.<br><b>Animal.java</b> @_picturecode8_3@We declared a <b>bark()</b> method in our <b>Animal</b> class. Now, in order to use the class and it's methods, we need to declare an<b> object</b> of that class.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
-      "lessonKeyWords" : ["Logical","Operators","&&","nested if", "AND"]
+      "lessonKeyWords" : ["class name","create a class"]
     },
     {
-      "taskName": "Logical Operators",
-      "taskNumber": 9,
-      "sectionNumber": 6,
-      "taskText": "Fill in the blank to test both conditions in the following if statement.",
+      "taskName": "Creating Classes",
+      "taskNumber": 4,
+      "sectionNumber": 8,
+      "taskText": "Fill in the blanks to create a class with a single method called \"test\". ",
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 3,
-      "exerciseSolutionStringArray": ["&&"],
-      "exerciseContentStringArray": ["int age = 23;","int money = 4000;","if (age > 21@#@ money > 500) {","   System.out.println(\"Welcome\");","}"]
+      "exerciseSolutionStringArray": ["class","test"],
+      "exerciseContentStringArray": ["public @#@ A {"," public void @#@() {","  System.out.println(''Hi'');"," }","}"]
+
     },
     {
-      "taskName" : "OR operator",
-      "taskNumber" : 10,
-      "sectionNumber": 6,
-      "taskText" : "The <b>OR</b> operator (||) checks if any one of the conditions is true. The condition becomes true, if any one of the operands evaluates to true.<br><b>For example: </b>@_picturecode6_10@The code above will print \"Welcome!\" if age is greater than 18 <b>or</b> if money is greater than 500.",
+      "taskName" : "Creating Objects",
+      "taskNumber" : 5,
+      "sectionNumber": 8,
+      "taskText" : "Let's head over to our <b>main</b> and create a new object of our class.<br><b>MyClass.java</b>@_picturecode8_5@Now, <b>dog</b> is an object of type <b>Animal.</b> Thus we can call its <b>bark()</b> method, using the name of the object and a <b>dot</b>. The <b>dot </b> notation is used to access the object's <b>attributes and methods.</b>@You have just created your first object!",
       "taskWhatsNext" : 2,
       "taskType" : 1,
-      "lessonKeyWords" : ["Logical","OR","||","nested if"]
+      "lessonKeyWords" : ["new object","create an object"]
     },
     {
-      "taskName": "Nested if Statements",
-      "taskNumber": 11,
-      "sectionNumber": 6,
-      "taskText": "What is the output of the following code?@_picture6_12",
-      "taskWhatsNext": 1,
-      "taskType": 2,
-      "exerciseViewType": 1,
-      "exerciseSolutionString": "11"
-    },
-    {
-      "taskName" : "The switch Statement",
-      "taskNumber" : 12,
-      "sectionNumber": 6,
-      "taskText" : "A <b>switch</b> statement tests a variable for equality against a list of values. Each value is called a <b>case</b>, and the variable being switched on is checked for each case.<br>Syntax:@_picturecode6_12_1@- When the variable being switched on is equal to a <b>case</b>, the statements following that <b>case</b> will execute until a <b>break</b> statement is reached.<br><br>- When a <b>break</b> statement is reached, the <b>switch</b> terminates, and the flow of control jumps to the next line after the <b>switch</b> statement.<br><br>- Not every <b>case</b> needs to contain a <b>break</b>. If no <b>break</b> appears, the flow of control will fall through to subsequent cases until a <b>break</b> is reached.<br><br>The example below tests<b> day</b> against a set of values and prints a corresponding message.@_picturecode6_12_1@<b>! </b>You can have any number of <b>case</b> statements within a <b>switch</b>. Each <b>case</b> is followed by the comparison value and a colon.",
-      "taskWhatsNext" : 2,
-      "taskType" : 1,
-      "lessonKeyWords" : ["switch","case","statement","break"]
-    },
-    {
-      "taskName": "The switch Statment",
-      "taskNumber": 13,
-      "sectionNumber": 6,
-      "taskText": "Fill in the blanks to test the variable's value using the switch statement.",
-      "taskWhatsNext": 1,
-      "taskType": 2,
-      "exerciseViewType": 3,
-      "exerciseSolutionStringArray": ["switch","x","break;","case"],
-      "exerciseContentStringArray": ["int x = 10;","#@(@#@) {","  case 10:","    System.out.println(\"A\");","    @#@","    @#@ 20:","    System.out.println(\"B\");","    break; ","}"]
-    },
-    {
-      "taskName" : "While Loops",
-      "taskNumber" : 14,
-      "sectionNumber": 6,
-      "taskText" : "A <b>loop</b> statement allows to repeatedly execute a statement or group of statements.<br><br>A <b>while</b> loop statement repeatedly executes a target statement as long as a given condition is true.<br>Example:@_picturecode6_14@The <b>while</b> loops check for the condition x > 0. If it evaluates to true, it executes the statements within its body. Then it checks for the statement again and repeats.@<b>! </b>Notice the statement x--. This decrements x each time the loop runs, and makes the loop stop when x reaches 0. Without the statement, the loop would run forever.",
-      "taskWhatsNext" : 2,
-      "taskType" : 1,
-      "lessonKeyWords" : ["while","loop","check condition"]
-    },
-    {
-      "taskName": "While Loops",
-      "taskNumber": 15,
-      "sectionNumber": 6,
-      "taskText": "Rearrange the code to produce a valid finite loop which prints a text to the screen in the loop.",
-      "taskWhatsNext": 1,
-      "taskType" : 2,
-      "exerciseViewType" : 5,
-      "exerciseSolutionStringArray" : ["TEXT1","TEXT3","TEXT2","TEXT0"]
-      "exerciseContentStringArray" : ["x++; } ","int x = 12; ","  System.out.println(\"Java rocks!\"); ","while (x < 100) { "]
-    },
-    {
-      "taskName" : "While Loops",
-      "taskNumber" : 16,
-      "sectionNumber": 6,
-      "taskText" : "When the expression is tested and the result is false, the loop body is skipped and the first statement after the while loop is executed.<br>Example: @_picturecode6_16@<b>! </b>Notice that the last print method is out of the while scope.",
-      "taskWhatsNext" : 2,
-      "taskType" : 1,
-      "lessonKeyWords" : ["While","false","result"]
-    },
-    {
-      "taskName": "While Loops",
-      "taskNumber": 17,
-      "sectionNumber": 6,
-      "taskText": "How many times will the following loop work?@_picturecode6_17",
-      "taskWhatsNext": 1,
-      "taskType": 2,
-      "exerciseViewType": 1,
-      "exerciseSolutionString": "5"
-    },
-    {
-      "taskName" : "for Loops",
-      "taskNumber" : 18,
-      "sectionNumber": 6,
-      "taskText" : "Another loop structure is the <b>for</b> loop. A for loop allows you to efficiently write a loop that needs to execute a specific number of times. <br>Syntax: @_picturecode6_18_1@<b>Initialization:</b> Expression executes only once during the beginning of loop<br><b>Condition:</b> Is evaluated each time the loop iterates. The loop executes the statement repeatedly, until this condition returns false.<br><b>Increment/Decrement:</b> Executes after each iteration of the loop.<br><br>The following example prints the numbers 1 through 5.@_picturecode6_18_2@This initializes x to the value 1, and repeatedly prints the value of x, until the condition x<=5 becomes false. On each iteration, the statement x++ is executed, incrementing x by one.@<b>! </b>Notice the semicolon (;) after initialization and condition in the syntax.",
-      "taskWhatsNext" : 2,
-      "taskType" : 1,
-      "lessonKeyWords" : ["for","loop","iteration","until false", "increment/decrement"]
-    },
-    {
-      "taskName": "for Loop",
-      "taskNumber": 19,
-      "sectionNumber": 6,
-      "taskText": "Drag and drop from the options below to print \"Great!\" 10 times:",
+      "taskName": "Creating Objects",
+      "taskNumber": 6,
+      "sectionNumber": 8,
+      "taskText": "Drag and drop from the options below to create an object of the A class in the B class and call its \"test\" method.",
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 4,
-      "exerciseSolutionStringArray":["i+1","10","for","i","i--","i++","Great!"],
-      "exerciseContentStringArray": ["#@ (int i = 0; i < 10;@#@ ) {","   System.out.println(\"@#@\");","}"],
-      "exerciseSolutionIntArray": [2,5,6]
+      "exerciseSolutionStringArray":["class","create","B","A","test()","object","new"],
+      "exerciseContentStringArray": ["public @#@A {"," public void test() {","  System.out.println(\"Hi\"); }","}","class B {","  public static void main(String args[ ]) {"," @#@ obj = @#@ A();"," obj.@#@; }","}"],
+      "exerciseSolutionIntArray" : [0,3,6,4]
     },
     {
-      "taskName" : "for Loops",
-      "taskNumber" : 20,
-      "sectionNumber": 6,
-      "taskText" : "You can have any type of condition and any type of increment statements in the for loop.<br>The example below prints only the even values between 0 and 10: @_picturecode6_20@A <b>for</b> loop is best when the starting and ending numbers are known.",
+      "taskName" : "Defining Attributes",
+      "taskNumber" : 7,
+      "sectionNumber": 8,
+      "taskText" : "A class has <b>attributes</b> and <b>methods.</b> The attributes are basically variables within a class.<br>Let's create a class called <b>Vehicle</b>, with its corresponding attributes and methods. @_picturecode8_7@<b>maxSpeed, wheels, color</b>, and <b>fuelCapacity</b> are the attributes of our Vehicle class, and<b> horn()</b> is the only method.<br>You can define as many attributes and methods as necessary.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
-      "lessonKeyWords" : ["for","condition"]
+      "lessonKeyWords" : ["attributes","variables in a class","as many as you want"]
     },
     {
-      "taskName": "for Loops",
+      "taskName": "Defining Attributes",
+      "taskNumber": 8,
+      "sectionNumber": 8,
+      "taskText": "Drag and drop from the options below to define a class with these attributes: age of type integer, height as a double, and name as a string.",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 4,
+      "exerciseSolutionStringArray": ["int","void","String","class","double","attribute","define"],
+      "exerciseContentStringArray": ["#@ Person{","   @#@ age;","   @#@ height;","   @#@ name;","}"],
+      "exerciseSolutionIntArray" : [3,0,4,2]
+    },
+    {
+      "taskName" : "Creating an Object",
+      "taskNumber" : 9,
+      "sectionNumber": 8,
+      "taskText" : "Next, we can create multiple objects of our <b>Vehicle</b> class, and use the dot syntax to access their attributes and methods. @_picturecode8_9@ ",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["multiple objects","syntax"]
+    },
+    {
+      "taskName": "Creating an Object",
+      "taskNumber": 10,
+      "sectionNumber": 8,
+      "taskText": "Fill in the blanks to create two objects from the class \"people\".",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 3,
+      "exerciseSolutionStringArray": ["new","people","()"],
+      "exerciseContentStringArray": ["people obj1 = @#@ people();","#@obj2 = new people@#@;"]
+    },
+    {
+      "taskName" : "Access Modifiers",
+      "taskNumber" : 11,
+      "sectionNumber": 8,
+      "taskText" : "Now let's discuss the <b>public</b> keyword in front of the main method.@<b>public</b> static void main(String[ ] args)@<b>public</b> is an <b>access modifier,</b> meaning that it is used to set the level of access. You can use access modifiers for classes, attributes, and methods.@For classes, the available modifiers are public or default (left blank), as described below:<br><br><b>public:</b> The class is accessible by any other class.<br><br><b>default</b>: The class is accessible only by classes in the same package.@<br>The following choices are available for attributes and methods:<br><br><b>default:</b> A variable or method declared with no access control modifier is available to any other class in the same package.<br><br><b>public:</b> Accessible from any other class.<br><b><br>protected:</b> Provides the same access as the default access modifier, with the addition that subclasses can access protected methods and variables of the superclass (Subclasses and superclasses are covered in upcoming lessons).<br><b>private:</b> Accessible only within the declared class itself<br><br>Example: @_picturecode8_11@It's a best practice to keep the variables within a class private. The variables are accessible and modified using <b>Getters and Setters. </b>",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["access modifiers","public","private","protected","in classes, objects and methods"]
+    },
+    {
+      "taskName": "Access Modifiers",
+      "taskNumber": 12,
+      "sectionNumber": 8,
+      "taskText": "Which of the following is no valid access modifiers?",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 2,
+      "exerciseSolutionStringArray" : [ "public","private","protected" ,"hidden"],
+      "exerciseSolutionInt": 4
+    },
+    {
+      "taskName" : "Getters & Setters",
+      "taskNumber" : 13,
+      "sectionNumber": 8,
+      "taskText" : "<b>Getters</b> and <b>Setters</b> are used to effectively protect your data, particularly when creating classes. For each variable, the <b>get</b> method returns its value, while the <b>set</b> method sets the value.<br><br><b>Getters</b> start with <b>get</b>, followed by the variable name, with the first letter of the variable name capitalized.<br><br><b>Setters</b> start with <b>set</b>, followed by the variable name, with the first letter of the variable name capitalized.<br>Example:@_picturecode8_13@The<b> getter</b> method returns the value of the attribute.<br>The <b>setter</b> method takes a parameter and assigns it to the attribute.<br><br>The keyword <b>this</b> is used to refer to the current object. Basically, <b>this.color</b> is the <b>color</b> attribute of the current object.",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["Getters","Setters","protect","access variables"]
+    },
+    {
+      "taskName": "Getters and Setters",
+      "taskNumber": 14,
+      "sectionNumber": 8,
+      "taskText": "Drag and drop from the options below to define the set and get methods.",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 4,
+      "exerciseSolutionStringArray": ["int","String","double","void","x"],
+      "exerciseContentStringArray": ["class A{"," private int x;"," public @#@ getX(){","   return @#@;"," }"," public @#@ setX(int x){","   this.x = x;"," }","}"],
+      "exerciseSolutionIntArray" : [0, 4, 3]
+    },
+    {
+      "taskName" : "Getters & Setters",
+      "taskNumber" : 15,
+      "sectionNumber": 8,
+      "taskText" : "Once our getter and setter have been defined, we can use it in our <b>main:</b>@_picturecode8_15@Getters and setters allow us to have control over the values. You may, for example, validate the given value in the setter before actually setting the value.<br>Getters and setters are fundamental building blocks for <b>encapsulation</b>, which will be covered in the next module.",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["control over values","getter","setter"]
+    },
+    {
+      "taskName": "Getters & Setters ",
+      "taskNumber": 16,
+      "sectionNumber": 8,
+      "taskText": "What would the name of the setter method for the class variable named \"age\" be?",
+      "taskWhatsNext": 1,
+      "taskType" : 2,
+      "exerciseViewType" : 2,
+      "exerciseSolutionStringArray" : ["Age","setAge","initAge","getAge"],
+      "exerciseSolutionInt" : 2
+    },
+    {
+      "taskName" : "Constructors",
+      "taskNumber" : 17,
+      "sectionNumber": 8,
+      "taskText" : "<b>Constructors </b>are special methods invoked when an object is created and are used to initialize them. <br>A constructor can be used to provide initial values for object attributes.@- A constructor <b>name</b> must be same as its class name.<br>- A constructor must have <b>no</b> explicit return type.<br><br>Example of a constructor:@_picturecode8_17_1@The <b>Vehicle()</b> method is the constructor of our class, so whenever an object of that class is created, the color attribute will be set to \"Red\". A constructor can also take parameters to initialize attributes.@_picturecode8_17_2@You can think of constructors as methods that will set up your class by default, so you don’t need to repeat the same code every time.",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["constructor","when object created","initialize objects"]
+    },
+    {
+      "taskName": "Constructors",
+      "taskNumber": 18,
+      "sectionNumber": 8,
+      "taskText": "Drag and drop from the options below to create a valid constructor.",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 4,
+      "exerciseSolutionStringArray": ["constructor","Person","int","private","public"],
+      "exerciseContentStringArray": ["class Person {"," private int age;","  public @#@(@#@myage)"," {","  age = myage;","  }","}","    " ],
+      "exerciseSolutionIntArray" : [1,2]
+    },
+    {
+      "taskName" : "Using Constructors",
+      "taskNumber" : 19,
+      "sectionNumber": 8,
+      "taskText" : "The constructor is called when you create an object using the <b>new</b> keyword. <br><b>Example:</b> @_picturecode8_19@This will call the constructor, which will set the<b> color</b> attribute to \"Blue\".",
+      "taskWhatsNext" : 1,
+      "taskType" : 1,
+      "lessonKeyWords" : ["new","call constructor"]
+    },
+    {
+      "taskName" : "Multiple Constructors",
+      "taskNumber" : 20,
+      "sectionNumber": 8,
+      "taskText" : "A single class can have <b>multiple constructors</b> with different numbers of parameters.<br>The setter methods inside the constructors can be used to set the attribute values.<br>Example:@_picturecode8_20_1@The class above has two constructors, one without any parameters setting the color attribute to a default value of \"Red\", and another constructor that accepts a parameter and assigns it to the attribute. <br>Now, we can use the constructors to create objects of our class.@_picturecode8_20_2@Java automatically provides a <b>default constructor</b>, so all classes have a constructor, whether one is specifically defined or not.",
+      "taskWhatsNext" : 2,
+      "taskType" : 1,
+      "lessonKeyWords" : ["multiple constructors","different parameters"]
+    },
+    {
+      "taskName": "Constructors",
       "taskNumber": 21,
-      "sectionNumber": 6,
-      "taskText": "How many times will the following loop run?@_picturecode6_21",
+      "sectionNumber": 8,
+      "taskText": "Fill in the blanks.",
       "taskWhatsNext": 3,
       "taskType": 2,
-      "exerciseViewType": 1,
-      "exerciseSolutionString": "2"
+      "exerciseViewType": 3,
+      "exerciseSolutionStringArray": ["class","int" ],
+      "exerciseContentStringArray": ["#@ A {","  private int x;","  public A(@#@ val) {","   x = val;","  }","}"]
     }
   ]
-
 }

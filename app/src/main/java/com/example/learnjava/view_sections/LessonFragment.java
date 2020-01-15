@@ -204,9 +204,9 @@ public class LessonFragment extends Fragment {
             case 8:
                 background.setBackgroundColor(ContextCompat.getColor(getActivity(),(R.color.section8_color)));
                 break;
-            case 9:
-                background.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.section9_color));
-                break;
+//            case 9:
+//                background.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.section9_color));
+//                break;
 
 
         }

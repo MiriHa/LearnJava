@@ -128,12 +128,13 @@ public class ExerciseViewCodeFragment extends Fragment {
                     String userAnswer = userInput.replaceAll("\\s+","");
                     Log.i("M_EXERCISE_VIEW_CODE", "check answer: " + userInput + " solution: " + currentTask.getSolutionString());
 
-                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT", "number: " + currentTask.getTaskNumber() + " userInput: " + userInput);
-                    if (currentTask.getSolutionString().equalsIgnoreCase(userAnswer)) {
+                       if (currentTask.getSolutionString().equalsIgnoreCase(userAnswer)) {
+                        progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput);
                         mListener.sendAnswerFromExerciseView(true);
                         Log.i("M_EXERCISE_VIEW_CODE", " send answer: true");
                     } else {
                         Log.i("M ANSWER", " was wrong");
+                           progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput);
                         mListener.sendAnswerFromExerciseView(false);
                         Log.i("M_EXERCISE_VIEW_CODE", "send answer: false");
                     }

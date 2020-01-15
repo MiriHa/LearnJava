@@ -54,11 +54,11 @@
       "taskName" : "Initializing Arrays",
       "taskNumber" : 5,
       "sectionNumber": 7,
-      "taskText" : "Fill in the blanks to retrieve the number of elements in an array called \"test\".",
+      "taskText" : "Create an int variable called length and assign the value of the length of the array arr to it",
       "taskWhatsNext" : 1,
-      "exerciseViewType" : 3,
-      "exerciseContentStringArray" : ["test.@#"],
-      "exerciseSolutionStringArray": ["length"]
+      "exerciseViewType" : 6,
+      "exerciseContentStringArray" : ["String[] arr = {1,2,3,4,5}\n\n"],
+      "exerciseSolutionString" : "String[]arr={1,2,3,4,5}intlength=arr.length;"
 
     },
     {

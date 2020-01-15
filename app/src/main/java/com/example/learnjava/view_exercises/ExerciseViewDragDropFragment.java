@@ -226,7 +226,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                     textView1.setLayoutParams(mParamsWrap);
                     textView1.setText(textParts[j]);
                     textView1.setPadding(4, 8, 4, 8);
-                    textView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+                    textView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
                     Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.consolas);
                     textView1.setTypeface(typeface);
                     Log.i("M_EXERCISE_VIEW_DRAG", " content: " + j + " " + textParts[j]);
@@ -252,7 +252,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
             myTextview.setOnTouchListener(this);
 
             myTextview.setPadding(12, 3, 12, 3);
-            myTextview.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+            myTextview.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
             Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.consolasbold);
             myTextview.setTypeface(typeface);
             answerHolder.addView(myTextview);
@@ -300,13 +300,15 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                 TextView solView = (TextView) linView.getChildAt(0);
                 userSolution[i] = solView.getText().toString();
             }
-            progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_DRAG_DROP_FRAGMENT", "check answer number: " + currentTask.getTaskNumber() + " userInput: " + userSolution);
+
 
             if (Arrays.equals(solutionString, userSolution)) {
+                progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_DRAGDROP_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolution));
                 mListener.sendAnswerFromExerciseView(true);
                 Log.i("M_EXERCISE_VIEW_DRAG", " send answer: true");
             } else {
                 Log.i("ANSWER", " was wrong");
+                progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_DRAGDROP_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolution));
                 mListener.sendAnswerFromExerciseView(false);
                 Log.i("M_EXERCISE_VIEW_DRAG", "send answer: false");
             }

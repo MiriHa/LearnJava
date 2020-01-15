@@ -36,9 +36,10 @@
       "taskText": "Complete this Code that it's result is 20:",
       "taskWhatsNext": 1,
       "taskType" : 2,
-      "exerciseViewType" : 3,
-      "exerciseContentStringArray" : ["int x = 5;","int y = 4;","#@ result = x@#@;","System.out.println(@#@);"],
-      "exerciseSolutionStringArray": ["int","*y","result"]
+      "exerciseViewType" : 4,
+      "exerciseContentStringArray" : ["int x = 5;","int y = 4;","#@ result = @#@;","System.out.println(@#@);"],
+      "exerciseSolutionStringArray": ["String","int","x/y","x-y","x+y","x*y","result","output"],
+      "exerciseSolutionIntArray": [1,5,6]
     },
     {
       "taskName": "Modulo",
@@ -72,12 +73,12 @@
       "taskName": "Increment and Decrement",
       "taskNumber": 7,
       "sectionNumber": 4,
-      "taskText": "Fill in the blank to print 11:",
+      "taskText": "Order these lines so it prints 11:",
       "taskWhatsNext": 1,
       "taskType" : 2,
-      "exerciseViewType" : 3,
-      "exerciseContentStringArray" : ["int a = 10;","#@a;","System.out.println(a);"],
-      "exerciseSolutionStringArray": ["++"]
+      "exerciseViewType" : 5,
+      "exerciseSolutionStringArray" : ["TEXT2","TEXT0","TEXT1"],
+      "exerciseContentStringArray" : ["++a;","System.out.println(a);","int a = 10;"]
     },
     {
       "taskName": "Prefix and Postfix",
@@ -114,7 +115,7 @@
       "taskText": "What are the outputs of these code snippets?\n\nint var1 = 4;\nint var2 = 7",
       "taskWhatsNext": 1,
       "taskType": 2,
-      "exerciseViewType": 3,
+      "exerciseViewType": 6,
       "exerciseContentStringArray": ["System.out.println(var1 == var2);","#","System.out.println(var2 <= var1);","#","System.out.Println(var1 < 5);","#"],
       "exerciseSolutionStringArray": ["false","false","true"]
     },

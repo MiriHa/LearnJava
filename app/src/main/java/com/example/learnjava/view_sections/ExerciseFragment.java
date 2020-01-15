@@ -208,7 +208,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         } else {
             showFeedbackDialogWrong();
             Log.i("M_EXERCISE_FRAGMENT", "answer was wrong");
-            progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_WRONG", "number: " + currentTask.getTaskNumber() + " taskType: " + currentTask.getExerciseViewType());
+            progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_WRONG", "number: " + currentTask.getTaskNumber() + "section: "+currentTask.getSectionNumber()+" taskType: " + currentTask.getExerciseViewType());
 
         }
     }
@@ -268,7 +268,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
                 //TODO reset the layout
                 reset();
                 wrongfeedbackDialog.dismiss();
-                progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_WRONG_TRY_AGAIN", "number: " + currentTask.getTaskNumber() + " taskType: " + currentTask.getExerciseViewType());
+                progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_WRONG_TRY_AGAIN", "number: " + currentTask.getTaskNumber() + "section: "+currentTask.getSectionNumber()+" taskType: " + currentTask.getExerciseViewType());
 
 
             }
@@ -278,7 +278,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
             public void onClick(View v) {
                 ((LessonActivity) getActivity()).openNewTask(3);
                 wrongfeedbackDialog.dismiss();
-                progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_WRONG_SEE_LESSON", "number: " + currentTask.getTaskNumber() + " taskType: " + currentTask.getExerciseViewType());
+                progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_WRONG_SEE_LESSON", "number: " + currentTask.getTaskNumber() +"section: "+currentTask.getSectionNumber()+ " taskType: " + currentTask.getExerciseViewType());
             }
         });
 
@@ -345,9 +345,9 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
             case 8:
                 background.setBackgroundColor(ContextCompat.getColor(getActivity(), (R.color.section8_color)));
                 break;
-            case 9:
-                background.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.section9_color));
-                break;
+//            case 9:
+//                background.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.section9_color));
+//                break;
 
 
         }

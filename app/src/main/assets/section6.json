@@ -13,12 +13,12 @@
       "taskName": "Decision Making",
       "taskNumber": 1,
       "sectionNumber": 6,
-      "taskText": "Fill in the Blanks to print Yeah!",
+      "taskText": "Write a code snippet to print \"Yeah!\" when x equals 5:",
       "taskWhatsNext": 1,
       "taskType": 2,
-      "exerciseViewType": 3,
-      "exerciseSolutionStringArray":["if","main"],
-      "exerciseContentStringArray": ["int x = 5;","#@( x == 5 ) {","  System.@#@.println(\"Yeah\");","}"]
+      "exerciseViewType": 6,
+      "exerciseSolutionString" : "if(x==5){System.out.println(\"Yeah!\");}",
+      "exerciseContentStringArray": ["int x = 5;\n\n"]
     },
     {
       "taskName" : "if...else Statements",
@@ -53,12 +53,12 @@
       "taskName": "Nested if Statements",
       "taskNumber": 5,
       "sectionNumber": 6,
-      "taskText": "Fill in the blanks to print the greater number: ",
+      "taskText": "Order these code lines to check if x is over 22 and if yes over 31:",
       "taskWhatsNext": 1,
       "taskType": 2,
-      "exerciseViewType": 3,
-      "exerciseSolutionStringArray": ["if","out"],
-      "exerciseContentStringArray": ["int x = 37;","if (x > 22) {","  @#@(x > 31) {","  System.@#@.println(\"it works!\");","  }","}"]
+      "exerciseViewType": 5,
+      "exerciseSolutionStringArray" : ["TEXT4","TEXT1","TEXT0","TEXT3","TEXT"],
+      "exerciseContentStringArray": ["  if(x > 31) {"  ,  "if (x > 22) {"   ,    "  }\n}"   ,"  System.out.println(\"it's true!\");",  "int x = 37;"]
     },
     {
       "taskName" : "else if Statement",
@@ -135,9 +135,10 @@
       "taskText": "Fill in the blanks to test the variable's value using the switch statement.",
       "taskWhatsNext": 1,
       "taskType": 2,
-      "exerciseViewType": 3,
-      "exerciseSolutionStringArray": ["switch","x","break;","case"],
-      "exerciseContentStringArray": ["int x = 10;","#@(@#@) {","  case 10:","    System.out.println(\"A\");","    @#@","    @#@ 20:","    System.out.println(\"B\");","    break; ","}"]
+      "exerciseViewType": 4,
+      "exerciseSolutionIntArray" : [0,2,4,5],
+      "exerciseSolutionStringArray": ["switch","change","x","break;","case","y","pause","return"],
+      "exerciseContentStringArray": ["int x = 10;","#@(@#@) {","  case 10:","    System.out.println(\"A\");","  @#@","    @#@ 20:","    System.out.println(\"B\");","    break; ","}"]
     },
     {
       "taskName" : "While Loops",
@@ -196,7 +197,7 @@
       "taskType": 2,
       "exerciseViewType": 4,
       "exerciseSolutionStringArray":["i+1","10","for","i","i--","i++","Great!"],
-      "exerciseContentStringArray": ["#@ (int i = 0; i < 10;@#@ ) {","   System.out.println(\"@#@\");","}"],
+      "exerciseContentStringArray": ["#@ (int i=0;i<10;@#@){","   System.out.println(","\"@#@\");","}"],
       "exerciseSolutionIntArray": [2,5,6]
     },
     {
@@ -212,11 +213,12 @@
       "taskName": "for Loops",
       "taskNumber": 21,
       "sectionNumber": 6,
-      "taskText": "How many times will the following loop run?@_picturecode6_21",
+      "taskText": "Write a for loop that prints out the numbers 1 - 20",
       "taskWhatsNext": 3,
       "taskType": 2,
-      "exerciseViewType": 1,
-      "exerciseSolutionStringArray": ["2","two"]
+      "exerciseViewType": 6,
+      "exerciseSolutionString": "for(inti=1;i<=20;i++){System.out.println(i);}",
+      "exerciseContentStringArray": ["for(inti=      ){\n\n\n}"]
     }
 
   ]

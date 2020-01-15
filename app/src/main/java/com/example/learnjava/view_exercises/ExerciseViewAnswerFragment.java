@@ -126,23 +126,17 @@ public class ExerciseViewAnswerFragment extends Fragment {
             } else {
                 String userAnswer = userInput.replaceAll("\\s+","");
                 Log.i("M_EXERCISE_VIEW_ANSWER", "check answer: " + userInput + " solution: " + currentTask.getSolutionString());
-                progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_FRAGMENT", "number: " + currentTask.getTaskNumber() + " userInput: " + userInput);
+
                 if (progressController.checkArrays(currentTask.getSolutionStringArray(),userAnswer)) {
                     mListener.sendAnswerFromExerciseView(true);
+                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput);
                     Log.i("M_EXERCISE_VIEW_ANSWER", " send answer: true");
                 } else {
                     Log.i("M ANSWER", " was wrong");
                     mListener.sendAnswerFromExerciseView(false);
+                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput);
                     Log.i("M_EXERCISE_VIEW_ANSWER", "send answer: false");
                 }
-//                if (currentTask.getSolutionString().equalsIgnoreCase(userAnswer)) {
-//                    mListener.sendAnswerFromExerciseView(true);
-//                    Log.i("M_EXERCISE_VIEW_ANSWER", " send answer: true");
-//                } else {
-//                    Log.i("M ANSWER", " was wrong");
-//                    mListener.sendAnswerFromExerciseView(false);
-//                    Log.i("M_EXERCISE_VIEW_ANSWER", "send answer: false");
-//                }
             }
         }
 

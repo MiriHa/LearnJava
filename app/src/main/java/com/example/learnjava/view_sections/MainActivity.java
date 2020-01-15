@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.example.learnjava.controller.Controller;
 import com.example.learnjava.R;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Context context;
 
     //Button lesson1, lesson2, lesson3, lesson4, lesson5, lesson6, lesson7, lesson8, lesson9;
-    LinearLayout lesson1, lesson2, lesson3, lesson4, lesson5, lesson6, lesson7, lesson8, lesson9, ScrollViewContainer;
+    LinearLayout lesson1, lesson2, lesson3, lesson4, lesson5, lesson6, lesson7, lesson8, ScrollViewContainer;
     ScrollView scrollView;
 
     public static final String PREF_USER_FIRST_TIME = "user_first_time";
@@ -62,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lesson6 = findViewById(R.id.lesson6);
         lesson7 = findViewById(R.id.lesson7);
         lesson8 = findViewById(R.id.lesson8);
-        lesson9 = findViewById(R.id.lesson9);
         scrollView = findViewById(R.id.MainScrollView);
         ScrollViewContainer = findViewById(R.id.MainscrollViewContainer);
 
@@ -81,8 +81,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.i("M_MAIN_ACTIVITY", "set Refrences and Controller");
         myProgressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_MAIN_ACTIVITY", "set Refrences and Content");
 
-        //TODO löschen wenn nicht mehr am test?
-        //myProgressController.updateLatestSection(this,5);
         checkIfSolved(lesson1, 1);
         checkIfSolved(lesson2, 2);
         checkIfSolved(lesson3, 3);
@@ -91,20 +89,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         checkIfSolved(lesson6, 6);
         checkIfSolved(lesson7, 7);
         checkIfSolved(lesson8, 8);
-        checkIfSolved(lesson9, 9);
 
-        scrollToView(scrollView);
-
-    }
-
-    private void scrollToLatestSection(){
-        LinearLayout latestLayout = latestLayoutID();
-        Log.i("M_MAIN_ACTIVITY","scrollToLatestSection "+latestLayout.toString());
-//        View targetView = findViewById(R.id.DESIRED_VIEW_ID);
-//        targetView.getParent().requestChildFocus(targetView,targetView);
-            Rect textRect = new Rect(); //coordinates to scroll to
-            latestLayout.getHitRect(textRect); //fills textRect with coordinates of TextView relative to its parent (LinearLayout)
-            scrollView.requestChildRectangleOnScreen(latestLayout, textRect, false); //ScrollView will make sure, the given textRect is visible
+        scrollToView();
 
     }
 
@@ -126,8 +112,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return findViewById(R.id.lesson7);
             case 8:
                 return findViewById(R.id.lesson8);
-            case 9:
-                return findViewById(R.id.lesson9);
         }
         return findViewById(R.id.lesson6);
     }
@@ -136,35 +120,51 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * Used to scroll to the given view.
      *
      */
-    private void scrollToView(final ScrollView scrollViewParent) {
-        View view = latestLayoutID();
-        // Get deepChild Offset
-        Point childOffset = new Point();
-        getDeepChildOffset(scrollViewParent, view.getParent(), view, childOffset);
-        // Scroll to child.
-        scrollViewParent.smoothScrollTo(0, childOffset.y);
+    private void scrollToView() {
+//
+        scrollView.post(new Runnable() {
+            @Override
+            public void run() {
+                int latestSection = SharedPrefrencesManager.readLatestSectionNumber(MainActivity.this);
+                if(latestSection > 2) {
+                    latestSection -=1;
+                    LinearLayout currentTaskView;
+                    Log.i("M_MAIN_ACTIVITY", "scrolltoview: " + SharedPrefrencesManager.readLatestSectionNumber(MainActivity.this));
+                    switch (latestSection) {
+                        case 1:
+                            currentTaskView = findViewById(R.id.lesson1);
+                            break;
+                        case 2:
+                            currentTaskView = findViewById(R.id.lesson2);
+                            break;
+                        case 3:
+                            currentTaskView = findViewById(R.id.lesson3);
+                            break;
+                        case 4:
+                            currentTaskView = findViewById(R.id.lesson4);
+                            break;
+                        case 5:
+                            currentTaskView = findViewById(R.id.lesson5);
+                            break;
+                        case 6:
+                            currentTaskView = findViewById(R.id.lesson6);
+                            break;
+                        case 7:
+                            currentTaskView = findViewById(R.id.lesson7);
+                            break;
+                        case 8:
+                            currentTaskView = findViewById(R.id.lesson8);
+                            break;
+                        default:
+                            currentTaskView = findViewById(R.id.lesson1);
+                    }
+                    int scrollTo = currentTaskView.getTop();
+                    scrollView.smoothScrollTo(0, scrollTo);
+                }
+            }
+        });
     }
 
-    /**
-     * Used to get deep child offset.
-     * <p/>
-     * 1. We need to scroll to child in scrollview, but the child may not the direct child to scrollview.
-     * 2. So to get correct child position to scroll, we need to iterate through all of its parent views till the main parent.
-     *
-     * @param mainParent        Main Top parent.
-     * @param parent            Parent.
-     * @param child             Child.
-     * @param accumulatedOffset Accumulated Offset.
-     */
-    private void getDeepChildOffset(final ViewGroup mainParent, final ViewParent parent, final View child, final Point accumulatedOffset) {
-        ViewGroup parentGroup = (ViewGroup) parent;
-        accumulatedOffset.x += child.getLeft();
-        accumulatedOffset.y += child.getTop();
-        if (parentGroup.equals(mainParent)) {
-            return;
-        }
-        getDeepChildOffset(mainParent, parentGroup.getParent(), parentGroup, accumulatedOffset);
-    }
 
     /**
      * Check id the Section is unlocked, if yes set Clicklistener, if no grey background
@@ -261,6 +261,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+
     /**
      * Go to the Phone HomeScreen if Back is pressed
      */
@@ -277,17 +278,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-//    FirebaseAuth.AuthStateListener authStateListener = new FirebaseAuth.AuthStateListener() {
-//        @Override
-//        public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-//            //auth = FirebaseAuth.getInstance();
-//            if (firebaseUser == null) {
-//                Intent intent = new Intent(MainActivity.this, LogInActivity.class);
-//                startActivity(intent);
-//            }
-//        }
-//    };
 
     @Override
     protected void onStart() {

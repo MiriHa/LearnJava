@@ -271,34 +271,34 @@
                     android:text="@string/Lesson8" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/lesson9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/section9_color"
-                android:clickable="true"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/PaddingSide"
-                android:paddingRight="@dimen/PaddingSide"
-                android:paddingBottom="@dimen/PaddingScroll"
-                android:paddingTop="@dimen/PaddingScroll">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/lesson9"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@color/section9_color"-->
+<!--                android:clickable="true"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:paddingLeft="@dimen/PaddingSide"-->
+<!--                android:paddingRight="@dimen/PaddingSide"-->
+<!--                android:paddingBottom="@dimen/PaddingScroll"-->
+<!--                android:paddingTop="@dimen/PaddingScroll">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="9/9"
-                    android:textSize="14sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="9/9"-->
+<!--                    android:textSize="14sp" />-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    app:autoSizeTextType="uniform"
-                    android:clickable="false"
-                    android:gravity="center"
-                    android:text="@string/Lesson9" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    app:autoSizeTextType="uniform"-->
+<!--                    android:clickable="false"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="@string/Lesson9" />-->
+<!--            </LinearLayout>-->
 
         </LinearLayout>
 

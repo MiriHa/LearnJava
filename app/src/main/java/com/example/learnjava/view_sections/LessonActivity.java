@@ -11,7 +11,9 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +40,7 @@ public class LessonActivity extends AppCompatActivity {
     Context context;
 
     LinearLayout progressHolder;
+    HorizontalScrollView progressScroll;
 
 
     //TODO use the one from the progressMOdel instead of here?
@@ -71,6 +74,7 @@ public class LessonActivity extends AppCompatActivity {
         progressController.loadContent(sectionNumber, this);
         taskContent = progressController.getTaskContent();
 
+        progressScroll = findViewById(R.id.progressScroll);
         setProgressBar();
 
         //set the Toolbar
@@ -205,6 +209,7 @@ public class LessonActivity extends AppCompatActivity {
     public void openLatestTask(){
         currentTaskNumber = progressController.getLatestTaskNumber(this);
         currentTask = taskContent.get(currentTaskNumber);
+        scrollToProgress();
         switch (currentTask.getType()){
             case 1:
                 setProgressBackground();
@@ -281,8 +286,25 @@ public class LessonActivity extends AppCompatActivity {
             currentTask = taskContent.get(progressCurrentScreen);
             currentTaskNumber = currentTask.getTaskNumber();
             progressController.updateLatestTaskNumber(this, currentTaskNumber, sectionNumber);
+            scrollToProgress();
             Log.i("M_LESSON_ACTIVITY","set recent task in latest Section " + currentTask.getTaskName() + " " + currentTask.getTaskNumber());
 
+    }
+
+    private void scrollToProgress(){
+        progressScroll.post(new Runnable() {
+            @Override
+            public void run() {
+                TextView currentTaskView;
+                if(currentTaskNumber > 4) {
+                    currentTaskView = (TextView) progressHolder.getChildAt(currentTaskNumber - 4);
+                    int scrollTo = currentTaskView.getLeft();
+
+                    progressScroll.smoothScrollTo(scrollTo, 0);
+                }
+
+            }
+        });
     }
 
     /**
@@ -314,6 +336,9 @@ public class LessonActivity extends AppCompatActivity {
                 break;
             case 7:
                 title = getResources().getString(R.string.Lesson7);
+                break;
+            case 8:
+                title = getResources().getString(R.string.Lesson8);
                 break;
         }
         return title;
@@ -503,7 +528,7 @@ public class LessonActivity extends AppCompatActivity {
                                 .addToBackStack(tagLES)
                                 .commit();
                     }
-                    progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_AN_OLD_TASK", "Lesson via the progressbar: " + currentTask.getTaskNumber());
+                    progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_AN_OLD_TASK", "Lesson via the progressbar: " + currentTask.getTaskNumber()+"section: "+currentTask.getSectionNumber());
                     Log.d(" M_LESSON_ACTIVITY", "checkprogress 1: progress: " + progressCurrentScreen);
                     break;
 
@@ -523,7 +548,7 @@ public class LessonActivity extends AppCompatActivity {
                                 .addToBackStack(tagEX)
                                 .commit();
                     }
-                     progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_AN_OLD_TASK", "Exercise via the progressbar: " + currentTask.getTaskNumber());
+                     progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_AN_OLD_TASK", "Exercise via the progressbar: " + currentTask.getTaskNumber()+"section: "+currentTask.getSectionNumber());
                     Log.i(" M_LESSON_ACTIVITY", " checkprogress 2: progress: " + progressCurrentScreen);
                     break;
             }
@@ -567,11 +592,4 @@ public class LessonActivity extends AppCompatActivity {
     }
 
 
-    public ArrayList<ModelTask> getTaskContent() {
-        return taskContent;
-    }
-
-    public int getCurrentTaskNumber(){
-        return currentTaskNumber;
-    }
 }

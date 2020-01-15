@@ -32,12 +32,12 @@
       "taskName": "The main method",
       "taskNumber": 3,
       "sectionNumber": 2,
-      "taskText": "Fill in the Blanks to declare a method called \"hello()\".",
+      "taskText": "Write the full signature of the main method:",
       "taskWhatsNext": 1,
       "taskType" : 2,
-      "exerciseViewType" : 3,
-      "exerciseContentStringArray" : ["void@#@()"],
-      "exerciseSolutionStringArray" : ["hello"]
+      "exerciseViewType" : 6,
+      "exerciseSolutionString": "publicstaticvoidmain(String[]args)",
+      "exerciseContentStringArray" : [""]
     },
     {
       "taskName": "Displaying text",
@@ -115,9 +115,10 @@
       "taskText": "Make this a multi-line comment:",
       "taskWhatsNext": 1,
       "taskType" : 2,
-      "exerciseViewType" : 3,
+      "exerciseViewType" : 4,
       "exerciseContentStringArray" : ["#@some","  comment text","#"],
-      "exerciseSolutionStringArray" : ["/*","*/"]
+      "exerciseSolutionStringArray" : [" /* "," // "," ** "," */ "," || "," // "],
+      "exerciseSolutionIntArray" : [0,3]
     },
     {
       "taskName": "Documentation Comments",

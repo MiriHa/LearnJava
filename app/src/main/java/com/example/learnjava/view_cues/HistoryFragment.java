@@ -66,7 +66,7 @@ public class HistoryFragment extends DialogFragment {
 
         //ArrayList<ModelTask> tasklist = progressController.getTaskContent();
 
-        progressController.makeaLog(Calendar.getInstance().getTime(), "History_CUE", "in section " + section);
+//        progressController.makeaLog(Calendar.getInstance().getTime(), "History_CUE", "in section " + section);
         gotit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

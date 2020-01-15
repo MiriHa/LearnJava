@@ -86,20 +86,7 @@ public class ExerciseViewOrderFragment extends Fragment {
 
             //Make the TextViews draggable
 
-            for(int i = 0; i < contentHolder.getChildCount(); i++){
-                View child = contentHolder.getChildAt(i);
-                contentHolder.setViewDraggable(child, child);
-            }
-
-            contentHolder.setOnViewSwapListener(new DragLinearLayout.OnViewSwapListener() {
-                @Override
-                public void onSwap(View firstView, int firstPosition,
-                                   View secondView, int secondPosition) {
-                    // update data, etc..
-                    firstView.setTag(secondPosition);
-                    secondView.setTag(firstPosition);
-                }
-            });
+            makeDynmaivChilds();
 
 
             nextButton = view.findViewById(R.id.nextButtonExerciseOrder);
@@ -153,6 +140,7 @@ public class ExerciseViewOrderFragment extends Fragment {
                 linearLayout.setOrientation(LinearLayout.HORIZONTAL);
                 linearLayout.setPadding(8, 8, 4, 8);
                 linearLayout.setTag(i);
+                linearLayout.setBackground(getResources().getDrawable(R.drawable.grey_line));
 
 //                TextView number = new TextView((getContext()));
 //                number.setLayoutParams(mParamsWrap);
@@ -189,14 +177,16 @@ public class ExerciseViewOrderFragment extends Fragment {
                     LinearLayout linearLayout = currentView.findViewWithTag(i);
                     userSolution[i] = (String) linearLayout.getChildAt(0).getTag();
                 }
-            progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ORDER_FRAGMENT", "number: " + currentTask.getTaskNumber() + " userInput: " + userSolution);
 
             //TODO check when no Answer is inputted
+            Log.i("M_ORDER","solutiontags: "+ Arrays.toString(solutionTags) +" usertags:"+ Arrays.toString(userSolution));
                 if (Arrays.equals(solutionTags, userSolution)) {
+                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ORDER_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolution));
                     mListener.sendAnswerFromExerciseView(true);
                     Log.i("M_EXERCISE_VIEW_ORDER", " send answer: true");
                 } else {
                     Log.i("ANSWER", " was wrong");
+                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ORDER_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolution));
                     mListener.sendAnswerFromExerciseView(false);
                     Log.i("M_EXERCISE_VIEW_ORDER", " send answer: false");
                 }
@@ -231,9 +221,28 @@ public class ExerciseViewOrderFragment extends Fragment {
         mListener = null;
     }
 
+    public void makeDynmaivChilds(){
+        for(int i = 0; i < contentHolder.getChildCount(); i++){
+            View child = contentHolder.getChildAt(i);
+            contentHolder.setViewDraggable(child, child);
+        }
+
+        contentHolder.setOnViewSwapListener(new DragLinearLayout.OnViewSwapListener() {
+            @Override
+            public void onSwap(View firstView, int firstPosition,
+                               View secondView, int secondPosition) {
+                // update data, etc..
+                firstView.setTag(secondPosition);
+                secondView.setTag(firstPosition);
+            }
+        });
+    }
+
     public void reset() {
             //TODO reposition the lines in random order. -> set dynamic layout?
+        contentHolder.removeAllViews();
         setDynamicLayout();
+        makeDynmaivChilds();
         }
     }
 

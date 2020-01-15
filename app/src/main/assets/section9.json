@@ -79,6 +79,48 @@
       "exerciseViewType" : 3,
       "exerciseSolutionString" : [],
       "exerciseSolutionInt" : [1,2,3]
+    },
+    {
+      "taskName": "Comparison Operators",
+      "taskNumber": 11,
+      "sectionNumber": 4,
+      "taskText": "What are the outputs of these code snippets?\n\nint var1 = 4;\nint var2 = 7",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 3,
+      "exerciseContentStringArray": ["System.out.println(var1 == var2);","#","System.out.println(var2 <= var1);","#","System.out.Println(var1 < 5);","#"],
+      "exerciseSolutionStringArray": ["false","false","true"]
+    },
+    {
+      "taskName": "Method Parameters",
+      "taskNumber": 5,
+      "sectionNumber": 5,
+      "taskText": "What is the output result from this code?@_picturecode5_5",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 1,
+      "exerciseSolutionStringArray": ["16","sixteen"]
+    },
+    {
+      "taskName": "Decision Making",
+      "taskNumber": 1,
+      "sectionNumber": 6,
+      "taskText": "Fill in the Blanks to print Yeah!",
+      "taskWhatsNext": 1,
+      "taskType": 2,
+      "exerciseViewType": 3,
+      "exerciseSolutionStringArray":["if","main"],
+      "exerciseContentStringArray": ["int x = 5;","#@( x == 5 ) {","  System.@#@.println(\"Yeah\");","}"]
+    },
+    {
+      "taskName": "for Loops",
+      "taskNumber": 21,
+      "sectionNumber": 6,
+      "taskText": "How many times will the following loop run?@_picturecode6_21",
+      "taskWhatsNext": 3,
+      "taskType": 2,
+      "exerciseViewType": 1,
+      "exerciseSolutionStringArray": ["2","two"]
     }
   ]
 

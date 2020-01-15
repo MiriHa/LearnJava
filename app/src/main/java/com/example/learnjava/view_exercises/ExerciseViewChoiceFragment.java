@@ -148,12 +148,13 @@ public class ExerciseViewChoiceFragment extends Fragment {
                 Toast.makeText(getContext(), "Please choose an answer", Toast.LENGTH_SHORT).show();
             } else {
                 Log.i("M_EXERCISE_VIEW_CHOICE", " checkanswer: " + " solution: " + currentTask.getSolutionInt());
-                progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_CHOICE_FRAGMENT", "number: " + currentTask.getTaskNumber() + " userInput: " + userAnswer);
                 if (currentTask.getSolutionInt() == userAnswer) {
+                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_CHOICE_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userAnswer);
                     mListener.sendAnswerFromExerciseView(true);
                     Log.i("M_EXERCISE_VIEW_CHOICE", " send answer: true");
                 } else {
                     Log.i("M ANSWER", " was wrong");
+                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_CHOICE_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userAnswer);
                     mListener.sendAnswerFromExerciseView(false);
                     Log.i("M_EXERCISE_VIEW_CHOICE", " sen answer: false");
                 }

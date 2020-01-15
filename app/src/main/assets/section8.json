@@ -190,7 +190,7 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 4,
-      "exerciseSolutionStringArray": ["constructor","Person","int","private","public"],
+      "exerciseSolutionStringArray": ["cons","Person","int","private","public"],
       "exerciseContentStringArray": ["class Person {"," private int age;","  public @#@(@#@myage)"," {","  age = myage;","  }","}","    " ],
       "exerciseSolutionIntArray" : [1,2]
     },

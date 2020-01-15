@@ -57,8 +57,9 @@
       "taskText" : "Create a variable called \"cityName\" and assign the value \"munich\" to it:",
       "taskWhatsNext" : 1,
       "taskType" : 2,
-      "exerciseViewType": 1,
-      "exerciseSolutionStringArray": ["StringcityName=\"munich\""]
+      "exerciseViewType": 6,
+      "exerciseSolutionString": "StringcityName=\"munich\"",
+      "exerciseContentStringArray": [""]
     },
     {
       "taskName": "Variables",
@@ -94,7 +95,18 @@
       "taskName": "Displaying Variables",
       "taskNumber": 9,
       "sectionNumber": 3,
-      "taskText" : "What is the Output of this Code?@_picturecode3_9",
+      "taskText" : "Order these lines to create a valid code snippet",
+      "taskWhatsNext" : 2,
+      "taskType" : 2,
+      "exerciseViewType" : 5,
+      "exerciseSolutionStringArray" : ["TEXT3","TEXT4","TEXT2","TEXT0","TEXT1"],
+      "exerciseContentStringArray" : [" System.out.println(\n  \"name: \"+name+\" ,age: \"+age);"   ,     " }\n}"     ,   " String name = \"John\";\n int age = 30;\""   ,  "class Person{"   ,   "public static void main\n          (String[]args){"]
+    },
+    {
+      "taskName": "Displaying Variables",
+      "taskNumber": 10,
+      "sectionNumber": 3,
+      "taskText" : "What is the Output of your arranged Code?@_picturecode3_9",
       "taskWhatsNext" : 3,
       "taskType" : 2,
       "exerciseViewType": 1,

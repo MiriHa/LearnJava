@@ -13,7 +13,7 @@
       "taskName": "Methods",
       "taskNumber": 1,
       "sectionNumber": 5,
-      "taskText": "Fill in the blanks to call the method \"hello\" form main:",
+      "taskText": "Order these code lines so that the method \"hello\" get called from main form main:",
       "taskWhatsNext": 1,
       "taskType" : 2,
       "exerciseViewType" : 3,
@@ -53,11 +53,12 @@
       "taskName": "Method Parameters",
       "taskNumber": 5,
       "sectionNumber": 5,
-      "taskText": "What is the output result from this code?@_picturecode5_5",
+      "taskText": "Write a code for the method doSomething that prints the value of the parameter plus 2",
       "taskWhatsNext": 1,
       "taskType": 2,
-      "exerciseViewType": 1,
-      "exerciseSolutionString": "16"
+      "exerciseViewType": 6,
+      "exerciseSolutionString" : "staticvoiddoSomething(intx){System.out.println(x+2);}",
+      "exerciseContentStringArray" : ["class MyClass[\n  public static void main(String[]args\n   doSomething(4);\n } \n\n//TODO write method doSomething\n\n\n }"]
     },
     {
       "taskName": "The Return Type",

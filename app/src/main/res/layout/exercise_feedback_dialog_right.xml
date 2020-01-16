@@ -6,11 +6,22 @@
     android:background="@drawable/alert_right">
 
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/right_check"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/FeedbackRight"
-        android:textSize="24sp"
+        android:textSize="25sp"
         android:fontFamily="@font/trixiesans"
         android:textColor="@color/light"
         android:textAlignment="center"
@@ -22,8 +33,9 @@
         android:layout_height="50dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:text="Next Lesson"
+        android:textAllCaps="false"
         android:fontFamily="@font/trixiesans"
         android:textColor="@color/light"
         android:background="@drawable/button_altert_green"/>

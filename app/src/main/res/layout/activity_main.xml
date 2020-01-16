@@ -360,7 +360,7 @@
         android:gravity="center"
         android:padding="9dp"
         android:text="@string/welcome"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/light"
         app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

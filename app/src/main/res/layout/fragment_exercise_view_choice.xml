@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view_exercises.ExerciseViewChoiceFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
 
         <LinearLayout
             android:id="@+id/contentHolderChoice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginEnd="9dp"
             android:background="@drawable/rounded_corners"
             android:orientation="vertical"
+            android:padding="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
+            <!--            android:layout_margin="6dp"-->
+            <!--            android:layout_marginStart="6dp"-->
+            <!--            android:layout_marginEnd="9dp"-->
+
 
             <TextView
                 android:id="@+id/exerciseTextChoice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp"
+                android:layout_marginBottom="3dp"
                 android:text="@string/shortString"
-                android:textSize="@dimen/TextSize20" />
+                android:fontFamily="@font/trixiesans"
+                android:textSize="18dp" />
 
             <RadioGroup
                 android:id="@+id/answerGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                  android:layout_margin="3dp"
                 android:textSize="@dimen/TextSize10">
 
                 <RadioButton
@@ -46,6 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:fontFamily="@font/trixiesans"
                     android:textSize="@dimen/TextSize20" />
 
                 <RadioButton
@@ -53,6 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:fontFamily="@font/trixiesans"
                     android:textSize="@dimen/TextSize20" />
 
                 <RadioButton
@@ -60,6 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:fontFamily="@font/trixiesans"
                     android:textSize="@dimen/TextSize20" />
 
                 <RadioButton
@@ -67,6 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:fontFamily="@font/trixiesans"
                     android:textSize="@dimen/TextSize20" />
             </RadioGroup>
 
@@ -103,4 +109,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

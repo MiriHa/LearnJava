@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#171b30</color>
     <color name="colorPrimaryDark">#414455</color>
-    <color name="colorAccent">#bbbec3</color>
+    <color name="colorAccent">#171b30</color>
 
     <color name="section1_color">#1aba7b</color>
     <color name="section2_color">#0abda0</color>
@@ -15,6 +15,7 @@
     <color name="section9_color">#FFFFFF</color>
 
     <color name="grey">#d0d6d1</color>
+    <color name="accent_alternate">#bbbec3</color>
     <color name="light">#fbfff7</color>
     <color name="hintColor">#bbbec3</color>
     <color name="darkergrey">#696969</color>

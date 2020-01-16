@@ -116,8 +116,8 @@
     },
     {
       "questionNumber" : 1,
-      "questionAnswerInt": 2,
-      "question": "What ist the correct way for calling a method called sayHi?",
+      "questionAnswerInt": 1,
+      "question": "What is the correct way for calling a method called sayHi?",
       "questionAnswerArray": ["sayHi()","sayHi.call","sayHi{}"]
     },
     {
@@ -148,7 +148,7 @@
       "questionNumber" : 6,
       "questionAnswerInt": 2,
       "question": "For what is the \"return\" keyword used?",
-      "questionAnswerArray": ["to instantly go back to the main method","to return an value at the end of a method","to ignore the line"]
+      "questionAnswerArray": ["to instantly go back to the main method","to return a value at the end of a method","to ignore the line"]
     },
 	 {
       "questionNumber" : 7,

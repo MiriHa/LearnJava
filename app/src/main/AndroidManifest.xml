@@ -14,8 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view_registration.ForgotPasswortActivity"/>
-        <activity android:name=".view_registration.SignUpActivity" />
-        <activity android:name=".view_registration.LogInActivity" >
+        <activity android:name=".view_registration.SignUpActivity"/>
+        <activity android:name=".view_registration.LogInActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />

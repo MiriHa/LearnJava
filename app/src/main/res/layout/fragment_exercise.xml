@@ -39,15 +39,14 @@
        <ScrollView
            android:id="@+id/scrollView2"
            android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:paddingLeft="2dp"
-           android:paddingRight="2dp"
+           android:layout_height="wrap_content"
+           android:padding="0dp"
            android:clickable="false">
 
            <FrameLayout
                android:id="@+id/ExerciseViewHolder"
                android:layout_width="match_parent"
-               android:layout_height="match_parent"
+               android:layout_height="wrap_content"
                android:clickable="false" />
 
 

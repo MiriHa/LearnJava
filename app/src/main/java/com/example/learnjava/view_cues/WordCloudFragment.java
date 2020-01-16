@@ -1,6 +1,7 @@
 
 package com.example.learnjava.view_cues;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -86,7 +87,8 @@ public class WordCloudFragment extends DialogFragment {
         //wordCloud.setSize(200, 400);
 //        wordCloud.setColors(ColorTemplate.MATERIAL_COLORS);
         wordCloud.setScale(50, 15);
-        wordCloud.setColors(new int[] {R.color.section1_color,R.color.section2_color,R.color.section5_color,R.color.section6_color});
+//        wordCloud.setColors(new int[] {R.color.section1_color,R.color.section2_color,R.color.section5_color,R.color.section6_color});
+        wordCloud.setColors(new int[] {Color.argb(255,26, 126, 183), Color.argb(255,10, 189, 160), Color.argb(255, 19,157,193), Color.argb(255,15,101,201 ), Color.argb(255,6,71,143)});
         wordCloud.notifyDataSetChanged();
 
 

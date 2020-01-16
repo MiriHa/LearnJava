@@ -32,6 +32,8 @@
                 android:layout_marginEnd="25dp"
                 android:layout_marginBottom="5dp"
                 android:gravity="center"
+                android:fontFamily="@font/trixiesans"
+                android:textColor="@color/light"
                 android:text="@string/Question_Text"
                 android:textSize="30sp" />
 
@@ -43,6 +45,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/rounded_corners"
                 android:gravity="center"
+                android:fontFamily="@font/trixiesans"
                 android:textSize="20sp"
                 android:visibility="gone" />
 
@@ -60,6 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
+                    android:fontFamily="@font/trixiesans"
                     android:text="@string/shortString"
                     android:textSize="@dimen/TextSize20" />
 
@@ -77,21 +81,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:textSize="@dimen/TextSize20" />
+                        android:textSize="@dimen/TextSize20"
+                        android:fontFamily="@font/trixiesans"/>
 
                     <RadioButton
                         android:id="@+id/questionAnswer2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:textSize="@dimen/TextSize20" />
+                        android:textSize="@dimen/TextSize20"
+                        android:fontFamily="@font/trixiesans"/>
 
                     <RadioButton
                         android:id="@+id/questionAnswer3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:textSize="@dimen/TextSize20" />
+                        android:textSize="@dimen/TextSize20"
+                        android:fontFamily="@font/trixiesans"/>
 
                 </RadioGroup>
 
@@ -103,7 +110,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="50dp"
-                android:background="@drawable/button_altert_green"
+                android:textAllCaps="false"
+                android:fontFamily="@font/trixiesans"
+                android:textColor="@color/light"
+                android:background="@drawable/neutral_button"
                 android:text="@string/Question_Button" />
 
         </LinearLayout>

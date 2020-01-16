@@ -161,11 +161,13 @@ public class QuestionsFragment extends DialogFragment {
                 setFeedback(answerInt);
                 progressController.makeaLog(Calendar.getInstance().getTime(), "QUESTION_CUE", "number: " + currentQuestion.getNumber() + " answer: right");
                 bigText.setText(R.string.Question_right);
+                bigText.setTextColor(getResources().getColor(R.color.Green));
                 Log.i("M_QUESTION_CUE", "answer: true, dismiss");
             } else {
                 setFeedback(answerInt);
                 progressController.makeaLog(Calendar.getInstance().getTime(), "QUESTION_CUE", "number: " + currentQuestion.getNumber() + " answer: wrong");
                 bigText.setText(R.string.Question_wrong);
+                bigText.setTextColor(getResources().getColor(R.color.Redbright));
                 checkButton.setBackgroundResource(R.drawable.button_altert_red);
                 Log.i("M_QUESTION_CUE", "answer: false, show right answer");
             }
@@ -175,23 +177,24 @@ public class QuestionsFragment extends DialogFragment {
     private void setFeedback(int answerInt){
         answerChecked = true;
         checkButton.setText(R.string.Cue_Button);
+
         //Set the ColorFeedback
         switch (answerInt){
             case 1:
-                answer1.setTextColor(getResources().getColor(R.color.Green));
+                answer1.setTextColor(getResources().getColor(R.color.Greenbright));
                 answer2.setTextColor(getResources().getColor(R.color.Red));
                 answer3.setTextColor(getResources().getColor(R.color.Red));
                 answer1.setChecked(true);
 
                 break;
             case 2:
-                answer2.setTextColor(getResources().getColor(R.color.Green));
+                answer2.setTextColor(getResources().getColor(R.color.Greenbright));
                 answer1.setTextColor(getResources().getColor(R.color.Red));
                 answer3.setTextColor(getResources().getColor(R.color.Red));
                 answer2.setChecked(true);
                 break;
             case 3:
-                answer3.setTextColor(getResources().getColor(R.color.Green));
+                answer3.setTextColor(getResources().getColor(R.color.Greenbright));
                 answer2.setTextColor(getResources().getColor(R.color.Red));
                 answer1.setTextColor(getResources().getColor(R.color.Red));
                 answer3.setChecked(true);

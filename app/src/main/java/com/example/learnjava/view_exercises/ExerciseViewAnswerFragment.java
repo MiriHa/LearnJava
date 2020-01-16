@@ -1,9 +1,11 @@
 package com.example.learnjava.view_exercises;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import android.text.Html;
@@ -177,7 +179,9 @@ public class ExerciseViewAnswerFragment extends Fragment {
                 TextView myTextView = new TextView(getContext());
                 myTextView.setLayoutParams(mParams);
                 myTextView.setText(Html.fromHtml(element));
-                myTextView.setPadding(10, 6, 10, 6);
+                Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.trixiesans);
+                myTextView.setTypeface(typeface);
+                myTextView.setPadding(3, 6, 3, 6);
                 //TODO find a better way or see if its in packages
                 //  myTextView.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                 myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);

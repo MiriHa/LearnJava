@@ -58,7 +58,7 @@
       "taskType": 2,
       "exerciseViewType": 6,
       "exerciseSolutionString" : "staticvoiddoSomething(intx){System.out.println(x+2);}",
-      "exerciseContentStringArray" : ["class MyClass[\n  public static void main(String[]args\n   doSomething(4);\n } \n\n//TODO write method doSomething\n\n\n }"]
+      "exerciseContentStringArray" : ["class MyClass{\n  public static void main (String[]args\n   doSomething(4);\n } \n\n//TODO write method doSomething\n\n\n }"]
     },
     {
       "taskName": "The Return Type",

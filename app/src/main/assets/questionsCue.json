@@ -330,7 +330,7 @@
       "questionNumber" : 2,
       "questionAnswerInt": 3,
         "question": "What is a valid array called arr?",
-      "questionAnswerArray": ["[]int arr","int[Array] = arr","int[] arr"]
+      "questionAnswerArray": ["[ ]int arr = \"1,2\";","int[Array] = arr;","int[ ] arr ={1,2};"]
     },
     {
       "questionNumber" : 3,
@@ -341,7 +341,7 @@
 	 {
       "questionNumber" : 4,
       "questionAnswerInt": 1,
-      "question": "With what keyword can you caount the number of elements in an array?",
+      "question": "With what keyword can you count the number of elements in an array?",
       "questionAnswerArray": ["length","size","quantity"]
     },
     {

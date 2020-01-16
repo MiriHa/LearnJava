@@ -7,26 +7,10 @@
     tools:context=".view_sections.MainActivity">
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="3dp"
-        app:autoSizeTextType="uniform"
-        android:gravity="center"
-        android:padding="13dp"
-        android:text="@string/welcome"
-        app:layout_constraintBottom_toTopOf="@+id/MainScrollView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.24000001" />
-
     <ScrollView
         android:id="@+id/MainScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +22,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/section1_color"/>
+
             <LinearLayout
                 android:id="@+id/lesson1"
                 android:layout_width="match_parent"
@@ -47,25 +36,31 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/PaddingSide"
+                android:paddingTop="@dimen/PaddingScroll"
                 android:paddingRight="@dimen/PaddingSide"
-                android:paddingBottom="@dimen/PaddingScroll"
-                android:paddingTop="@dimen/PaddingScroll">
+                android:paddingBottom="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1/9"
                     android:layout_margin="6dp"
-                    android:textSize="14sp" />
+                    android:text="1"
+                    android:fontFamily="@font/trixiesans"
+                    android:textColor="@color/light"
+                    android:textSize="30sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:gravity="center"
-                    app:autoSizeTextType="uniform"
                     android:clickable="false"
-                    android:text="@string/Lesson1" />
+                    android:gravity="center"
+                    android:fontFamily="@font/trixiesans"
+                    android:textColor="@color/light"
+                    android:text="@string/Lesson1"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="@dimen/main_min_size"
+                    app:autoSizeMaxTextSize="@dimen/main_max_size"/>
 
             </LinearLayout>
 
@@ -78,24 +73,32 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/PaddingSide"
+                android:paddingTop="@dimen/PaddingScroll"
                 android:paddingRight="@dimen/PaddingSide"
-                android:paddingBottom="@dimen/PaddingScroll"
-                android:paddingTop="@dimen/PaddingScroll">
+                android:paddingBottom="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2/9"
-                    android:textSize="14sp" />
+                    android:text="2"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/trixiesans"
+                    android:textColor="@color/light"
+                    android:textSize="30sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    app:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
-                    android:text="@string/Lesson2" />
+                    android:fontFamily="@font/trixiesans"
+                    android:textColor="@color/light"
+                    android:text="@string/Lesson2"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="@dimen/main_min_size"
+                    app:autoSizeMaxTextSize="@dimen/main_max_size"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -107,24 +110,31 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/PaddingSide"
+                android:paddingTop="@dimen/PaddingScroll"
                 android:paddingRight="@dimen/PaddingSide"
-                android:paddingBottom="@dimen/PaddingScroll"
-                android:paddingTop="@dimen/PaddingScroll">
+                android:paddingBottom="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3/9"
-                    android:textSize="14sp" />
+                    android:text="3"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/trixiesans"
+                    android:textColor="@color/light"
+                    android:textSize="30sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    app:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
-                    android:text="@string/Lesson3" />
+                    android:fontFamily="@font/trixiesans"
+                    android:textColor="@color/light"
+                    android:text="@string/Lesson3"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="@dimen/main_min_size"
+                    app:autoSizeMaxTextSize="@dimen/main_max_size"/>
             </LinearLayout>
 
             <LinearLayout
@@ -136,24 +146,31 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/PaddingSide"
+                android:paddingTop="@dimen/PaddingScroll"
                 android:paddingRight="@dimen/PaddingSide"
-                android:paddingBottom="@dimen/PaddingScroll"
-                android:paddingTop="@dimen/PaddingScroll">
+                android:paddingBottom="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="4/9"
-                    android:textSize="14sp" />
+                    android:text="4"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/trixiesans"
+                    android:textColor="@color/light"
+                    android:textSize="30sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    app:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
-                    android:text="@string/Lesson4" />
+                    android:fontFamily="@font/trixiesans"
+                    android:textColor="@color/light"
+                    android:text="@string/Lesson4"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="@dimen/main_min_size"
+                    app:autoSizeMaxTextSize="@dimen/main_max_size"/>
             </LinearLayout>
 
             <LinearLayout
@@ -165,23 +182,31 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/PaddingSide"
+                android:paddingTop="@dimen/PaddingScroll"
                 android:paddingRight="@dimen/PaddingSide"
-                android:paddingBottom="@dimen/PaddingScroll"
-                android:paddingTop="@dimen/PaddingScroll">
+                android:paddingBottom="@dimen/PaddingScroll">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5/9"
-                    android:textSize="14sp" />
+                    android:text="5"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/trixiesans"
+                    android:textColor="@color/light"
+                    android:textSize="30sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    app:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
-                    android:text="@string/Lesson5" />
+                    android:fontFamily="@font/trixiesans"
+                    android:textColor="@color/light"
+                    android:text="@string/Lesson5"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="@dimen/main_min_size"
+                    app:autoSizeMaxTextSize="@dimen/main_max_size"/>
             </LinearLayout>
 
             <LinearLayout
@@ -193,24 +218,31 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/PaddingSide"
+                android:paddingTop="@dimen/PaddingScroll"
                 android:paddingRight="@dimen/PaddingSide"
-                android:paddingBottom="@dimen/PaddingScroll"
-                android:paddingTop="@dimen/PaddingScroll">
+                android:paddingBottom="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="6/9"
-                    android:textSize="14sp" />
+                    android:text="6"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/trixiesans"
+                    android:textColor="@color/light"
+                    android:textSize="30sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    app:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
-                    android:text="@string/Lesson6" />
+                    android:fontFamily="@font/trixiesans"
+                    android:textColor="@color/light"
+                    android:text="@string/Lesson6"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="@dimen/main_min_size"
+                    app:autoSizeMaxTextSize="@dimen/main_max_size"/>
             </LinearLayout>
 
             <LinearLayout
@@ -222,24 +254,31 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/PaddingSide"
+                android:paddingTop="@dimen/PaddingScroll"
                 android:paddingRight="@dimen/PaddingSide"
-                android:paddingBottom="@dimen/PaddingScroll"
-                android:paddingTop="@dimen/PaddingScroll">
+                android:paddingBottom="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="7/9"
-                    android:textSize="14sp" />
+                    android:text="7"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/trixiesans"
+                    android:textColor="@color/light"
+                    android:textSize="30sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    app:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
-                    android:text="@string/Lesson7" />
+                    android:fontFamily="@font/trixiesans"
+                    android:textColor="@color/light"
+                    android:text="@string/Lesson7"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="@dimen/main_min_size"
+                    app:autoSizeMaxTextSize="@dimen/main_max_size"/>
             </LinearLayout>
 
             <LinearLayout
@@ -251,57 +290,80 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/PaddingSide"
+                android:paddingTop="@dimen/PaddingScroll"
                 android:paddingRight="@dimen/PaddingSide"
-                android:paddingBottom="@dimen/PaddingScroll"
-                android:paddingTop="@dimen/PaddingScroll">
+                android:paddingBottom="@dimen/PaddingScroll">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="8/9"
-                    android:textSize="14sp" />
+                    android:text="8"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/trixiesans"
+                    android:textColor="@color/light"
+                    android:textSize="30sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    app:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
-                    android:text="@string/Lesson8" />
+                    android:fontFamily="@font/trixiesans"
+                    android:textColor="@color/light"
+                    android:text="@string/Lesson8"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="@dimen/main_min_size"
+                    app:autoSizeMaxTextSize="@dimen/main_max_size"/>
             </LinearLayout>
 
-<!--            <LinearLayout-->
-<!--                android:id="@+id/lesson9"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="@color/section9_color"-->
-<!--                android:clickable="true"-->
-<!--                android:gravity="center"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:paddingLeft="@dimen/PaddingSide"-->
-<!--                android:paddingRight="@dimen/PaddingSide"-->
-<!--                android:paddingBottom="@dimen/PaddingScroll"-->
-<!--                android:paddingTop="@dimen/PaddingScroll">-->
+            <!--            <LinearLayout-->
+            <!--                android:id="@+id/lesson9"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:background="@color/section9_color"-->
+            <!--                android:clickable="true"-->
+            <!--                android:gravity="center"-->
+            <!--                android:orientation="horizontal"-->
+            <!--                android:paddingLeft="@dimen/PaddingSide"-->
+            <!--                android:paddingRight="@dimen/PaddingSide"-->
+            <!--                android:paddingBottom="@dimen/PaddingScroll"-->
+            <!--                android:paddingTop="@dimen/PaddingScroll">-->
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="9/9"-->
-<!--                    android:textSize="14sp" />-->
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="9/9"-->
+            <!--                    android:textSize="14sp" />-->
 
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="40dp"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    app:autoSizeTextType="uniform"-->
-<!--                    android:clickable="false"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="@string/Lesson9" />-->
-<!--            </LinearLayout>-->
+            <!--                <TextView-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="40dp"-->
+            <!--                    android:layout_gravity="center"-->
+            <!--                    app:autoSizeTextType="uniform"-->
+            <!--                    android:clickable="false"-->
+            <!--                    android:gravity="center"-->
+            <!--                    android:text="@string/Lesson9" />-->
+            <!--            </LinearLayout>-->
 
         </LinearLayout>
 
     </ScrollView>
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/main_background"
+        android:fontFamily="@font/trixiesans"
+        android:gravity="center"
+        android:padding="9dp"
+        android:text="@string/welcome"
+        android:textColor="@color/colorAccent"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

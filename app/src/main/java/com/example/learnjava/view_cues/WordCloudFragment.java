@@ -84,9 +84,9 @@ public class WordCloudFragment extends DialogFragment {
         WordCloudView wordCloud = view.findViewById(R.id.WordcloudView);
         wordCloud.setDataSet(list);
         //wordCloud.setSize(200, 400);
-        wordCloud.setColors(ColorTemplate.MATERIAL_COLORS);
+//        wordCloud.setColors(ColorTemplate.MATERIAL_COLORS);
         wordCloud.setScale(50, 15);
-//        wordCloud.setColors(new int[] {Color.BLUE, Color.GRAY, Color.GREEN, Color.CYAN });
+        wordCloud.setColors(new int[] {R.color.section1_color,R.color.section2_color,R.color.section5_color,R.color.section6_color});
         wordCloud.notifyDataSetChanged();
 
 

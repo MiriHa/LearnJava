@@ -15,5 +15,11 @@
     <dimen name="TextSize40">40sp</dimen>
 
 
+    <dimen name="main_min_size">15sp</dimen>
+    <dimen name="main_max_size">28sp</dimen>
+
+    <dimen name="button_size">50dp</dimen>
+
+
 
 </resources>

@@ -15,21 +15,13 @@
             android:id="@+id/contentHolderAnswer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:background="@drawable/rounded_corners"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/nextButtonExerciseAnswer"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
-            <!--            <TextView-->
-            <!--                android:id="@+id/exerciseTextAnswer"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="@string/shortString"-->
-            <!--                android:textSize="@dimen/TextSize20" />-->
 
             <LinearLayout
                 android:id="@+id/answerTextHolder"
@@ -42,8 +34,8 @@
                 android:id="@+id/editTextAnswer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/PaddingSide"
-                android:layout_marginRight="@dimen/PaddingSide"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
                 android:autofillHints="answer"
                 android:hint="answer"
                 android:inputType="text"
@@ -54,27 +46,32 @@
 
         <Button
             android:id="@+id/OnlyCheckButtonExerciseAnswer"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/button_size"
+            android:layout_height="@dimen/button_size"
             android:layout_gravity="end"
             android:layout_margin="6dp"
-            android:text="@string/Skip_Text"
+            android:background="@drawable/skip_button"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contentHolderAnswer"
+            app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/nextButtonExerciseAnswer"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/button_size"
+            android:layout_height="@dimen/button_size"
             android:layout_gravity="end"
             android:layout_margin="6dp"
+            android:background="@drawable/check_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/OnlyCheckButtonExerciseAnswer"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contentHolderAnswer"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

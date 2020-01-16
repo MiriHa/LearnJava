@@ -45,13 +45,13 @@ public class SignUpActivity extends AppCompatActivity {
 
         myProgressController = (Controller) getApplicationContext();
 
-        userEmailInput = findViewById(R.id.signin_email);
-        userNameInput = findViewById(R.id.singin_name);
-        userPasswordInput1 = findViewById(R.id.signin_password_1);
+        userEmailInput = findViewById(R.id.login_email);
+        userNameInput = findViewById(R.id.login_name);
+        userPasswordInput1 = findViewById(R.id.login_password);
         userPasswordInput2 = findViewById(R.id.signin_password_2);
-        signInProgress = findViewById(R.id.signin_progress);
-        signIn = findViewById(R.id.signin_submit);
-        toLogIn = findViewById(R.id.signUp_login);
+        signInProgress = findViewById(R.id.login_progress);
+        signIn = findViewById(R.id.login_submit);
+        toLogIn = findViewById(R.id.login_signup);
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();

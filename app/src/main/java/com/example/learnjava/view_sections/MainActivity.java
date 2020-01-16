@@ -237,10 +237,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 8");
                 startActivity(LessonActivity.class, 8);
                 break;
-            case R.id.lesson9:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 9");
-                startActivity(LessonActivity.class, 9);
-                break;
+//            case R.id.lesson9:
+//                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 9");
+//                startActivity(LessonActivity.class, 9);
+//                break;
         }
     }
 

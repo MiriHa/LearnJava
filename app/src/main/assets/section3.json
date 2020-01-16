@@ -58,7 +58,7 @@
       "taskWhatsNext" : 1,
       "taskType" : 2,
       "exerciseViewType": 6,
-      "exerciseSolutionString": "StringcityName=\"munich\"",
+      "exerciseSolutionString": "StringcityName=\"munich\";",
       "exerciseContentStringArray": [""]
     },
     {
@@ -100,7 +100,7 @@
       "taskType" : 2,
       "exerciseViewType" : 5,
       "exerciseSolutionStringArray" : ["TEXT3","TEXT4","TEXT2","TEXT0","TEXT1"],
-      "exerciseContentStringArray" : [" System.out.println(\n  \"name: \"+name+\" ,age: \"+age);"   ,     " }\n}"     ,   " String name = \"John\";\n int age = 30;\""   ,  "class Person{"   ,   "public static void main\n          (String[]args){"]
+      "exerciseContentStringArray" : ["   System.out.println(\n  \"name: \"+name+\" ,age: \"+age);"   ,     " }\n}"     ,   " String name = \"John\";\n int age = 30;\""   ,  "class Person{"   ,   " public static void main\n          (String[]args){"]
     },
     {
       "taskName": "Displaying Variables",

@@ -47,6 +47,7 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         if(Boolean.valueOf(SharedPrefrencesManager.readSharedSetting(this, "PERSISTENCE_ENABLED","true"))) {
             //Enable Offline Data Cache -> maye in iniziale database only when app new installed it will work?
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
@@ -89,7 +90,7 @@ public class LogInActivity extends AppCompatActivity {
         userNameInput = findViewById(R.id.login_email);
         userPasswordInput = findViewById(R.id.login_password);
         logInSubmit = findViewById(R.id.login_submit);
-        toSignUp = findViewById(R.id.login_signUp);
+        toSignUp = findViewById(R.id.login_signup);
 
 
         toSignUp.setOnClickListener(new View.OnClickListener() {

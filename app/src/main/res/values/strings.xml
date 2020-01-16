@@ -9,9 +9,9 @@
     <string name="Lesson2">Hello World and Comments</string>
     <string name="Lesson3">Data Types and Variables</string>
     <string name="Lesson4">Primitive Operators</string>
-    <string name="Lesson5">Functions</string>
+    <string name="Lesson5">Functions   </string>
     <string name="Lesson6">Conditionals and Loops</string>
-    <string name="Lesson7">Arrays</string>
+    <string name="Lesson7">Arrays   </string>
     <string name="Lesson8">Classes and Objects</string>
     <string name="Lesson9">Exceptions and Lists</string>
 
@@ -49,7 +49,7 @@
 
 
     <!-- LogIn -->
-    <string name="login">LogIn</string>
+    <string name="login">Log In</string>
     <string name="login_email_hint">Email</string>
     <string name="login_password_1_hint">Enter password</string>
     <string name="login_submit">Log In</string>

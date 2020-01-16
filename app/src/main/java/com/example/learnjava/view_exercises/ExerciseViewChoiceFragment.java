@@ -105,6 +105,7 @@ public class ExerciseViewChoiceFragment extends Fragment {
         if(progressController.checkTasks(getContext(), currentTask)) {
             Log.i("M_Exercise_VIEW_CHOICE", "checkExericse and skip");
             skipButton.setVisibility(View.VISIBLE);
+
         }
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override

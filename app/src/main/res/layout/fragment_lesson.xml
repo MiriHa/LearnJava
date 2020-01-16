@@ -25,56 +25,61 @@
 <!--            app:layout_constraintStart_toStartOf="parent"-->
 <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <TextView
-            android:id="@+id/lessonName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="@dimen/PaddingSide"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/scrollViewLes"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ScrollView
-            android:id="@+id/scrollViewLes"
+        <LinearLayout
+            android:id="@+id/whiteContentLesson"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
+            android:layout_margin="9dp"
             android:background="@drawable/rounded_corners"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginEnd="6dp"
-            android:layout_marginBottom="3dp"
-            app:layout_constraintBottom_toTopOf="@+id/nextButtonLessonFrag"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lessonName">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
-            <LinearLayout
-                android:id="@+id/lessonTextHolder"
+            <TextView
+                android:id="@+id/lessonName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:paddingTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/trixiesans"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <ScrollView
+                android:id="@+id/scrollViewLes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp">
+
+                <LinearLayout
+                    android:id="@+id/lessonTextHolder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
 
-            </LinearLayout>
+                </LinearLayout>
 
-        </ScrollView>
+            </ScrollView>
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/nextButtonLessonFrag"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/button_size"
+            android:layout_height="@dimen/button_size"
             android:layout_margin="3dp"
+            android:background="@drawable/skip_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/scrollViewLes" />
+            app:layout_constraintStart_toStartOf="@+id/whiteContentLesson"
+            app:layout_constraintTop_toBottomOf="@+id/whiteContentLesson"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

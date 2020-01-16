@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="trixiSansFont">
+        <item name="android:fontFamily">@font/trixiesans</item>
+    </style>
+
 </resources>

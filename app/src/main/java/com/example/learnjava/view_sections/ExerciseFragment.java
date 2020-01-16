@@ -2,6 +2,8 @@ package com.example.learnjava.view_sections;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -233,6 +235,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         builder.setView(dialogView);
 
         final AlertDialog rightFeedbackDialog = builder.create();
+        rightFeedbackDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         rightFeedbackDialog.setCanceledOnTouchOutside(false);
         rightFeedbackDialog.show();
 
@@ -257,6 +260,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         //  AlertDialog builder = new AlertDialog.Builder(getContext()).create();
         builder.setView(dialogView);
         final AlertDialog wrongfeedbackDialog = builder.create();
+        wrongfeedbackDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         wrongfeedbackDialog.setCanceledOnTouchOutside(false);
         //  feedbackDialog.getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.transparent)));
         wrongfeedbackDialog.show();

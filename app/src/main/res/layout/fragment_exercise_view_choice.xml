@@ -30,7 +30,7 @@
                 android:id="@+id/exerciseTextChoice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/PaddingSide"
+                android:layout_margin="3dp"
                 android:text="@string/shortString"
                 android:textSize="@dimen/TextSize20" />
 
@@ -38,9 +38,7 @@
                 android:id="@+id/answerGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/PaddingSide"
-                android:layout_marginRight="@dimen/PaddingSide"
-                android:layout_marginBottom="@dimen/PaddingSide"
+                  android:layout_margin="3dp"
                 android:textSize="@dimen/TextSize10">
 
                 <RadioButton
@@ -76,12 +74,12 @@
 
         <Button
             android:id="@+id/OnlyCheckButtonExerciseChoice"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/button_size"
+            android:layout_height="@dimen/button_size"
             android:layout_gravity="end"
             android:layout_margin="6dp"
-            android:text="@string/Skip_Text"
             android:visibility="gone"
+            android:background="@drawable/skip_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -91,10 +89,11 @@
 
         <Button
             android:id="@+id/nextButtonExerciseChoice"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/button_size"
+            android:layout_height="@dimen/button_size"
             android:layout_gravity="end"
             android:layout_margin="6dp"
+            android:background="@drawable/check_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/OnlyCheckButtonExerciseChoice"
             app:layout_constraintHorizontal_bias="1.0"

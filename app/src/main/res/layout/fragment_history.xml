@@ -49,6 +49,7 @@
                         android:layout_gravity="center"
                         android:layout_marginBottom="15dp"
                         android:gravity="center"
+                        android:fontFamily="@font/trixiesans"
                         android:text="@string/History_Cue_text"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -72,7 +73,10 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="50dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/button_altert_green"
+                    android:fontFamily="@font/trixiesans"
+                    android:textColor="@color/light"
+                    android:textAllCaps="false"
+                    android:background="@drawable/neutral_button"
                     android:text="@string/Cue_Button" />
 
             </LinearLayout>

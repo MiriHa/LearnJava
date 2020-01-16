@@ -46,8 +46,8 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 3,
-      "exerciseSolutionStringArray": ["class","test"],
-      "exerciseContentStringArray": ["public @#@ A {"," public void @#@() {","  System.out.println(''Hi'');"," }","}"]
+      "exerciseSolutionStringArray": ["class","test()","out","println"],
+      "exerciseContentStringArray": ["public @#@ A {"," public void @#@ {","  System.@#@.@#@(\"Hi\");"," }","}"]
 
     },
     {
@@ -84,13 +84,12 @@
       "taskName": "Defining Attributes",
       "taskNumber": 8,
       "sectionNumber": 8,
-      "taskText": "Drag and drop from the options below to define a class with these attributes: age of type integer, height as a double, and name as a string.",
+      "taskText": "Give this class these attributes: age of type int, height as a double, and name as a string.",
       "taskWhatsNext": 1,
       "taskType": 2,
-      "exerciseViewType": 4,
-      "exerciseSolutionStringArray": ["int","void","String","class","double","attribute","define"],
-      "exerciseContentStringArray": ["#@ Person{","   @#@ age;","   @#@ height;","   @#@ name;","}"],
-      "exerciseSolutionIntArray" : [3,0,4,2]
+      "exerciseViewType": 6,
+      "exerciseSolutionString": "classPerson{intage;doubleheight;Stringname;}",
+      "exerciseContentStringArray": ["class Person{\n\n\n}"]
     },
     {
       "taskName" : "Creating an Object",
@@ -186,13 +185,12 @@
       "taskName": "Constructors",
       "taskNumber": 18,
       "sectionNumber": 8,
-      "taskText": "Drag and drop from the options below to create a valid constructor.",
+      "taskText": "Write a Constructor for the class Person that takes an int myAge parameter an sets the age of the Person",
       "taskWhatsNext": 1,
       "taskType": 2,
-      "exerciseViewType": 4,
-      "exerciseSolutionStringArray": ["cons","Person","int","private","public"],
-      "exerciseContentStringArray": ["class Person {"," private int age;","  public @#@(@#@myage)"," {","  age = myage;","  }","}","    " ],
-      "exerciseSolutionIntArray" : [1,2]
+      "exerciseViewType": 6,
+      "exerciseSolutionString": "classPerson{privateintage;Person(intmyAge){age=myAge;}}",
+      "exerciseContentStringArray": ["class Person{\n private int age;\n\n}"]
     },
     {
       "taskName" : "Using Constructors",
@@ -216,12 +214,12 @@
       "taskName": "Constructors",
       "taskNumber": 21,
       "sectionNumber": 8,
-      "taskText": "Fill in the blanks.",
+      "taskText": "Order these lines to create valid code",
       "taskWhatsNext": 3,
       "taskType": 2,
-      "exerciseViewType": 3,
-      "exerciseSolutionStringArray": ["class","int" ],
-      "exerciseContentStringArray": ["#@ A {","  private int x;","  public A(@#@ val) {","   x = val;","  }","}"]
-    }
+      "exerciseViewType": 5,
+      "exerciseSolutionStringArray" : ["TEXT2","TEXT1","TEXT4","TEXT0","TEXT3","TEXT5"],
+      "exerciseContentStringArray" : ["  x = val;", "private int x;","class A{"," }"," public A(int val){","}"]
+  }
   ]
 }

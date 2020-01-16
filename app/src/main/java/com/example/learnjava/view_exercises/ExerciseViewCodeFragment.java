@@ -126,7 +126,8 @@ public class ExerciseViewCodeFragment extends Fragment {
                     Toast.makeText(getContext(), "Pleas enter an answer", Toast.LENGTH_SHORT).show();
                 } else {
                     String userAnswer = userInput.replaceAll("\\s+","");
-                    Log.i("M_EXERCISE_VIEW_CODE", "check answer: " + userInput + " solution: " + currentTask.getSolutionString());
+                    userAnswer = userAnswer.replace("\n", "").replace("\r", "");
+                    Log.i("M_EXERCISE_VIEW_CODE", "check answer: " + userInput + userAnswer+" solution: " + currentTask.getSolutionString());
 
                        if (currentTask.getSolutionString().equalsIgnoreCase(userAnswer)) {
                         progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput);
@@ -154,7 +155,7 @@ public class ExerciseViewCodeFragment extends Fragment {
 
 
         public void reset(){
-            answerEditText.setText(currentTask.getContentStringArray()[0]);
+           // answerEditText.setText(currentTask.getContentStringArray()[0]);
         }
 
 

@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#74aa7a</color>
-    <color name="colorPrimaryDark">#228f55</color>
-    <color name="colorAccent">#18633b</color>
+    <color name="colorPrimary">#171b30</color>
+    <color name="colorPrimaryDark">#414455</color>
+    <color name="colorAccent">#bbbec3</color>
 
-    <color name="section1_color">#cedf83</color>
-    <color name="section2_color">#bfdd83</color>
-    <color name="section3_color">#96bc76</color>
-    <color name="section4_color">#74aa7a</color>
-    <color name="section5_color">#54997a</color>
-    <color name="section6_color">#62a8ac</color>
-    <color name="section7_color">#408296</color>
-    <color name="section8_color">#4374a1</color>
-    <color name="section9_color">#4b5ab3</color>
+    <color name="section1_color">#1aba7b</color>
+    <color name="section2_color">#0abda0</color>
+    <color name="section3_color">#12bec5</color>
+    <color name="section4_color">#139dc1</color>
+    <color name="section5_color">#237dcd</color>
+    <color name="section6_color">#0f65c9</color>
+    <color name="section7_color">#06478f</color>
+    <color name="section8_color">#00305b</color>
+    <color name="section9_color">#FFFFFF</color>
 
     <color name="grey">#d0d6d1</color>
     <color name="light">#fbfff7</color>
     <color name="hintColor">#bbbec3</color>
-    <color name="darkgrey">#2b2b2b</color>
+    <color name="darkergrey">#696969</color>
+    <color name="darkGrey">#1f1f1f</color>
+    <color name="darkgrey2">#2b2b2b</color>
 
 
-    <color name="lightGreen4">#84bc76</color>
-    <color name="Green">#66af69</color>
-    <color name="Red">#ff594d</color>
+    <color name="Green">#18E982</color>
+    <color name="Greenbright">#22B673</color>
+    <color name="Red">#F02668</color>
+    <color name="Redbright">#9D0D3F</color>
 
 <!--    new Color palette-->
 

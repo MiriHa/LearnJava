@@ -14,7 +14,7 @@
             android:id="@+id/contentHolderOrder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="6dp"
+            android:layout_margin="2dp"
             android:background="@drawable/rounded_corners"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/nextButtonExerciseAnswer"
@@ -44,12 +44,12 @@
 
         <Button
             android:id="@+id/OnlyCheckButtonExerciseOrder"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/button_size"
+            android:layout_height="@dimen/button_size"
             android:layout_gravity="end"
             android:layout_margin="6dp"
-            android:text="@string/Skip_Text"
             android:visibility="gone"
+            android:background="@drawable/skip_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -59,10 +59,11 @@
 
         <Button
             android:id="@+id/nextButtonExerciseOrder"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/button_size"
+            android:layout_height="@dimen/button_size"
             android:layout_gravity="end"
             android:layout_margin="6dp"
+            android:background="@drawable/check_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/OnlyCheckButtonExerciseOrder"
             app:layout_constraintHorizontal_bias="1.0"

@@ -34,10 +34,11 @@
       "taskName" : "Initializing Arrays",
       "taskNumber" : 3,
       "sectionNumber": 7,
-      "taskText" : "What is the output of this code?@_picturecode7_3",
+      "taskText" : "Write a code line that prints out the number 9 from the temp array",
       "taskWhatsNext" : 1,
-      "exerciseViewType" : 1,
-      "exerciseSolutionStringArray" : ["9","nine"]
+      "exerciseViewType" : 6,
+      "exerciseSolutionString" : "inttemp[]={5,8,9,3};System.out.println(temp[2]);",
+      "exerciseContentStringArray": ["int temp[ ] = {5,8,9,3};"]
 
     },
     {
@@ -54,11 +55,11 @@
       "taskName" : "Initializing Arrays",
       "taskNumber" : 5,
       "sectionNumber": 7,
-      "taskText" : "Create an int variable called length and assign the value of the length of the array arr to it",
+      "taskText" : "Create an int variable called length and assign the value of the length of the array arr to it. Assume that arr has already been initialized.",
       "taskWhatsNext" : 1,
       "exerciseViewType" : 6,
-      "exerciseContentStringArray" : ["String[] arr = {1,2,3,4,5}\n\n"],
-      "exerciseSolutionString" : "String[]arr={1,2,3,4,5}intlength=arr.length;"
+      "exerciseContentStringArray" : ["String[ ] arr;\n\n"],
+      "exerciseSolutionString" : "String[]arr={1,2,3,4,5};intlength=arr.length;"
 
     },
     {
@@ -78,7 +79,7 @@
       "taskText" : "Drag and drop the answers to calculate the sum of myArray's elements using the for loop, and print it to the screen. myArray is an array of doubles, containing 4 elements.",
       "taskWhatsNext" : 2,
       "exerciseViewType" : 4,
-      "exerciseContentStringArray" : ["double sum = 0.0;","for (int x = 0; x < 4; x@#@) {","  sum += myArray[x];","}","System.out.println(@#@);"],
+      "exerciseContentStringArray" : ["double sum = 0.0;","for(int x = 0; x < 4; x@#@){","  sum += myArray[x];","}","System.out.println(@#@);"],
       "exerciseSolutionStringArray": ["length","++","--","int[]","sum", "while","x"],
       "exerciseSolutionIntArray" : [1,4]
     },

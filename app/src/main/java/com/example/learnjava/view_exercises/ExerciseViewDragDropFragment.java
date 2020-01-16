@@ -348,7 +348,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
 
             myTextview.setPadding(12, 3, 12, 3);
             myTextview.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-            Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.consolasbold);
+            Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.consolas);
             myTextview.setTypeface(typeface);
             answerHolder.addView(myTextview);
         }

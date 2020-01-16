@@ -17,7 +17,7 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 6,
-      "exerciseSolutionString" : "if(x==5){System.out.println(\"Yeah!\");}",
+      "exerciseSolutionString" : "intx=5;if(x==5){System.out.println(\"Yeah!\");}",
       "exerciseContentStringArray": ["int x = 5;\n\n"]
     },
     {

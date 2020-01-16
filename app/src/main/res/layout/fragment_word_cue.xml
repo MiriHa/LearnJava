@@ -30,6 +30,8 @@
                 android:gravity="center"
                 android:layout_margin="25dp"
                 android:textSize="30sp"
+                android:fontFamily="@font/trixiesans"
+                android:textColor="@color/light"
                 android:text="@string/wordCue_text"/>
 
             <TextView
@@ -38,6 +40,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
+                android:fontFamily="@font/trixiesans"
+                android:textColor="@color/light"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:gravity="center"
@@ -51,7 +55,10 @@
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="50dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/button_altert_green"
+                android:textAllCaps="false"
+                android:fontFamily="@font/trixiesans"
+                android:textColor="@color/light"
+                android:background="@drawable/neutral_button"
                 android:text="@string/Cue_Button" />
 
         </LinearLayout>

@@ -74,7 +74,7 @@ public class LessonFragment extends Fragment {
                     //save this as the Las lesson to come back to
                     progressController.setLastLesson(getContext(),currentTask.getTaskNumber());
                     //Add lesson to finished tasks
-                    progressController.addFinishedTask(getContext(),currentTask);
+//                    progressController.addFinishedTask(getContext(),currentTask);
                     //open a exerciseFragment
                     if( whatsNext == 2) {
                         ((LessonActivity) getActivity()).openNewTask(2);

@@ -9,12 +9,13 @@
         android:allowBackup="true"
         android:icon="@drawable/icon_learn_java"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/icon_learn_java"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view_registration.ForgotPasswortActivity"/>
         <activity android:name=".view_registration.SignUpActivity"/>
+
         <activity android:name=".view_registration.LogInActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -22,19 +23,14 @@
             <action android:name="android.intent.action.VIEW" />
         </intent-filter>
         </activity>
+
         <activity
             android:name=".view_sections.LessonActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysVisible" />
-        <activity
-            android:name=".view_sections.MainActivity"
-            android:screenOrientation="portrait">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--                <action android:name="android.intent.action.VIEW" />-->
-<!--            </intent-filter>-->
-        </activity>
+
+        <activity android:name=".view_sections.MainActivity"/>
+
     </application>
 
 </manifest>

@@ -44,9 +44,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxEms="20"
-                    android:fontFamily="@font/consolas"
+                    android:fontFamily="@font/inputmonocompressed_regular"
                     android:inputType="textMultiLine"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:hint="@string/code_fragment_inputtitle"
                     android:text="@string/code_fragment_sample"/>
 

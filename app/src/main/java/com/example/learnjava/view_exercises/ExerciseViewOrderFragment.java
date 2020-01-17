@@ -2,8 +2,10 @@ package com.example.learnjava.view_exercises;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -153,6 +155,8 @@ public class ExerciseViewOrderFragment extends Fragment {
                     textView1.setText(contentArray[i]);
                     //textView1.setPadding(8, 8, 4, 8);
                     textView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+                     Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.inputmonocompressed_regular);
+                      textView1.setTypeface(typeface);
                     textView1.setTag("TEXT"+i);
                     texts.add("TEXT"+i);
                     Log.i("M_EXERCISE_VIEW_ORDER", " content: " + i + " " + contentArray[i]);
@@ -221,7 +225,7 @@ public class ExerciseViewOrderFragment extends Fragment {
         mListener = null;
     }
 
-    public void makeDynmaivChilds(){
+    private void makeDynmaivChilds(){
         for(int i = 0; i < contentHolder.getChildCount(); i++){
             View child = contentHolder.getChildAt(i);
             contentHolder.setViewDraggable(child, child);

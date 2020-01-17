@@ -175,34 +175,9 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
         this.currentTask = mListener.sendCurrentTask();
     }
 
-    private void setLayout() {
-        int blanksNeeded = currentTask.getSolutionStringArray().length;
-        LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        LinearLayout.LayoutParams mParamsWeightLeight = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, (float) 0.5);
-        LinearLayout.LayoutParams mParamsWeightHeavy = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, (float) 4.5);
-
-        for (int i = 0; i < blanksNeeded; i++) {
-            LinearLayout holder = new LinearLayout(getContext());
-            holder.setLayoutParams(mParams);
-            holder.setWeightSum(5);
-            holder.setOrientation(LinearLayout.HORIZONTAL);
-
-            TextView myTextView = new TextView(getContext());
-            myTextView.setLayoutParams(mParamsWeightHeavy);
-            myTextView.setText((i + 1) + ":");
-            holder.addView(myTextView);
-
-            EditText myEditText = new EditText(getContext());
-            myEditText.setLayoutParams(mParamsWeightLeight);
-            myEditText.setTag("fillBlanksAnswer" + i);
-            myEditText.setHint("Write Answer " + (i + 1) + " here");
-            holder.addView(myEditText);
-
-            blankHolder.addView(holder);
-        }
 
 
-    }
+
 
     private void setDynamicLayout() {
         LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -239,7 +214,7 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
                     myEditText.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength)});
                     myEditText.setMaxLines(1);
                     myEditText.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
-                    Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.consolas);
+                    Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.inputmonocompressed_regular);
                     myEditText.setTypeface(typeface);
                     myEditText.setSingleLine(true);
                     String tag = "fillBlankAnswer" + i + j;
@@ -253,7 +228,7 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
                     myTextView.setLayoutParams(mParams);
                     myTextView.setText(textParts[j]);
                     myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
-                    Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.consolas);
+                    Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.inputmonocompressed_regular);
                     myTextView.setTypeface(typeface);
                     //myTextView.setPadding(6, 6, 6, 6);
                     rowHolder.addView(myTextView);

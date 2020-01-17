@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.learnjava.controller.Controller;
 import com.example.learnjava.controller.ExerciseCommunication;
@@ -199,7 +200,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                     linLay.setOrientation(LinearLayout.HORIZONTAL);
                     linLay.setPadding(4, 8, 4, 8);
                     linLay.setMinimumWidth(175);
-                    linLay.setMinimumHeight(100);
+                    linLay.setMinimumHeight(110);
                     linLay.setBackground(getResources().getDrawable(R.drawable.grey));
                     String tag = "dropView" + i + j;
                     linLay.setTag(tag);
@@ -227,7 +228,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                     textView1.setText(textParts[j]);
                     textView1.setPadding(4, 8, 4, 8);
                     textView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
-                    Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.consolas);
+                    Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.inputmonocompressed_regular);
                     textView1.setTypeface(typeface);
                     Log.i("M_EXERCISE_VIEW_DRAG", " content: " + j + " " + textParts[j]);
                     rowHolder.addView(textView1);
@@ -251,9 +252,9 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
 
             myTextview.setOnTouchListener(this);
 
-            myTextview.setPadding(12, 3, 12, 3);
+            myTextview.setPadding(15, 3, 15, 3);
             myTextview.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
-            Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.consolasbold);
+            Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.inputmonocompressed_regular);
             myTextview.setTypeface(typeface);
             answerHolder.addView(myTextview);
         }
@@ -283,6 +284,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
 
     private void checkAnswers() {
 
+            boolean allAnswers = true;
             //fetch the Solution and convert to StringArray
             int[] solutionInt = currentTask.getSolutionIntArray();
 
@@ -298,20 +300,28 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
 //                TextView solView = currentView.findViewWithTag(dropTags.get(i));
                 LinearLayout linView = currentView.findViewWithTag(dropTags.get(i));
                 TextView solView = (TextView) linView.getChildAt(0);
-                userSolution[i] = solView.getText().toString();
+                if(solView == null){
+                    Toast.makeText(getContext(),"Please enter all Solutions!",Toast.LENGTH_SHORT).show();
+                    allAnswers = false;
+                    break;
+                }else {
+                    userSolution[i] = solView.getText().toString();
+                    allAnswers = true;
+                }
             }
 
-
-            if (Arrays.equals(solutionString, userSolution)) {
-                progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_DRAGDROP_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolution));
-                mListener.sendAnswerFromExerciseView(true);
-                Log.i("M_EXERCISE_VIEW_DRAG", " send answer: true");
-            } else {
-                Log.i("ANSWER", " was wrong");
-                progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_DRAGDROP_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolution));
-                mListener.sendAnswerFromExerciseView(false);
-                Log.i("M_EXERCISE_VIEW_DRAG", "send answer: false");
-            }
+           if(allAnswers) {
+               if (Arrays.equals(solutionString, userSolution)) {
+                   progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_DRAGDROP_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: " + currentTask.getSectionNumber() + " viewtype: " + currentTask.getExerciseViewType() + " userInput: " + Arrays.toString(userSolution));
+                   mListener.sendAnswerFromExerciseView(true);
+                   Log.i("M_EXERCISE_VIEW_DRAG", " send answer: true");
+               } else {
+                   Log.i("ANSWER", " was wrong");
+                   progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_DRAGDROP_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: " + currentTask.getSectionNumber() + " viewtype: " + currentTask.getExerciseViewType() + " userInput: " + Arrays.toString(userSolution));
+                   mListener.sendAnswerFromExerciseView(false);
+                   Log.i("M_EXERCISE_VIEW_DRAG", "send answer: false");
+               }
+           }
         }
 
 
@@ -348,7 +358,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
 
             myTextview.setPadding(12, 3, 12, 3);
             myTextview.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-            Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.consolas);
+            Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.inputmonocompressed_regular);
             myTextview.setTypeface(typeface);
             answerHolder.addView(myTextview);
         }

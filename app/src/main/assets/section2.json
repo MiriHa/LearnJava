@@ -96,7 +96,7 @@
       "taskWhatsNext": 1,
       "taskType" : 2,
       "exerciseViewType" : 2,
-      "exerciseSolutionStringArray": ["//Characters at the end of the line","*/characters at the beginning of the line","//Characters at the beginning of the line","**Characters at the beginning of the line"],
+      "exerciseSolutionStringArray": ["// Characters at the end of the line","*/ characters at the beginning of the line","// Characters at the beginning of the line","** Characters at the beginning of the line"],
       "exerciseSolutionInt" : 3
     },
     {

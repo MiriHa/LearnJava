@@ -1,10 +1,12 @@
 package com.example.learnjava.view_sections;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
@@ -376,6 +378,8 @@ public class LessonActivity extends AppCompatActivity {
                 myTextView.setTag(tag);
                 myTextView.setGravity(Gravity.CENTER);
                 myTextView.setBackgroundResource(R.drawable.border);
+                Typeface typeface = ResourcesCompat.getFont(this, R.font.trixiesans);
+                myTextView.setBackgroundResource(R.drawable.border);
                 myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
 
                 myTextView.setOnClickListener(new ProgressLessonClickListener());
@@ -392,6 +396,8 @@ public class LessonActivity extends AppCompatActivity {
                 myTextView.setGravity(Gravity.CENTER);
                 myTextView.setLayoutParams(mParamsWeight);
                 myTextView.setBackgroundResource(R.drawable.border);
+                Typeface typeface = ResourcesCompat.getFont(this, R.font.trixiesans);
+                myTextView.setTypeface(typeface);
                 myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
 
                 myTextView.setOnClickListener(new ProgressExerciseClickListener());
@@ -477,6 +483,7 @@ public class LessonActivity extends AppCompatActivity {
             int number = Integer.valueOf(tv.getTag().toString());
             if(checkTasksforProgressBar(taskContent.get(number))) {
                 openTaskProgress(1, number);
+
             } else {
             Toast.makeText(context, "Not unlocked yet", Toast.LENGTH_SHORT).show();
         }
@@ -515,7 +522,7 @@ public class LessonActivity extends AppCompatActivity {
                 //open a lesson
                 case 1:
                     String tagLES = "FRAGMENT_LESSON_" + currentTask.getTaskNumber();
-
+                    progressController.setLastLesson(LessonActivity.this, currentTask.getTaskNumber());
                     boolean fragmentPoppedLES = manager.popBackStackImmediate(tagLES, 0);
 
                     if (!fragmentPoppedLES && manager.findFragmentByTag(tagLES) == null) { //fragment not in back stack, create it.

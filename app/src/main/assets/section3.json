@@ -43,12 +43,12 @@
       "taskName": "Variables",
       "taskNumber": 4,
       "sectionNumber": 3,
-      "taskText": "Which data Type would you use for the age of a person?",
+      "taskText": "Fill in the right data types to declare a variable for the age and the name of a person.",
       "taskWhatsNext": 2,
       "taskType" : 2,
-      "exerciseViewType" : 2,
-      "exerciseSolutionStringArray" : ["String","float","double","Int"],
-      "exerciseSolutionInt" : 4
+      "exerciseViewType" : 3,
+      "exerciseContentStringArray" : ["#@ name = \"Ryan\";","#@ age = 24;"],
+      "exerciseSolutionStringArray" : ["String","int"]
     },
     {
       "taskName": "Variables",

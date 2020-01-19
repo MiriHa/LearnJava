@@ -199,8 +199,8 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                     linLay.setLayoutParams(mParamsWrap);
                     linLay.setOrientation(LinearLayout.HORIZONTAL);
                     linLay.setPadding(4, 8, 4, 8);
-                    linLay.setMinimumWidth(175);
-                    linLay.setMinimumHeight(110);
+                    linLay.setMinimumWidth(125);
+                    linLay.setMinimumHeight(90);
                     linLay.setBackground(getResources().getDrawable(R.drawable.grey));
                     String tag = "dropView" + i + j;
                     linLay.setTag(tag);
@@ -357,7 +357,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
             myTextview.setOnTouchListener(this);
 
             myTextview.setPadding(12, 3, 12, 3);
-            myTextview.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+            myTextview.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
             Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.inputmonocompressed_regular);
             myTextview.setTypeface(typeface);
             answerHolder.addView(myTextview);

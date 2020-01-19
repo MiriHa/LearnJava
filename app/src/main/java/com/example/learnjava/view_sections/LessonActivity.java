@@ -379,6 +379,7 @@ public class LessonActivity extends AppCompatActivity {
                 myTextView.setGravity(Gravity.CENTER);
                 myTextView.setBackgroundResource(R.drawable.border);
                 Typeface typeface = ResourcesCompat.getFont(this, R.font.trixiesans);
+                myTextView.setTypeface(typeface);
                 myTextView.setBackgroundResource(R.drawable.border);
                 myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
 

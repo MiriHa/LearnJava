@@ -70,14 +70,16 @@
       "lessonKeyWords" : ["method","return type","void"]
     },
     {
-      "taskName": "Method Parameters",
+      "taskName": "Return types",
       "taskNumber": 7,
       "sectionNumber": 5,
-      "taskText": "If you do not want your method to return anything, you should use the keyword:",
+      "taskText": "Drag and drop a keyword so that the method does return nothing",
       "taskWhatsNext": 1,
       "taskType": 2,
-      "exerciseViewType": 1,
-      "exerciseSolutionStringArray": ["void"]
+      "exerciseViewType": 4,
+      "exerciseContentStringArray": ["public @#@ printWord(){"," System.out.println(\"word\")","}"],
+      "exerciseSolutionStringArray": ["float","empty","String","none","void","int","blank"],
+      "exerciseSolutionIntArray": [4]
     },
     {
       "taskName": "The Return Type",
@@ -89,7 +91,7 @@
       "lessonKeyWords" : ["method","return type","main method"]
     },
     {
-      "taskName": "The Return Type",
+      "taskName": "Methods",
       "taskNumber": 9,
       "sectionNumber": 5,
       "taskText": "Let's create a method that takes two parameters of type <b>int</b> and returns the greater one, then call it in <b>main</b>: @_picturecode5_9@A method can have one type of parameter (or parameters) and return another, different type. For example, it can take two doubles and return an int.",
@@ -98,8 +100,19 @@
       "lessonKeyWords" : ["method","return type","create"]
     },
     {
-      "taskName": "Method Parameters",
+      "taskName": "Methods",
       "taskNumber": 10,
+      "sectionNumber": 5,
+      "taskText": "Order these lines to create valid code:",
+      "taskWhatsNext": 2,
+      "taskType": 2,
+      "exerciseViewType": 5,
+      "exerciseContentStringArray": ["public static int myFunc(int x){",   " return x*3;\n}",    "public static void main(String[] args){",   " System.out.println(y)\n}",     " int x = 10; \n int y = myFunc(x);"],
+      "exerciseSolutionStringArray": ["TEXT2","TEXT4","TEXT3","TEXT0","TEXT1"]
+    },
+    {
+      "taskName": "Methods",
+      "taskNumber": 11,
       "sectionNumber": 5,
       "taskText": "What is output results from this code?@_picturecode5_10",
       "taskWhatsNext": 3,

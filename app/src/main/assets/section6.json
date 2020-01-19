@@ -57,7 +57,7 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 5,
-      "exerciseSolutionStringArray" : ["TEXT4","TEXT1","TEXT0","TEXT3","TEXT"],
+      "exerciseSolutionStringArray" : ["TEXT4","TEXT1","TEXT0","TEXT3"],
       "exerciseContentStringArray": ["  if(x > 31) {"  ,  "if (x > 22) {"   ,    "  }\n}"   ,"  System.out.println(\"it's true!\");",  "int x = 37;"]
     },
     {

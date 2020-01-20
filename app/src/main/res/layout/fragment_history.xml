@@ -76,7 +76,7 @@
                     android:fontFamily="@font/trixiesans"
                     android:textColor="@color/light"
                     android:textAllCaps="false"
-                    android:background="@drawable/neutral_button"
+                    android:background="@drawable/neutral_button_grey"
                     android:text="@string/Cue_Button" />
 
             </LinearLayout>

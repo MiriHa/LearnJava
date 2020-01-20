@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.DialogFragment;
 
+import android.os.Handler;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -56,17 +57,30 @@ public class HistoryFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_history, container, false);
         progressController = (Controller) getActivity().getApplicationContext();
 
-        Button gotit = view.findViewById(R.id.historyButton);
+        Button checkButton = view.findViewById(R.id.historyButton);
         historyHolder = view.findViewById(R.id.historyHolder);
         background = view.findViewById(R.id.historyBackground);
 
         getDialog().setCanceledOnTouchOutside(false);
+        getDialog().setCancelable(false);
+
+        checkButton.setEnabled(false);
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                // This method will be executed once the timer is over
+                checkButton.setEnabled(true);
+                checkButton.setBackground(getResources().getDrawable(R.drawable.neutral_button));
+
+            }
+        },3000);
 
         int section = getArguments().getInt("section", 1);
         setHistory();
         setBackground(section);
 
-        gotit.setOnClickListener(new View.OnClickListener() {
+        checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();

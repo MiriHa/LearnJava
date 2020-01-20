@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.DialogFragment;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,11 +67,25 @@ public class WordCloudFragment extends DialogFragment {
         //set importent data
         progressController = (Controller) getActivity().getApplicationContext();
         getDialog().setCanceledOnTouchOutside(false);
+        getDialog().setCancelable(false);
 
         background = view.findViewById(R.id.wordCloudCueBackground);
 
         int section = getArguments().getInt("section", 1);
         setBackground(section);
+
+        Button checkButton = view.findViewById(R.id.WordCloudButton);
+        checkButton.setEnabled(false);
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                // This method will be executed once the timer is over
+                checkButton.setEnabled(true);
+                checkButton.setBackground(getResources().getDrawable(R.drawable.neutral_button));
+
+            }
+        },3000);
 
         //make the wordcloud
 
@@ -90,8 +105,8 @@ public class WordCloudFragment extends DialogFragment {
         wordCloud.notifyDataSetChanged();
 
 
+
         //set the ButtonFunction
-        Button checkButton = view.findViewById(R.id.WordCloudButton);
         checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

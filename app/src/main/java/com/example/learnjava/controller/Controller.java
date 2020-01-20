@@ -28,6 +28,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Random;
 import java.util.UUID;
 
 public class Controller extends android.app.Application {
@@ -255,21 +256,37 @@ public class Controller extends android.app.Application {
             //0: false, 1 screen was dark, 2 app has restarted
             int why = SharedPrefrencesManager.readTriggerWhy(con);
             // determite which cue should be shown:
-            int whichCue;
-            if(why == 1) {
-                if (section <= 4)
-                    whichCue = 1;
-                else
-                    whichCue = 4;
+            int whichCue = 1;
+//            if(why == 1) {
+//                if (section <= 4)
+//                    whichCue = 1;
+//                else
+//                    whichCue = 4;
+//            }
+//            else if(why == 2){
+//                if (section <= 4)
+//                    whichCue = 2;
+//                else
+//                    whichCue = 3;
+//            }else {
+//                whichCue = 0;
+//            }
+            Random random = new Random();
+            switch (section){
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                    whichCue = (random.nextInt(3 - 1) + 1);
+                    break;
+                case 2:
+                case 4:
+                case 6:
+                case 8:
+                    whichCue = (random.nextInt(5 - 3 ) + 3);
+                    break;
             }
-            else if(why == 2){
-                if (section <= 4)
-                    whichCue = 2;
-                else
-                    whichCue = 3;
-            }else {
-                whichCue = 0;
-            }
+
             Log.i("M_TRIGGER_CUES", "which cue: " +whichCue + " why: "+why);
 
             SharedPrefrencesManager.setTrigger(con, false, 0);
@@ -282,30 +299,33 @@ public class Controller extends android.app.Application {
                 case 1:
                     //TODO latestTaskNumber.getTaskname?
                     WordCueFragment wordCueFragment = WordCueFragment.newIntance(section);
+                    wordCueFragment.setCancelable(false);
                     // wordCueFragment.getDialog().setCanceledOnTouchOutside(false);
                     wordCueFragment.show(fm, "fragment_word_cue");
-                    //TODO log what before that cue was
-                    makeaLog(Calendar.getInstance().getTime(), "OPENED_A_CUE", "WordCue");
+                    makeaLog(Calendar.getInstance().getTime(), "OPENED_A_CUE", "WordCue, why: "+why);
                     Log.i("M_TRIGGER_CUES", "show Word Cue " + section);
                     break;
                 case 2:
                     WordCloudFragment wordCloudFragment = WordCloudFragment.newInstance(section);
+                    wordCloudFragment.setCancelable(false);
                     // wordCloudFragment.getDialog().setCanceledOnTouchOutside(false);
                     wordCloudFragment.show(fm, "fragment_cloud_cue");
-                    makeaLog(Calendar.getInstance().getTime(), "OPENED_A_CUE", "CloudCue");
+                    makeaLog(Calendar.getInstance().getTime(), "OPENED_A_CUE", "CloudCue, why: "+why);
                     Log.i("M_TRIGGER_CUES", "show Word Cloud Cue " + " " + section);
                     break;
                 case 3:
                     HistoryFragment historyFragment = HistoryFragment.newInstance(section);
+                    historyFragment.setCancelable(false);
                     // historyFragment.getDialog().setCanceledOnTouchOutside(false);
                     historyFragment.show(fm, "fragment_history_cue");
-                    makeaLog(Calendar.getInstance().getTime(), "OPENED_A_CUE", "HistoryCue");
+                    makeaLog(Calendar.getInstance().getTime(), "OPENED_A_CUE", "HistoryCue, why: "+why);
                     Log.i("M_TRIGGER_CUES", "show History Cue " + " " + section);
                     break;
                 case 4:
                     QuestionsFragment questionsFragment = QuestionsFragment.newInstance(section);
+                    questionsFragment.setCancelable(false);
                     questionsFragment.show(fm, "fragment_question_cue");
-                    makeaLog(Calendar.getInstance().getTime(), "OPENED_A_CUE", "questionCue");
+                    makeaLog(Calendar.getInstance().getTime(), "OPENED_A_CUE", "questionCue, why: "+why);
                     Log.i("M_TRIGGER_CUES", "show Question Cue " + " " + section);
                     break;
 
@@ -322,9 +342,9 @@ public class Controller extends android.app.Application {
      */
     public void makeaLog(Date time, String eventType, String details){
         String strDate = dateFormat.format(time);
-        String randomID = UUID.randomUUID().toString();
+//        String randomID = UUID.randomUUID().toString();
         ModelLog modelLog = new ModelLog( strDate, eventType, details);
-        ref.child("users").child(userId).child("loggingList").child(eventType +" "+ randomID).setValue(modelLog);
+        ref.child("users").child(userId).child("loggingList").child(strDate + " " + eventType).setValue(modelLog);
 
     }
 

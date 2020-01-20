@@ -82,6 +82,8 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
         //get the currentTask
         receiveCurrentTask();
 
+        TextView exerciseName = view.findViewById(R.id.exerciseNameDrag);
+        exerciseName.setText(currentTask.getTaskName());
 
         contentHolder = view.findViewById(R.id.contentHolderDragDrop);
         answerHolder = view.findViewById(R.id.answerHolderDragDrop);
@@ -156,6 +158,14 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
             public void onClick(View v) {
                 Log.i("M_EXERCISE_VIEW_DRAG", "Reset Button pressed");
                 reset();
+            }
+        });
+
+        Button hintButton = view.findViewById(R.id.hintButtonDrag);
+        hintButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

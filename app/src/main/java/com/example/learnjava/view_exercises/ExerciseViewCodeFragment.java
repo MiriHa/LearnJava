@@ -41,7 +41,9 @@ public class ExerciseViewCodeFragment extends Fragment {
         private Controller progressController;
 
         private EditText answerEditText;
+        private Button hintButton;
 
+        int counterCheck = 0;
 
         public ExerciseViewCodeFragment() {
             // Required empty public constructor
@@ -62,6 +64,8 @@ public class ExerciseViewCodeFragment extends Fragment {
             //get the currentTask
             receiveCurrentTask();
 
+            TextView exerciseName = view.findViewById(R.id.exerciseNameCode);
+            exerciseName.setText(currentTask.getTaskName());
 
             TextView exerciseText = view.findViewById(R.id.exerciseTextCode);
             exerciseText.setText(currentTask.getTaskText());
@@ -81,6 +85,8 @@ public class ExerciseViewCodeFragment extends Fragment {
                 public void onClick(View v) {
                     Log.i("M_EXERCISE_VIEW_CODE", "Nextbuttonclicked");
                     checkAnswers();
+                    counterCheck += 1;
+                    checkHint();
                     //Hide the Keyboard
                     InputMethodManager inputMethodManager = (InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(INPUT_METHOD_SERVICE);
                     assert inputMethodManager != null;
@@ -91,6 +97,15 @@ public class ExerciseViewCodeFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     mListener.justOpenNext();
+                }
+            });
+
+            hintButton = view.findViewById(R.id.hintButtonCode);
+            checkHint();
+            hintButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showHint();
                 }
             });
 
@@ -117,6 +132,20 @@ public class ExerciseViewCodeFragment extends Fragment {
         }
 
 
+    private void checkHint(){
+        if (counterCheck >= 5){
+            hintButton.setEnabled(true);
+            hintButton.setClickable(true);
+            hintButton.setBackground(getResources().getDrawable(R.drawable.hint_button));
+        }
+    }
+
+    private void showHint(){
+        answerEditText.setText(currentTask.getSolutionString());
+        Log.i("M_EXERCISE_VIEW_ANSWER","showhint: "+currentTask.getSolutionString()+" counter: "+counterCheck);
+    }
+
+
         private void checkAnswers() {
             String userInput = answerEditText.getText().toString();
                 if (userInput.isEmpty()) {
@@ -124,9 +153,13 @@ public class ExerciseViewCodeFragment extends Fragment {
                 } else {
                     String userAnswer = userInput.replaceAll("\\s+","");
                     userAnswer = userAnswer.replace("\n", "").replace("\r", "");
+
+                    String answer = currentTask.getSolutionString().replaceAll("\\s+","");
+                    answer = answer.replaceAll("\n", "").replaceAll("\r","");
+
                     Log.i("M_EXERCISE_VIEW_CODE", "check answer: " + userInput + userAnswer+" solution: " + currentTask.getSolutionString());
 
-                       if (currentTask.getSolutionString().equalsIgnoreCase(userAnswer)) {
+                       if (answer.equalsIgnoreCase(userAnswer)) {
                         progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput);
                         mListener.sendAnswerFromExerciseView(true);
                         Log.i("M_EXERCISE_VIEW_CODE", " send answer: true");

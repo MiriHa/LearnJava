@@ -48,7 +48,9 @@ public class ExerciseViewAnswerFragment extends Fragment {
     private LinearLayout textHolder;
     private EditText editText;
     private TextView exerciseText;
+     private Button hintButton;
 
+    private int counterCheck = 0;
 
     public ExerciseViewAnswerFragment() {
         // Required empty public constructor
@@ -69,6 +71,9 @@ public class ExerciseViewAnswerFragment extends Fragment {
         //get the currentTask
         receiveCurrentTask();
 
+        TextView exerciseName = view.findViewById(R.id.exerciseNameAnswer);
+        exerciseName.setText(currentTask.getTaskName());
+
         textHolder = view.findViewById(R.id.answerTextHolder);
         //exerciseText = view.findViewById(R.id.exerciseTextAnswer);
         setText();
@@ -81,9 +86,12 @@ public class ExerciseViewAnswerFragment extends Fragment {
             Log.i("M_Exercise_VIEW_ANSWER", "checkExericse and skip");
             skipButton.setVisibility(View.VISIBLE);
         }
+
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                counterCheck += 1;
+                checkHint();
                 Log.i("M_EXERCISE_VIEW_ANSWER", "buttonclicked in AnswerView");
                 checkAnswers();
                 //Hide the Keyboard
@@ -95,6 +103,15 @@ public class ExerciseViewAnswerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mListener.justOpenNext();
+            }
+        });
+
+       hintButton = view.findViewById(R.id.hintButtonAnswer);
+       checkHint();
+        hintButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showHint();
             }
         });
 
@@ -118,8 +135,24 @@ public class ExerciseViewAnswerFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+        hintButton.setEnabled(false);
     }
 
+
+
+
+    private void checkHint(){
+        if (counterCheck >= 5){
+            hintButton.setEnabled(true);
+            hintButton.setClickable(true);
+            hintButton.setBackground(getResources().getDrawable(R.drawable.hint_button));
+        }
+    }
+
+    private void showHint(){
+        editText.setText(currentTask.getSolutionStringArray()[0]);
+        Log.i("M_EXERCISE_VIEW_ANSWER","showhint: "+currentTask.getSolutionString()+" counter: "+counterCheck);
+    }
 
     private void checkAnswers() {
         String userInput = editText.getText().toString();
@@ -127,7 +160,7 @@ public class ExerciseViewAnswerFragment extends Fragment {
                 Toast.makeText(getContext(), "Pleas enter an answer", Toast.LENGTH_SHORT).show();
             } else {
                 String userAnswer = userInput.replaceAll("\\s+","");
-                Log.i("M_EXERCISE_VIEW_ANSWER", "check answer: " + userInput + " solution: " + currentTask.getSolutionString());
+                Log.i("M_EXERCISE_VIEW_ANSWER", "check answer: " + userInput + " solution: " + currentTask.getSolutionStringArray());
 
                 if (checkArrays(currentTask.getSolutionStringArray(),userAnswer)) {
                     mListener.sendAnswerFromExerciseView(true);

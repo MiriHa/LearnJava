@@ -58,7 +58,7 @@
       "taskWhatsNext" : 1,
       "taskType" : 2,
       "exerciseViewType": 6,
-      "exerciseSolutionString": "StringcityName=\"munich\";",
+      "exerciseSolutionString": "String cityName = \"munich\";",
       "exerciseContentStringArray": [""]
     },
     {

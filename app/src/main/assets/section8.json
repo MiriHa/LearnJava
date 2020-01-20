@@ -88,7 +88,7 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 6,
-      "exerciseSolutionString": "classPerson{intage;doubleheight;Stringname;}",
+      "exerciseSolutionString": "class Person{\n  int age;\n  double height;\n  String name;\n}",
       "exerciseContentStringArray": ["class Person{\n\n\n}"]
     },
     {
@@ -189,7 +189,7 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 6,
-      "exerciseSolutionString": "classPerson{privateintage;Person(intmyAge){age=myAge;}}",
+      "exerciseSolutionString": "classPerson{\n private int age;\n Person(intmyAge){\n  age=myAge;\n }\n}",
       "exerciseContentStringArray": ["class Person{\n private int age;\n\n}"]
     },
     {

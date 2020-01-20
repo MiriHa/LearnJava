@@ -57,7 +57,7 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 6,
-      "exerciseSolutionString" : "staticvoiddoSomething(intx){System.out.println(x+2);}",
+      "exerciseSolutionString" : "static void doSomething(int x){\n System.out.println(x+2);\n}",
       "exerciseContentStringArray" : ["class MyClass{\n  public static void main \n          (String[]args){\n   doSomething(4);\n } \n\n//TODO write method doSomething\n\n\n }"]
     },
     {

@@ -23,9 +23,35 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
-            <!--            android:layout_margin="6dp"-->
-            <!--            android:layout_marginStart="6dp"-->
-            <!--            android:layout_marginEnd="9dp"-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/exerciseNameChoice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/trixiesans"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:layout_weight="9.7"/>
+
+                <Button
+                    android:id="@+id/hintButtonChoice"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:enabled="false"
+                    android:clickable="false"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/hint_button_disabled"
+                    android:layout_marginStart="5dp"/>
+
+            </LinearLayout>
 
 
             <TextView

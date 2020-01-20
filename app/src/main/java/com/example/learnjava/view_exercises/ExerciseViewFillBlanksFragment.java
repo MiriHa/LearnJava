@@ -69,12 +69,17 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
         //get the currentTask
         receiveCurrentTask();
 
+
+
         //get the solution
         userSolutionArray = new String[currentTask.getSolutionStringArray().length];
         solutionArray = currentTask.getSolutionStringArray();
 
 
         //Set the exercise task teext
+        TextView exerciseName = view.findViewById(R.id.exerciseNameBlanks);
+        exerciseName.setText(currentTask.getTaskName());
+
         TextView exerciseTaskText = view.findViewById(R.id.exerciseBlanksText);
         exerciseTaskText.setText(currentTask.getTaskText());
 
@@ -106,9 +111,17 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
             }
         });
 
+
+        Button hintButton = view.findViewById(R.id.hintButtonBlanks);
+        hintButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         //set the Layout with the Blanks needed
         setDynamicLayout();
-
 
         return view;
     }

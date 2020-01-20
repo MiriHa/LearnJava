@@ -37,7 +37,7 @@
       "taskText" : "Write a code line that prints out the number 9 from the temp array",
       "taskWhatsNext" : 1,
       "exerciseViewType" : 6,
-      "exerciseSolutionString" : "inttemp[]={5,8,9,3};System.out.println(temp[2]);",
+      "exerciseSolutionString" : "int temp[]={5,8,9,3};\nSystem.out.println(temp[2]);",
       "exerciseContentStringArray": ["int temp[ ] = {5,8,9,3};"]
 
     },

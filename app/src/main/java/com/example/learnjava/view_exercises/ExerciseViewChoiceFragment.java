@@ -42,8 +42,10 @@ public class ExerciseViewChoiceFragment extends Fragment {
     private int userAnswer = 0;
 
     private RadioGroup answerGroup;
-    ArrayList<String> tags = new ArrayList<>();
+    private RadioButton answer1, answer2, answer3, answer4;
+    private Button hintButton;
 
+    private int counterCheck = 0;
 
 
 
@@ -67,18 +69,21 @@ public class ExerciseViewChoiceFragment extends Fragment {
         //get the currentTask
         receiveCurrentTask();
 
+        TextView exerciseName = view.findViewById(R.id.exerciseNameChoice);
+        exerciseName.setText(currentTask.getTaskName());
+
         TextView exerciseText = view.findViewById(R.id.exerciseTextChoice);
         exerciseText.setText(currentTask.getTaskText());
 
         answerChoices = currentTask.getSolutionStringArray();
 
-        RadioButton answer1 = view.findViewById(R.id.answer1);
+        answer1 = view.findViewById(R.id.answer1);
         answer1.setText(answerChoices[0]);
-        RadioButton answer2 = view.findViewById(R.id.answer2);
+        answer2 = view.findViewById(R.id.answer2);
         answer2.setText(answerChoices[1]);
-        RadioButton answer3 = view.findViewById(R.id.answer3);
+        answer3 = view.findViewById(R.id.answer3);
         answer3.setText(answerChoices[2]);
-        RadioButton answer4 = view.findViewById(R.id.answer4);
+        answer4 = view.findViewById(R.id.answer4);
         answer4.setText(answerChoices[3]);
 
         answerGroup = view.findViewById(R.id.answerGroup);
@@ -112,12 +117,23 @@ public class ExerciseViewChoiceFragment extends Fragment {
             public void onClick(View v) {
                 Log.i("M_EXERCISE_VIEW_CHOICE", " in ChoiceView");
                 checkAnswers();
+                counterCheck += 1;
+                checkHint();
             }
         });
         skipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mListener.justOpenNext();
+            }
+        });
+
+        hintButton = view.findViewById(R.id.hintButtonChoice);
+        checkHint();
+        hintButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showHint();
             }
         });
 
@@ -141,6 +157,33 @@ public class ExerciseViewChoiceFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    private void checkHint(){
+        if (counterCheck >= 5){
+            hintButton.setEnabled(true);
+            hintButton.setClickable(true);
+            hintButton.setBackground(getResources().getDrawable(R.drawable.hint_button));
+        }
+    }
+
+    private void showHint(){
+        int answerInt = currentTask.getSolutionInt();
+        switch (answerInt){
+            case 1:
+                answer1.setChecked(true);
+                break;
+            case 2:
+                answer2.setChecked(true);
+                break;
+            case 3:
+                answer3.setChecked(true);
+                break;
+            case 4:
+                answer4.setChecked(true);
+                break;
+        }
+        Log.i("M_EXERCISE_VIEW_CHOICE","showhint: "+currentTask.getSolutionInt()+" counter: "+counterCheck);
     }
 
 

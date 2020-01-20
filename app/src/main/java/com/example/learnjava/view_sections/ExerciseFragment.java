@@ -31,7 +31,7 @@ import com.example.learnjava.models.ModelTask;
 import java.util.Calendar;
 
 
-public class ExerciseFragment extends Fragment implements ExerciseCommunication {
+public class ExerciseFragment extends Fragment implements ExerciseCommunication{
 
     private ExerciseCommunication mListener;
 
@@ -66,9 +66,6 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
 
         progressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_A_EXERCISE", "number: " + currentTask.getTaskNumber() + " type: " + currentTask.getExerciseViewType());
 
-
-        TextView exerciseName = view.findViewById(R.id.exerciseName);
-        exerciseName.setText(currentTask.getTaskName());
 
         background = view.findViewById(R.id.ExerciseHolder);
 

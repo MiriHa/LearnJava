@@ -150,7 +150,7 @@ public class LessonFragment extends Fragment {
                     myTextView.setText(Html.fromHtml(element));
                     Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.trixiesans);
                     myTextView.setTypeface(typeface);
-                    myTextView.setPadding(10, 6, 10, 6);
+                    myTextView.setPadding(0, 6, 0, 6);
 
                     //  myTextView.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);

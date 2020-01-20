@@ -71,7 +71,9 @@ public class ExerciseViewOrderFragment extends Fragment {
 
             //Populate the Arrays
 
-            // Find Views
+            TextView exerciseName = view.findViewById(R.id.exerciseNameOrder);
+            exerciseName.setText(currentTask.getTaskName());
+
             TextView taskText = view.findViewById(R.id.exerciseTextOrder);
             contentHolder = view.findViewById(R.id.contentHolderOrderRow);
 
@@ -102,6 +104,14 @@ public class ExerciseViewOrderFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     mListener.justOpenNext();
+                }
+            });
+
+            Button hintButton = view.findViewById(R.id.hintButtonOrder);
+            hintButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
                 }
             });
 

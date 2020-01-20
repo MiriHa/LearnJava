@@ -69,6 +69,7 @@ public class QuestionsFragment extends DialogFragment {
         progressController = (Controller) getActivity().getApplicationContext();
 
         getDialog().setCanceledOnTouchOutside(false);
+        getDialog().setCancelable(false);
 
         //get the currentSection and set the Background and de SectionString
         int sectionWhat = getArguments().getInt("SectionWhat", 1);

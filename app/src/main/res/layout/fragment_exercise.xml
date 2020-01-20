@@ -13,35 +13,21 @@
        android:layout_height="match_parent">
 
 
-       <LinearLayout
-           android:id="@+id/whiteContentLesson"
-           android:layout_width="match_parent"
+       <ScrollView
+           android:id="@+id/scrollView2"
+           android:layout_width="0dp"
            android:layout_height="0dp"
            android:layout_margin="9dp"
            android:background="@drawable/rounded_corners"
-           android:orientation="vertical"
+           android:clickable="false"
+           android:paddingTop="10dp"
+           android:paddingBottom="10dp"
+           android:paddingStart="18dp"
+           android:paddingEnd="18dp"
            app:layout_constraintBottom_toBottomOf="parent"
            app:layout_constraintEnd_toEndOf="parent"
            app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toTopOf="parent"
-           app:layout_constraintVertical_bias="0.0">
-
-       <TextView
-           android:id="@+id/exerciseName"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:paddingTop="8dp"
-           android:layout_marginBottom="8dp"
-           android:fontFamily="@font/trixiesans"
-           android:textSize="26sp"
-           android:textStyle="bold"/>
-
-       <ScrollView
-           android:id="@+id/scrollView2"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:padding="0dp"
-           android:clickable="false">
+           app:layout_constraintTop_toTopOf="parent">
 
            <FrameLayout
                android:id="@+id/ExerciseViewHolder"
@@ -51,9 +37,6 @@
 
 
        </ScrollView>
-
-       </LinearLayout>
-
 
    </androidx.constraintlayout.widget.ConstraintLayout>
 

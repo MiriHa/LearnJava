@@ -3,6 +3,7 @@ package com.example.learnjava.view_cues;
 //import android.support.v4.app.DialogFragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,9 +49,11 @@ public class WordCueFragment extends DialogFragment {
 
         TextView cueText = view.findViewById(R.id.wordCueText);
         background = view.findViewById(R.id.wordCueBackground);
-        Button button = view.findViewById(R.id.wordCueButton);
+        Button checkButton = view.findViewById(R.id.wordCueButton);
+
 
         getDialog().setCanceledOnTouchOutside(false);
+        getDialog().setCancelable(false);
 
         int lessonNumber = SharedPrefrencesManager.readCurrentScreen(getContext());
         if (!(lessonNumber == 0))
@@ -64,7 +67,19 @@ public class WordCueFragment extends DialogFragment {
         int section = getArguments().getInt("section", 1);
         setBackground(section);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        checkButton.setEnabled(false);
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                // This method will be executed once the timer is over
+                checkButton.setEnabled(true);
+                checkButton.setBackground(getResources().getDrawable(R.drawable.neutral_button));
+
+            }
+        },3000);
+
+        checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();

@@ -17,7 +17,7 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 6,
-      "exerciseSolutionString" : "intx=5;if(x==5){System.out.println(\"Yeah!\");}",
+      "exerciseSolutionString" : "int x=5;\nif(x==5){\n System.out.println(\"Yeah!\");\n}",
       "exerciseContentStringArray": ["int x = 5;\n\n"]
     },
     {
@@ -217,7 +217,7 @@
       "taskWhatsNext": 3,
       "taskType": 2,
       "exerciseViewType": 6,
-      "exerciseSolutionString": "for(inti=1;i<=20;i++){System.out.println(i);}",
+      "exerciseSolutionString": "for(int i=1;i<=20;i++){\n System.out.println(i);\n}",
       "exerciseContentStringArray": ["for(int i=     ){\n\n\n}"]
     }
 

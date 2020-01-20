@@ -11,20 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<!--        <TextView-->
-<!--            android:id="@+id/lessonType"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_marginStart="16dp"-->
-<!--            android:layout_marginEnd="16dp"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:autoSizeTextType="uniform"-->
-<!--            android:gravity="start"-->
-<!--            android:text="@string/lesson"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-
         <LinearLayout
             android:id="@+id/whiteContentLesson"
             android:layout_width="match_parent"
@@ -51,9 +37,7 @@
             <ScrollView
                 android:id="@+id/scrollViewLes"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="2dp"
-                android:paddingRight="2dp">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:id="@+id/lessonTextHolder"

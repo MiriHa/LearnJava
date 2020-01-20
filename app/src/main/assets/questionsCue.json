@@ -29,28 +29,89 @@
   "section2": [
     {
       "questionNumber" : 0,
-      "questionAnswerInt": 1,
-      "question": "what is Green?",
-      "questionAnswerArray": ["tree", "tomato","bear"]
+      "questionAnswerInt": 2,
+      "question": "What is true?",
+      "questionAnswerArray": ["Evey program in java must have a \"Hello world\"", "Every program in Java must have a class","bear","Every program in Java must have two main methods"]
     },
     {
       "questionNumber" : 1,
-      "questionAnswerInt": 2,
-      "question": "what is Blue?",
-      "questionAnswerArray": ["tree", "Sea","bear"]
+      "questionAnswerInt": 1,
+      "question": "Which method is the staring point for all java programs?",
+      "questionAnswerArray": ["main method", "start method","entry method"]
     },
     {
       "questionNumber" : 2,
-      "questionAnswerInt": 2,
-      "question": "what is REd?",
-      "questionAnswerArray": ["tree", "tomato","bear"]
+      "questionAnswerInt": 3,
+      "question": "What is the correct signature of the main method?",
+      "questionAnswerArray": ["public static main void(String[] args)","static public main void(String[] args)","public static void main(String[] args)"]
     },
     {
       "questionNumber" : 3,
+      "questionAnswerInt": 2,
+      "question": "What is the parameter of the main method?",
+      "questionAnswerArray": ["String args","String[] args","String args()"]
+    },
+	 {
+      "questionNumber" : 4,
+      "questionAnswerInt": 1,
+      "question": "What what does the println?",
+      "questionAnswerArray": ["it prints a line of text to the screen","it prints a line of text to paper","it shows different colors on the screen"]
+    },
+    {
+      "questionNumber" : 5,
+      "questionAnswerInt": 2,
+      "question": "Which  method  prints text to the screen?",
+      "questionAnswerArray": ["public static void main()","System.out.println()","public static.print.Text()"]
+    },
+    {
+      "questionNumber" : 6,
       "questionAnswerInt": 3,
-      "question": "what is yellow?",
-      "questionAnswerArray": ["tree", "tomato","banana"]
-    }
+      "question": "With what must end each code statement?",
+      "questionAnswerArray": [": colon","- parentheses","; semicolon"]
+    },
+    {
+      "questionNumber" : 7,
+      "questionAnswerInt": 1,
+      "question": "When is it not allowed to use a semicolon after a code statement?",
+      "questionAnswerArray": ["after methods and class declaration","after methods and variables","after class declarations and variables"]
+    },
+    {
+      "questionNumber" : 8,
+      "questionAnswerInt": 2,
+      "question": "What marks a single line comment?",
+      "questionAnswerArray": ["// at the end od the line","// at the beginning at the line","\\ at the beginning of the line"]
+    },
+	 {
+      "questionNumber" : 9,
+      "questionAnswerInt": 1,
+      "question": "When does a single line comment end?",
+      "questionAnswerArray": ["at the end of the line","when marked again with //","three lines after"]
+    },
+    {
+      "questionNumber" : 10,
+      "questionAnswerInt": 3,
+      "question": "What marks a multi line comment?",
+      "questionAnswerArray": ["// ... //","/# ... #/","/* ... */"]
+    },
+    {
+      "questionNumber" : 11,
+      "questionAnswerInt": 3,
+      "question": "Can you nest single line comments in mutli line comments?",
+      "questionAnswerArray": ["only once","no","yes"]
+    },
+	  {
+      "questionNumber" : 12,
+      "questionAnswerInt": 1,
+      "question": "What does the documentation comment do?",
+      "questionAnswerArray": ["it generates a external documentation of your code","it generates help hints","it shares your comments automatically with the internet"]
+	  },
+    {
+      "questionNumber" : 13,
+      "questionAnswerInt": 2,
+      "question": "What marks documentation comments?",
+      "questionAnswerArray": ["/# ... #/","/** ... */","/*...*/"]
+	  }
+	
 
   ],
   "section3": [
@@ -85,26 +146,86 @@
     {
       "questionNumber" : 0,
       "questionAnswerInt": 1,
-      "question": "what is Green?",
-      "questionAnswerArray": ["tree", "tomato","bear"]
+      "question": "For what are operators used in java?",
+      "questionAnswerArray": ["to manipulate variables","to manipulate methods","to make comments"]
     },
     {
       "questionNumber" : 1,
       "questionAnswerInt": 2,
-      "question": "what is Blue?",
-      "questionAnswerArray": ["tree", "Sea","bear"]
+      "question": "What is no arithmetic operator in java?",
+      "questionAnswerArray": ["+","~","%"]
     },
     {
       "questionNumber" : 2,
       "questionAnswerInt": 2,
-      "question": "what is REd?",
-      "questionAnswerArray": ["tree", "tomato","bear"]
+      "question": "What operator would you use to print the sum of two variables?",
+      "questionAnswerArray": ["-","/","+"]
     },
     {
       "questionNumber" : 3,
       "questionAnswerInt": 3,
-      "question": "what is yellow?",
-      "questionAnswerArray": ["tree", "tomato","banana"]
+      "question": "What operator would you use to multiply two variables?",
+      "questionAnswerArray": [".","&","*"]
+    },
+	  {
+      "questionNumber" : 4,
+      "questionAnswerInt": 1,
+      "question": "What is the java operator for the modulo operation?",
+      "questionAnswerArray": ["%","&","$"]
+    },
+    {
+      "questionNumber" : 5,
+      "questionAnswerInt": 1,
+      "question": "What value is stored in the result variable?\n int x=7;\n int y=3\n int result = x%y;",
+      "questionAnswerArray": ["1","2","3"]
+    },
+    {
+      "questionNumber" : 6,
+      "questionAnswerInt": 2,
+      "question": "To what can the statement x = x+1 be simplified?",
+      "questionAnswerArray": ["x--","++x;","**x"]
+    },
+    {
+      "questionNumber" : 7,
+      "questionAnswerInt": 3,
+      "question": "What does a decrement operater do?",
+      "questionAnswerArray": ["decreases the value by a chosen value","increases the value by 2","decreases the value by one"]
+    },
+	  {
+      "questionNumber" : 8,
+      "questionAnswerInt": 1,
+      "question": "what does the prefix increment do?",
+      "questionAnswerArray": ["Increases the variables value and uses the new value","Uses the value first and increases it after","Increases the value first and does nothing with it"]
+    },
+    {
+      "questionNumber" : 9,
+      "questionAnswerInt": 2,
+      "question": "What does the postfix decrement do?",
+      "questionAnswerArray": ["The variables value is first decreases and then used", "The variables value is first used in the expression and then increased","The value is first decreased and than does nothing"]
+    },
+    {
+      "questionNumber" : 10,
+      "questionAnswerInt": 1,
+      "question": "What is no valid comparison operator in java?",
+      "questionAnswerArray": ["/=","<=","!="]
+    },
+    {
+      "questionNumber" : 11,
+      "questionAnswerInt": 3,
+      "question": "What value is stored in the variable comp?\n int x = 5;\n int y = 9;\n boolean comp = x != y;",
+      "questionAnswerArray": ["same","false","true"]
+    },
+	    {
+      "questionNumber" : 12,
+      "questionAnswerInt": 1,
+      "question": "What does the logical operator || do?",
+      "questionAnswerArray": ["returns true if one statement is true","returns true if both statements are true","returns true if both statements are false"]
+    },
+    {
+      "questionNumber" : 13,
+      "questionAnswerInt": 2,
+      "question": "What value is stored in the variable comp?\n int x = 3;\n int y = 7;\n boolean comp = x<=y && x>10",
+      "questionAnswerArray": ["same","false","true"]
     }
   ],
   "section5": [

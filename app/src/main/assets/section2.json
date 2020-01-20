@@ -36,7 +36,7 @@
       "taskWhatsNext": 1,
       "taskType" : 2,
       "exerciseViewType" : 6,
-      "exerciseSolutionString": "publicstaticvoidmain(String[]args)",
+      "exerciseSolutionString": "public static void main(String[] args)",
       "exerciseContentStringArray" : [""]
     },
     {

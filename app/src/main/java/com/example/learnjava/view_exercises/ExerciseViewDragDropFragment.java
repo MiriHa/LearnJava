@@ -198,21 +198,13 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                     LinearLayout linLay = new LinearLayout(getContext());
                     linLay.setLayoutParams(mParamsWrap);
                     linLay.setOrientation(LinearLayout.HORIZONTAL);
-                    linLay.setPadding(4, 8, 4, 8);
+                    linLay.setPadding(1, 1, 1, 1);
                     linLay.setMinimumWidth(125);
                     linLay.setMinimumHeight(90);
                     linLay.setBackground(getResources().getDrawable(R.drawable.grey));
                     String tag = "dropView" + i + j;
                     linLay.setTag(tag);
                     dropTags.add(tag);
-
-//
-//                    TextView textView1 = new TextView((getContext()));
-//                    textView1.setLayoutParams(mParamsWrap);
-//                    textView1.setText("______");
-//                    textView1.setTag("EMPTY_TEXT");
-//                   // textView1.setPadding(4, 12, 4, 12);
-//                    textView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 
                     linLay.setOnDragListener(this);
 

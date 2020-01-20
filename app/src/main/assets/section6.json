@@ -196,8 +196,8 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 4,
-      "exerciseSolutionStringArray":["i+1","10","for","i","i--","i++","Great!"],
-      "exerciseContentStringArray": ["#@ (int i=0;i<10;@#@){","   System.out.println(","\"@#@\");","}"],
+      "exerciseSolutionStringArray":["i+1","10","print","for","i","Fine!","i--","i++","Great!"],
+      "exerciseContentStringArray": ["#@ (int i=0;i<10;@#@){","   System.out.println(","   \"@#@\");","}"],
       "exerciseSolutionIntArray": [2,5,6]
     },
     {

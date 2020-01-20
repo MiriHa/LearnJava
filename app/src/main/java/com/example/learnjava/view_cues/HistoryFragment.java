@@ -1,8 +1,10 @@
 package com.example.learnjava.view_cues;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.DialogFragment;
 
 import android.util.Log;
@@ -90,11 +92,13 @@ public class HistoryFragment extends DialogFragment {
 
                 ModelTask currentTask = lessons.get(i);
 
-                if(currentTask.getTaskNumber() <= currenTaskNumber && currentTask.getType() == 1) {
+                if(currentTask.getTaskNumber() < currenTaskNumber && currentTask.getType() == 1) {
                     TextView textView = new TextView(getContext());
                     textView.setLayoutParams(mParams);
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
                     textView.setGravity(View.TEXT_ALIGNMENT_CENTER);
+                    Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.trixiesans);
+                    textView.setTypeface(typeface);
 
                     textView.setText(currentTask.getTaskName());
 
@@ -121,12 +125,14 @@ public class HistoryFragment extends DialogFragment {
                 textView.setLayoutParams(mParams);
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
                 textView.setGravity(View.TEXT_ALIGNMENT_CENTER);
+                Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.trixiesans);
+                textView.setTypeface(typeface);
 
                 textView.setText(onlyLessonTasks.get(i).getTaskName());
 
                 historyHolder.addView(textView);
 
-                if (!(i == lessons)) {
+                if (!(i == lessons-1)) {
                     ImageView imageView = new ImageView(getContext());
                     imageView.setLayoutParams(mParams);
                     imageView.setImageResource(R.drawable.ic_arrow_drop_down_black);

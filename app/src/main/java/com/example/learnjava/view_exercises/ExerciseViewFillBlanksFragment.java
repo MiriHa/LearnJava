@@ -206,7 +206,7 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
                     myEditText.setLayoutParams(mParams);
                     //TODO doenst work here, make input length deckel
                     Log.i("M_FILLBLANKS","counter "+counter + " answer: "+solutionArray[counter].length());
-                    int maxLength = solutionArray[counter].length();
+                    int maxLength = (solutionArray[counter].length())+1;
                     counter += 1;
                     //int maxLength = solutionArray.length;
                    // Log.i("FILLBLANKS","maxLength: " + maxLength);

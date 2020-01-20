@@ -24,11 +24,7 @@ import com.example.learnjava.controller.SharedPrefrencesManager;
  */
 public class WordCueFragment extends DialogFragment {
 
-    Controller progressController;
-    private TextView cueText;
-    ConstraintLayout background;
-    private Button button;
-    LinearLayout holder;
+    private ConstraintLayout background;
 
 
     public WordCueFragment() {
@@ -48,22 +44,18 @@ public class WordCueFragment extends DialogFragment {
         SharedPrefrencesManager.saveSharedSetting(getContext(), "CUE_OPEN","true");
         View view = inflater.inflate(R.layout.fragment_word_cue, container);
 
-        progressController = (Controller)getActivity().getApplicationContext();
+        Controller progressController = (Controller) getActivity().getApplicationContext();
 
-        cueText = view.findViewById(R.id.wordCueText);
+        TextView cueText = view.findViewById(R.id.wordCueText);
         background = view.findViewById(R.id.wordCueBackground);
-        button = view.findViewById(R.id.wordCueButton);
+        Button button = view.findViewById(R.id.wordCueButton);
 
         getDialog().setCanceledOnTouchOutside(false);
-
-        //String word = getArguments().getString("word", "Cue Word");
-        //TODO make it synammicly
 
         int lessonNumber = SharedPrefrencesManager.readCurrentScreen(getContext());
         if (!(lessonNumber == 0))
             lessonNumber -= 1;
 
-        //TODO make sure the right section is loaded
         String lastTaskName = progressController.getTaskContent().get(lessonNumber).getTaskName();
         Log.i("M_WORD_CUE","lessonNumber: "+lessonNumber+" lastTaskName "+lastTaskName);
 
@@ -134,18 +126,5 @@ public class WordCueFragment extends DialogFragment {
         SharedPrefrencesManager.saveSharedSetting(getContext(), "CUE_OPEN","false");
         Log.i("M_CUE_OPEN_WORD","onDestroyView: false");
     }
-//
-//    @Override
-//    public void onStop() {
-//        super.onStop();
-//        SharedPrefrencesManager.saveSharedSetting(getContext(), "CUE_OPEN","false");
-//        Log.i("M_CUE_OPEN_WORD","onStop: false");
-//    }
-//
-//    @Override
-//    public void onDestroy() {
-//        super.onDestroy();
-//        SharedPrefrencesManager.saveSharedSetting(getContext(), "CUE_OPEN","false");
-//        Log.i("M_CUE_OPEN_WORD","onDestroy: false");
-//    }
+
 }

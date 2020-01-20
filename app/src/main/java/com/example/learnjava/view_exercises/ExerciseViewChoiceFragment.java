@@ -174,26 +174,6 @@ public class ExerciseViewChoiceFragment extends Fragment {
     }
 
 
-    //TODO for dynamiclly adding the buttons
-    private void setLayout(){
-
-        LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-        for (int i=0; i<answerChoices.length;i++){
-
-            RadioButton mButton = new RadioButton(getContext());
-            mButton.setLayoutParams(mParams);
-            mButton.setTag("answer"+i);
-            //mButton.setId(R.id.Choice[i]);
-            tags.add("answer"+i);
-            mButton.setPadding(0,6,0,0);
-            mButton.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
-
-            answerGroup.addView(mButton);
-        }
-
-    }
-
     public void reset(){
         answerGroup.clearCheck();
     }

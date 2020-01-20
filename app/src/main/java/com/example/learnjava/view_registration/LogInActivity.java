@@ -39,7 +39,6 @@ public class LogInActivity extends AppCompatActivity {
     TextView toSignUp;
 
     boolean isUserFirstTime;
-    ProgressBar logInProgres;
     public static final String PREF_USER_FIRST_TIME = "user_first_time";
 
     @Override
@@ -119,9 +118,6 @@ public class LogInActivity extends AppCompatActivity {
                         return;
                     }
 
-                    // Set progress visibility
-                    //logInProgres.setVisibility(View.VISIBLE);
-
                     signInUser(email, password);
                 }
             });
@@ -141,7 +137,6 @@ public class LogInActivity extends AppCompatActivity {
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LogInActivity.this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    //   logInProgress.setVisibility(View.INVISIBLE);
                     // Handle LogIn failure
                     if (!task.isSuccessful()) {
                         // Check if password was too short
@@ -168,28 +163,8 @@ public class LogInActivity extends AppCompatActivity {
             super.onStart();
             if(!isUserFirstTime)
                 SharedPrefrencesManager.setTrigger(this, true, 2);
-//            if (isUserFirstTime) {
-//                signUp();
-//                Log.i("M_LOGIN_ACTIVITY", "SignUP");
-//            }
-//            else{
-//                    SharedPrefrencesManager.setTrigger(this, true, 2);
-//                    auth = FirebaseAuth.getInstance();
-//                    ref = FirebaseDatabase.getInstance().getReference();
-//
-//                    // If user is already logged in, get to HomeScreen
-//                    if (auth.getCurrentUser() != null) {
-//                        Log.i("M_LOGIN_ACTIVITY", " got to main, currentUSer: " + auth.getCurrentUser().toString());
-//                        startActivity(new Intent(LogInActivity.this, MainActivity.class));
-//                    }
-//                }
+
         }
 
-        @Override
-        protected void onStop () {
-            super.onStop();
-//            if(!isUserFirstTime)
-//                auth.removeAuthStateListener(authStateListener);
-        }
     }
 

@@ -1,7 +1,9 @@
 package com.example.learnjava.models;
 
 
-//This model defines a Theory Block of a lesson
+/**
+ * This model defines a Theory Lesson
+ */
 public class ModelLesson extends ModelTask {
 
     private final String[] keywords;
@@ -19,8 +21,6 @@ public class ModelLesson extends ModelTask {
     }
 
 
-
-    //needed implemented but not used here
     @Override
     public String[] getSolutionStringArray() {
         return new String[0];

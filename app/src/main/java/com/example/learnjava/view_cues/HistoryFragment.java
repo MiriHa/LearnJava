@@ -63,12 +63,9 @@ public class HistoryFragment extends DialogFragment {
         getDialog().setCanceledOnTouchOutside(false);
 
         int section = getArguments().getInt("section", 1);
-        setHistory(section);
+        setHistory();
         setBackground(section);
 
-        //ArrayList<ModelTask> tasklist = progressController.getTaskContent();
-
-//        progressController.makeaLog(Calendar.getInstance().getTime(), "History_CUE", "in section " + section);
         gotit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +76,7 @@ public class HistoryFragment extends DialogFragment {
     }
 
 
-    private void setHistory(int section) {
+    private void setHistory() {
         LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
         if (SharedPrefrencesManager.readCurrentSection(getContext()) == SharedPrefrencesManager.readLatestSectionNumber(getContext())) {

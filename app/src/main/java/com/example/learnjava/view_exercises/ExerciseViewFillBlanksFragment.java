@@ -47,7 +47,6 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
     private String[] solutionArray;
     private ArrayList<String> tags = new ArrayList<>();
 
-    private Button nextButton;
     private LinearLayout blankHolder;
 
 
@@ -70,16 +69,18 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
         //get the currentTask
         receiveCurrentTask();
 
+        //get the solution
         userSolutionArray = new String[currentTask.getSolutionStringArray().length];
         solutionArray = currentTask.getSolutionStringArray();
 
 
+        //Set the exercise task teext
         TextView exerciseTaskText = view.findViewById(R.id.exerciseBlanksText);
         exerciseTaskText.setText(currentTask.getTaskText());
 
 
         blankHolder = view.findViewById(R.id.exerciseBlanksAnswerHolder);
-        nextButton = view.findViewById(R.id.nextButtonExerciseAnswer);
+        Button nextButton = view.findViewById(R.id.nextButtonExerciseAnswer);
         Button skipButton = view.findViewById(R.id.OnlyCheckButtonExerciseBlanks);
 
         if(progressController.checkTasks(getContext(),currentTask)) {
@@ -131,6 +132,9 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
     }
 
 
+    /**
+     * Check if the user answers were true.
+     */
     private void checkAnswers() {
         Log.i("CheckAnswers", "solution");
 
@@ -147,7 +151,7 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
                     userSolutionArray[i] = solution;
                 }
             }
-            //check if the answers are right
+            //check if the answers are right and send it to the fragment
             if (wasEmpty) {
                 Toast.makeText(getContext(), "Pleas enter all answers", Toast.LENGTH_SHORT).show();
             } else {
@@ -176,9 +180,10 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
     }
 
 
-
-
-
+    /**
+     * Set the Layout for the exercise:
+     * Strings with @ seperatet, # marks where the blanks should go
+     */
     private void setDynamicLayout() {
         LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
@@ -198,7 +203,7 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
 
             for (int j = 0; j < textParts.length; j++) {
 
-                //This is either a text or a Space to indicate a editText needed
+                //a Space to indicate a editText needed, set a dag so we can find the solution
                 if (textParts[j].equals("#")) {
                     Log.i("M_FILLBLANKS","textParts need EditText");
                     //Set A editText with a Task
@@ -222,6 +227,7 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
                     tags.add(tag);
                     rowHolder.addView(myEditText);
 
+                    //a text so a textview is needed
                 } else {
                     Log.i("M_FILLBLANKS","textParts need TextView");
                     TextView myTextView = new TextView(getContext());
@@ -241,6 +247,10 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
 
     }
 
+
+    /**
+     * Reset the exxercise so that the user can try again
+     */
     public void reset(){
 
         for(int i=0;i<tags.size();i++){

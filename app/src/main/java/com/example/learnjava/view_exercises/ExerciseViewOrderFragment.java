@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
@@ -26,6 +27,7 @@ import com.jmedeisis.draglinearlayout.DragLinearLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Objects;
 
 
 /**
@@ -35,21 +37,13 @@ import java.util.Calendar;
 
 public class ExerciseViewOrderFragment extends Fragment {
 
-    //TODO use a listview and then ordering will be easer -> adapter needed see examples
-
         private ExerciseCommunication mListener;
 
 
         private ModelTask currentTask;
         private Controller progressController;
 
-        private String[] contentArray;
-
-        private ArrayList<String> texts = new ArrayList<>();
-        private Button nextButton;
-       // private LinearLayout contentHolder;
         private DragLinearLayout contentHolder;
-        //private ListView contentHolder;
 
         private View currentView;
 
@@ -76,7 +70,6 @@ public class ExerciseViewOrderFragment extends Fragment {
             receiveCurrentTask();
 
             //Populate the Arrays
-            contentArray = currentTask.getContentStringArray();
 
             // Find Views
             TextView taskText = view.findViewById(R.id.exerciseTextOrder);
@@ -91,7 +84,7 @@ public class ExerciseViewOrderFragment extends Fragment {
             makeDynmaivChilds();
 
 
-            nextButton = view.findViewById(R.id.nextButtonExerciseOrder);
+            Button nextButton = view.findViewById(R.id.nextButtonExerciseOrder);
             Button skipButton = view.findViewById(R.id.OnlyCheckButtonExerciseOrder);
 
             if (progressController.checkTasks(getContext(),currentTask)) {
@@ -119,12 +112,6 @@ public class ExerciseViewOrderFragment extends Fragment {
 
             String[] contentArray = currentTask.getContentStringArray();
 
-            //TODO make it Ransom?
-//            List<String> contentArrayRandom = new ArrayList<>(contentArray.length);
-//            Collections.addAll(contentArrayRandom, contentArray);
-//            Collections.shuffle(contentArrayRandom);
-
-
 
             Log.i("M_EXERCISE_VIEW_ORDER", "setLayout: answerArray: ");
 
@@ -144,24 +131,15 @@ public class ExerciseViewOrderFragment extends Fragment {
                 linearLayout.setTag(i);
                 linearLayout.setBackground(getResources().getDrawable(R.drawable.grey_line));
 
-//                TextView number = new TextView((getContext()));
-//                number.setLayoutParams(mParamsWrap);
-//                number.setText(i+1);
-//                number.setTag(i);
-//                number.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-
                     TextView textView1 = new TextView((getContext()));
                     textView1.setLayoutParams(mParamsWrap);
                     textView1.setText(contentArray[i]);
-                    //textView1.setPadding(8, 8, 4, 8);
                     textView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-                     Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.inputmonocompressed_regular);
-                      textView1.setTypeface(typeface);
+                    Typeface typeface = ResourcesCompat.getFont(Objects.requireNonNull(getContext()), R.font.inputmonocompressed_regular);
+                    textView1.setTypeface(typeface);
                     textView1.setTag("TEXT"+i);
-                    texts.add("TEXT"+i);
                     Log.i("M_EXERCISE_VIEW_ORDER", " content: " + i + " " + contentArray[i]);
 
-                    //linearLayout.addView(number);
                     linearLayout.addView(textView1);
                     contentHolder.addView(linearLayout);
             }
@@ -208,7 +186,7 @@ public class ExerciseViewOrderFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         try {
             mListener = (ExerciseCommunication) getParentFragment();
         } catch (ClassCastException e) {

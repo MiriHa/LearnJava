@@ -29,12 +29,10 @@ import java.util.Calendar;
 
 public class LessonFragment extends Fragment {
 
-   private TextView lessonName;
-   private LinearLayout textHolder;
+    private LinearLayout textHolder;
    private ConstraintLayout background;
-   private Button nextButton;
 
-   private int whatsNext;
+    private int whatsNext;
 
    private ModelTask currentTask;
    private Controller progressController;
@@ -59,9 +57,9 @@ public class LessonFragment extends Fragment {
         textHolder = view.findViewById(R.id.lessonTextHolder);
         background = view.findViewById(R.id.LessonHolder);
 
-        lessonName = view.findViewById(R.id.lessonName);
+        TextView lessonName = view.findViewById(R.id.lessonName);
 
-        nextButton = view.findViewById(R.id.nextButtonLessonFrag);
+        Button nextButton = view.findViewById(R.id.nextButtonLessonFrag);
 
         Log.i("M_LESSON_FRAGMENT", " whatsNext: " + whatsNext + " currenTasknumber: " + currentTask.getTaskNumber());
         progressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_A_LESSON", "number: " + currentTask.getTaskNumber() + "section: "+currentTask.getSectionNumber());
@@ -73,8 +71,6 @@ public class LessonFragment extends Fragment {
                 if ((getActivity() != null)) {
                     //save this as the Las lesson to come back to
                     progressController.setLastLesson(getContext(),currentTask.getTaskNumber());
-                    //Add lesson to finished tasks
-//                    progressController.addFinishedTask(getContext(),currentTask);
                     //open a exerciseFragment
                     if( whatsNext == 2) {
                         ((LessonActivity) getActivity()).openNewTask(2);
@@ -114,18 +110,7 @@ public class LessonFragment extends Fragment {
     }
 
 
-    @Override
-    public void onStart() {
-        super.onStart();
-      /*  try {
-            fragmentInterface = (ExerciseCommunication) getActivity();
-        } catch (ClassCastException e) {
-            throw new ClassCastException(getActivity().toString() + "Error in retreiving data. must implement FragmentInterface");
-        }
-*/
-    }
-
-    public void setFragmentContentLesson(ModelTask currentTask){
+    void setFragmentContentLesson(ModelTask currentTask){
         Log.i("M_LESSON_FRAGMENt", "setFragmentCOntent");
         this.currentTask = currentTask;
         whatsNext = currentTask.getWhatsNext();
@@ -136,18 +121,14 @@ public class LessonFragment extends Fragment {
         //Split the string so that in can be passed to diffrent textviews
         String[] textParts = text.split("@");
 
-//        for(int i = 0; i < textParts.length; i++){
         for(String element : textParts){
 
-//            String[] pic = element.split("#");
-//            for(String pice : pic) {
             LinearLayout.LayoutParams mParamsFit = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
             if(String.valueOf(element.charAt(0)).equals("_")){
 
                     String uri = "@drawable/"+element;  // where myresource (without the extension) is the file
-                    String name = getActivity().getPackageName();
 
                     int imageResource = getResources().getIdentifier(uri, null, getActivity().getPackageName());
 
@@ -171,12 +152,10 @@ public class LessonFragment extends Fragment {
                     myTextView.setTypeface(typeface);
                     myTextView.setPadding(10, 6, 10, 6);
 
-                    //TODO find a better way or see if its in packages
                     //  myTextView.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
 
                     textHolder.addView(myTextView);
-//                }
             }
 
         }
@@ -209,10 +188,6 @@ public class LessonFragment extends Fragment {
             case 8:
                 background.setBackgroundColor(ContextCompat.getColor(getActivity(),(R.color.section8_color)));
                 break;
-//            case 9:
-//                background.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.section9_color));
-//                break;
-
 
         }
     }

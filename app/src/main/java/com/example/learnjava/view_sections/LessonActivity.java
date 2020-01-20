@@ -32,7 +32,6 @@ public class LessonActivity extends AppCompatActivity {
     Controller progressController;
 
     private int sectionNumber;
-    private int latestTaskNumber;
 
     ArrayList<ModelTask> taskContent;
 
@@ -56,13 +55,10 @@ public class LessonActivity extends AppCompatActivity {
 
         progressHolder = findViewById(R.id.progressHolder);
 
-        //get the progresscontroller
+        //get the progress controller
         progressController = (Controller) getApplicationContext();
         context = this;
 
-
-        //use a singelton
-        //userProgress = ModelUserProgress.getInstance();
 
         //get the recent sectionnumber to identifiy the section
         Intent intent = getIntent();
@@ -87,7 +83,6 @@ public class LessonActivity extends AppCompatActivity {
         openNewTask(0);
 
 
-        //progressController.showCue(this,sectionNumber,4, getSupportFragmentManager());
 
     }
 
@@ -112,7 +107,6 @@ public class LessonActivity extends AppCompatActivity {
                     setCurrentTask();
                     setProgressBackground();
                     Log.i("M_LESSON_ACTIVITY", "opennewtask: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
-                    //progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "First Lesson of a Section");
                     //load a fragment
                     LessonFragment firstlessonFragment = new LessonFragment();
                     firstlessonFragment.setFragmentContentLesson(currentTask);
@@ -131,8 +125,6 @@ public class LessonActivity extends AppCompatActivity {
                 setCurrentTask();
                 setProgressBackground();
                 String tagLES = "FRAGMENT_LESSON_" + currentTask.getTaskNumber();
-//                Fragment lessonFragment = manager.findFragmentByTag(tagLES);
-
                 boolean fragmentPoppedLES = manager.popBackStackImmediate(tagLES, 0);
 
                 if (!fragmentPoppedLES && manager.findFragmentByTag(tagLES) == null) { //fragment not in back stack, create it.
@@ -147,7 +139,6 @@ public class LessonActivity extends AppCompatActivity {
                             .commit();
                 }
                 Log.d(" M_LESSON_ACTIVITY", "checkprogress 1: progress: " + progressCurrentScreen);
-               // progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "open the next lesson: " + currentTask.getTaskNumber());
                 break;
 
             //open the next Exercise
@@ -170,7 +161,6 @@ public class LessonActivity extends AppCompatActivity {
                             .commit();
                 }
                 Log.i(" M_LESSON_ACTIVITY", " checkprogress 2: progress: " + progressCurrentScreen);
-               // progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "open the next exercise: " + currentTask.getTaskNumber());
                 break;
 
             //open the last Lesson
@@ -187,8 +177,6 @@ public class LessonActivity extends AppCompatActivity {
                 String tagLast = "FRAGMENT_LESSON_" + currentTaskNumber;
                 Log.i("M_LESSON_ACTIVITY", " backstack:" + manager.getFragments().toString());
                 Log.i(" M_LESSON_ACTIVITY", "checkProgress 3: loaded progress: " + progressCurrentScreen);
-                //progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "open the last lesson: " + currentTask.getTaskNumber());
-
                 boolean fragmentPoppedLAST = manager.popBackStackImmediate(tagLast, 0);
 
                 if (!fragmentPoppedLAST && manager.findFragmentByTag(tagLast) == null) { //fragment not in back stack, create it.
@@ -216,7 +204,6 @@ public class LessonActivity extends AppCompatActivity {
             case 1:
                 setProgressBackground();
                 Log.i("M_LESSON_ACTIVITY", "opennewtask: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
-                //progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "First Lesson of a Section");
                 //load a fragment
                 LessonFragment firstlessonFragment = new LessonFragment();
                 firstlessonFragment.setFragmentContentLesson(currentTask);
@@ -230,8 +217,7 @@ public class LessonActivity extends AppCompatActivity {
             case 2:
                 setProgressBackground();
                 Log.i("M_LESSON_ACTIVITY", "opennewtask: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
-                //progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_NEW_TASK", "First Lesson of a Section");
-                //load a fragment
+                  //load a fragment
                 ExerciseFragment exerciseFragment = new ExerciseFragment();
                 exerciseFragment.setFragmentContentExercise(currentTask);
                 getSupportFragmentManager()
@@ -257,11 +243,9 @@ public class LessonActivity extends AppCompatActivity {
         progressController.updateLatestSection(this,sectionNumber);
         Log.i("M_LESSON_ACTIVITY", "updatet LatestSection");
 
-       // Log.i("M_LESSON_ACTIVITY", " updateprogress: latestSection updated " + progressController.getLatestSectionNumber(this));
         Log.i("M_LESSON_ACTIVITY", "last task of section is reached");
         //GO Back to the MainActivity
         Intent intent = new Intent(LessonActivity.this, MainActivity.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         Log.d("M_LESSON_ACTIVITY", "change to activity: MainActivity");
@@ -374,7 +358,6 @@ public class LessonActivity extends AppCompatActivity {
                 myTextView.setLayoutParams(mParamsWeight);
                 String tag = String.valueOf(taskNumber[j]);
                 myTextView.setClickable(true);
-//                myTextView.setTag("PROGRESS_FIELD_" + taskNumber[j]);
                 myTextView.setTag(tag);
                 myTextView.setGravity(Gravity.CENTER);
                 myTextView.setBackgroundResource(R.drawable.border);
@@ -392,7 +375,6 @@ public class LessonActivity extends AppCompatActivity {
                 myTextView.setText("?");
                 String tag = String.valueOf(taskNumber[j]);
                 myTextView.setClickable(true);
-//                myTextView.setTag("PROGRESS_FIELD_" + taskNumber[j]);
                 myTextView.setTag(tag);
                 myTextView.setGravity(Gravity.CENTER);
                 myTextView.setLayoutParams(mParamsWeight);
@@ -412,16 +394,12 @@ public class LessonActivity extends AppCompatActivity {
      **/
     public void setProgressBackground() {
 
-//        for (int i = 0; i <= progressController.getLatestTaskNumber(); i++) {
         for (int i = 0; i < taskContent.size(); i++) {
-//            String tagOld = "PROGRESS_FIELD_" + i;
             String tagOld = String.valueOf(i);
             Log.i("M_LESSON_ACTIVITY", "setProgressBackground");
             TextView textViewOld = progressHolder.findViewWithTag(tagOld);
             textViewOld.setBackgroundResource(R.drawable.border);
         }
-
-//        String tag = "PROGRESS_FIELD_" + currentTaskNumber;
         String tag = String.valueOf(currentTaskNumber);
         TextView textView = progressHolder.findViewWithTag(tag);
 
@@ -442,17 +420,14 @@ public class LessonActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                //TODO display an dialog an notify the progressmodel to discard all progress?
-                Intent intent = new Intent(LessonActivity.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                Log.d("M_LESSON_ACTIVITY", " change to Mainactivity");
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            Intent intent = new Intent(LessonActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            Log.d("M_LESSON_ACTIVITY", " change to Mainactivity");
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
 
@@ -576,27 +551,6 @@ public class LessonActivity extends AppCompatActivity {
         super.onStart();
         progressController.showCue(this, sectionNumber, getSupportFragmentManager());
         Log.i("M_TRIGGER_CUES","LessonActivity: onStart, showCue");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-//        SharedPrefrencesManager.setTrigger(this, true, 1);
-//        Log.i("M_TRIGGER_CUES","LessonActivity: onResume, set Cue Trigger true");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-//        SharedPrefrencesManager.setTrigger(this, true);
-//        Log.i("M_TRIGGER_CUES","LessonActivity: onStop, set Cue Trigger true");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-//        SharedPrefrencesManager.setTrigger(this, true);
-//        Log.i("M_TRIGGER_CUES","LessonActivity: onStop, set Cue Trigger true");
     }
 
 

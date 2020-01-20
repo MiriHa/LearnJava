@@ -1,5 +1,9 @@
 package com.example.learnjava.models;
 
+
+/**
+ * This model defines a Question for the question cue
+ */
 public class ModelQuestion {
 
     private int number;

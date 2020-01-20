@@ -2,7 +2,7 @@ package com.example.learnjava.models;
 
 
 /**
- * This is the parentclass for ModelExercise and ModelLesson
+ * This is the parent class for ModelExercise and ModelLesson  and defines a Task
  */
 
 public abstract class ModelTask {

@@ -129,7 +129,7 @@ public class ExerciseViewAnswerFragment extends Fragment {
                 String userAnswer = userInput.replaceAll("\\s+","");
                 Log.i("M_EXERCISE_VIEW_ANSWER", "check answer: " + userInput + " solution: " + currentTask.getSolutionString());
 
-                if (progressController.checkArrays(currentTask.getSolutionStringArray(),userAnswer)) {
+                if (checkArrays(currentTask.getSolutionStringArray(),userAnswer)) {
                     mListener.sendAnswerFromExerciseView(true);
                     progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput);
                     Log.i("M_EXERCISE_VIEW_ANSWER", " send answer: true");
@@ -190,6 +190,14 @@ public class ExerciseViewAnswerFragment extends Fragment {
 //                }
             }
         }
+    }
+
+    private boolean checkArrays(String[] arr, String targetValue) {
+        for(String s: arr){
+            if(s.equalsIgnoreCase(targetValue))
+                return true;
+        }
+        return false;
     }
 
     private void receiveCurrentTask() {

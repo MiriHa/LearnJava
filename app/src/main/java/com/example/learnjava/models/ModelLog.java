@@ -1,68 +1,48 @@
 package com.example.learnjava.models;
 
+/**
+ * Model for saving a Log to Firebase
+ */
 public class ModelLog {
 
-        private String loggingID;
+    private String time;
 
-        //public String userOwnerId;
+    private String event_Type;
 
-        //private Date time;
-        private String time;
+    private String eventDetails;
 
-        private String event_Type;
+    public ModelLog( String time, String eventType, String details) {
+        this.time = time;
+        this.event_Type = eventType;
+        this.eventDetails = details;
 
-        private String eventDetails;
-
-        public ModelLog(String id, String time, String eventType, String details) {
-           // this.userOwnerId = userOwnerId;
-            this.loggingID = id;
-            this.time = time;
-            this.event_Type = eventType;
-            this.eventDetails = details;
-
-        }
-
-        public ModelLog() {
-        }
-
-        public String getTime() {
-            return time;
-        }
-
-        public void setTime(String time) {
-            this.time = time;
-        }
-
-        public String getEventType() {
-            return event_Type;
-        }
-
-        public void setEventType(String eventType) {
-            this.event_Type = eventType;
-        }
-
-        public String getDetails() {
-            return eventDetails;
-        }
-
-        public void setDetails(String details) {
-            this.eventDetails = details;
-        }
-
-    public String getLoggingID() {
-        return loggingID;
     }
 
-    public void setLoggingID(String loggingID) {
-        this.loggingID = loggingID;
+    public ModelLog() {
     }
 
-//    public String getUserOwnerId() {
-//        return userOwnerId;
-//    }
-//
-//    public void setUserOwnerId(String userOwnerId) {
-//        this.userOwnerId = userOwnerId;
-//    }
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getEventType() {
+        return event_Type;
+    }
+
+    public void setEventType(String eventType) {
+        this.event_Type = eventType;
+    }
+
+    public String getDetails() {
+        return eventDetails;
+    }
+
+    public void setDetails(String details) {
+        this.eventDetails = details;
+    }
 }
 

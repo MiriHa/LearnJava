@@ -37,7 +37,6 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
 
     private Controller progressController;
 
-    private TextView exerciseName;
     private ViewGroup viewGroup;
     private ConstraintLayout background;
     private int whatsNext;
@@ -68,7 +67,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         progressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_A_EXERCISE", "number: " + currentTask.getTaskNumber() + " type: " + currentTask.getExerciseViewType());
 
 
-        exerciseName = view.findViewById(R.id.exerciseName);
+        TextView exerciseName = view.findViewById(R.id.exerciseName);
         exerciseName.setText(currentTask.getTaskName());
 
         background = view.findViewById(R.id.ExerciseHolder);
@@ -163,7 +162,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
     }
 
     //used in Exercise Activity to set the currentTask
-    public void setFragmentContentExercise(ModelTask currentTask) {
+    void setFragmentContentExercise(ModelTask currentTask) {
         Log.i("M_EXERCISE_FRAGMENT", "setFragmentContent");
         this.currentTask = currentTask;
         whatsNext = currentTask.getWhatsNext();
@@ -203,7 +202,6 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
     @Override
     public void sendAnswerFromExerciseView(boolean answerChecked) {
         if (answerChecked) {
-            progressController.addFinishedTask(getContext(),currentTask);
             showFeedbackDialogRight();
             Log.i("M_EXERCISE_FRAGMENT", "answer was right");
             progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_RIGHT", "number: " + currentTask.getTaskNumber() + "section: "+currentTask.getSectionNumber()+" taskType: " + currentTask.getExerciseViewType());
@@ -257,18 +255,15 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
         Button previousButton = dialogView.findViewById(R.id.FeedbackWrongPreviousButton);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        //  AlertDialog builder = new AlertDialog.Builder(getContext()).create();
         builder.setView(dialogView);
         final AlertDialog wrongfeedbackDialog = builder.create();
         wrongfeedbackDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         wrongfeedbackDialog.setCanceledOnTouchOutside(false);
-        //  feedbackDialog.getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.transparent)));
         wrongfeedbackDialog.show();
 
         tryagainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // ((LessonActivity) getActivity()).openNewTask(4);
                 //TODO reset the layout
                 reset();
                 wrongfeedbackDialog.dismiss();
@@ -288,7 +283,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
 
     }
 
-    public void reset() {
+    private void reset() {
         Log.i("M_EXERCISE_FRAGMENT","Reset");
         int viewType = currentTask.getExerciseViewType();
 
@@ -349,9 +344,6 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication 
             case 8:
                 background.setBackgroundColor(ContextCompat.getColor(getActivity(), (R.color.section8_color)));
                 break;
-//            case 9:
-//                background.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.section9_color));
-//                break;
 
 
         }

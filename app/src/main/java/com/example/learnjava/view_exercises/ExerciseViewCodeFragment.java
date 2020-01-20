@@ -21,6 +21,7 @@ import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
@@ -81,7 +82,8 @@ public class ExerciseViewCodeFragment extends Fragment {
                     Log.i("M_EXERCISE_VIEW_CODE", "Nextbuttonclicked");
                     checkAnswers();
                     //Hide the Keyboard
-                    InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
+                    InputMethodManager inputMethodManager = (InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(INPUT_METHOD_SERVICE);
+                    assert inputMethodManager != null;
                     inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(),0);
                 }
             });
@@ -117,11 +119,6 @@ public class ExerciseViewCodeFragment extends Fragment {
 
         private void checkAnswers() {
             String userInput = answerEditText.getText().toString();
-//            if (progressController.checkTasks(getContext(),currentTask) && userInput.isEmpty()) {
-//                Log.i("M_Exercise_VIEW_CODE", "checkExericse and skip");
-//                mListener.justOpenNext();
-//                //TODO listnefor textinput, when input change skip to check
-//            } else {
                 if (userInput.isEmpty()) {
                     Toast.makeText(getContext(), "Pleas enter an answer", Toast.LENGTH_SHORT).show();
                 } else {
@@ -156,6 +153,7 @@ public class ExerciseViewCodeFragment extends Fragment {
 
         public void reset(){
            // answerEditText.setText(currentTask.getContentStringArray()[0]);
+            //do nothing so that the user can check his errors
         }
 
 

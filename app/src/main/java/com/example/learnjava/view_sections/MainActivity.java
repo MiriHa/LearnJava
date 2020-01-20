@@ -39,13 +39,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String currentuserID;
 
     Context context;
-
-    //Button lesson1, lesson2, lesson3, lesson4, lesson5, lesson6, lesson7, lesson8, lesson9;
     LinearLayout lesson1, lesson2, lesson3, lesson4, lesson5, lesson6, lesson7, lesson8, ScrollViewContainer;
     ScrollView scrollView;
 
     public static final String PREF_USER_FIRST_TIME = "user_first_time";
-    boolean isUserFirstTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Log.i("M_MAIN_ACTIVITY", " on create");
 
-        FrameLayout lessonLayout = findViewById(R.id.FragmentHolder);
         //findLinearLayouts
         lesson1 = findViewById(R.id.lesson1);
         lesson2 = findViewById(R.id.lesson2);
@@ -173,8 +169,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @param number  the number of the section
      */
     public void checkIfSolved(LinearLayout section, Integer number) {
-        // Date currentTime = Calendar.getInstance().getTime();
-       // myProgressController.setFirebase();
 
         Log.i("M_MAIN_ACTIVITY", "checkIfSOlved " + String.valueOf(myProgressController.getLatestSectionNumber(this)) + " " + number);
         if (number == 1) {
@@ -237,10 +231,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 8");
                 startActivity(LessonActivity.class, 8);
                 break;
-//            case R.id.lesson9:
-//                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 9");
-//                startActivity(LessonActivity.class, 9);
-//                break;
         }
     }
 
@@ -252,7 +242,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @param lessonNumber       which lessonNumber is needed
      */
     public void startActivity(Class<?> otherActivityClass, int lessonNumber) {
-        //saveState();
         Intent intent = new Intent(MainActivity.this, otherActivityClass);
         intent.putExtra("LESSON_NUMBER", lessonNumber);
         intent.putExtra("FIRST_LESSON", true);
@@ -277,18 +266,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //finsish()
     }
 
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
 
 
     @Override

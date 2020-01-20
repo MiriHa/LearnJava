@@ -161,13 +161,11 @@ public class QuestionsFragment extends DialogFragment {
                 setFeedback(answerInt);
                 progressController.makeaLog(Calendar.getInstance().getTime(), "QUESTION_CUE", "number: " + currentQuestion.getNumber() + " answer: right");
                 bigText.setText(R.string.Question_right);
-               // bigText.setTextColor(getResources().getColor(R.color.Green));
                 Log.i("M_QUESTION_CUE", "answer: true, dismiss");
             } else {
                 setFeedback(answerInt);
                 progressController.makeaLog(Calendar.getInstance().getTime(), "QUESTION_CUE", "number: " + currentQuestion.getNumber() + " answer: wrong");
                 bigText.setText(R.string.Question_wrong);
-              //  bigText.setTextColor(getResources().getColor(R.color.Redbright));
                 checkButton.setBackgroundResource(R.drawable.button_altert_red);
                 Log.i("M_QUESTION_CUE", "answer: false, show right answer");
             }

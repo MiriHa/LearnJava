@@ -85,9 +85,7 @@ public class WordCloudFragment extends DialogFragment {
         WordCloudView wordCloud = view.findViewById(R.id.WordcloudView);
         wordCloud.setDataSet(list);
         //wordCloud.setSize(200, 400);
-//        wordCloud.setColors(ColorTemplate.MATERIAL_COLORS);
         wordCloud.setScale(50, 15);
-//        wordCloud.setColors(new int[] {R.color.section1_color,R.color.section2_color,R.color.section5_color,R.color.section6_color});
         wordCloud.setColors(new int[] {Color.argb(255,26, 126, 183), Color.argb(255,10, 189, 160), Color.argb(255, 19,157,193), Color.argb(255,15,101,201 ), Color.argb(255,6,71,143)});
         wordCloud.notifyDataSetChanged();
 
@@ -109,13 +107,13 @@ public class WordCloudFragment extends DialogFragment {
         ArrayList<ModelTask> lessons = progressController.getOnlyLessons();
 
         if(section == SharedPrefrencesManager.readLatestSectionNumber(getContext())){
-            int currenTaskNumber = SharedPrefrencesManager.readCurrentScreen(getContext());
+            int currentTaskNumber = SharedPrefrencesManager.readCurrentScreen(getContext());
 
-            Log.i("M_WORD_CLOUD","getKeywords. currentTaskNumber: "+currenTaskNumber);
-            for(int i =0; i<=currenTaskNumber; i++){
+            Log.i("M_WORD_CLOUD","getKeywords. currentTaskNumber: "+currentTaskNumber);
+            for(int i =0; i<=currentTaskNumber; i++){
 
                 ModelTask currentLesson = lessons.get(i);
-                if(currentLesson.getTaskNumber() <= currenTaskNumber) {
+                if(currentLesson.getTaskNumber() <= currentTaskNumber) {
                     Collections.addAll(keywords, lessons.get(i).getKeywords());
                 }
             }

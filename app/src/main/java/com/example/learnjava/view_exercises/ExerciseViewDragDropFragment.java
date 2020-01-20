@@ -48,18 +48,17 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
     private Controller progressController;
     private String[] answerArray;
     private ArrayList<String> dropTags = new ArrayList<>();
-    private ArrayList<String> dragTags = new ArrayList<>();
+//    private ArrayList<String> dragTags = new ArrayList<>();
 
-    List<String> answerArrayRandom = new ArrayList<>();
+    private List<String> answerArrayRandom = new ArrayList<>();
 
     private LinearLayout contentHolder;
     private FlexboxLayout answerHolder;
 
     private View currentView;
 
-    boolean wasCorrect;
 
-    LinearLayout.LayoutParams mParamsWrap = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+    private LinearLayout.LayoutParams mParamsWrap = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
 
     public ExerciseViewDragDropFragment() {
@@ -108,7 +107,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                         break;
 
                     case DragEvent.ACTION_DRAG_ENDED:
-                        Log.i("M_DRAGDROP", "Drag ended "+wasCorrect);
+                        Log.i("M_DRAGDROP", "Drag ended ");
                         View view2 = (View) event.getLocalState();
                         view2.setVisibility(View.VISIBLE);
                         break;
@@ -175,10 +174,6 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
 
         Log.i("M_EXERCISE_VIEW_DRAG", "setLayout: answerArray: " + answerArrayRandom.toString());
 
-//        LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//        LinearLayout.LayoutParams mParamsWeight = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, (float) 1.0);
-//        LinearLayout.LayoutParams mParamsWrap = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
         //created the Lines in the ContentHolder
         for (int i = 0; i < contentArray.length; i++) {
             //one array element holds the Content of a row
@@ -189,7 +184,6 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
             rowHolder.setLayoutParams(mParamsWrap);
             rowHolder.setOrientation(LinearLayout.HORIZONTAL);
 
-            //TODO optimieren fals kein dropview nötig kein linear layout
             //create the textviews in each Line
             for (int j = 0; j < textParts.length; j++) {
 
@@ -210,7 +204,6 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
 
                     Log.i("M_EXERCISE_VIEW_DROP", " content: " + j + " " + textParts[j]);
 
-//                    linLay.addView(textView1);
                     rowHolder.addView(linLay);
                 }
                 //create the Textviews with the content, no tags
@@ -238,9 +231,9 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
             myTextview.setLayoutParams(mParamsWrap);
             myTextview.setText(answerArrayRandom.get(i));
 
-            String tag = "DRAGVIEW" + (i);
-            myTextview.setTag(tag);
-            dragTags.add(tag);
+//            String tag = "DRAGVIEW" + (i);
+//            myTextview.setTag(tag);
+//            dragTags.add(tag);
 
             myTextview.setOnTouchListener(this);
 
@@ -342,9 +335,9 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
             myTextview.setLayoutParams(mParamsWrap);
             myTextview.setText(answerArrayRandom.get(i));
 
-            String tag = "DRAGVIEW" + (i);
-            myTextview.setTag(tag);
-            dragTags.add(tag);
+//            String tag = "DRAGVIEW" + (i);
+//            myTextview.setTag(tag);
+//            dragTags.add(tag);
 
             myTextview.setOnTouchListener(this);
 
@@ -424,7 +417,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
                 break;
 
             case DragEvent.ACTION_DRAG_ENDED:
-             Log.i("M_DRAGDROP", "Drag ended "+wasCorrect);
+             Log.i("M_DRAGDROP", "Drag ended ");
                 View view2 = (View) event.getLocalState();
                 view2.setVisibility(View.VISIBLE);
                 break;
@@ -432,10 +425,6 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
         return true;
     }
 
-    private void setWasCorrect(boolean wasCorrect){
-        this.wasCorrect = wasCorrect;
-        Log.i("M_DRAGDROP","setWasCorrect + "+wasCorrect);
-    }
 
 }
 

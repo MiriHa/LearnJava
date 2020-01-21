@@ -13,6 +13,8 @@ import com.example.learnjava.view_cues.HistoryFragment;
 import com.example.learnjava.view_cues.QuestionsFragment;
 import com.example.learnjava.view_cues.WordCloudFragment;
 import com.example.learnjava.view_cues.WordCueFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,12 +26,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
-import java.util.UUID;
 
 public class Controller extends android.app.Application {
 
@@ -302,7 +302,7 @@ public class Controller extends android.app.Application {
                     wordCueFragment.setCancelable(false);
                     // wordCueFragment.getDialog().setCanceledOnTouchOutside(false);
                     wordCueFragment.show(fm, "fragment_word_cue");
-                    makeaLog(Calendar.getInstance().getTime(), "OPENED_A_CUE", "WordCue, why: "+why);
+                    makeaLog(con, Calendar.getInstance().getTime(), "OPENED_A_CUE", "WordCue, why: "+why);
                     Log.i("M_TRIGGER_CUES", "show Word Cue " + section);
                     break;
                 case 2:
@@ -310,7 +310,7 @@ public class Controller extends android.app.Application {
                     wordCloudFragment.setCancelable(false);
                     // wordCloudFragment.getDialog().setCanceledOnTouchOutside(false);
                     wordCloudFragment.show(fm, "fragment_cloud_cue");
-                    makeaLog(Calendar.getInstance().getTime(), "OPENED_A_CUE", "CloudCue, why: "+why);
+                    makeaLog(con, Calendar.getInstance().getTime(), "OPENED_A_CUE", "CloudCue, why: "+why);
                     Log.i("M_TRIGGER_CUES", "show Word Cloud Cue " + " " + section);
                     break;
                 case 3:
@@ -318,14 +318,14 @@ public class Controller extends android.app.Application {
                     historyFragment.setCancelable(false);
                     // historyFragment.getDialog().setCanceledOnTouchOutside(false);
                     historyFragment.show(fm, "fragment_history_cue");
-                    makeaLog(Calendar.getInstance().getTime(), "OPENED_A_CUE", "HistoryCue, why: "+why);
+                    makeaLog(con, Calendar.getInstance().getTime(), "OPENED_A_CUE", "HistoryCue, why: "+why);
                     Log.i("M_TRIGGER_CUES", "show History Cue " + " " + section);
                     break;
                 case 4:
                     QuestionsFragment questionsFragment = QuestionsFragment.newInstance(section);
                     questionsFragment.setCancelable(false);
                     questionsFragment.show(fm, "fragment_question_cue");
-                    makeaLog(Calendar.getInstance().getTime(), "OPENED_A_CUE", "questionCue, why: "+why);
+                    makeaLog(con, Calendar.getInstance().getTime(), "OPENED_A_CUE", "questionCue, why: "+why);
                     Log.i("M_TRIGGER_CUES", "show Question Cue " + " " + section);
                     break;
 
@@ -340,12 +340,29 @@ public class Controller extends android.app.Application {
      * Make a Logs and save it in firebase
      *
      */
-    public void makeaLog(Date time, String eventType, String details){
+    public void makeaLog(Context con, Date time, String eventType, String details){
         String strDate = dateFormat.format(time);
-//        String randomID = UUID.randomUUID().toString();
         ModelLog modelLog = new ModelLog( strDate, eventType, details);
+        SharedPrefrencesManager.saveLogs(con, modelLog);
         ref.child("users").child(userId).child("loggingList").child(strDate + " " + eventType).setValue(modelLog);
 
+    }
+
+    public void pushLogs(Context con){
+        ArrayList<ModelLog> logs = SharedPrefrencesManager.readLogs(con);
+        Log.i("M_CONTROLLER","pushLogs");
+        for(ModelLog log : logs) {
+            ref.child("users").child(userId).child("loggingList").child(log.getTime() + " " + log.getEventType()).setValue(log).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()){
+                        SharedPrefrencesManager.deleteLogs(con);
+                    } else {
+                        Log.i("M_CONTROLLER","pushlogs not succesfull "+ task.getException().getMessage());
+                    }
+                }
+            });
+        }
     }
 
 

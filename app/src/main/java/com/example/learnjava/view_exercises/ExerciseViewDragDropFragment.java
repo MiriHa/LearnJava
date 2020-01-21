@@ -307,12 +307,12 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
 
            if(allAnswers) {
                if (Arrays.equals(solutionString, userSolution)) {
-                   progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_DRAGDROP_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: " + currentTask.getSectionNumber() + " viewtype: " + currentTask.getExerciseViewType() + " userInput: " + Arrays.toString(userSolution));
+                   progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_DRAGDROP_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: " + currentTask.getSectionNumber() + " viewtype: " + currentTask.getExerciseViewType() + " userInput: " + Arrays.toString(userSolution));
                    mListener.sendAnswerFromExerciseView(true);
                    Log.i("M_EXERCISE_VIEW_DRAG", " send answer: true");
                } else {
                    Log.i("ANSWER", " was wrong");
-                   progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_DRAGDROP_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: " + currentTask.getSectionNumber() + " viewtype: " + currentTask.getExerciseViewType() + " userInput: " + Arrays.toString(userSolution));
+                   progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_DRAGDROP_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: " + currentTask.getSectionNumber() + " viewtype: " + currentTask.getExerciseViewType() + " userInput: " + Arrays.toString(userSolution));
                    mListener.sendAnswerFromExerciseView(false);
                    Log.i("M_EXERCISE_VIEW_DRAG", "send answer: false");
                }

@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //myProgressController.setFirebase();
         Log.i("M_MAIN_ACTIVITY", "set Refrences and Controller");
-        myProgressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_MAIN_ACTIVITY", "set Refrences and Content");
+        myProgressController.makeaLog(this, Calendar.getInstance().getTime(), "ENTERED_MAIN_ACTIVITY", "set Refrences and Content");
 
         checkIfSolved(lesson1, 1);
         checkIfSolved(lesson2, 2);
@@ -194,41 +194,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
 
             case R.id.lesson1:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 1");
+                myProgressController.makeaLog(this,Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 1");
                 startActivity(LessonActivity.class, 1);
                 break;
 
             case R.id.lesson2:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 2");
+                myProgressController.makeaLog(this,Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 2");
                 startActivity(LessonActivity.class, 2);
                 break;
 
             case R.id.lesson3:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 3");
+                myProgressController.makeaLog(this, Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 3");
                 startActivity(LessonActivity.class, 3);
                 break;
 
             case R.id.lesson4:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 4");
+                myProgressController.makeaLog(this,Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 4");
                 startActivity(LessonActivity.class, 4);
                 break;
 
             case R.id.lesson5:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 5");
+                myProgressController.makeaLog(this,Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 5");
                 startActivity(LessonActivity.class, 5);
                 break;
 
             case R.id.lesson6:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 6");
+                myProgressController.makeaLog(this,Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 6");
                 startActivity(LessonActivity.class, 6);
                 break;
 
             case R.id.lesson7:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 7");
+                myProgressController.makeaLog(this,Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 7");
                 startActivity(LessonActivity.class, 7);
                 break;
             case R.id.lesson8:
-                myProgressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 8");
+                myProgressController.makeaLog(this,Calendar.getInstance().getTime(), "OPEN_A_SECTION", "Section 8");
                 startActivity(LessonActivity.class, 8);
                 break;
         }

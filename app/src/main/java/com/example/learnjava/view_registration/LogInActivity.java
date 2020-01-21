@@ -45,7 +45,7 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        progressController = (Controller) getApplicationContext();
 
         if(Boolean.valueOf(SharedPrefrencesManager.readSharedSetting(this, "PERSISTENCE_ENABLED","true"))) {
             //Enable Offline Data Cache -> maye in iniziale database only when app new installed it will work?
@@ -75,15 +75,18 @@ public class LogInActivity extends AppCompatActivity {
         }else {
             auth = FirebaseAuth.getInstance();
             ref = FirebaseDatabase.getInstance().getReference();
+            progressController.setFirebase();
 
             // If user is already logged in, get to HomeScreen
             if (auth.getCurrentUser() != null) {
+                if(SharedPrefrencesManager.readLogs(this) != null) {
+                    progressController.pushLogs(this);
+                }
                 Log.i("M_LOGIN_ACTIVITY","currentUSer: "+auth.getCurrentUser().toString());
                 startActivity(new Intent(LogInActivity.this, MainActivity.class));
             }
         }
 
-        progressController = (Controller) getApplicationContext();
 
 
         userNameInput = findViewById(R.id.login_email);

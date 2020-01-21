@@ -168,6 +168,7 @@ public class ExerciseViewChoiceFragment extends Fragment {
     }
 
     private void showHint(){
+        progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "SHOW_SOLUTION","in exercise Answer");
         int answerInt = currentTask.getSolutionInt();
         switch (answerInt){
             case 1:
@@ -193,12 +194,12 @@ public class ExerciseViewChoiceFragment extends Fragment {
             } else {
                 Log.i("M_EXERCISE_VIEW_CHOICE", " checkanswer: " + " solution: " + currentTask.getSolutionInt());
                 if (currentTask.getSolutionInt() == userAnswer) {
-                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_CHOICE_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userAnswer);
+                    progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_CHOICE_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userAnswer);
                     mListener.sendAnswerFromExerciseView(true);
                     Log.i("M_EXERCISE_VIEW_CHOICE", " send answer: true");
                 } else {
                     Log.i("M ANSWER", " was wrong");
-                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_CHOICE_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userAnswer);
+                    progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_CHOICE_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userAnswer);
                     mListener.sendAnswerFromExerciseView(false);
                     Log.i("M_EXERCISE_VIEW_CHOICE", " sen answer: false");
                 }

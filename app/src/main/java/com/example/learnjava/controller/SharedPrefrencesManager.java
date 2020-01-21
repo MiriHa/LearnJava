@@ -4,11 +4,19 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.example.learnjava.models.ModelLog;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
 public class SharedPrefrencesManager {
 
     private static final String PREFERENCES_FILE = "ONBOARDING_SETTINGS";
     private static final String PROGRESS_FILE = "USER_PROGRESS_SAVE";
     private static final String CUES_FILE = "CUES_SAVE";
+    private static final String LOG_FILE = "LOGS_SAVE";
 
 
     /**
@@ -179,6 +187,40 @@ public class SharedPrefrencesManager {
 
 
 
+    public static void saveLogs(Context ctx, ModelLog log){
+        SharedPreferences sharedPref = ctx.getSharedPreferences(LOG_FILE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
 
+        Log.i("M_SHARED_PREFERENCES","saveLogs");
+        ArrayList<ModelLog> logs;
+        if(readLogs(ctx) != null) {
+            logs = readLogs(ctx);
+        }else{
+            logs = new ArrayList<>();
+        }
+
+        logs.add(log);
+
+        Gson gson = new Gson();
+        String json = gson.toJson(logs);
+        editor.putString(LOG_FILE, json);
+        editor.apply();
+    }
+
+
+    public static ArrayList<ModelLog> readLogs(Context ctx) {
+        SharedPreferences sharedPref = ctx.getSharedPreferences(LOG_FILE, Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPref.getString(LOG_FILE, null);
+        Type type = new TypeToken<ArrayList<ModelLog>>() {}.getType();
+        Log.i("M_SHARED_PREFERENCES","readLogs "+ gson.fromJson(json, type));
+        return gson.fromJson(json, type);
+    }
+
+    public static void deleteLogs(Context ctx) {
+        Log.i("M_SHARED_PREFERENCES","delete Logs");
+        SharedPreferences sharedPref = ctx.getSharedPreferences(LOG_FILE, Context.MODE_PRIVATE);
+        sharedPref.edit().clear().apply();
+    }
 
 }

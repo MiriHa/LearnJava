@@ -160,12 +160,12 @@ public class QuestionsFragment extends DialogFragment {
             Log.i("M_QUESTION_CUE", "userAnswerInt: " + userAnswer + " solutionINt: " + answerInt);
             if (answerInt == userAnswer) {
                 setFeedback(answerInt);
-                progressController.makeaLog(Calendar.getInstance().getTime(), "QUESTION_CUE", "number: " + currentQuestion.getNumber() + " answer: right");
+                progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "QUESTION_CUE", "number: " + currentQuestion.getNumber() + " answer: right");
                 bigText.setText(R.string.Question_right);
                 Log.i("M_QUESTION_CUE", "answer: true, dismiss");
             } else {
                 setFeedback(answerInt);
-                progressController.makeaLog(Calendar.getInstance().getTime(), "QUESTION_CUE", "number: " + currentQuestion.getNumber() + " answer: wrong");
+                progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "QUESTION_CUE", "number: " + currentQuestion.getNumber() + " answer: wrong");
                 bigText.setText(R.string.Question_wrong);
                 checkButton.setBackgroundResource(R.drawable.button_altert_red);
                 Log.i("M_QUESTION_CUE", "answer: false, show right answer");

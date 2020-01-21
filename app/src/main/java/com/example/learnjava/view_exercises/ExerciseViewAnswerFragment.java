@@ -151,6 +151,7 @@ public class ExerciseViewAnswerFragment extends Fragment {
 
     private void showHint(){
         editText.setText(currentTask.getSolutionStringArray()[0]);
+        progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "SHOW_SOLUTION","in exercise Answer");
         Log.i("M_EXERCISE_VIEW_ANSWER","showhint: "+currentTask.getSolutionString()+" counter: "+counterCheck);
     }
 
@@ -164,12 +165,12 @@ public class ExerciseViewAnswerFragment extends Fragment {
 
                 if (checkArrays(currentTask.getSolutionStringArray(),userAnswer)) {
                     mListener.sendAnswerFromExerciseView(true);
-                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput);
+                    progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_ANSWER_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput);
                     Log.i("M_EXERCISE_VIEW_ANSWER", " send answer: true");
                 } else {
                     Log.i("M ANSWER", " was wrong");
                     mListener.sendAnswerFromExerciseView(false);
-                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ANSWER_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput);
+                    progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_ANSWER_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput);
                     Log.i("M_EXERCISE_VIEW_ANSWER", "send answer: false");
                 }
             }

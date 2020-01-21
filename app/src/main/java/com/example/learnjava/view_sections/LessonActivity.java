@@ -511,7 +511,7 @@ public class LessonActivity extends AppCompatActivity {
                                 .addToBackStack(tagLES)
                                 .commit();
                     }
-                    progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_AN_OLD_TASK", "Lesson via the progressbar: " + currentTask.getTaskNumber()+"section: "+currentTask.getSectionNumber());
+                    progressController.makeaLog(this, Calendar.getInstance().getTime(), "OPEN_AN_OLD_TASK", "Lesson via the progressbar: " + currentTask.getTaskNumber()+"section: "+currentTask.getSectionNumber());
                     Log.d(" M_LESSON_ACTIVITY", "checkprogress 1: progress: " + progressCurrentScreen);
                     break;
 
@@ -531,7 +531,7 @@ public class LessonActivity extends AppCompatActivity {
                                 .addToBackStack(tagEX)
                                 .commit();
                     }
-                     progressController.makeaLog(Calendar.getInstance().getTime(), "OPEN_AN_OLD_TASK", "Exercise via the progressbar: " + currentTask.getTaskNumber()+"section: "+currentTask.getSectionNumber());
+                     progressController.makeaLog(this, Calendar.getInstance().getTime(), "OPEN_AN_OLD_TASK", "Exercise via the progressbar: " + currentTask.getTaskNumber()+"section: "+currentTask.getSectionNumber());
                     Log.i(" M_LESSON_ACTIVITY", " checkprogress 2: progress: " + progressCurrentScreen);
                     break;
             }

@@ -169,12 +169,12 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
                 Toast.makeText(getContext(), "Pleas enter all answers", Toast.LENGTH_SHORT).show();
             } else {
                 if (Arrays.equals(solutionArray, userSolutionArray)) {
-                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_FILLBLANKS_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolutionArray));
+                    progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_FILLBLANKS_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolutionArray));
                     mListener.sendAnswerFromExerciseView(true);
                     Log.i("SENDANSWERFROMEXERCISE", " answer: true");
                 } else {
                     Log.i("ANSWER", " was wrong");
-                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_FILLBLANKS_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolutionArray));
+                    progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_FILLBLANKS_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolutionArray));
                     mListener.sendAnswerFromExerciseView(false);
                     Log.i("SENDANSWERFROMEXERCISE", " answer: false");
                 }

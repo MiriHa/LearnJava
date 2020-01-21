@@ -141,6 +141,7 @@ public class ExerciseViewCodeFragment extends Fragment {
     }
 
     private void showHint(){
+        progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "SHOW_SOLUTION","in exercise Answer");
         answerEditText.setText(currentTask.getSolutionString());
         Log.i("M_EXERCISE_VIEW_ANSWER","showhint: "+currentTask.getSolutionString()+" counter: "+counterCheck);
     }
@@ -160,12 +161,12 @@ public class ExerciseViewCodeFragment extends Fragment {
                     Log.i("M_EXERCISE_VIEW_CODE", "check answer: " + userInput + userAnswer+" solution: " + currentTask.getSolutionString());
 
                        if (answer.equalsIgnoreCase(userAnswer)) {
-                        progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput);
+                        progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput);
                         mListener.sendAnswerFromExerciseView(true);
                         Log.i("M_EXERCISE_VIEW_CODE", " send answer: true");
                     } else {
                         Log.i("M ANSWER", " was wrong");
-                           progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput);
+                           progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput);
                         mListener.sendAnswerFromExerciseView(false);
                         Log.i("M_EXERCISE_VIEW_CODE", "send answer: false");
                     }

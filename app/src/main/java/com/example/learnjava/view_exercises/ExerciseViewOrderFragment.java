@@ -173,12 +173,12 @@ public class ExerciseViewOrderFragment extends Fragment {
             //TODO check when no Answer is inputted
             Log.i("M_ORDER","solutiontags: "+ Arrays.toString(solutionTags) +" usertags:"+ Arrays.toString(userSolution));
                 if (Arrays.equals(solutionTags, userSolution)) {
-                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ORDER_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolution));
+                    progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_ORDER_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolution));
                     mListener.sendAnswerFromExerciseView(true);
                     Log.i("M_EXERCISE_VIEW_ORDER", " send answer: true");
                 } else {
                     Log.i("ANSWER", " was wrong");
-                    progressController.makeaLog(Calendar.getInstance().getTime(), "EXERCISE_ORDER_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolution));
+                    progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_ORDER_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolution));
                     mListener.sendAnswerFromExerciseView(false);
                     Log.i("M_EXERCISE_VIEW_ORDER", " send answer: false");
                 }

@@ -62,7 +62,7 @@ public class LessonFragment extends Fragment {
         Button nextButton = view.findViewById(R.id.nextButtonLessonFrag);
 
         Log.i("M_LESSON_FRAGMENT", " whatsNext: " + whatsNext + " currenTasknumber: " + currentTask.getTaskNumber());
-        progressController.makeaLog(Calendar.getInstance().getTime(), "ENTERED_A_LESSON", "number: " + currentTask.getTaskNumber() + "section: "+currentTask.getSectionNumber());
+        progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "ENTERED_A_LESSON", "number: " + currentTask.getTaskNumber() + "section: "+currentTask.getSectionNumber());
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override

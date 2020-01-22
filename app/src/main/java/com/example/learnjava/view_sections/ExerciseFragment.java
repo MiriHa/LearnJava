@@ -263,7 +263,6 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication{
         tryagainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO reset the layout
                 reset();
                 wrongfeedbackDialog.dismiss();
                 progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_ANSWER_WRONG_TRY_AGAIN", "number: " + currentTask.getTaskNumber() + "section: "+currentTask.getSectionNumber()+" taskType: " + currentTask.getExerciseViewType());

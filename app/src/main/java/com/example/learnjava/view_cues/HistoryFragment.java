@@ -96,7 +96,6 @@ public class HistoryFragment extends DialogFragment {
         if (SharedPrefrencesManager.readCurrentSection(getContext()) == SharedPrefrencesManager.readLatestSectionNumber(getContext())) {
             //Give overview over the last lessons
             int currenTaskNumber = SharedPrefrencesManager.readCurrentScreen(getContext());
-            //TODO maybe not show the current section only the from before
             ArrayList<ModelTask> lessons = progressController.getTaskContent();
 
             for (int i = 0; i <= currenTaskNumber; i++) {
@@ -127,7 +126,6 @@ public class HistoryFragment extends DialogFragment {
             }
         } else {
             //give overview over the whole Section
-            //TODO statt tascontetn lesson Names
             ArrayList<ModelTask> onlyLessonTasks = progressController.getOnlyLessons();
             int lessons = onlyLessonTasks.size();
             for (int i = 0; i < lessons; i++) {

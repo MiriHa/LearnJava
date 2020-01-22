@@ -48,6 +48,9 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
     private ArrayList<String> tags = new ArrayList<>();
 
     private LinearLayout blankHolder;
+    private Button hintButton;
+
+    private int counterCheck = 0;
 
 
     public ExerciseViewFillBlanksFragment() {
@@ -97,7 +100,8 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
             public void onClick(View v) {
                 Log.i("BUTTONCLICKED", " in AnswerView");
                 checkAnswers();
-
+                counterCheck += 1;
+                checkHint();
                 //Hide the keyboard
                 InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
                 inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(),0);
@@ -112,11 +116,12 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
         });
 
 
-        Button hintButton = view.findViewById(R.id.hintButtonBlanks);
+        hintButton = view.findViewById(R.id.hintButtonBlanks);
+        checkHint();
         hintButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                showHint();
             }
         });
 
@@ -142,6 +147,25 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    private void checkHint(){
+        if (counterCheck >= 5){
+            hintButton.setEnabled(true);
+            hintButton.setClickable(true);
+            hintButton.setBackground(getResources().getDrawable(R.drawable.hint_button));
+        }
+    }
+
+    private void showHint(){
+        String[] solutions = currentTask.getSolutionStringArray();
+
+        for(int i=0; i< tags.size(); i++){
+            EditText editText = blankHolder.findViewWithTag(tags.get(i));
+            editText.setText(solutions[i]);
+        }
+        progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "SHOW_SOLUTION","in exercise Answer");
+        Log.i("M_EXERCISE_VIEW_ANSWER","showhint: "+currentTask.getSolutionString()+" counter: "+counterCheck);
     }
 
 
@@ -222,7 +246,6 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
                     //Set A editText with a Task
                     EditText myEditText = new EditText(getContext());
                     myEditText.setLayoutParams(mParams);
-                    //TODO doenst work here, make input length deckel
                     Log.i("M_FILLBLANKS","counter "+counter + " answer: "+solutionArray[counter].length());
                     int maxLength = (solutionArray[counter].length())+1;
                     counter += 1;

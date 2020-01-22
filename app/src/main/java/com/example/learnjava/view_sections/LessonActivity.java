@@ -44,7 +44,6 @@ public class LessonActivity extends AppCompatActivity {
     HorizontalScrollView progressScroll;
 
 
-    //TODO use the one from the progressMOdel instead of here?
     int progressCurrentScreen = 0;
 
 
@@ -260,7 +259,6 @@ public class LessonActivity extends AppCompatActivity {
             progressCurrentScreen =  currentTask.getTaskNumber() + 1;
             //When in the latest Section update the latest TaskNumber;
             progressController.updateLatestTaskNumber(this, progressCurrentScreen, sectionNumber);
-
             progressController.updateCurrentScreen(this,progressCurrentScreen);
             Log.i("M_LESSON_ACTIVITY", " checkprogress: currentProgreessScreen: " + progressCurrentScreen + " currentNmber: " + currentTask.getTaskNumber());
     }
@@ -483,7 +481,6 @@ public class LessonActivity extends AppCompatActivity {
      * @param tasktype 1: lesson, 2: Exercise
      * @param number which task to open
      */
-    //TODO integirer das in openNewTask -> zweiter parameter? nur checkprogress weggelassen
     public void openTaskProgress(int tasktype, int number) {
         FragmentManager manager = getSupportFragmentManager();
         progressCurrentScreen = number;

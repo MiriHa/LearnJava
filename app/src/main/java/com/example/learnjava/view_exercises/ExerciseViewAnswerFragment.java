@@ -216,7 +216,6 @@ public class ExerciseViewAnswerFragment extends Fragment {
                 Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.trixiesans);
                 myTextView.setTypeface(typeface);
                 myTextView.setPadding(3, 6, 3, 6);
-                //TODO find a better way or see if its in packages
                 //  myTextView.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                 myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
 

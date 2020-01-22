@@ -172,8 +172,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Log.i("M_MAIN_ACTIVITY", "checkIfSOlved " + String.valueOf(myProgressController.getLatestSectionNumber(this)) + " " + number);
         if (number == 1) {
-            //TODO already in Modeoluser inizialize
-            // myProgressController.updateUnlockedSections(1);
             section.setOnClickListener(this);
         } else if (number <= myProgressController.getLatestSectionNumber(this)) {
             section.setOnClickListener(this);
@@ -263,7 +261,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(startMain);
 
-        //finsish()
     }
 
 

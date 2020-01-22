@@ -170,7 +170,6 @@ public class ExerciseViewOrderFragment extends Fragment {
                     userSolution[i] = (String) linearLayout.getChildAt(0).getTag();
                 }
 
-            //TODO check when no Answer is inputted
             Log.i("M_ORDER","solutiontags: "+ Arrays.toString(solutionTags) +" usertags:"+ Arrays.toString(userSolution));
                 if (Arrays.equals(solutionTags, userSolution)) {
                     progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_ORDER_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolution));
@@ -231,7 +230,6 @@ public class ExerciseViewOrderFragment extends Fragment {
     }
 
     public void reset() {
-            //TODO reposition the lines in random order. -> set dynamic layout?
         contentHolder.removeAllViews();
         setDynamicLayout();
         makeDynmaivChilds();

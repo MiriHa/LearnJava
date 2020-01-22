@@ -83,12 +83,12 @@ public class QuestionsFragment extends DialogFragment {
         Random random = new Random();
         int randomInt;
         //maybe add to random nummer +
-        int latestTaskNumber = SharedPrefrencesManager.readLatestSectionNumber(getContext());
-        if(sectionWhat == latestTaskNumber){
+        int latestSectionNumber = SharedPrefrencesManager.readLatestSectionNumber(getContext());
+        if(sectionWhat == latestSectionNumber){
             int currentQuestionSize = 0;
             for (int i=0;i<sectionQuestions.size();i++){
                 ModelQuestion currentQuestion = sectionQuestions.get(i);
-               if(currentQuestion.getNumber() <= latestTaskNumber)
+               if(currentQuestion.getNumber() <= latestSectionNumber)
                    currentQuestionSize += 1 ;
             }
             randomInt = random.nextInt(currentQuestionSize);
@@ -98,8 +98,6 @@ public class QuestionsFragment extends DialogFragment {
         //int randomInt = random.;
         Log.i("M_QUESTION_CUE"," randomInt "+randomInt);
         currentQuestion = sectionQuestions.get(randomInt);
-
-        //TODO only questions to latest task when in latest section??
 
         bigText = view.findViewById(R.id.questionBigText);
         rightAnswer = view.findViewById(R.id.questionRightAnswer);

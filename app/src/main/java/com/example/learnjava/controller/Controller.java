@@ -102,9 +102,6 @@ public class Controller extends android.app.Application {
 
     }
 
-    /**
-     * Methods to check on the ModelUserProgress
-     */
 
     /**
      * Check  if a task was already completed
@@ -297,7 +294,6 @@ public class Controller extends android.app.Application {
                     Log.i("M_TRIGGER_CUES","Trigger WHy was 0");
                     break;
                 case 1:
-                    //TODO latestTaskNumber.getTaskname?
                     WordCueFragment wordCueFragment = WordCueFragment.newIntance(section);
                     wordCueFragment.setCancelable(false);
                     // wordCueFragment.getDialog().setCanceledOnTouchOutside(false);

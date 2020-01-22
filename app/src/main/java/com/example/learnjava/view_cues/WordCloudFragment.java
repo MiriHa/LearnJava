@@ -93,13 +93,12 @@ public class WordCloudFragment extends DialogFragment {
 
         List<WordCloud> list = new ArrayList<>();
         Random random = new Random();
-        //TODO überarbeiten das nur bestimmte viele wörte in wordcloud kommen? jetzt alle
         for (String s : keywords) {
             list.add(new WordCloud(s, random.nextInt(keywords.size())));
         }
+
         WordCloudView wordCloud = view.findViewById(R.id.WordcloudView);
         wordCloud.setDataSet(list);
-        //wordCloud.setSize(200, 400);
         wordCloud.setScale(50, 15);
         wordCloud.setColors(new int[] {Color.argb(255,26, 126, 183), Color.argb(255,10, 189, 160), Color.argb(255, 19,157,193), Color.argb(255,15,101,201 ), Color.argb(255,6,71,143)});
         wordCloud.notifyDataSetChanged();

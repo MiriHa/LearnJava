@@ -24,7 +24,7 @@
       "taskName" : "The main method",
       "taskNumber": 2,
       "sectionNumber": 2,
-      "taskText": "To run our program, the main method must be identical to this signature:@<br><b>   public static void main(String[ ] args)</b><br>@  <b>public</b>: anyone can access it<br> <br><b>static:</b> method can be run without creating an instance of the class containing the main method<br> <br><b>void:</b> method doesn't return any value<br><br> <b>main:</b> the name of the method@For example, the following code declares a method called test, which does not return anything and has no parameters:@    <b>void test(){}</b>@The method's parameters are declared inside the parentheses that follow the name of the method.<br>For main, it's an array of strings called <b>args</b>. We will use it in our next lesson, so don't worry if you don't understand it all now.",
+      "taskText": "To run our program, the main method must be identical to this signature:@<br><b>   public static void main(String[ ] args)</b><br>@  <b>public</b>: anyone can access it<br> <br><b>static:</b> method can be run without creating an instance of the class containing the main method.\n (An instance is a concrete occurrence of any object bzw class)<br> <br><b>void:</b> method doesn't return any value<br><br> <b>main:</b> the name of the method@For example, the following code declares a method called test, which does not return anything and has no parameters:@    <b>void test(){}</b>@The method's parameters are declared inside the parentheses that follow the name of the method.<br>For main, it's an array of strings called <b>args</b>. That is short for arguments but you could name it whatever you want. We will use it in our next lessons, so don't worry if you don't understand it all now.",
       "taskWhatsNext": 2,
       "lessonKeyWords": ["main method","starting point", "curly brackets","program"]
     },
@@ -43,7 +43,7 @@
       "taskName": "Displaying text",
       "taskNumber": 4,
       "sectionNumber": 2,
-      "taskText" : "Next is the body of the main method, enclosed in curly braces:@_picturecode1_4@The <b>println</b> method prints a line of text to the screen.<br>The System class and its out stream are used to access the println method.@In classes, methods, and other flow-control structures code is always enclosed in <b>curly braces { }</b>.",
+      "taskText" : "Next is the body of the main method, enclosed in curly braces:@_picturecode1_4@The <b>println</b> method prints a line of text to the screen.<br>The System class and its out stream are used to access the println method.@In classes, methods, and some other structures code is always enclosed in <b>curly braces { }</b>.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["System.out.println", "print", "text","display text"]
@@ -63,7 +63,7 @@
       "taskName": "Semicolons in Java",
       "taskNumber": 6,
       "sectionNumber": 2,
-      "taskText" : "You can pass a different text as the parameter to the <b>println method</b> to print it.@_picturecode1_6@In Java, each code statement must end with a <b>semicolon</b>. @Remember: Do <b>not</b> use semicolons after method and class declarations that follow with the body defined using the curly braces.",
+      "taskText" : "You can pass a different text as the parameter to the <b>println method</b> to print it.@_picturecode1_6@In Java, each code statement must end with a <b>semicolon</b>. @Remember: Do <b>not</b> use semicolons after a method or class declaration that follows with the body defined using the curly braces.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["Semicolons",";","parameters","statement","ends"]
@@ -124,7 +124,7 @@
       "taskName": "Documentation Comments",
       "taskNumber": 12,
       "sectionNumber": 2,
-      "taskText"  : "Documentation comments are special comments that have the appearance of multi-line comments, with the difference being that they <b>generate external documentation</b> of your source code. These begin with a forward slash followed by two asterisks, and end with an asterisk followed by a forward slash. <br>For example:@_picturecode1_12@Javadoc is a tool which comes with JDK and it is used for generating Java code documentation in HTML format from Java source code which has required documentation in a predefined format.@When a documentation comment begins with more than two asterisks, Javadoc assumes that you want to create a \"box\" around the comment in the source code. It simply ignores the extra asterisks.<br>For example:@_picturecode1_121@This will retain just the text \"This is the start of a method\" for the documentation.",
+      "taskText"  : "Documentation comments are special comments that have the appearance of multi-line comments, with the difference being that they <b>generate external documentation</b> of your source code. These begin with a forward slash followed by two asterisks, and end with an asterisk followed by a forward slash. <br>For example:@_picturecode1_12@Javadoc is a tool which comes with JDK(Java development kit) and it is used for generating Java code documentation in HTML format from Java source code which has required documentation in a predefined format.@When a documentation comment begins with more than two asterisks, Javadoc assumes that you want to create a \"box\" around the comment in the source code. It simply ignores the extra asterisks.<br>For example:@_picturecode1_121@This will retain just the text \"This is the start of a method\" for the documentation.",
       "taskWhatsNext": 2,
       "taskType" : 1,
       "lessonKeyWords" : ["comments","/**","good practice","documentation comments","*/"]

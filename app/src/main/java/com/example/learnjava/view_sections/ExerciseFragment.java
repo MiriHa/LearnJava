@@ -43,6 +43,8 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication{
     private int viewType;
     private ModelTask currentTask;
 
+    private Context context;
+
 
     public ExerciseFragment() {
         // Required empty public constructor
@@ -64,6 +66,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication{
             progressController = (Controller) getActivity().getApplicationContext();
         Log.i("M_EXERCISE_FRAGMENT", " checkContorller: progressController Sections " + progressController.getLatestSectionNumber(getContext()));
 
+        context = getContext();
         progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "ENTERED_A_EXERCISE", "number: " + currentTask.getTaskNumber() + " type: " + currentTask.getExerciseViewType());
 
 
@@ -265,7 +268,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication{
             public void onClick(View v) {
                 reset();
                 wrongfeedbackDialog.dismiss();
-                progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_ANSWER_WRONG_TRY_AGAIN", "number: " + currentTask.getTaskNumber() + "section: "+currentTask.getSectionNumber()+" taskType: " + currentTask.getExerciseViewType());
+                progressController.makeaLog(context,Calendar.getInstance().getTime(), "EXERCISE_ANSWER_WRONG_TRY_AGAIN", "number: " + currentTask.getTaskNumber() + "section: "+currentTask.getSectionNumber()+" taskType: " + currentTask.getExerciseViewType());
 
 
             }
@@ -275,7 +278,7 @@ public class ExerciseFragment extends Fragment implements ExerciseCommunication{
             public void onClick(View v) {
                 ((LessonActivity) getActivity()).openNewTask(3);
                 wrongfeedbackDialog.dismiss();
-                progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_ANSWER_WRONG_SEE_LESSON", "number: " + currentTask.getTaskNumber() +"section: "+currentTask.getSectionNumber()+ " taskType: " + currentTask.getExerciseViewType());
+                progressController.makeaLog(context,Calendar.getInstance().getTime(), "EXERCISE_ANSWER_WRONG_SEE_LESSON", "number: " + currentTask.getTaskNumber() +"section: "+currentTask.getSectionNumber()+ " taskType: " + currentTask.getExerciseViewType());
             }
         });
 

@@ -77,7 +77,7 @@ public class WordCueFragment extends DialogFragment {
                 checkButton.setBackground(getResources().getDrawable(R.drawable.neutral_button));
 
             }
-        },3000);
+        },1500);
 
         checkButton.setOnClickListener(new View.OnClickListener() {
             @Override

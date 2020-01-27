@@ -4,7 +4,7 @@
       "taskName" : "Decision Making",
       "taskNumber" : 0,
       "sectionNumber": 6,
-      "taskText" : "<b>Conditional statements</b>are used to perform different actions based on different conditions. The <b>if statement</b> is one of the most frequently used conditional statements.If the <b>if</b> statement's condition expression evaluates to true, the block of code inside the <b>if</b> statement is executed. If the expression is found to be false, the first set of code after the end of the <b>if</b> statement (after the closing curly brace) is executed.<b>Syntax:</b>@_picturecode6_0_1@Any of the comparison operators may be used to form the condition<br>&ensp;< less than<br>&ensp;> greater than<br>&ensp;!= not equal to<br>&ensp;== equal to<br>&ensp;<= less than or equal to<br>&ensp;>= greater than or equal to<br><br><b>For example: </b>@_picturecode6_0_2@<b>! </b>Remember that you need to use two equal signs (==) to test for equality, since a single equal sign is the assignment operator.",
+      "taskText" : "<b>Conditional statements</b> are used to perform different actions based on different conditions. The <b>if statement</b> is one of the most frequently used conditional statements. If the <b>if</b> statement's condition expression evaluates to true, the block of code inside the <b>if</b> statement is executed. If the expression is found to be false, the first set of code after the end of the <b>if</b> statement (after the closing curly brace) is executed.\n<b>Syntax:</b>@_picturecode6_0_1@Any of the comparison operators may be used to form the condition<br>&ensp;< less than<br>&ensp;> greater than<br>&ensp;!= not equal to<br>&ensp;== equal to<br>&ensp;<= less than or equal to<br>&ensp;>= greater than or equal to<br><br><b>For example: </b>@_picturecode6_0_2@<b>! </b>Remember that you need to use two equal signs (==) to test for equality, since a single equal sign is the assignment operator.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["conditional","statements","if","true","false"]
@@ -136,7 +136,7 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 4,
-      "exerciseSolutionIntArray" : [0,2,4,5],
+      "exerciseSolutionIntArray" : [0,2,3,4],
       "exerciseSolutionStringArray": ["switch","change","x","break;","case","y","pause","return"],
       "exerciseContentStringArray": ["int x = 10;","#@(@#@) {","  case 10:","    System.out.println(\"A\");","  @#@","    @#@ 20:","    System.out.println(\"B\");","    break; ","}"]
     },
@@ -158,7 +158,7 @@
       "taskType" : 2,
       "exerciseViewType" : 5,
       "exerciseSolutionStringArray" : ["TEXT1","TEXT3","TEXT2","TEXT0"],
-      "exerciseContentStringArray" : ["x++; } ","int x = 12; ","  System.out.println(\"Helli\"); ","while (x < 100) { "]
+      "exerciseContentStringArray" : ["x++; } ","int x = 12; ","  System.out.println(\"Hello\"); ","while (x < 100) { "]
     },
     {
       "taskName" : "While Loops",
@@ -198,7 +198,7 @@
       "exerciseViewType": 4,
       "exerciseSolutionStringArray":["i+1","10","print","for","i","Fine!","i--","i++","Great!"],
       "exerciseContentStringArray": ["#@ (int i=0;i<10;@#@){","   System.out.println(","   \"@#@\");","}"],
-      "exerciseSolutionIntArray": [2,5,6]
+      "exerciseSolutionIntArray": [3,7,8]
     },
     {
       "taskName" : "for Loops",

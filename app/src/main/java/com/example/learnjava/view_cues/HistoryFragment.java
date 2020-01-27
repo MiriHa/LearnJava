@@ -74,7 +74,7 @@ public class HistoryFragment extends DialogFragment {
                 checkButton.setBackground(getResources().getDrawable(R.drawable.neutral_button));
 
             }
-        },3000);
+        },2000);
 
         int section = getArguments().getInt("section", 1);
         setHistory();

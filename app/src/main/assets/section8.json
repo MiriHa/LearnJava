@@ -33,7 +33,7 @@
       "taskName" : "Creating Classes",
       "taskNumber" : 3,
       "sectionNumber": 8,
-      "taskText" : "In order to create your own custom objects, you must first create the corresponding classes. This is accomplished by right clicking on the src folder in Eclipse or your Editor and selecting Create->New->Class. Give your class a name and click <b>Finish</b> to add the new class to your project: @_picture8_3@As you can see, Eclipse has already added the initial code for the class.<br>Now lets create a simple method in our new class.<br><b>Animal.java</b> @_picturecode8_3@We declared a <b>bark()</b> method in our <b>Animal</b> class. Now, in order to use the class and it's methods, we need to declare an<b> object</b> of that class.",
+      "taskText" : "In order to create your own custom objects, you must first create the corresponding classes. When you have a new file you do this by using the syntax <br><b> class yourClassName{}</b><br> with a chosen name for example Animal. <br>Now lets create a simple method in our new class.<br><b>Animal.java</b> @_picturecode8_3@We declared a <b>bark()</b> method in our <b>Animal</b> class. Now, in order to use the class and it's methods, we need to declare an<b> object</b> of that class.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["class name","create a class"]
@@ -115,7 +115,7 @@
       "taskName" : "Access Modifiers",
       "taskNumber" : 11,
       "sectionNumber": 8,
-      "taskText" : "Now let's discuss the <b>public</b> keyword in front of the main method.@<b>public</b> static void main(String[ ] args)@<b>public</b> is an <b>access modifier,</b> meaning that it is used to set the level of access. You can use access modifiers for classes, attributes, and methods.@For classes, the available modifiers are public or default (left blank), as described below:<br><br><b>public:</b> The class is accessible by any other class.<br><br><b>default</b>: The class is accessible only by classes in the same package.@<br>The following choices are available for attributes and methods:<br><br><b>default:</b> A variable or method declared with no access control modifier is available to any other class in the same package.<br><br><b>public:</b> Accessible from any other class.<br><b><br>protected:</b> Provides the same access as the default access modifier, with the addition that subclasses can access protected methods and variables of the superclass (Subclasses and superclasses are covered in upcoming lessons).<br><b>private:</b> Accessible only within the declared class itself<br><br>Example: @_picturecode8_11@It's a best practice to keep the variables within a class private. The variables are accessible and modified using <b>Getters and Setters. </b>",
+      "taskText" : "Now let's discuss the <b>public</b> keyword in front of the main method.@<b>public</b> static void main(String[ ] args)@<b>public</b> is an <b>access modifier,</b> meaning that it is used to set the level of access. You can use access modifiers for classes, attributes, and methods.@For classes, the available modifiers are public or default (left blank), as described below:<br><br><b>public:</b> The class is accessible by any other class.<br><br><b>default</b>: The class is accessible only by classes in the same package.@<br>The following choices are available for attributes and methods:<br><br><b>default:</b> A variable or method declared with no access control modifier is available to any other class in the same package.<br><br><b>public:</b> Accessible from any other class.<br><b><br>protected:</b> Provides the same access as the default access modifier, with the addition that subclasses can access protected methods and variables of the superclass.<br><b>private:</b> Accessible only within the declared class itself<br><br>Example: @_picturecode8_11@It's a best practice to keep the variables within a class private. The variables are accessible and modified using <b>Getters and Setters. </b>",
       "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["access modifiers","public","private","protected","in classes, objects and methods"]
@@ -156,7 +156,7 @@
       "taskName" : "Getters & Setters",
       "taskNumber" : 15,
       "sectionNumber": 8,
-      "taskText" : "Once our getter and setter have been defined, we can use it in our <b>main:</b>@_picturecode8_15@Getters and setters allow us to have control over the values. You may, for example, validate the given value in the setter before actually setting the value.<br>Getters and setters are fundamental building blocks for <b>encapsulation</b>, which will be covered in the next module.",
+      "taskText" : "Once our getter and setter have been defined, we can use it in our <b>main:</b>@_picturecode8_15@Getters and setters allow us to have control over the values. You may, for example, validate the given value in the setter before actually setting the value.<br>Getters and setters are fundamental building blocks for <b>encapsulation</b>.",
       "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["control over values","getter","setter"]
@@ -218,8 +218,8 @@
       "taskWhatsNext": 3,
       "taskType": 2,
       "exerciseViewType": 5,
-      "exerciseSolutionStringArray" : ["TEXT2","TEXT1","TEXT4","TEXT0","TEXT3","TEXT5"],
-      "exerciseContentStringArray" : ["  x = val;", "private int x;","class A{"," }"," public A(int val){","}"]
+      "exerciseSolutionStringArray" : ["TEXT2","TEXT1","TEXT4","TEXT0","TEXT3"],
+      "exerciseContentStringArray" : ["  x = val;", "private int x;","class A{"," }\n}"," public A(int val){"]
   }
   ]
 }

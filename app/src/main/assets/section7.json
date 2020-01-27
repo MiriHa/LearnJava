@@ -58,7 +58,7 @@
       "taskText" : "Create an int variable called length and assign the value of the length of the array arr to it. Assume that arr has already been initialized.",
       "taskWhatsNext" : 1,
       "exerciseViewType" : 6,
-      "exerciseContentStringArray" : ["String[ ] arr;\n\n"],
+      "exerciseContentStringArray" : ["String[ ] arr = {1,2,3,4,5};\n\n"],
       "exerciseSolutionString" : "String[]arr={1,2,3,4,5};intlength=arr.length;"
 
     },
@@ -66,7 +66,7 @@
       "taskName": "Using Arrays",
       "taskNumber": 6,
       "sectionNumber": 7,
-      "taskText" : "Now that we know how to set and get array elements, we can calculate the sum of all elements in an array by using loops.<br>The <b>for</b> loop is the most used loop when working with arrays, as we can use the<b> length</b> of the array to determine how many times to run the loop. @_picturecode7_6@In the code above, we declared a variable <b>sum</b> to store the result and assigned it 0.Then we used a for loop to iterate through the array, and added each element's value to the variable.<br>The condition of the <b>for</b> loop is x<myArr.length, as the last element's index is<b> myArr.length-1.</b>",
+      "taskText" : "Now that we know how to set and get array elements, we can calculate the sum of all elements in an array by using loops.<br>The <b>for</b> loop is the most used loop when working with arrays, as we can use the<b> length</b> of the array to determine how many times to run the loop. @_picturecode7_6@In the code above, we declared a variable <b>sum</b> to store the result and assigned it 0.Then we used a for loop to iterate through the array, and added each element's value to the variable.<br>The condition of the <b>for</b> loop is x&lt;myArr.length, as the last element's index is<b> myArr.length-1.</b>",
       "taskWhatsNext" : 2,
       "taskType" : 1,
       "lessonKeyWords" : ["calculating sun","arrays","iterate over arrays"]

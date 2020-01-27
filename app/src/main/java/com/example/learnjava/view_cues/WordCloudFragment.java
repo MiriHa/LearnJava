@@ -85,7 +85,7 @@ public class WordCloudFragment extends DialogFragment {
                 checkButton.setBackground(getResources().getDrawable(R.drawable.neutral_button));
 
             }
-        },3000);
+        },2500);
 
         //make the wordcloud
 

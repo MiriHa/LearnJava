@@ -16,39 +16,51 @@
         android:minWidth="1000dp"
         android:minHeight="1000dp">
 
-
-        <net.alhazmy13.wordcloud.WordCloudView
-            android:id="@+id/WordcloudView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="20dp"
-            android:layout_marginStart="13dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginEnd="13dp"
-            android:background="@drawable/rounded_corners"
-            app:layout_constraintBottom_toTopOf="@+id/WordCloudButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/WordCloudButton"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/neutral_button_grey"
-            android:text="@string/Cue_Button"
-            android:textAllCaps="false"
-            android:fontFamily="@font/trixiesans"
-            android:textColor="@color/light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/WordcloudView"
-            app:layout_constraintVertical_bias="0.93" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <net.alhazmy13.wordcloud.WordCloudView
+                    android:id="@+id/WordcloudView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="13dp"
+                    android:background="@drawable/rounded_corners" />
+
+                <Button
+                    android:id="@+id/WordCloudButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/neutral_button_grey"
+                    android:fontFamily="@font/trixiesans"
+                    android:text="@string/Cue_Button"
+                    android:textAllCaps="false"
+                    android:textColor="@color/light"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/WordcloudView"
+                    app:layout_constraintVertical_bias="0.93" />
+
+            </LinearLayout>
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

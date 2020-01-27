@@ -13,7 +13,7 @@
       "taskName": "Methods",
       "taskNumber": 1,
       "sectionNumber": 5,
-      "taskText": "Order these code lines so that the method \"hello\" get called from main form main:",
+      "taskText": "Fill in the blank so that the method \"hello\" gets called in the main method.",
       "taskWhatsNext": 1,
       "taskType" : 2,
       "exerciseViewType" : 3,
@@ -37,7 +37,7 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 2,
-      "exerciseSolutionStringArray": ["one", "only two", "as many as you want","you have to set it in advance"],
+      "exerciseSolutionStringArray": ["once", "twice", "as many times as you want","you have to set it in advance"],
       "exerciseSolutionInt": 3
     },
     {
@@ -53,11 +53,11 @@
       "taskName": "Method Parameters",
       "taskNumber": 5,
       "sectionNumber": 5,
-      "taskText": "Write a code for the method doSomething that prints the value of the parameter plus 2",
+      "taskText": "Write a code for the static method doSomething that prints the value of the parameter called x plus 2",
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 6,
-      "exerciseSolutionString" : "static void doSomething(int x){\n System.out.println(x+2);\n}",
+      "exerciseSolutionString" : "class MyClass{\n  public static void main \n          (String[]args){\n   doSomething(4);\n } \n\n//TODO write method doSomething\n\nstatic void doSomething(int x){\n System.out.println(x+2);\n }\n}",
       "exerciseContentStringArray" : ["class MyClass{\n  public static void main \n          (String[]args){\n   doSomething(4);\n } \n\n//TODO write method doSomething\n\n\n }"]
     },
     {

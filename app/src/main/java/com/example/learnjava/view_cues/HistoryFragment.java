@@ -25,6 +25,7 @@ import com.example.learnjava.models.ModelTask;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * This Resumtion Cue histroy of previous lessons: number 3
@@ -34,6 +35,9 @@ public class HistoryFragment extends DialogFragment {
     private Controller progressController;
     private LinearLayout historyHolder;
     private ConstraintLayout background;
+
+    Date entered;
+
 
     public static HistoryFragment newInstance(int currentSection) {
         HistoryFragment fragment = new HistoryFragment();
@@ -55,6 +59,7 @@ public class HistoryFragment extends DialogFragment {
         // Inflate the layout for this fragment
         SharedPrefrencesManager.saveSharedSetting(getContext(), "CUE_OPEN","true");
         View view = inflater.inflate(R.layout.fragment_history, container, false);
+        entered = Calendar.getInstance().getTime();
         progressController = (Controller) getActivity().getApplicationContext();
 
         Button checkButton = view.findViewById(R.id.historyButton);
@@ -83,6 +88,9 @@ public class HistoryFragment extends DialogFragment {
         checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Date dismissed = Calendar.getInstance().getTime();
+                String duration = progressController.calculateDuration(entered, dismissed);
+                progressController.makeaDurationLog(getContext(),dismissed, "CUE_CLOSED","History Cue dismissed",duration);
                 dismiss();
             }
         });

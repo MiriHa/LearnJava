@@ -26,6 +26,7 @@ import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class LessonFragment extends Fragment {
 
@@ -36,6 +37,8 @@ public class LessonFragment extends Fragment {
 
    private ModelTask currentTask;
    private Controller progressController;
+
+   Date entered;
 
     public LessonFragment() {
         // Required empty public constructor
@@ -52,7 +55,10 @@ public class LessonFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lesson, container, false);
+
         progressController = (Controller) getContext().getApplicationContext();
+        entered = Calendar.getInstance().getTime();
+        progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "ENTERED_A_LESSON", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber());
 
         textHolder = view.findViewById(R.id.lessonTextHolder);
         background = view.findViewById(R.id.LessonHolder);
@@ -62,7 +68,6 @@ public class LessonFragment extends Fragment {
         Button nextButton = view.findViewById(R.id.nextButtonLessonFrag);
 
         Log.i("M_LESSON_FRAGMENT", " whatsNext: " + whatsNext + " currenTasknumber: " + currentTask.getTaskNumber());
-        progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "ENTERED_A_LESSON", "number: " + currentTask.getTaskNumber() + "section: "+currentTask.getSectionNumber());
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +77,9 @@ public class LessonFragment extends Fragment {
                     //save this as the Las lesson to come back to
                     progressController.setLastLesson(getContext(),currentTask.getTaskNumber());
                     //open a exerciseFragment
+                    Date ended = Calendar.getInstance().getTime();
+                    String duration = progressController.calculateDuration(entered, ended);
+                    progressController.makeaDurationLog(getContext(), ended, "LESSON_EXITED","got to the next task",duration);
                     if( whatsNext == 2) {
                         ((LessonActivity) getActivity()).openNewTask(2);
                         Log.i("M_LESSON_FRAGMENT", " openExercise");

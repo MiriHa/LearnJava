@@ -21,6 +21,7 @@ import com.example.learnjava.R;
 import com.example.learnjava.models.ModelTask;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
@@ -45,6 +46,8 @@ public class ExerciseViewCodeFragment extends Fragment {
 
         int counterCheck = 0;
 
+        private Date entered;
+
         public ExerciseViewCodeFragment() {
             // Required empty public constructor
         }
@@ -59,6 +62,7 @@ public class ExerciseViewCodeFragment extends Fragment {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_exercise_view_code, container, false);
+            entered = Calendar.getInstance().getTime();
             progressController = (Controller) getActivity().getApplicationContext();
 
             //get the currentTask
@@ -160,13 +164,19 @@ public class ExerciseViewCodeFragment extends Fragment {
 
                     Log.i("M_EXERCISE_VIEW_CODE", "check answer: " + userInput + userAnswer+" solution: " + currentTask.getSolutionString());
 
+                    Date ended;
                        if (answer.equalsIgnoreCase(userAnswer)) {
-                        progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput);
+                           ended = Calendar.getInstance().getTime();
+                           String duration = progressController.calculateDuration(entered, ended);
+                        progressController.makeaDurationLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput, duration);
                         mListener.sendAnswerFromExerciseView(true);
                         Log.i("M_EXERCISE_VIEW_CODE", " send answer: true");
                     } else {
                         Log.i("M ANSWER", " was wrong");
-                           progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput);
+                           ended = Calendar.getInstance().getTime();
+                           //TODO maybe set entered new? only when try again clicked? -> setter
+                           String duration = progressController.calculateDuration(entered, ended);
+                           progressController.makeaDurationLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput, duration);
                         mListener.sendAnswerFromExerciseView(false);
                         Log.i("M_EXERCISE_VIEW_CODE", "send answer: false");
                     }

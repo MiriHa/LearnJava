@@ -27,6 +27,7 @@ import com.jmedeisis.draglinearlayout.DragLinearLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 
@@ -47,6 +48,7 @@ public class ExerciseViewOrderFragment extends Fragment {
 
         private View currentView;
 
+        private Date entered;
 
         public ExerciseViewOrderFragment() {
             // Required empty public constructor
@@ -63,6 +65,7 @@ public class ExerciseViewOrderFragment extends Fragment {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             final View view = inflater.inflate(R.layout.fragment_exercise_view_order, container, false);
+            entered = Calendar.getInstance().getTime();
             currentView = view;
             progressController = (Controller) getActivity().getApplicationContext();
 
@@ -171,13 +174,18 @@ public class ExerciseViewOrderFragment extends Fragment {
                 }
 
             Log.i("M_ORDER","solutiontags: "+ Arrays.toString(solutionTags) +" usertags:"+ Arrays.toString(userSolution));
+                Date ended;
                 if (Arrays.equals(solutionTags, userSolution)) {
-                    progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_ORDER_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolution));
+                    ended = Calendar.getInstance().getTime();
+                    String duration = progressController.calculateDuration(entered, ended);
+                    progressController.makeaDurationLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_ORDER_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolution),duration);
                     mListener.sendAnswerFromExerciseView(true);
                     Log.i("M_EXERCISE_VIEW_ORDER", " send answer: true");
                 } else {
                     Log.i("ANSWER", " was wrong");
-                    progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_ORDER_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolution));
+                    ended = Calendar.getInstance().getTime();
+                    String duration = progressController.calculateDuration(entered, ended);
+                    progressController.makeaDurationLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_ORDER_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolution),duration);
                     mListener.sendAnswerFromExerciseView(false);
                     Log.i("M_EXERCISE_VIEW_ORDER", " send answer: false");
                 }

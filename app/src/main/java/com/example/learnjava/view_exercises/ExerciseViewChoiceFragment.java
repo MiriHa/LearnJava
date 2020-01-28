@@ -24,6 +24,7 @@ import com.example.learnjava.models.ModelTask;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * This is the ExerciseView to give a multiple choice answer.
@@ -47,6 +48,7 @@ public class ExerciseViewChoiceFragment extends Fragment {
 
     private int counterCheck = 0;
 
+    private Date entered;
 
 
     public ExerciseViewChoiceFragment() {
@@ -63,6 +65,7 @@ public class ExerciseViewChoiceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_exercise_view_choice, container, false);
+        entered = Calendar.getInstance().getTime();
         progressController = (Controller) getActivity().getApplicationContext();
 
 
@@ -189,17 +192,22 @@ public class ExerciseViewChoiceFragment extends Fragment {
 
 
     private void checkAnswers() {
+        Date ended;
             if (userAnswer == 0) {
                 Toast.makeText(getContext(), "Please choose an answer", Toast.LENGTH_SHORT).show();
             } else {
                 Log.i("M_EXERCISE_VIEW_CHOICE", " checkanswer: " + " solution: " + currentTask.getSolutionInt());
                 if (currentTask.getSolutionInt() == userAnswer) {
-                    progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_CHOICE_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userAnswer);
+                    ended = Calendar.getInstance().getTime();
+                    String duration = progressController.calculateDuration(entered, ended);
+                    progressController.makeaDurationLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_CHOICE_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userAnswer, duration);
                     mListener.sendAnswerFromExerciseView(true);
                     Log.i("M_EXERCISE_VIEW_CHOICE", " send answer: true");
                 } else {
                     Log.i("M ANSWER", " was wrong");
-                    progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_CHOICE_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userAnswer);
+                    ended = Calendar.getInstance().getTime();
+                    String duration = progressController.calculateDuration(entered, ended);
+                    progressController.makeaDurationLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_CHOICE_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userAnswer, duration);
                     mListener.sendAnswerFromExerciseView(false);
                     Log.i("M_EXERCISE_VIEW_CHOICE", " sen answer: false");
                 }

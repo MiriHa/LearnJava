@@ -26,6 +26,7 @@ import net.alhazmy13.wordcloud.WordCloudView;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -40,6 +41,8 @@ public class WordCloudFragment extends DialogFragment {
     private Controller progressController;
 
     private ConstraintLayout background;
+
+    private Date entered;
 
 
     public static WordCloudFragment newInstance(int section) {
@@ -63,7 +66,7 @@ public class WordCloudFragment extends DialogFragment {
         // Inflate the layout for this fragment
         SharedPrefrencesManager.saveSharedSetting(getContext(), "CUE_OPEN","true");
         View view = inflater.inflate(R.layout.fragment_word_cloud, container, false);
-
+        entered = Calendar.getInstance().getTime();
         //set importent data
         progressController = (Controller) getActivity().getApplicationContext();
         getDialog().setCanceledOnTouchOutside(false);
@@ -109,6 +112,9 @@ public class WordCloudFragment extends DialogFragment {
         checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Date dismissed = Calendar.getInstance().getTime();
+                String duration = progressController.calculateDuration(entered, dismissed);
+                progressController.makeaDurationLog(getContext(),dismissed, "CUE_CLOSED","WorldCloud Cue dismissed",duration);
                 dismiss();
             }
         });

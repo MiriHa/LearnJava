@@ -20,12 +20,17 @@ import com.example.learnjava.controller.Controller;
 import com.example.learnjava.R;
 import com.example.learnjava.controller.SharedPrefrencesManager;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * This is the resumption Cue lastLesson: number 1
  */
 public class WordCueFragment extends DialogFragment {
 
     private ConstraintLayout background;
+
+    private Date entered;
 
 
     public WordCueFragment() {
@@ -44,7 +49,7 @@ public class WordCueFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         SharedPrefrencesManager.saveSharedSetting(getContext(), "CUE_OPEN","true");
         View view = inflater.inflate(R.layout.fragment_word_cue, container);
-
+        entered = Calendar.getInstance().getTime();
         Controller progressController = (Controller) getActivity().getApplicationContext();
 
         TextView cueText = view.findViewById(R.id.wordCueText);
@@ -82,7 +87,10 @@ public class WordCueFragment extends DialogFragment {
         checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismiss();
+                Date dismissed = Calendar.getInstance().getTime();
+                String duration = progressController.calculateDuration(entered, dismissed);
+                progressController.makeaDurationLog(getContext(),dismissed, "CUE_CLOSED","Word Cue dismissed",duration);
+                  dismiss();
             }
         });
 

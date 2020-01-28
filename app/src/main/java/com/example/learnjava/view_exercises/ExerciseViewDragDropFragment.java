@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 
@@ -57,6 +58,8 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
 
     private View currentView;
 
+    private  Date entered;
+
 
     private LinearLayout.LayoutParams mParamsWrap = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
@@ -75,6 +78,7 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_exercise_view_drag_drop, container, false);
+        entered = Calendar.getInstance().getTime();
         currentView = view;
         progressController = (Controller) getActivity().getApplicationContext();
 
@@ -306,13 +310,18 @@ public class ExerciseViewDragDropFragment extends Fragment implements View.OnDra
             }
 
            if(allAnswers) {
+               Date ended;
                if (Arrays.equals(solutionString, userSolution)) {
-                   progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_DRAGDROP_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: " + currentTask.getSectionNumber() + " viewtype: " + currentTask.getExerciseViewType() + " userInput: " + Arrays.toString(userSolution));
+                   ended = Calendar.getInstance().getTime();
+                   String duration = progressController.calculateDuration(entered, ended);
+                   progressController.makeaDurationLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_DRAGDROP_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: " + currentTask.getSectionNumber() + " viewtype: " + currentTask.getExerciseViewType() + " userInput: " + Arrays.toString(userSolution), duration);
                    mListener.sendAnswerFromExerciseView(true);
                    Log.i("M_EXERCISE_VIEW_DRAG", " send answer: true");
                } else {
                    Log.i("ANSWER", " was wrong");
-                   progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_DRAGDROP_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: " + currentTask.getSectionNumber() + " viewtype: " + currentTask.getExerciseViewType() + " userInput: " + Arrays.toString(userSolution));
+                   ended = Calendar.getInstance().getTime();
+                   String duration = progressController.calculateDuration(entered, ended);
+                   progressController.makeaDurationLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_DRAGDROP_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: " + currentTask.getSectionNumber() + " viewtype: " + currentTask.getExerciseViewType() + " userInput: " + Arrays.toString(userSolution), duration);
                    mListener.sendAnswerFromExerciseView(false);
                    Log.i("M_EXERCISE_VIEW_DRAG", "send answer: false");
                }

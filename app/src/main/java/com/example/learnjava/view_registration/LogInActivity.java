@@ -70,16 +70,17 @@ public class LogInActivity extends AppCompatActivity {
         if (b != null)
             isUserFirstTime = (boolean) b.get("user_first_time");
 
+
         if (isUserFirstTime) {
             signUp();
         }else {
             auth = FirebaseAuth.getInstance();
             ref = FirebaseDatabase.getInstance().getReference();
-            progressController.setFirebase();
 
             // If user is already logged in, get to HomeScreen
             if (auth.getCurrentUser() != null) {
                 if(SharedPrefrencesManager.readLogs(this) != null) {
+                    progressController.setFirebase();
                     progressController.pushLogs(this);
                 }
                 Log.i("M_LOGIN_ACTIVITY","currentUSer: "+auth.getCurrentUser().toString());

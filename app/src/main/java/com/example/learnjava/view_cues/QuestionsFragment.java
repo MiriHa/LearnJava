@@ -24,6 +24,7 @@ import com.example.learnjava.models.ModelQuestion;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 /**
@@ -46,6 +47,8 @@ public class QuestionsFragment extends DialogFragment {
     private int userAnswer = 0;
     private boolean answerChecked = false;
 
+    private Date entered;
+
     public static QuestionsFragment newInstance(int sectionWhat) {
         QuestionsFragment fragment = new QuestionsFragment();
         Bundle args = new Bundle();
@@ -66,6 +69,8 @@ public class QuestionsFragment extends DialogFragment {
         // Inflate the layout for this fragment
         SharedPrefrencesManager.saveSharedSetting(getContext(), "CUE_OPEN","true");
         View view = inflater.inflate(R.layout.fragment_questions, container, false);
+        entered = Calendar.getInstance().getTime();
+
         progressController = (Controller) getActivity().getApplicationContext();
 
         getDialog().setCanceledOnTouchOutside(false);
@@ -138,10 +143,14 @@ public class QuestionsFragment extends DialogFragment {
         checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!answerChecked)
+                if (!answerChecked) {
                     checkAnswers();
-                else
+                }else {
+                    Date dismissed = Calendar.getInstance().getTime();
+                    String duration = progressController.calculateDuration(entered, dismissed);
+                    progressController.makeaDurationLog(getContext(), dismissed, "CUE_CLOSED", "Question Cue dismissed", duration);
                     dismiss();
+                }
             }
         });
 

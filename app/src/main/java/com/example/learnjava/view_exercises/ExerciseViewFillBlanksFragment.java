@@ -28,6 +28,7 @@ import com.example.learnjava.models.ModelTask;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
@@ -52,6 +53,8 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
 
     private int counterCheck = 0;
 
+    private Date entered;
+
 
     public ExerciseViewFillBlanksFragment() {
         // Required empty public constructor
@@ -67,6 +70,7 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_exercise_view_fill_blanks, container, false);
+        entered = Calendar.getInstance().getTime();
         progressController = (Controller) getActivity().getApplicationContext();
 
         //get the currentTask
@@ -192,13 +196,18 @@ public class ExerciseViewFillBlanksFragment extends Fragment {
             if (wasEmpty) {
                 Toast.makeText(getContext(), "Pleas enter all answers", Toast.LENGTH_SHORT).show();
             } else {
+                Date ended;
                 if (Arrays.equals(solutionArray, userSolutionArray)) {
-                    progressController.makeaLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_FILLBLANKS_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolutionArray));
+                    ended = Calendar.getInstance().getTime();
+                    String duration = progressController.calculateDuration(entered, ended);
+                    progressController.makeaDurationLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_FILLBLANKS_FRAGMENT_RIGHT", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolutionArray),duration);
                     mListener.sendAnswerFromExerciseView(true);
                     Log.i("SENDANSWERFROMEXERCISE", " answer: true");
                 } else {
                     Log.i("ANSWER", " was wrong");
-                    progressController.makeaLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_FILLBLANKS_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolutionArray));
+                    ended = Calendar.getInstance().getTime();
+                    String duration = progressController.calculateDuration(entered, ended);
+                    progressController.makeaDurationLog(getContext(), Calendar.getInstance().getTime(), "EXERCISE_FILLBLANKS_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + Arrays.toString(userSolutionArray),duration);
                     mListener.sendAnswerFromExerciseView(false);
                     Log.i("SENDANSWERFROMEXERCISE", " answer: false");
                 }

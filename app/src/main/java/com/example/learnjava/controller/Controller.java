@@ -44,7 +44,7 @@ public class Controller extends android.app.Application {
     ArrayList<ModelTask> taskContent;
     ReadJson readJson = new ReadJson();
 
-    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.GERMAN);
+    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss,SSS", Locale.GERMAN);
 
     /**
      * Methods to save and read Progress
@@ -80,25 +80,25 @@ public class Controller extends android.app.Application {
         userId = auth.getCurrentUser().getUid();
 
         FirebaseUser firebaseUser = auth.getCurrentUser();
-            DatabaseReference currentReference = ref.child("users").child(firebaseUser.getUid());
-            currentReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.getValue() != null){
-                        Integer latestSectionNumber = dataSnapshot.child("latestSectionNumber").getValue(Integer.class);
-                        Integer latestTaskNumber = dataSnapshot.child("latestTaskNumber").getValue(Integer.class);
-                       SharedPrefrencesManager.saveLatestSectionNumber(con, latestSectionNumber);
-                       SharedPrefrencesManager.savelatestTaskNumber(con, latestTaskNumber);
-                       Log.i("M_CONTROLLER","fetchProgressFromFireBase: section :"+ latestSectionNumber+ " latestTAsk: "+latestTaskNumber);
-                    }
+        DatabaseReference currentReference = ref.child("users").child(firebaseUser.getUid());
+        currentReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() != null){
+                    Integer latestSectionNumber = dataSnapshot.child("latestSectionNumber").getValue(Integer.class);
+                    Integer latestTaskNumber = dataSnapshot.child("latestTaskNumber").getValue(Integer.class);
+                    SharedPrefrencesManager.saveLatestSectionNumber(con, latestSectionNumber);
+                    SharedPrefrencesManager.savelatestTaskNumber(con, latestTaskNumber);
+                    Log.i("M_CONTROLLER","fetchProgressFromFireBase: section :"+ latestSectionNumber+ " latestTAsk: "+latestTaskNumber);
                 }
+            }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Log.i("M_CONTROLLER","fetchProgressFromFireBase cancelled");
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.i("M_CONTROLLER","fetchProgressFromFireBase cancelled");
 
-                }
-            });
+            }
+        });
 
     }
 
@@ -168,7 +168,7 @@ public class Controller extends android.app.Application {
 
     public void setLastLesson(Context con, int tasknumber) {
         Log.i("M_CONTROLLER", "setLastLesson: " + tasknumber);
-       // modelUserProgress.setLastLessonNumber(tasknumber);
+        // modelUserProgress.setLastLessonNumber(tasknumber);
         SharedPrefrencesManager.saveLastLesson(con, tasknumber);
         ref.child("users").child(userId).child("lastLessonNumber").setValue((long) tasknumber);
     }
@@ -182,7 +182,7 @@ public class Controller extends android.app.Application {
     public int getLastLessonNumber(Context con){
         int section = SharedPrefrencesManager.readLastLesson(con);
         Log.i("M_CONTROLLER", "getLastLessonNumber " +section);
-       // return (int) modelUserProgress.getLastLessonNumber();
+        // return (int) modelUserProgress.getLastLessonNumber();
         return section;
     }
 
@@ -344,10 +344,42 @@ public class Controller extends android.app.Application {
 
     }
 
+    public void makeaDurationLog(Context con, Date time, String eventType, String details, String duration){
+        String strDate = dateFormat.format(time);
+        ModelLog modelLog = new ModelLog( strDate, eventType, details, duration);
+        SharedPrefrencesManager.saveLogs(con, modelLog);
+        ref.child("users").child(userId).child("loggingList").child(strDate + " " + eventType).setValue(modelLog);
+    }
+
+    public String calculateDuration(Date dateStart, Date dateEnd){
+        long diff = dateEnd.getTime() - dateStart.getTime();
+
+        long seconds = diff / 1000;
+        long minutes = seconds /60;
+
+        String duration = minutes+":"+(seconds-(60*minutes))+":"+(diff-(1000*seconds));
+
+//        long diffSeconds = diff / 1000 % 60;
+//        long diffMinutes = diff / (1000*60) % 60;
+//        long diffHours = diff / (60*60*100) % 24;
+//
+//        String dateDuration = diffHours+":"+diffMinutes+":"+diffSeconds;
+//        long minutes = TimeUnit.MILLISECONDS.toMinutes(milliseconds);
+//        // long seconds = (milliseconds / 1000);
+//        long seconds = TimeUnit.MILLISECONDS.toSeconds(milliseconds);
+
+        Log.i("M_DURATION","Duration: "+diff+ " string: "+ duration);
+
+
+        return duration;
+
+    }
+
     public void pushLogs(Context con){
         ArrayList<ModelLog> logs = SharedPrefrencesManager.readLogs(con);
         Log.i("M_CONTROLLER","pushLogs");
         for(ModelLog log : logs) {
+            Log.i("M_CONTROLLER","pushlog:"+log.getEventType());
             ref.child("users").child(userId).child("loggingList").child(log.getTime() + " " + log.getEventType()).setValue(log).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {

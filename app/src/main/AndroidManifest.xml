@@ -13,7 +13,6 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view_registration.ForgotPasswortActivity"/>
         <activity android:name=".view_registration.SignUpActivity"
                   android:screenOrientation="portrait"/>
 

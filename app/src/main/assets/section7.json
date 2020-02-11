@@ -55,11 +55,11 @@
       "taskName" : "Initializing Arrays",
       "taskNumber" : 5,
       "sectionNumber": 7,
-      "taskText" : "Create an int variable called length and assign the value of the length of the array arr to it. Assume that arr has already been initialized.",
+      "taskText" : "Create an int variable called length and assign the length of the array arr as value to it. Assume that arr has already been initialized.",
       "taskWhatsNext" : 1,
       "exerciseViewType" : 6,
       "exerciseContentStringArray" : ["String[ ] arr = {1,2,3,4,5};\n\n"],
-      "exerciseSolutionString" : "String[]arr={1,2,3,4,5};intlength=arr.length;"
+      "exerciseSolutionString" : "String[] arr = {1,2,3,4,5};\nint length = arr.length;"
 
     },
     {
@@ -99,7 +99,7 @@
       "taskName" : "Arrays",
       "taskNumber" : 9,
       "sectionNumber": 7,
-      "taskText" : "What is the output of this code?@_picturecode7_9",
+      "taskText" : "What is the value of result after the for loop was executed?@_picturecode7_9",
       "taskWhatsNext" : 3,
       "exerciseViewType" : 1,
       "exerciseSolutionStringArray" : ["17","seventeen"]

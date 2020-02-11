@@ -44,7 +44,7 @@ public class Controller extends android.app.Application {
     ArrayList<ModelTask> taskContent;
     ReadJson readJson = new ReadJson();
 
-    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss,SSS", Locale.GERMAN);
+    DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss,SSS", Locale.GERMAN);
 
     /**
      * Methods to save and read Progress

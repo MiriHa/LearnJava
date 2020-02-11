@@ -108,8 +108,8 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 3,
-      "exerciseSolutionStringArray": ["new","people","()"],
-      "exerciseContentStringArray": ["people obj1 = @#@ people();","#@obj2 = new people@#@;"]
+      "exerciseSolutionStringArray": ["people","new","people","()"],
+      "exerciseContentStringArray": ["#@ obj1 = @#@ people();","#@obj2 = new people@#@;"]
     },
     {
       "taskName" : "Access Modifiers",
@@ -189,7 +189,7 @@
       "taskWhatsNext": 1,
       "taskType": 2,
       "exerciseViewType": 6,
-      "exerciseSolutionString": "classPerson{\n private int age;\n Person(intmyAge){\n  age=myAge;\n }\n}",
+      "exerciseSolutionString": "class Person{\n private int age;\n \nPerson(int myAge){\n  age=myAge;\n }\n}",
       "exerciseContentStringArray": ["class Person{\n private int age;\n\n}"]
     },
     {

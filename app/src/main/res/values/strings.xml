@@ -35,7 +35,7 @@
 
     <!-- SignIn -->
     <string name="signin">SignUp</string>
-    <string name="signin_name_hint">Name</string>
+    <string name="signin_name_hint">Nickname/ID</string>
     <string name="signin_email_hint">Email</string>
     <string name="signin_phone_number_hint">Phone number</string>
     <string name="signin_password_1_hint">Enter password</string>

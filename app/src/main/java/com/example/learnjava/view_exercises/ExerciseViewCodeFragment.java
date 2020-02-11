@@ -174,7 +174,6 @@ public class ExerciseViewCodeFragment extends Fragment {
                     } else {
                         Log.i("M ANSWER", " was wrong");
                            ended = Calendar.getInstance().getTime();
-                           //TODO maybe set entered new? only when try again clicked? -> setter
                            String duration = progressController.calculateDuration(entered, ended);
                            progressController.makeaDurationLog(getContext(),Calendar.getInstance().getTime(), "EXERCISE_CODE_FRAGMENT_WRONG", "number: " + currentTask.getTaskNumber() + " section: "+currentTask.getSectionNumber()+" viewtype: "+currentTask.getExerciseViewType()+" userInput: " + userInput, duration);
                         mListener.sendAnswerFromExerciseView(false);

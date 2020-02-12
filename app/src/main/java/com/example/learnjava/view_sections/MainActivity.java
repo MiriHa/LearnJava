@@ -62,6 +62,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         scrollView = findViewById(R.id.MainScrollView);
         ScrollViewContainer = findViewById(R.id.MainscrollViewContainer);
 
+        TextView welcome = findViewById(R.id.textViewWelcome);
+        String USER_NAME = SharedPrefrencesManager.readSharedSetting(this,"user_name","");
+       // welcome.setText("Hello "+SharedPrefrencesManager.readSharedSetting(this,"user_name","")+"Choose your Section");
+        welcome.setText(getApplicationContext().getString(R.string.welcome, USER_NAME));
+
 
         context = getApplicationContext();
         myProgressController = (Controller) getApplicationContext();

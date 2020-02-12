@@ -3,6 +3,7 @@ package com.example.learnjava.view_registration;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,12 +37,15 @@ public class SignUpActivity extends AppCompatActivity {
     Button signIn;
     TextView toLogIn;
 
+    Context con;
+
     Boolean isUserForTheFirstTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sing_up);
+        con = SignUpActivity.this;
 
         myProgressController = (Controller) getApplicationContext();
 
@@ -81,7 +85,8 @@ public class SignUpActivity extends AppCompatActivity {
                         // SharedPrefrencesManager.saveSharedSetting(SignUpActivity.this, MainActivity.PREF_USER_FIRST_TIME, "false");
                         Log.i("M_SIGNUP_SCTIVITY", "paswords matching");
                         String userName = userNameInput.getText().toString();
-                        String email = userEmailInput.getText().toString();;
+                        SharedPrefrencesManager.saveSharedSetting(con, "user_name",userName);
+                        String email = userEmailInput.getText().toString();
 
                         // Check if fields are not empty
                         if (email.isEmpty() || userName.isEmpty()) {

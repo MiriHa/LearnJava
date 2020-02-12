@@ -67,8 +67,12 @@ public class LogInActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
-        if (b != null)
-            isUserFirstTime = (boolean) b.get("user_first_time");
+        if (b != null) {
+            if(b.get("user_first_time")!= null) {
+                Log.i("M_LOGINACITIVITY", "b! = null " + b.get("user_first_time"));
+                isUserFirstTime = (boolean) b.get("user_first_time");
+            }
+        }
 
 
         if (isUserFirstTime) {

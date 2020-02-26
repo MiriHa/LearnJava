@@ -26,6 +26,7 @@ import com.example.learnjava.models.ModelTask;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Objects;
 
 public class LessonActivity extends AppCompatActivity {
 
@@ -59,7 +60,7 @@ public class LessonActivity extends AppCompatActivity {
         context = this;
 
 
-        //get the recent sectionnumber to identifiy the section
+        //get the recent section number to identify the section
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
         if (b != null)
@@ -75,7 +76,7 @@ public class LessonActivity extends AppCompatActivity {
         setProgressBar();
 
         //set the Toolbar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getSectionTitle());
 
         //open the first lesson Fragment
@@ -164,8 +165,8 @@ public class LessonActivity extends AppCompatActivity {
 
             //open the last Lesson
             case 3:
-                int lastlessonNumber = progressController.getLastLessonNumber(this);
-                ModelTask lastLesson = taskContent.get(lastlessonNumber);
+                int lastLessonNumber = progressController.getLastLessonNumber(this);
+                ModelTask lastLesson = taskContent.get(lastLessonNumber);
                // ModelTask lastLesson = progressController.getLastLesson();
                 Log.i("M_LESSON_ACTIVTIY", "last Lesson: " + lastLesson.getTaskName() + " whats next: " + lastLesson.getWhatsNext());
                 checkProgress();

@@ -352,7 +352,6 @@ public class LessonActivity extends AppCompatActivity {
 
             if (taskTypes[j] == 1) {
                 TextView myTextView = new TextView(this);
-                //TODO change the counter, counts exercises mit
                 myTextView.setText(String.valueOf(j + 1));
                 myTextView.setLayoutParams(mParamsWeight);
                 String tag = String.valueOf(taskNumber[j]);

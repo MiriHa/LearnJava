@@ -254,20 +254,6 @@ public class Controller extends android.app.Application {
             int why = SharedPrefrencesManager.readTriggerWhy(con);
             // determite which cue should be shown:
             int whichCue = 1;
-//            if(why == 1) {
-//                if (section <= 4)
-//                    whichCue = 1;
-//                else
-//                    whichCue = 4;
-//            }
-//            else if(why == 2){
-//                if (section <= 4)
-//                    whichCue = 2;
-//                else
-//                    whichCue = 3;
-//            }else {
-//                whichCue = 0;
-//            }
             Random random = new Random();
             switch (section){
                 case 1:
